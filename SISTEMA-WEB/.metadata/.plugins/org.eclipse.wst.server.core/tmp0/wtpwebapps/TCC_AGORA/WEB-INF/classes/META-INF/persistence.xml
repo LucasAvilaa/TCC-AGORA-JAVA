@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="TCC_AGORA">
+		<class>model.TbCliente</class>
+		<class>model.TbComanda</class>
+		<class>model.TbCompra</class>
+		<class>model.TbCompraProduto</class>
+		<class>model.TbContasPagar</class>
+		<class>model.TbContasReceber</class>
+		<class>model.TbContato</class>
+		<class>model.TbEndereco</class>
+		<class>model.TbEstabelecimento</class>
+		<class>model.TbEstoque</class>
+		<class>model.TbFornecedores</class>
+		<class>model.TbFuncionario</class>
+		<class>model.TbHierarquia</class>
+		<class>model.TbListaProduto</class>
+		<class>model.TbLogin</class>
+		<class>model.TbPrincipalPessoa</class>
+		<class>model.TbProduto</class>
+	</persistence-unit>
+</persistence>

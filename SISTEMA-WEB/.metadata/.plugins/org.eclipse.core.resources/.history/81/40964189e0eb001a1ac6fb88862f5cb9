@@ -1,0 +1,27 @@
+package dao;
+
+import java.sql.PreparedStatement;
+
+import factory.Conexao;
+import model.TbCompraProduto;
+
+public class daoCompra {
+	
+	Conexao con;
+	public boolean crudCompra(String acao, TbCompraProduto tbcompra) throws Exception {
+		con = new Conexao();
+		String sql = "EXEC PROC_COMPRA_ESTAB ?,?,?,?";
+		PreparedStatement ps = con.getConexao().prepareStatement(sql);
+		ps.setString(1,acao);
+		ps.setInt(2, tbcompra.getTbProduto().getIdProduto());
+		ps.setInt(3, tbcompra.getTbCompra().getIdCompra());
+		ps.setInt(4, tbcompra.getQuantidade());
+		
+		if(ps.executeUpdate()>0) {
+			ps.close();
+			return true;
+		}else {
+			return true;
+		}
+	} 
+}

@@ -1,0 +1,32 @@
+package dao;
+
+import factory.Conexao;
+
+public class daoCompra {
+	
+	Conexao con;
+	public boolean crudCompra() {
+		
+		
+		
+		if() {
+			return true;
+		}else {
+			return true;
+		}
+	}
+	
+/**
+ * COMPRA
+ * COMPRA PRODUTO 
+ * CONTAS PAGAR 
+ * ESTOQUE 
+ * 
+ * PROC_COMPRA_ESTAB
+	@ACAO CHAR(1),
+	@ID_PRODUTO INT,
+	@ID_COMPRA INT,
+	@QUANTIDADE INT
+ *
+ */
+}

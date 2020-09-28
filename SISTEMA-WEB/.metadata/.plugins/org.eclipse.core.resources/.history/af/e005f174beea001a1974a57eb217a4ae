@@ -1,0 +1,30 @@
+package dao;
+
+import java.sql.PreparedStatement;
+
+import factory.Conexao;
+import model.TbProduto;
+
+public class daoProdutos {
+	
+	Conexao con;
+	public boolean crudProdutos(String acao,TbProduto tbprodutos) throws Exception {
+		con = new Conexao();
+		String sql = "EXEC PROC_CRUD_PRODUTOS ?,?,?,?,?,?,?,?";
+		PreparedStatement ps = con.getConexao().prepareStatement(sql);
+		ps.setString(1, acao);
+		ps.setInt(2, tbprodutos.getIdProduto());
+		ps.setString(3, tbprodutos.getNomeProduto());
+		ps.setString(4,  tbprodutos.getDescricaoProduto());
+		ps.setString(5, tbprodutos.getCategoria());
+		ps.setBigDecimal(6, tbprodutos.getValorUniCompra());
+		ps.setBigDecimal(7, tbprodutos.getValorUniVenda());
+		ps.setDate(8, tbprodutos.getDataCadastro());
+		
+		if(ps.executeUpdate()>0) {
+			return true;
+		}else {
+			return false;
+		} 
+	}
+}

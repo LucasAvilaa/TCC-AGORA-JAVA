@@ -1,0 +1,28 @@
+package controller;
+
+import java.sql.Date;
+
+import dao.daoClientes;
+import model.TbCliente;
+
+public class controlClientes {
+
+	public boolean controlCliente(String acao, String nome, String sobrenome,String rg,String cpf, Date dtNasc, String sexo) throws Exception {
+		TbCliente model = new TbCliente();
+		model.setNome(nome);
+		model.setSobrenome(sobrenome);
+		model.setRg(rg);
+		model.setCpf(cpf);
+		model.setDtNasc(dtNasc);
+		model.setSexo(sexo);
+		
+		daoClientes dao = new daoClientes();
+		if(dao.crudClientes(acao, model)) {
+			return true;
+			
+		}else {
+			return false;
+		}
+		
+	}
+}

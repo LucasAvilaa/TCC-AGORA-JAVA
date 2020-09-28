@@ -1,0 +1,30 @@
+package dao;
+
+import java.sql.PreparedStatement;
+
+import factory.Conexao;
+import model.TbCliente;
+
+public class daoClientes {
+
+	Conexao con;
+	public boolean crudClientes(String acao,TbCliente tbclientes) throws Exception {
+		con = new Conexao();
+		String sql = "EXEC PROC_CRUD_CLIENTES ?,?,?,?,?,?,?";
+		PreparedStatement ps = con.getConexao().prepareStatement(sql);
+		ps.setString(1, acao);
+		ps.setString(2, tbclientes.getNome());
+		ps.setString(3, tbclientes.getSobrenome());
+		ps.setString(4, tbclientes.getRg());
+		ps.setString(5, tbclientes.getCpf());
+		ps.setDate(6,  tbclientes.getDtNasc());
+		ps.setString(7, tbclientes.getSexo()); 
+		
+		if(ps.executeUpdate()>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+}
+	

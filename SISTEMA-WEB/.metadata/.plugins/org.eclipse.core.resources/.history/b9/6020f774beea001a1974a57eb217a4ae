@@ -1,0 +1,29 @@
+package dao;
+
+import java.sql.PreparedStatement;
+import factory.Conexao;
+import model.TbFuncionario;
+
+public class daoFuncionarios {
+	Conexao con;
+	
+	public boolean crudFuncionario(String acao,TbFuncionario tbfuncionario) throws Exception {
+		con = new Conexao();
+		String sql = "EXEC PROC_CRUD_FUNCIONARIOS ?,?,?,?,?,?,?,?";
+		PreparedStatement ps = con.getConexao().prepareStatement(sql);
+		ps.setString(1, acao);
+		ps.setString(2, tbfuncionario.getNome());
+		ps.setString(3, tbfuncionario.getSobrenome());
+		ps.setString(4, tbfuncionario.getRg());
+		ps.setString(5, tbfuncionario.getCpf());
+		ps.setDate(6, tbfuncionario.getDataNascimento());
+		ps.setString(7, tbfuncionario.getSexo());
+		ps.setString(8, tbfuncionario.getCargo());
+		
+		if(ps.executeUpdate()>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}		 
+}

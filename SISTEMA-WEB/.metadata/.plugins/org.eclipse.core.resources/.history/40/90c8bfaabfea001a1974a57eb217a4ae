@@ -1,0 +1,39 @@
+package dao;
+
+import java.sql.PreparedStatement;
+
+import factory.Conexao;
+
+public class daoCompra {
+	
+	Conexao con;
+	public boolean crudCompra(String acao) throws Exception {
+		con = new Conexao();
+		String sql = "EXEC PROC_COMPRA_ESTAB ?,?,?,?";
+		PreparedStatement ps = con.getConexao().prepareStatement(sql);
+		ps.setString(1,acao);
+		
+		
+		
+		if(ps.executeUpdate()>0) {
+			ps.close();
+			return true;
+		}else {
+			return true;
+		}
+	}
+	
+/**
+ * COMPRA
+ * COMPRA PRODUTO 
+ * CONTAS PAGAR 
+ * ESTOQUE 
+ * 
+ * 
+	@ACAO CHAR(1),
+	@ID_PRODUTO INT,
+	@ID_COMPRA INT,
+	@QUANTIDADE INT
+ *
+ */
+}

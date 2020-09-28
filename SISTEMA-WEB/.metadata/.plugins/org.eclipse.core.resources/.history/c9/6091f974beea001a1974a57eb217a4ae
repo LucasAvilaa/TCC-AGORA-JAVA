@@ -1,0 +1,23 @@
+package dao;
+
+import java.sql.PreparedStatement;
+import factory.Conexao;
+import model.TbFornecedore;
+
+public class daoFornecedores {
+		
+	Conexao con;
+	public boolean crudEstab(String acao,TbFornecedore tbforn) throws Exception {
+		con = new Conexao();
+		String sql = "EXEC PROC_CRUD_FORNECEDORES ?,?,?";
+		PreparedStatement ps = con.getConexao().prepareStatement(sql);
+		ps.setString(1, acao);
+		ps.setString(2, tbforn.getCnpj());
+		ps.setString(3, tbforn.getRazaoSocial()); 
+		if(ps.executeUpdate()>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+}

@@ -1,0 +1,63 @@
+1600088590837	Delete element
+1600210540425	Delete element
+1600261118865	Delete element
+1600263294293	Rename type 'daoVendas'
+1600263308251	Rename type 'daoClientes'
+1600263315423	Rename type 'daoComandaProdutos'
+1600263323474	Rename type 'daoCompra'
+1600263332031	Rename type 'daoContasPagar'
+1600263349169	Rename type 'daoContasReceber'
+1600263358869	Rename type 'daoEnderecoContato'
+1600263366031	Rename type 'daoEstabelecimento'
+1600263375174	Rename type 'daoFornecedores'
+1600263382788	Rename type 'daoFuncionarios'
+1600263389581	Rename type 'daoLogin'
+1600263394957	Rename type 'daoProdutos'
+1600263423424	Rename type 'controlVendas'
+1600263431296	Rename type 'controlClientes'
+1600263436765	Rename type 'controlCompra'
+1600263442492	Rename type 'controlContasPagar'
+1600263448447	Rename type 'controlContasReceber'
+1600263461853	Rename type 'controlEndCont'
+1600263467686	Rename type 'controlEstab'
+1600263478413	Rename type 'controlFornec'
+1600263484357	Rename type 'controlFunc'
+1600263489388	Rename type 'controlLogin'
+1600263496128	Rename type 'controlProduto'
+1600346087650	Move 'cliente2.jsp' to 'cliente'
+1600346089735	Move 'cliente.xhtml' to 'cliente'
+1600346094086	Delete element
+1600349351327	Move 'cliente2.jsp' to 'WebContent'
+1600430509479	Delete element
+1600430534814	Move 'cliente2.jsp' to 'pages'
+1600430594975	Move 'cliente2.jsp' to 'WebContent'
+1600431191342	Move 'deslogar.jsp' to 'WebContent'
+1600431193965	Move 'index.jsp' to 'WebContent'
+1600431195902	Move 'Login.jsp' to 'WebContent'
+1600431198106	Move 'login.xhtml' to 'WebContent'
+1600431291394	Delete element
+1600433181907	Delete element
+1600434954730	Delete element
+1600464091517	Delete element
+1600486251693	Delete element
+1600493530918	Rename type 'ControlCliente2'
+1600494784909	Move compilation units
+1600494896287	Move compilation units
+1600496262190	Delete element
+1600496304744	Delete element
+1600496391257	Delete element
+1600496589368	Delete element
+1600497049560	Copy compilation unit
+1600497430843	Delete element
+1600497436740	Delete element
+1600497677277	Copy compilation unit
+1600499111009	Move compilation unit
+1600520734572	Delete element
+1600520958975	Delete element
+1600521042275	Copy compilation unit
+1600521774610	Delete element
+1600522628722	Delete element
+1600522965999	Copy compilation unit
+1600526022679	Delete element
+1600526963013	Copy compilation unit
+1600558730555	Delete element

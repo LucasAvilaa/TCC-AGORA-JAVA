@@ -1,0 +1,35 @@
+package dao;
+
+import java.sql.PreparedStatement;
+
+import factory.Conexao;
+import model.TbContato;
+import model.TbEndereco;  
+
+public class daoEnderecoContato {
+	Conexao con;
+	
+	public boolean crudEndCont(String acao, TbEndereco end, TbContato tel, String cpf) throws Exception {
+		con = new Conexao();
+		String sql = "EXEC PROC_CRUD_ENDERECO_CONTATO ?,?,?,?,?,?,?,?,?,?,?";
+		PreparedStatement ps = con.getConexao().prepareStatement(sql);
+		// ARRUMAR A VARIAVEL AÇÃO
+		ps.setString(1, acao);	
+		ps.setString(2, cpf); 
+		ps.setString(3,  end.getCep());
+		ps.setString(4, end.getRua());
+		ps.setString(5, end.getNumero());
+		ps.setString(6, end.getBairro());
+		ps.setString(7, end.getEstado());
+		ps.setString(8, end.getCidade());
+		ps.setString(9, tel.getNumero());
+		ps.setString(10, tel.getEmail());
+		ps.setBoolean(11, tel.getNumeroAtivo());		 
+		if(ps.executeUpdate() > 0) {
+			return true;	
+		}
+		else {
+			return false;
+		} 
+	}
+}
