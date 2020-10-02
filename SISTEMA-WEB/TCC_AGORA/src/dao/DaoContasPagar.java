@@ -21,9 +21,8 @@ public class DaoContasPagar {
 		
 		if(acao.equals("I")) {
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_PAGAR I,NULL,?,?"); 
-			ps.setInt(1, pagar.getIdPagar());
-			ps.setInt(2, compra.getIdCompra());
-			ps.setDate(3, new java.sql.Date(pagar.getDataVencimento().getTime()));	
+			ps.setInt(1, compra.getIdCompra());
+			ps.setDate(2, new java.sql.Date(pagar.getDataVencimento().getTime()));	
 		}		
 		else if(acao.equals("A")) { 			
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_PAGAR A,?,?,?");

@@ -40,7 +40,7 @@ public class TbPrincipalPessoa implements Serializable {
 	//bi-directional many-to-one association to TbFornecedore
 	@ManyToOne
 	@JoinColumn(name="ID_FORN")
-	private TbFornecedores tbFornecedore;
+	private TbFornecedore tbFornecedore;
 
 	//bi-directional many-to-one association to TbFuncionario
 	@ManyToOne
@@ -118,11 +118,11 @@ public class TbPrincipalPessoa implements Serializable {
 		this.tbEstabelecimento = tbEstabelecimento;
 	}
 
-	public TbFornecedores getTbFornecedore() {
+	public TbFornecedore getTbFornecedore() {
 		return this.tbFornecedore;
 	}
 
-	public void setTbFornecedore(TbFornecedores tbFornecedore) {
+	public void setTbFornecedore(TbFornecedore tbFornecedore) {
 		this.tbFornecedore = tbFornecedore;
 	}
 

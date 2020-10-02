@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DaoClientes;
+import dao.DaoCliente;
 import dao.DaoContato;
 import dao.DaoEndereco;
 import model.TbCliente;
 import model.TbContato;
 import model.TbEndereco;
+import model.TbLogin;
 
 /**
  * Servlet implementation class ControlCliente2
@@ -27,21 +28,23 @@ public class ControlCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaCliente.jsp";
     private static String criar_editar = "/cliente.jsp"; 
-	private DaoClientes Dao;
+	private DaoCliente Dao;
 	private DaoEndereco End;
 	private DaoContato Cont;
 	private String cpf = null;
 	private String acao = null; 
 	private String idcli = null;
+	private TbLogin login = new TbLogin();
 	private TbCliente cliente = new TbCliente(); 
 	private TbEndereco endereco = new TbEndereco();
 	private TbContato contato = new TbContato();
 	
     public ControlCliente() {
         super();
-        Dao = new DaoClientes(); 
+        Dao = new DaoCliente(); 
         End = new DaoEndereco();
-        Cont = new DaoContato();        
+        Cont = new DaoContato(); 
+        login = new TbLogin();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -70,8 +73,8 @@ public class ControlCliente extends HttpServlet {
 						Cont.crudContato(acao, cpf, contato);
 						
 						request.setAttribute("cliente", Dao.listaCliente());
-			//			request.setAttribute("endereco", End.listaEndereco());
-			//			request.setAttribute("contato", Cont.listaContato());
+						request.setAttribute("endereco", End.listaEndereco());
+						request.setAttribute("contato", Cont.listaContato());
 						forward = tabela;
 						
 					} catch (Exception e) {
@@ -80,8 +83,8 @@ public class ControlCliente extends HttpServlet {
 		 }
 		else if(action.equalsIgnoreCase("edit")){   
 			request.setAttribute("cliente", Dao.ClientePorId(cliente));
-		//	request.setAttribute("endereco", End.enderecoPorId(cpf));
-		//	request.setAttribute("contato", Cont.contatoPorId(cpf));
+			request.setAttribute("endereco", End.enderecoPorId(cpf));
+			request.setAttribute("contato", Cont.contatoPorId(cpf));
 			acao = "A";
 			forward = criar_editar;
 		}
@@ -105,6 +108,10 @@ public class ControlCliente extends HttpServlet {
 			 
 			 endereco.setCep(request.getParameter("cep"));
 			 endereco.setRua(request.getParameter("rua"));
+			 
+			 login.setUsuario(request.getParameter("login"));
+			 login.setSenha(request.getParameter("senha"));
+			 
 			 if(request.getParameter("numero") != null) {
 				 endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
 			 }
@@ -116,7 +123,7 @@ public class ControlCliente extends HttpServlet {
 			 contato.setEmail(request.getParameter("email"));
 			 contato.setNumero(request.getParameter("celular"));
 		 
-			 cliente.setAtivo(true); 
+			 //cliente.setAtivo(true); 
 			 
 			 Date data = null;
 			 if(request.getParameter("data") != null) {
@@ -129,13 +136,12 @@ public class ControlCliente extends HttpServlet {
 				}				 
 			 }
 			 try {
-				 System.out.println("Ação: " + acao );
+				 System.out.println("AÇÃO: " + acao );
 				 if(acao.equals("I")) {				  
 					 if(Dao.crudCliente(acao, cliente)) {
 						 End.crudEndereco(acao, cpf, endereco) ;
-				//			 if(Cont.crudContato(acao, cpf, contato)){
-							 System.out.println("CRIADO COM SUCESSO");
-				//	 			}
+						 Cont.crudContato(acao, cpf, contato);
+						 System.out.println("CRIADO COM SUCESSO");
 						 	}							
 						}
 				 else{  
@@ -147,7 +153,7 @@ public class ControlCliente extends HttpServlet {
 				 }				
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("ERRO AO INSERIR CLIENTES");
+				System.out.println("ERRO AO INSERIR CLIENTE");
 			}
 			  response.sendRedirect("ControlCliente?action=tabela");		
 	}	

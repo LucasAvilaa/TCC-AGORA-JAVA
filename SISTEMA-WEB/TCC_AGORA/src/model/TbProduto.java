@@ -21,6 +21,9 @@ public class TbProduto implements Serializable {
 	@Column(name="ID_PRODUTO")
 	private int idProduto;
 
+	@Column(name="ATIVO")
+	private boolean ativo;
+
 	@Column(name="CATEGORIA")
 	private String categoria;
 
@@ -55,7 +58,7 @@ public class TbProduto implements Serializable {
 	//bi-directional many-to-one association to TbFornecedore
 	@ManyToOne
 	@JoinColumn(name="ID_FORN_PROD")
-	private TbFornecedores tbFornecedore;
+	private TbFornecedore tbFornecedore;
 
 	public TbProduto() {
 	}
@@ -66,6 +69,14 @@ public class TbProduto implements Serializable {
 
 	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
+	}
+
+	public boolean getAtivo() {
+		return this.ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	public String getCategoria() {
@@ -182,11 +193,11 @@ public class TbProduto implements Serializable {
 		return tbListaProduto;
 	}
 
-	public TbFornecedores getTbFornecedore() {
+	public TbFornecedore getTbFornecedore() {
 		return this.tbFornecedore;
 	}
 
-	public void setTbFornecedore(TbFornecedores tbFornecedore) {
+	public void setTbFornecedore(TbFornecedore tbFornecedore) {
 		this.tbFornecedore = tbFornecedore;
 	}
 
