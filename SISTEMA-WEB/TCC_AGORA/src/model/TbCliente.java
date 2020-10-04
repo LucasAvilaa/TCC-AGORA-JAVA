@@ -25,10 +25,12 @@ public class TbCliente implements Serializable {
 
 	@Column(name="CPF")
 	private String cpf;
- 
+
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DATA_CADASTRO")
 	private Date dataCadastro;
- 
+
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DT_NASC")
 	private Date dtNasc;
 

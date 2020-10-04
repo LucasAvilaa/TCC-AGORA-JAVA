@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import factory.Conexao;
-import model.TbFornecedores;
+import model.TbFornecedore;
 
 public class DaoFornecedores {
  
 		Conexao con;
-	public boolean crudFornecedor(String acao, TbFornecedores forn) throws Exception {
+	public boolean crudFornecedor(String acao, TbFornecedore forn) throws Exception {
 			con = new Conexao(); 
 			PreparedStatement ps = null;
 			 
@@ -40,8 +40,8 @@ public class DaoFornecedores {
 			}
 }
 		
-	public TbFornecedores fornecedorPorId(TbFornecedores id) {
-			TbFornecedores forn = new TbFornecedores();
+	public TbFornecedore fornecedorPorId(TbFornecedore id) {
+		TbFornecedore forn = new TbFornecedore();
 			try {
 				con = new Conexao();
 				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FORNECEDORES WHERE ID_FORN = ?"); 
@@ -61,15 +61,15 @@ public class DaoFornecedores {
 			return forn;
 		}
 		
-	public List<TbFornecedores> listaFornecedor() {
-			List<TbFornecedores> listaforn = new ArrayList<TbFornecedores>();	
+	public List<TbFornecedore> listaFornecedor() {
+			List<TbFornecedore> listaforn = new ArrayList<TbFornecedore>();	
 			try {
 				con = new Conexao();
 				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FORNECEDORES");  
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {
-					TbFornecedores forn = new TbFornecedores(); 
+					TbFornecedore forn = new TbFornecedore(); 
 					
 					forn.setIdForn(rs.getString("ID_FORN"));
 					forn.setCnpj(rs.getString("CPNJ"));

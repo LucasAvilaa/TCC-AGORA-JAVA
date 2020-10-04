@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="TCC_AGORA" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="TCC_AGORA">
 		<class>model.TbCliente</class>
 		<class>model.TbComanda</class>
 		<class>model.TbCompra</class>
@@ -18,11 +18,5 @@
 		<class>model.TbLogin</class>
 		<class>model.TbPrincipalPessoa</class>
 		<class>model.TbProduto</class>
-		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=AGORA_V7"/>
-			<property name="javax.persistence.jdbc.user" value="sa"/>
-			<property name="javax.persistence.jdbc.password" value="123456"/>
-			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-		</properties>
 	</persistence-unit>
 </persistence>

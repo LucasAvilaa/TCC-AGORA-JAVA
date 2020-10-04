@@ -21,9 +21,6 @@ public class TbProduto implements Serializable {
 	@Column(name="ID_PRODUTO")
 	private int idProduto;
 
-	@Column(name="ATIVO")
-	private boolean ativo;
-
 	@Column(name="CATEGORIA")
 	private String categoria;
 
@@ -69,14 +66,6 @@ public class TbProduto implements Serializable {
 
 	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
-	}
-
-	public boolean getAtivo() {
-		return this.ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
 	}
 
 	public String getCategoria() {
