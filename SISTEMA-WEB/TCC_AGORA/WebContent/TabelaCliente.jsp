@@ -12,24 +12,26 @@
 <title>Tabela Cliente</title>
 </head>
 <body>
-
-
-<f:view><a href="ControlCliente?action"><img src="img/adicionar.png" style="width: 21px; height: 21px; "></a><br><table border="1">
-		 
-			
-			<thead>
-		<tr>
-			<th>Nome</th>
-			<th>Sobrenome</th>
-			<th>RG</th>
-			<th>CPF</th>
-			<th>Data Nascimento</th>
-			<th>Sexo</th>
-			<th colspan="2">Ação</th>
-		</tr>
-	</thead>
-	<tbody>
-		 <c:forEach items="${cliente}" var="cliente">
+	<f:view>
+	<a href="ControlCliente?action">
+		<img src="img/adicionar.png" style="width: 21px; height: 21px; ">
+	</a>
+	<br>
+	
+	<table border="1">			
+		 <thead>
+			<tr>
+				<th>Nome</th>
+				<th>Sobrenome</th>
+				<th>RG</th>
+				<th>CPF</th>
+				<th>Data Nascimento</th>
+				<th>Sexo</th>
+				<th colspan="2">Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			 <c:forEach items="${cliente}" var="cliente">
 				<tr> 
 					<td><c:out value="${cliente.nome}" /></td>
 					<td><c:out value="${cliente.sobrenome}" /></td>
@@ -42,7 +44,19 @@
 				</tr> 
 			</c:forEach>
 		</tbody>		
-	</table></f:view>
+	</table>
 	
+	<table>
+		<thead>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>			
+		</thead>
+	</table>
+	
+	</f:view>
+		
 	</body>
 </html>
