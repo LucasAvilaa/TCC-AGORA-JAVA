@@ -3,31 +3,34 @@
 	uri="http://java.sun.com/jsf/html" prefix="h"%><%@taglib
 	uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Tabela Cliente</title>
+
+		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">		
 </head>
 <body>
 	<f:view>
 	<a href="ControlCliente?action">
 		<img src="img/adicionar.png" style="width: 21px; height: 21px; ">
+		
 	</a>
 	<br>
 	
 	<table border="1">			
 		 <thead>
 			<tr>
-				<th>Nome</th>
-				<th>Sobrenome</th>
-				<th>RG</th>
-				<th>CPF</th>
-				<th>Data Nascimento</th>
-				<th>Sexo</th>
-				<th colspan="2">Ação</th>
+				<th style="width: 147px; ">NOME</th>
+				<th style="width: 141px; ">SOBRENOME</th>
+				<th style="width: 105px; ">RG</th>	
+				<th style="width: 127px; ">CPF</th>
+				<th style="width: 208px; height: 34px">DATA NASCIMENTO</th>
+				<th style="width: 67px; ">SEXO</th>
+				<th colspan="2" style="width: 72px; ">AÃ‡ÃƒO</th>
 			</tr>
 		</thead>
 		<tbody>

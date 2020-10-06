@@ -2,12 +2,12 @@
 	uri="http://java.sun.com/jsf/core" prefix="f"%><%@taglib
 	uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">	
+		<meta charset="UTF-8">	
 		<title>Cadastro Clientes</title>
 		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -22,7 +22,7 @@
 		<h2>CADASTRO DE CLIENTE</h2>
 		<p style="align:rigth"><input value="ENVIAR" type="submit"> <a href="ControlCliente?action=tabela">CANCELAR</a> </p>
 		<fieldset id="informacoes">
-			<legend>INFORMAÇÕES BÁSICAS </legend>
+			<legend>INFORMAÃ‡Ã•ES BÃSICAS </legend>
 			<p>NOME: <input name="nome"  maxlength="50" value="<c:out value="${cliente.nome}"/>" required="required" style="width: 364px; "/></p> 
 			<p>SOBRENOME: <input name="sobrenome" maxlength="50" value="<c:out value="${cliente.sobrenome}"/>" required="required" style="width: 314px; "/></p>
 			<p>CPF: <input name="cpf" id="cpf" value="<c:out value="${cliente.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
@@ -37,13 +37,13 @@
 		</fieldset>
 		
 		<fieldset id="endereco">
-			<legend>ENDEREÇO</legend>
+			<legend>ENDEREÃ‡O</legend>
 			<p>CEP: <input type="text" name="cep" style="width: 100px; " id="cep"> 
 			   CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "></p>				    
 			<p>ESTADO: <input type="text" name="estado" style="width: 75px; " disabled="disabled">
 			   BAIRRO: <input type="text" name="bairro" disabled="disabled" style="width: 197px; "></p>				 								
 			<p>RUA: <input type="text" name="rua" disabled="disabled" style="width: 221px; ">
-			   NÚMERO: <input type="number" name="numero" style="width: 69px; "> </p>
+			   NÃšMERO: <input type="number" name="numero" style="width: 69px; "> </p>
 		</fieldset>	 
 			 		
 		<fieldset id="contato">
