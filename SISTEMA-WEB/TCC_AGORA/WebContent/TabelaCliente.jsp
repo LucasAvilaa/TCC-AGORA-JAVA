@@ -44,18 +44,7 @@
 				</tr> 
 			</c:forEach>
 		</tbody>		
-	</table>
-	
-	<table>
-		<thead>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>			
-		</thead>
-	</table>
-	
+	</table>	
 	</f:view>
 		
 	</body>
