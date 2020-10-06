@@ -9,6 +9,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Cadastro Clientes</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
  <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
 </head>
 <body>
@@ -23,9 +25,9 @@
 			<legend>INFORMAÇÕES BÁSICAS </legend>
 			<p>NOME: <input name="nome"  maxlength="50" value="AVILA" required="required" style="width: 364px; "/></p> 
 			<p>SOBRENOME: <input name="sobrenome" maxlength="50" value="AVILA" required="required" style="width: 314px; "/></p>
-			<p>CPF: <input name="cpf" maxlength="14"value="500.999.175-12" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
-			   RG: <input name="rg" maxlength="12" value="75-455-000-1" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></p>
-			<p>NASCIMENTO: <input name="data" type="date" value="06/07/2002"  maxlength="10" placeholder="dd/mm/yyyy" required="required" style="width: 148px; ">  
+			<p><label>CPF:</label>  <input name="cpf" id="cpf" value="500.999.175-12" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
+			   RG: <input name="rg" id="rg" value="75-455-000-1" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></p>
+			<p>NASCIMENTO: <input name="data" type="date" value="06/07/2002"  id="data" placeholder="dd/mm/yyyy" required="required" style="width: 148px; ">  
 			   SEXO: <select id="sexo" name="sexo" size="1" style="width: 106px; height: 24px">	<option value=" "> </option>
 	<option value="M">Masculino</option>
 	<option value="F">Feminino</option>
@@ -35,7 +37,7 @@
 		
 		<fieldset id="endereco">
 			<legend>ENDEREÇO</legend>
-			<p>CEP: <input type="text" name="cep" style="width: 100px; " maxlength="10"> 
+			<p>CEP: <input type="text" name="cep" id="cep" style="width: 100px; " maxlength="10"> 
 			   CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "></p>				    
 			<p>ESTADO: <input type="text" name="estado" style="width: 75px; " disabled="disabled">
 			   BAIRRO: <input type="text" name="bairro" disabled="disabled" style="width: 197px; "></p>				 								
@@ -52,5 +54,11 @@
 	
  	 
 </f:view>
+<script>
+	$("#cpf").mask("999.999.999-99");
+	$("#rg").mask("99.999.999-9");
+	$("#data").mask("99/99/9999");
+	$("#cep").mask("99999-999");
+</script>
 </body>
 </html>
