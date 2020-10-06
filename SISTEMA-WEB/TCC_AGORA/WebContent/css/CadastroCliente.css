@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 form{
-	width: auto;
+	width: 505px;
 	margin: auto; 
 }
 input, textarea {
@@ -9,12 +9,12 @@ input, textarea {
 	font-weight: normal;
 	font-size: 13pt;
 	background-color: rgba(255,255,255,0.8);
+	padding-left: 3px;
 }
 
 input:hover, textarea:hover {
 	background-color: #dddddd;
 }
-
 legend{
 	color: #888888;
 	font-weight: bold;
@@ -29,5 +29,6 @@ fieldset {
 
 a, a:visited{ 
 	text-decoration: none;
-    color: black;
+    color: black; 
+    border: 2px green;    
 }
