@@ -13,22 +13,42 @@
 <body>
 
 <f:view>
-	<form action="ControlCliente" method="POST" name="cadastroCliente" >  
-		<p>NOME: <input name="nome" style="width: 209px; " maxlength="50" value="<c:out value="${cliente.nome}"/>" required="required"></p>
-		<p>SOBRENOME:<input name="sobrenome" maxlength="50" value="<c:out value="${cliente.sobrenome}"/>" required="required"></p>
-		<p>CPF: <input name="cpf" style="width: 130px;" maxlength="14"value="<c:out value="${cliente.cpf}"/>" placeholder="xxx.xxx.xxx-xx"   required="required"></p>
-		<p>RG: <input name="rg" style="width: 130px;" maxlength="12" value="<c:out value="${cliente.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required"></p>
-		<p>DATA NASCIMENTO: <input name="data" type="date" style="width: 181px;" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.dtNasc}"/>"  maxlength="10" placeholder="dd/MM/yyyy"   required="required"></p>
-		<p>SEXO: <h:selectOneMenu style="width: 130px; " id="sexo">
-					 
-					<f:selectItem itemLabel=" " itemValue=" "/>
-					<f:selectItem itemLabel="Masculino" itemValue="M"/>
-					<f:selectItem itemLabel="Feminino" itemValue="F"/>
-				
-				</h:selectOneMenu>
-		</p>
-		<p><input value="ENVIAR" type="submit"><input value="CANCELAR" type="button" onclick="/T"></p>
-		</form>
+		
+		<form action="ControlCliente" method="POST" name="cadastroCliente">  
+		
+		<h2>CADASTRO DE CLIENTE</h2>
+		<p style="align:rigth"><input value="ENVIAR" type="submit"> <a href="ControlCliente?action=tabela">CANCELAR</a> </p>
+		<fieldset id="informacoes">
+			<legend>INFORMAÇÕES BÁSICAS </legend>
+			<p>NOME: <input name="nome"  maxlength="50" value="AVILA" required="required" style="width: 364px; "/></p> 
+			<p>SOBRENOME: <input name="sobrenome" maxlength="50" value="AVILA" required="required" style="width: 314px; "/></p>
+			<p>CPF: <input name="cpf" maxlength="14"value="500.999.175-12" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
+			   RG: <input name="rg" maxlength="12" value="75-455-000-1" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></p>
+			<p>NASCIMENTO: <input name="data" type="date" value="06/07/2002"  maxlength="10" placeholder="dd/mm/yyyy" required="required" style="width: 148px; ">  
+			   SEXO: <select id="sexo" name="sexo" size="1" style="width: 106px; height: 24px">	<option value=" "> </option>
+	<option value="M">Masculino</option>
+	<option value="F">Feminino</option>
+</select>
+			</p>
+		</fieldset>
+		
+		<fieldset id="endereco">
+			<legend>ENDEREÇO</legend>
+			<p>CEP: <input type="text" name="cep" style="width: 100px; " maxlength="10"> 
+			   CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "></p>				    
+			<p>ESTADO: <input type="text" name="estado" style="width: 75px; " disabled="disabled">
+			   BAIRRO: <input type="text" name="bairro" disabled="disabled" style="width: 197px; "></p>				 								
+			<p>RUA: <input type="text" name="rua" disabled="disabled" style="width: 221px; ">
+			   NÚMERO: <input type="number" name="numero" style="width: 69px; "> </p>
+		</fieldset>	 
+			 		
+		<fieldset id="contato">
+			<legend>CONTATO</legend>
+			<p>EMAIL: <input type="text" name="email" style="width: 354px; " placeholder="seuemail@email.com"></p>
+			<p>CELULAR: <input type="text" name="celular" style="width: 174px; " placeholder="(XX) XXXXX-XXXX "></p>
+		</fieldset>			 		 			 		 		 			
+		</form>	
+	
  	 
 </f:view>
 </body>
