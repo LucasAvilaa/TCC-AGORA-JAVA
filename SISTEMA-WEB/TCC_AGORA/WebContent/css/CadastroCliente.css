@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 form{
-	width: 500px;
-	margin: auto;
+	width: auto;
+	margin: auto; 
 }
 input, textarea {
 	font-family: sans-serif;
@@ -25,4 +25,9 @@ legend{
 fieldset {
 	border-color: #cecece;
 	margin: 20px;
+}
+
+a, a:visited{ 
+	text-decoration: none;
+    color: black;
 }
