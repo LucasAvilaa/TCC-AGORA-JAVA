@@ -27,7 +27,7 @@
 			<p><label>SOBRENOME: <input name="sobrenome" maxlength="50" value="<c:out value="${cliente.sobrenome}"/>" required="required" style="width: 314px; "/></label></p>
 			<p><label>CPF: <input name="cpf" id="cpf" value="<c:out value="${cliente.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/></label>
 			   <label>RG: <input name="rg" id="rg" value="<c:out value="${cliente.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></label></p>
-			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.dtNasc}"/>"   placeholder="dd/mm/yyyy" required="required" style="width: 148px; "></label>  
+			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${cliente.dtNasc}"/>"   required="required" style="width: 148px; "></label>  
 			   <label> SEXO: <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">				
 						<f:selectItem itemLabel=" " itemValue=" "/>
 						<f:selectItem itemLabel="Masculino" itemValue="M"/>
@@ -54,7 +54,7 @@
 		</fieldset>			 		 			 		 		 			
 		</form>	
 	</f:view>
-	<script>
+	<script type="text/javascript">
 	//	$("#cep").mask("99999-999");
 	//	$("#data").mask("99/99/9999");
 		$("#celular").mask("(99)99999-9999");
@@ -83,6 +83,6 @@
 			});
 		});
 		
-	</script>
+	</script> 
 	</body>
 </html>

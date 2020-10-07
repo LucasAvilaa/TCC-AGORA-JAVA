@@ -150,7 +150,16 @@ public class ControlCliente extends HttpServlet {
 									 System.out.println("ALTERADO COM SUCESSO: " + cliente.getIdCli());
 								 }
 							 		}							 
-						 		}						
+						 		} 
+						  else if(Cont.crudContato(acao, cpf, contato) ) {
+							  	System.out.println("CONTATO INSERIDO COM SUCESSO");
+							  	if(acao.equals("I")) {
+									 System.out.println("CRIADO COM SUCESSO");
+								 }
+								 else {
+									 System.out.println("ALTERADO COM SUCESSO: " + cliente.getIdCli());
+								 	} 
+					            }
 						 	}		
 				 			
 			} catch (Exception e) {
