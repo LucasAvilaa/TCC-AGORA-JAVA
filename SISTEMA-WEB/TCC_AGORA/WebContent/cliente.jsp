@@ -20,7 +20,7 @@
 		<form action="ControlCliente" method="POST" name="cadastroCliente">  
 		
 		<h2>CADASTRO DE CLIENTE</h2>
-		<p style="align:rigth"><input value="ENVIAR" type="submit"> <a href="ControlCliente?action=tabela">CANCELAR</a> </p>
+		<p><input value="ENVIAR" type="submit"> <a href="ControlCliente?action=tabela">CANCELAR</a> </p>
 		<fieldset id="informacoes">
 			<legend>INFORMAÇÕES BÁSICAS </legend>
 			<p><label>NOME: <input name="nome"  maxlength="50" value="<c:out value="${cliente.nome}"/>" required="required" style="width: 364px; "/></label></p> 
@@ -39,18 +39,18 @@
 		
 		<fieldset id="endereco">
 			<legend>ENDEREÇO</legend>
-			<p><label>CEP: <input type="text" name="cep" style="width: 100px; " id="cep"> </label>
-			   <label>CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "></label></p>				    
-			<p><label>ESTADO: <input type="text" name="estado" style="width: 75px; " disabled="disabled"></label>
-			   <label>BAIRRO: <input type="text" name="bairro" disabled="disabled" style="width: 197px; "></label></p>				 								
-			<p><label>RUA: <input type="text" name="rua" disabled="disabled" style="width: 221px; "></label>
-			   <label>NÚMERO: <input type="number" name="numero" style="width: 69px; "></label> </p>
+			<p><label>CEP: <input type="text" name="cep" id="cep" style="width: 100px; " value="<c:out value="${endereco.cep}"/>"> </label>
+			   <label>CIDADE: <input type="text" name="cidade"  style="width: 205px; "value="<c:out value="${endereco.cidade}"/>"></label></p>				    
+			<p><label>ESTADO: <input type="text" name="estado" style="width: 75px; "  value="<c:out value="${endereco.estado}"/>"></label>
+			   <label>BAIRRO: <input type="text" name="bairro"   style="width: 197px; "value="<c:out value="${endereco.bairro}"/>"></label></p>				 								
+			<p><label>RUA: <input type="text" name="rua"   style="width: 221px; "value="<c:out value="${endereco.rua}"/>"></label>
+			   <label>NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>"></label> </p>
 		</fieldset>	 
 			 		
 		<fieldset id="contato">
 			<legend>CONTATO</legend>
-			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; " placeholder="seuemail@email.com"></label></p>
-			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; " placeholder="(XX) XXXXX-XXXX "></label></p>
+			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com"></label></p>
+			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX "></label></p>
 		</fieldset>			 		 			 		 		 			
 		</form>	
 	</f:view>
@@ -62,25 +62,27 @@
 		$("#cpf").mask("999.999.999-99");
 		
 		const $campoCep = document.querySelector('[name=cep]');
+		
 		const $campoCidade = document.querySelector('[name=cidade]');
 		const $campoRua = document.querySelector('[name=rua]');
 		const $campoEstado = document.querySelector('[name=estado]');
 		const $campoBairro = document.querySelector('[name=bairro]');
-		$campoCep.addEventListener("blur", infosDoEvento => {
-			const cep = infosDoEvento.target.value;
+		$campoCep.addEventListener("blur", informacoes => {
+		  	var cep = informacoes.target.value;	 
+		  	console.log('Lucas' + cep);	  	
 			fetch(`https://viacep.com.br/ws/${cep}/json/`)
-			.then(respostaDoServer => {
-			return respostaDoServer.json();
+			.then(respostaDoServer => {			
+			return respostaDoServer.json();  
 			})
 			.then(dadosDoCep => {
-			console.log(dadosDoCep);
-			console.log(cep);
+			console.log(dadosDoCep); 
 			$campoCidade.value = dadosDoCep.localidade;
 			$campoBairro.value = dadosDoCep.bairro;
 			$campoRua.value = dadosDoCep.logradouro;
 			$campoEstado.value = dadosDoCep.uf;
 			});
 		});
+		
 	</script>
 	</body>
 </html>

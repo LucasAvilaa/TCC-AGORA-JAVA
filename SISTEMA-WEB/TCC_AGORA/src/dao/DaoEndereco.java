@@ -11,12 +11,12 @@ import model.TbEndereco;
 public class DaoEndereco {
 
 	Conexao con;
-	public void crudEndereco(String acao, String cpf_cnpj, TbEndereco end) throws Exception {
+	public boolean crudEndereco(String acao, String cpf_cnpj, TbEndereco end) throws Exception {
 		con = new Conexao(); 
 		PreparedStatement ps = null;
 		
 		if(acao.equals("I")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO I,?,?,?,?,?,?,?,?,?"); 
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO I,?,?,?,?,?,?,?"); 
 			ps.setString(1, cpf_cnpj); 
 			ps.setString(2,  end.getCep());
 			ps.setString(3, end.getRua());
@@ -27,7 +27,7 @@ public class DaoEndereco {
 			  
 		}		
 		else if(acao.equals("A")) { 			
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO A,?,?,?,?,?,?,?,?,?");
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO A,?,?,?,?,?,?,?");
 			ps.setString(1, cpf_cnpj); 
 			ps.setString(2,  end.getCep());
 			ps.setString(3, end.getRua());
@@ -38,21 +38,26 @@ public class DaoEndereco {
 		}else if(acao.equals("E")){ 
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO E,?,NULL,NULL,NULL,NULL,NULL,NULL");  
 			ps.setString(1, cpf_cnpj);
-		}  
+		} 
+		if(ps.executeUpdate() > 0) {
+			return true;
+		}else {
+			return false;
+		}
 }
 	
 	public TbEndereco enderecoPorId(String cpf_cnpj) {
 			TbEndereco end = new TbEndereco(); 
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_ENDERECO WHERE ID_GERAL_END = (SELECT DBO.PROCURA_ID_GERAL('?'))"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_ENDERECO WHERE ID_GERAL_END = (SELECT DBO.PROCURA_ID_GERAL(?))"); 
 				ps.setString(1, cpf_cnpj);
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {  
 					end.setCep(rs.getString("CEP"));
 					end.setRua(rs.getString("RUA"));
-					end.setNumero(rs.getInt("NUMERO_RESIDENCIA"));
+					end.setNumero(rs.getInt("NUMERO"));
 					end.setBairro(rs.getString("BAIRRO"));
 					end.setEstado(rs.getString("ESTADO"));
 					end.setCidade(rs.getString("CIDADE"));
@@ -76,7 +81,7 @@ public class DaoEndereco {
 				TbEndereco end = new TbEndereco(); 			
 				end.setCep(rs.getString("CEP"));
 				end.setRua(rs.getString("RUA"));
-				end.setNumero(rs.getInt("NUMERO_RESIDENCIA"));
+				end.setNumero(rs.getInt("NUMERO"));
 				end.setBairro(rs.getString("BAIRRO"));
 				end.setEstado(rs.getString("ESTADO"));
 				end.setCidade(rs.getString("CIDADE"));

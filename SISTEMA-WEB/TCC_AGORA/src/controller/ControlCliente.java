@@ -136,21 +136,23 @@ public class ControlCliente extends HttpServlet {
 				}				 
 			 }
 			 try {
-				 System.out.println("AÇÃO: " + acao );
-				 if(acao.equals("I")) {				  
+				 System.out.println("AÇÃO: " + acao ); 			  
 					 if(Dao.crudCliente(acao, cliente)) {
-						 End.crudEndereco(acao, cpf, endereco) ;
-						 Cont.crudContato(acao, cpf, contato);
-						 System.out.println("CRIADO COM SUCESSO");
-						 	}							
-						}
-				 else{  
-					 cliente.setIdCli(idcli);
-					 Dao.crudCliente(acao,cliente);	
-					 End.crudEndereco(acao, cpf, endereco);
-					 Cont.crudContato(acao, cpf, contato);
-					System.out.println("ALTERADO COM SUCESSO: " + cliente.getIdCli());	
-				 }				
+						 System.out.println("CLIENTE INSERIDO COM SUCESSO");
+						 if(End.crudEndereco(acao, cpf, endereco)) {
+							 System.out.println("ENDERECO INSERIDO COM SUCESSO");
+							 if(Cont.crudContato(acao, cpf, contato) ) {
+								 System.out.println("CONTATO INSERIDO COM SUCESSO");
+								 if(acao.equals("I")) {
+									 System.out.println("CRIADO COM SUCESSO");
+								 }
+								 else {
+									 System.out.println("ALTERADO COM SUCESSO: " + cliente.getIdCli());
+								 }
+							 		}							 
+						 		}						
+						 	}		
+				 			
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("ERRO AO INSERIR CLIENTE");
