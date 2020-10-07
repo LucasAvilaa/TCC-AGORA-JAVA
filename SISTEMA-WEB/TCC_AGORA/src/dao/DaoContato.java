@@ -37,12 +37,12 @@ public class DaoContato {
 		}
 } 
 	
-	public TbContato contatoPorId(String cpf_cnpj) { 
+	public TbContato contatoPorId(String id) { 
 			TbContato cont = new TbContato();
 			try {
 				con = new Conexao();
 				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTATO  WHERE ID_GERAL_TEL = (SELECT DBO.PROCURA_ID_GERAL(?))"); 
-				ps.setString(1, cpf_cnpj);
+				ps.setString(1, id);
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {  

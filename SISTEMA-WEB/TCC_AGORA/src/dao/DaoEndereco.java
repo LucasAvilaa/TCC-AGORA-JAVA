@@ -46,12 +46,12 @@ public class DaoEndereco {
 		}
 }
 	
-	public TbEndereco enderecoPorId(String cpf_cnpj) {
+	public TbEndereco enderecoPorId(String id) {
 			TbEndereco end = new TbEndereco(); 
 			try {
 				con = new Conexao();
 				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_ENDERECO WHERE ID_GERAL_END = (SELECT DBO.PROCURA_ID_GERAL(?))"); 
-				ps.setString(1, cpf_cnpj);
+				ps.setString(1, id);
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {  

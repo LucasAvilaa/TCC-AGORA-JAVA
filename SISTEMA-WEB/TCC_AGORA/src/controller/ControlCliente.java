@@ -51,6 +51,7 @@ public class ControlCliente extends HttpServlet {
 		 String forward = "";
 		 String action = request.getParameter("action");  
 		 String idCli = request.getParameter("idCli"); 
+		 cpf = request.getParameter("cod");
 		 if(idCli != null) {  
 			 idcli = String.valueOf(idCli);
 			 cliente.setIdCli(idcli);
