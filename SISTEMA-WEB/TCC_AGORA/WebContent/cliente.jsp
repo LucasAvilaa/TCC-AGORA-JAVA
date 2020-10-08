@@ -1,9 +1,8 @@
-<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%><%@taglib
-	uri="http://java.sun.com/jsf/core" prefix="f"%><%@taglib
-	uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -58,20 +57,7 @@
 		</form>	
 	</f:view>
 	 
-	</body>
-	<script lang="JavaScript" type="text/javascript">
- 	//INATIVO DESCOBRIR COMO TRATAR ISSO
-		var status = document.getElementById("ativo");
-		document.getElementById("ativo").onclick = function () {
-		 
-		    if (status.checked) {
-		        console.log("escolheu 'bike'");
-		    } else {
-		        console.log("não escolheu 'bike'");
-		    }
-		 
-		};
-	</script>
+	</body> 
 	<script>	
 	 	$("#cep").mask("99999-999");
 	//	$("#data").mask("99/99/9999");
@@ -101,9 +87,6 @@
 				$campoEstado.value = dadosDoCep.uf;
 		 
 			});
-		});
-		
-		
-		
+		}); 
 	</script>
 </html>
