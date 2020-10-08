@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import converter.HierarquiaControl;
+import dao.DaoHierarquia;
  
 @Entity
 @ManagedBean
@@ -34,26 +35,28 @@ public class TbHierarquia implements Serializable {
 	@OneToMany(mappedBy="tbHierarquia")
 	private List<TbLogin> tbLogins;
 	
-	private List<TbHierarquia> hierarquia;
+	private List<SelectItem> hierarquia;
 	
-	public List<TbHierarquia> getHierarquia() {
+	 
+	public List<SelectItem> getHierarquia() {
 		return hierarquia;
 	}
+
+	public void setHierarquia(List<SelectItem> hierarquia) {
+		this.hierarquia = hierarquia;
+	}
+
 	@PostConstruct
-	public void listar() {
-		HierarquiaControl hierarquia = new HierarquiaControl();		
-		System.out.println("LISTA HIERARQUIA");
+	public void listar() {		
 		try {
+			DaoHierarquia hierarquia = new DaoHierarquia();		
+			System.out.println("LISTA HIERARQUIA");
 			setHierarquia(hierarquia.getListaHierarquia());
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("ERRO AO LISTA HIERARQUIA");
 		}
-	}
-	
-	public void setHierarquia(List<TbHierarquia> hierarquia) {
-		this.hierarquia = hierarquia;
-	}
+	}  
 
 	public TbHierarquia() {
 	}

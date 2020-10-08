@@ -1,6 +1,6 @@
-<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%><%@taglib
-	uri="http://java.sun.com/jsf/core" prefix="f"%><%@taglib
-	uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 	<head>
 		<meta charset="UTF-8">	
 		<title>CADASTRO FUNCIONÁRIOS</title>
-		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css"> 
+		<link rel="stylesheet" type="text/css" href="css/Cadastrofuncionario.css"> 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 		
@@ -18,17 +18,17 @@
 	<body>	
 	<f:view>
 		
-		<form action="ControlCliente" method="POST" name="cadastroCliente">  
+		<form action="ControlFuncionario" method="POST" name="cadastrofuncionario">  
 		
 		<h2>CADASTRO DE FUNCIONÁRIOS</h2>
-		<p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlCliente?action=tabela">CANCELAR</a> </p>
+		<p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlFuncionario?action=tabela">CANCELAR</a> </p>
 		<fieldset id="informacoes">
 			<legend>INFORMAÇÕES BÁSICAS </legend>
-			<p><label>NOME: <input name="nome"  maxlength="50" value="<c:out value="${cliente.nome}"/>" required="required" style="width: 364px; "/></label></p> 
-			<p><label>SOBRENOME: <input name="sobrenome" maxlength="50" value="<c:out value="${cliente.sobrenome}"/>" required="required" style="width: 314px; "/></label></p>
-			<p><label>CPF: <input name="cpf" id="cpf" value="<c:out value="${cliente.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/></label>
-			   <label>RG: <input name="rg" id="rg" value="<c:out value="${cliente.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></label></p>
-			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${cliente.dtNasc}"/>"   required="required" style="width: 148px; "></label>  
+			<p><label>NOME: <input name="nome"  maxlength="50" value="<c:out value="${funcionario.nome}"/>" required="required" style="width: 364px; "/></label></p> 
+			<p><label>SOBRENOME: <input name="sobrenome" maxlength="50" value="<c:out value="${funcionario.sobrenome}"/>" required="required" style="width: 314px; "/></label></p>
+			<p><label>CPF: <input name="cpf" id="cpf" value="<c:out value="${funcionario.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/></label>
+			   <label>RG: <input name="rg" id="rg" value="<c:out value="${funcionario.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></label></p>
+			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; "></label>  
 			   <label> SEXO: <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">				
 						<f:selectItem itemLabel=" " itemValue=" "/>
 						<f:selectItem itemLabel="Masculino" itemValue="M"/>
@@ -36,17 +36,13 @@
 					 </h:selectOneMenu>
 				</label>	 
 			</p>
-				 
-				<p>
-				<label>  
-						 
-								<h:outputText value="CARGO: "/>
-								<h:selectOneMenu style="width: 198px; " value="#{tbHierarquia.cargo}">
-									<f:selectItem noSelectionOption="true" itemValue="SELECIONE O CARGO"/>
-									<f:selectItems itemValue="#{tbHierarquia.hierarquia}"/>
-								</h:selectOneMenu>
-					 
-				 
+			<p>
+				<label>  			 
+					<h:outputText value="CARGO: "/>
+					<h:selectOneMenu style="width: 198px; " value="#{tbHierarquia.hierarquia}">
+						<f:selectItem noSelectionOption="true" itemValue="SELECIONE O CARGO"/>
+						<f:selectItems value="#{tbHierarquia.hierarquia}" var="h" itemLabel="#{tbHierarquia.hierarquia}" itemValue="#{tbHierarquia.hierarquia}"/>
+					</h:selectOneMenu>				 
 				 </label>
 			</p>
 		</fieldset>
@@ -65,26 +61,13 @@
 			<legend>CONTATO</legend>
 			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com"></label></p>
 			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX "></label>
-			<label><input type="checkbox" name="ativo" id="ativo" value="true" checked="<c:out value="${cliente.ativo}"/>" checked="checked">ATIVO</label> 
+			<label><input type="checkbox" name="ativo" id="ativo" value="true" checked="<c:out value="${funcionario.ativo}"/>" checked="checked">ATIVO</label> 
 				</p>
 		</fieldset>			 		 			 		 		 			
 		</form>	
 	</f:view>
 	 
-	</body>
-	<script lang="JavaScript" type="text/javascript">
- 	//INATIVO DESCOBRIR COMO TRATAR ISSO
-		var status = document.getElementById("ativo");
-		document.getElementById("ativo").onclick = function () {
-		 
-		    if (status.checked) {
-		        console.log("escolheu 'bike'");
-		    } else {
-		        console.log("não escolheu 'bike'");
-		    }
-		 
-		};
-	</script>
+	</body> 
 	<script>	
 	 	$("#cep").mask("99999-999");
 	//	$("#data").mask("99/99/9999");
