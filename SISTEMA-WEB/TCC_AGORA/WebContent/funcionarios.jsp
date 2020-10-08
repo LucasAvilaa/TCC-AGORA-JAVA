@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">	
-		<title>Cadastro Clientes</title>
+		<title>CADASTRO FUNCIONÁRIOS</title>
 		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css"> 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
@@ -20,7 +20,7 @@
 		
 		<form action="ControlCliente" method="POST" name="cadastroCliente">  
 		
-		<h2>CADASTRO DE CLIENTE</h2>
+		<h2>CADASTRO DE FUNCIONÁRIOS</h2>
 		<p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlCliente?action=tabela">CANCELAR</a> </p>
 		<fieldset id="informacoes">
 			<legend>INFORMAÇÕES BÁSICAS </legend>
@@ -30,11 +30,24 @@
 			   <label>RG: <input name="rg" id="rg" value="<c:out value="${cliente.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></label></p>
 			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${cliente.dtNasc}"/>"   required="required" style="width: 148px; "></label>  
 			   <label> SEXO: <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">				
-						<f:selectItem itemLabel=" "  itemValue=" "/>
+						<f:selectItem itemLabel=" " itemValue=" "/>
 						<f:selectItem itemLabel="Masculino" itemValue="M"/>
 						<f:selectItem itemLabel="Feminino" itemValue="F"/>				
 					 </h:selectOneMenu>
 				</label>	 
+			</p>
+				 
+				<p>
+				<label>  
+						 
+								<h:outputText value="CARGO: "/>
+								<h:selectOneMenu style="width: 198px; " value="#{tbHierarquia.cargo}">
+									<f:selectItem noSelectionOption="true" itemValue="SELECIONE O CARGO"/>
+									<f:selectItems itemValue="#{tbHierarquia.hierarquia}"/>
+								</h:selectOneMenu>
+					 
+				 
+				 </label>
 			</p>
 		</fieldset>
 		
