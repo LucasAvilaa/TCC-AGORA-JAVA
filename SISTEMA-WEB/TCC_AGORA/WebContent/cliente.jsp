@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+ 
 	<head>
 		<meta charset="UTF-8">	
 		<title>Cadastro Clientes</title>
@@ -16,10 +17,12 @@
 	
 	<body>	
 	<f:view>
+ 
 		
 		<form action="ControlCliente" method="POST" name="cadastroCliente">  
 		
 		<h2>CADASTRO DE CLIENTE</h2>
+ 
 		<p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlCliente?action=tabela">CANCELAR</a> </p>
 		<fieldset id="informacoes">
 			<legend>INFORMAÇÕES BÁSICAS </legend>
@@ -34,10 +37,12 @@
 						<f:selectItem itemLabel="Feminino" itemValue="F"/>				
 					 </h:selectOneMenu>
 				</label>	 
+ 
 			</p>
 		</fieldset>
 		
 		<fieldset id="endereco">
+ 
 			<legend>ENDEREÇO</legend>
 			<p><label>CEP: <input type="text" name="cep" id="cep" style="width: 100px; " value="<c:out value="${endereco.cep}"/>"> </label>
 			   <label>CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "value="<c:out value="${endereco.cidade}"/>"></label></p>				    
@@ -45,10 +50,12 @@
 				<label>ESTADO: <input type="text" name="estado" disabled="disabled" style="width: 40px; "  value="<c:out value="${endereco.estado}"/>"></label></p>				 								
 			<p><label>RUA: <input type="text" name="rua" disabled="disabled"  style="width: 221px; "value="<c:out value="${endereco.rua}"/>"></label>
 			   <label>NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>"></label> </p>
+ 
 		</fieldset>	 
 			 		
 		<fieldset id="contato">
 			<legend>CONTATO</legend>
+ 
 			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com"></label></p>
 			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX "></label>
 			<label><input type="checkbox" name="ativo" id="ativo" value="true" checked="<c:out value="${cliente.ativo}"/>" checked="checked">ATIVO</label> 
@@ -88,5 +95,6 @@
 		 
 			});
 		}); 
-	</script>
+	</script> 
+</body> 
 </html>
