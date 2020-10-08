@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import dao.DaoContato;
 import dao.DaoEndereco;
 import dao.DaoFuncionario;
@@ -24,8 +26,8 @@ import model.TbLogin;
 @WebServlet(name = "funcionarios", urlPatterns={"/ControlFuncionario"})
 public class ControlFuncionario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String tabela = "/Tabelafuncionario.jsp";
-    private static String criar_editar = "/funcionario.jsp"; 
+    private static String tabela = "/TabelaFuncionario.jsp";
+    private static String criar_editar = "/Funcionario.jsp"; 
 	private DaoFuncionario Dao;
 	private DaoEndereco End;
 	private DaoContato Cont;
@@ -35,14 +37,14 @@ public class ControlFuncionario extends HttpServlet {
 	private TbLogin login = new TbLogin();
 	private TbFuncionario funcionario = new TbFuncionario(); 
 	private TbEndereco endereco = new TbEndereco();
-	private TbContato contato = new TbContato();
+	private TbContato contato = new TbContato(); 
 	
     public ControlFuncionario() {
         super();
         Dao = new DaoFuncionario(); 
         End = new DaoEndereco();
         Cont = new DaoContato(); 
-        login = new TbLogin();
+        login = new TbLogin(); 
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -83,6 +85,7 @@ public class ControlFuncionario extends HttpServlet {
 			request.setAttribute("funcionario", Dao.funcionarioPorId(funcionario));
 			request.setAttribute("endereco", End.enderecoPorId(cpf));
 			request.setAttribute("contato", Cont.contatoPorId(cpf));
+			
 			acao = "A";
 			forward = criar_editar;
 		}

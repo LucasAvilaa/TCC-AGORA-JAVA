@@ -1,9 +1,8 @@
 <%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,18 +29,18 @@
 			   <label>RG: <input name="rg" id="rg" value="<c:out value="${funcionario.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></label></p>
 			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; "></label>  
 			   <label> SEXO: <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">				
-						<f:selectItem itemLabel=" " itemValue=" "/>
-						<f:selectItem itemLabel="Masculino" itemValue="M"/>
-						<f:selectItem itemLabel="Feminino" itemValue="F"/>				
+						<f:selectItem noSelectionOption="true" itemValue=" "/>
+						<f:selectItem itemLabel="MASCULINO" itemValue="M"/>
+						<f:selectItem itemLabel="FEMININO" itemValue="F"/>				
 					 </h:selectOneMenu>
 				</label>	 
 			</p>
 			<p>
 				<label>  			 
 					<h:outputText value="CARGO: "/>
-					<h:selectOneMenu style="width: 198px; " value="#{tbHierarquia.hierarquia}">
-						<f:selectItem noSelectionOption="true" itemValue="SELECIONE O CARGO"/>
-						<f:selectItems value="#{tbHierarquia.hierarquia}" var="h" itemLabel="#{tbHierarquia.hierarquia}" itemValue="#{tbHierarquia.hierarquia}"/>
+					<h:selectOneMenu style="width: 166px; " value="#{tbHierarquia.hierarquia}">
+						<f:selectItem noSelectionOption="true" itemValue=" "/>
+						<f:selectItems value="#{tbHierarquia.hierarquia}" var="h" itemLabel="#{h.idHierarquia}" itemValue="#{h.cargo}"/>
 					</h:selectOneMenu>				 
 				 </label>
 			</p>

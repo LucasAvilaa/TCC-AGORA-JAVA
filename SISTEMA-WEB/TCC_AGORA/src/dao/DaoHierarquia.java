@@ -10,7 +10,7 @@ import javax.faces.model.SelectItem;
 import factory.Conexao;
 
 public class DaoHierarquia{
-
+ 
 	Conexao con; 	 
 	public List<SelectItem> getListaHierarquia() throws Exception { 
 		List<SelectItem> hierarquia = new ArrayList<SelectItem>();
@@ -21,7 +21,6 @@ public class DaoHierarquia{
 		
 		while (rs.next()) {   
 			hierarquia.add(new SelectItem(Integer.parseInt(rs.getString("ID_HIERARQUIA")),rs.getString("CARGO")));
-			System.out.println("Arraylist " + hierarquia);
 		} 				 
 		return hierarquia;
 	} 
