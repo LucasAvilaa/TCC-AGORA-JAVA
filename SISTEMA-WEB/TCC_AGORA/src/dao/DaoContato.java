@@ -11,7 +11,7 @@ import model.TbContato;
 public class DaoContato {
 
 	Conexao con;
-	public void crudContato(String acao, String cpf_cnpj, TbContato tel) throws Exception {
+	public boolean crudContato(String acao, String cpf_cnpj, TbContato tel) throws Exception {
 		con = new Conexao(); 
 		PreparedStatement ps = null;
 		
@@ -27,17 +27,22 @@ public class DaoContato {
 			ps.setString(2, tel.getNumero());
 			ps.setString(3, tel.getEmail());
 		}else if(acao.equals("E")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTATO E,?,NULL,NULL,NULL");  
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTATO E,?,NULL,NULL");  
 			ps.setString(1, cpf_cnpj);
 		} 
+		if(ps.executeUpdate() > 0) {
+			return true;
+		}else {
+			return false;
+		}
 } 
 	
-	public TbContato contatoPorId(String cpf_cnpj) { 
+	public TbContato contatoPorId(String id) { 
 			TbContato cont = new TbContato();
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTATO  WHERE ID_GERAL_TEL = (SELECT DBO.PROCURA_ID_GERAL('?'))"); 
-				ps.setString(1, cpf_cnpj);
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTATO  WHERE ID_GERAL_TEL = (SELECT DBO.PROCURA_ID_GERAL(?))"); 
+				ps.setString(1, id);
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {  

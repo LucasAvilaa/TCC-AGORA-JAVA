@@ -19,9 +19,12 @@ public class ControlLogin extends HttpServlet {
       
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String action = request.getParameter("action");  
+		if(action.equalsIgnoreCase("Deslogar")) {
+			request.getSession().invalidate();
+			response.sendRedirect("login.xhtml");
+		}	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

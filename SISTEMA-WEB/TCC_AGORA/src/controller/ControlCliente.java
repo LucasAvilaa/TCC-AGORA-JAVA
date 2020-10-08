@@ -31,9 +31,9 @@ public class ControlCliente extends HttpServlet {
 	private DaoCliente Dao;
 	private DaoEndereco End;
 	private DaoContato Cont;
-	private String cpf = null;
+	private String cpf;
 	private String acao = null; 
-	private String idcli = null;
+	private String idcli;
 	private TbLogin login = new TbLogin();
 	private TbCliente cliente = new TbCliente(); 
 	private TbEndereco endereco = new TbEndereco();
@@ -51,10 +51,12 @@ public class ControlCliente extends HttpServlet {
 		 String forward = "";
 		 String action = request.getParameter("action");  
 		 String idCli = request.getParameter("idCli"); 
-		 if(idCli != null) {  
+		 cpf = request.getParameter("cod");
+		 if(idCli != null && cpf !=null) {  
 			 idcli = String.valueOf(idCli);
 			 cliente.setIdCli(idcli);
-		 }		 
+			 cliente.setCpf(cpf);
+		 } 	
 		 if(action.equalsIgnoreCase("tabela")) {			 	
 				 try {				
 					request.setAttribute("cliente", Dao.listaCliente());
@@ -71,7 +73,9 @@ public class ControlCliente extends HttpServlet {
 						Dao.crudCliente(acao, cliente);
 						End.crudEndereco(acao, cpf, endereco);
 						Cont.crudContato(acao, cpf, contato);
-						
+						System.out.println("_____________________________________");
+						System.out.println("ID CLIENTE DELETADO " + cliente.getIdCli());
+						System.out.println("CPF CLIENTE DELETADO " + cliente.getCpf());
 						request.setAttribute("cliente", Dao.listaCliente());
 						request.setAttribute("endereco", End.listaEndereco());
 						request.setAttribute("contato", Cont.listaContato());
@@ -85,6 +89,9 @@ public class ControlCliente extends HttpServlet {
 			request.setAttribute("cliente", Dao.ClientePorId(cliente));
 			request.setAttribute("endereco", End.enderecoPorId(cpf));
 			request.setAttribute("contato", Cont.contatoPorId(cpf));
+			System.out.println("_____________________________________");
+			System.out.println("ID CLIENTE ALTERANDO " + cliente.getIdCli());
+			System.out.println("CPF CLIENTE ALTERANDO " + cliente.getCpf());
 			acao = "A";
 			forward = criar_editar;
 		}
@@ -97,9 +104,7 @@ public class ControlCliente extends HttpServlet {
 	}
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			 cpf = request.getParameter("cpf");
-			 
-		  	 cliente.setIdCli(request.getParameter("idCli"));
+		 
 			 cliente.setNome(request.getParameter("nome"));
 			 cliente.setSobrenome(request.getParameter("sobrenome"));
 			 cliente.setRg(request.getParameter("rg"));
@@ -114,16 +119,15 @@ public class ControlCliente extends HttpServlet {
 			 
 			 if(request.getParameter("numero") != null) {
 				 endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
-			 }
-			
+			 } 
 			 endereco.setBairro(request.getParameter("bairro"));
 			 endereco.setEstado(request.getParameter("estado"));
 			 endereco.setCidade(request.getParameter("cidade"));
 	 
 			 contato.setEmail(request.getParameter("email"));
 			 contato.setNumero(request.getParameter("celular"));
-		 
-			 //cliente.setAtivo(true); 
+			 System.out.println("Ativo: " + Boolean.parseBoolean(request.getParameter("ativo")));
+			 cliente.setAtivo(Boolean.parseBoolean(request.getParameter("ativo"))); 
 			 
 			 Date data = null;
 			 if(request.getParameter("data") != null) {
@@ -136,24 +140,31 @@ public class ControlCliente extends HttpServlet {
 				}				 
 			 }
 			 try {
-				 System.out.println("AÇÃO: " + acao );
-				 if(acao.equals("I")) {				  
+				 System.out.println("AÇÃO: " + acao ); 			  
 					 if(Dao.crudCliente(acao, cliente)) {
-						 End.crudEndereco(acao, cpf, endereco) ;
-						 Cont.crudContato(acao, cpf, contato);
-						 System.out.println("CRIADO COM SUCESSO");
-						 	}							
-						}
-				 else{  
-					 cliente.setIdCli(idcli);
-					 Dao.crudCliente(acao,cliente);	
-					 End.crudEndereco(acao, cpf, endereco);
-					 Cont.crudContato(acao, cpf, contato);
-					System.out.println("ALTERADO COM SUCESSO: " + cliente.getIdCli());	
-				 }				
+						 System.out.println("CLIENTE INSERIDO COM SUCESSO"); 
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR CLIENTE"); 
+					 }
+					 if(End.crudEndereco(acao, cpf, endereco)) {
+						 System.out.println("ENDERECO INSERIDO COM SUCESSO");
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR ENDERECO"); 
+					 }
+					 if(Cont.crudContato(acao, cpf, contato) ) {
+						 System.out.println("CONTATO INSERIDO COM SUCESSO");
+						 System.out.println("_____________________________________");
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR CONTATO");
+						 System.out.println("_____________________________________"); 
+					 }
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("ERRO AO INSERIR CLIENTE");
+				System.out.println("_____________________________________");
 			}
 			  response.sendRedirect("ControlCliente?action=tabela");		
 	}	

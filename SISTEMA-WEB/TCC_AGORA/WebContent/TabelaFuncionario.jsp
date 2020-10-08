@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Tabela Cliente</title>
+<title>Tabela Funcionário</title>
 
-		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">		
+		<link rel="stylesheet" type="text/css" href="css/Cadastrofuncionario.css">		
 </head>
 <body>
 	<f:view>
-	<a href="ControlCliente?action">
+	<a href="ControlFuncionario?action">
 		<img src="img/adicionar.png" style="width: 21px; height: 21px; " title="ADICIONAR">
 		
 	</a>
@@ -33,16 +33,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			 <c:forEach items="${cliente}" var="cliente">
+			 <c:forEach items="${funcionario}" var="funcionario">
 				<tr> 
-					<td><c:out value="${cliente.nome}" /></td>
-					<td><c:out value="${cliente.sobrenome}" /></td>
-					<td><c:out value="${cliente.rg}" /></td>
-					<td><c:out value="${cliente.cpf}" /></td> 
-					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.dtNasc}" /></td> 
-					<td><c:out value="${cliente.sexo}" /></td>
-					<td><a href='ControlCliente?action=edit&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-					<td><a href='ControlCliente?action=delete&idCli=<c:out value="${cliente.idCli}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>				
+					<td><c:out value="${funcionario.nome}" /></td>
+					<td><c:out value="${funcionario.sobrenome}" /></td>
+					<td><c:out value="${funcionario.rg}" /></td>
+					<td><c:out value="${funcionario.cpf}" /></td> 
+					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${funcionario.dtNasc}" /></td> 
+					<td><c:out value="${funcionario.sexo}" /></td>
+					<td><a href='ControlFuncionario?action=edit&idCli=<c:out value="${funcionario.idCli}"/>&cod=<c:out value="${funcionario.cpf}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+					<td><a href='ControlFuncionario?action=delete&idCli=<c:out value="${funcionario.idCli}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>				
 				</tr> 
 			</c:forEach>
 		</tbody>		

@@ -39,7 +39,7 @@ public class DaoCliente {
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CLIENTE E,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL");  
 			ps.setString(1, tbclientes.getIdCli());
 		} 
-		if(ps.executeUpdate()>0) { 
+		if(ps.executeUpdate() > 0) { 
 			ps.close();
 			return true;			
 		}else {
@@ -63,7 +63,8 @@ public class DaoCliente {
 				cliente.setCpf(rs.getString("CPF"));
 				cliente.setDtNasc(rs.getDate("DT_NASC"));
 				cliente.setAtivo(rs.getBoolean("ATIVO"));
-				cliente.setSexo(rs.getString("SEXO"));								 
+				cliente.setSexo(rs.getString("SEXO"));	
+				
 			} 	
 			ps.close();
 		} catch (Exception e) {
