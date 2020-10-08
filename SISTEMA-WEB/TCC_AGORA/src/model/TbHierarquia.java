@@ -46,18 +46,6 @@ public class TbHierarquia implements Serializable {
 		this.hierarquia = hierarquia;
 	}
 
-	@PostConstruct
-	public void listar() {		
-		try {
-			DaoHierarquia hierarquia = new DaoHierarquia();		
-			System.out.println("LISTA HIERARQUIA");
-			setHierarquia(hierarquia.getListaHierarquia());
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("ERRO AO LISTA HIERARQUIA");
-		}
-	}  
-
 	public TbHierarquia() {
 	}
 
@@ -99,4 +87,15 @@ public class TbHierarquia implements Serializable {
 		return tbLogin;
 	}
 
+	@PostConstruct
+	public void listar() {		
+		try {
+			DaoHierarquia hierarquia = new DaoHierarquia();		
+			System.out.println("LISTA HIERARQUIA - SUCESSO");
+			 setHierarquia(hierarquia.getListaHierarquia());
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("ERRO AO LISTA HIERARQUIA");
+		}
+	}  
 }

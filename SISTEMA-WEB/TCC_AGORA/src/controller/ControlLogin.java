@@ -41,7 +41,7 @@ public class ControlLogin extends HttpServlet {
 				System.out.println("LOGADO COM SUCESSO");				
 			} 	 
 			else{
-				response.sendRedirect("login.xhtml"); 
+				response.sendRedirect("Login.xhtml"); 
 				System.out.println("USUARIO OU SENHA INCORRETO");
 			}
 		} catch (Exception e) {

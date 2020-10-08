@@ -27,7 +27,7 @@ import model.TbLogin;
 public class ControlCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaCliente.jsp";
-    private static String criar_editar = "/cliente.jsp"; 
+    private static String criar_editar = "/Cliente.jsp"; 
 	private DaoCliente Dao;
 	private DaoEndereco End;
 	private DaoContato Cont;
