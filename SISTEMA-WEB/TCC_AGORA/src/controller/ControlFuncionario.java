@@ -74,14 +74,19 @@ public class ControlFuncionario extends HttpServlet {
 		 else if(action.equalsIgnoreCase("delete")) { 
 					try {
 						acao = "E"; 						
-						End.crudEndereco(acao, cpf, endereco);
-						Cont.crudContato(acao, cpf, contato);
-					 	Dao.crudFuncionario(acao, funcionario); 
-						System.out.println("_____________________________________");
-						System.out.println("ID FUNCIONARIO DELETADO " + funcionario.getIdFunc()); 
+						if(End.crudEndereco(acao, cpf, endereco)) {
+							System.out.println("ENDEREÇO DELETADO COM SUCESSO");
+						}
+						if (Cont.crudContato(acao, cpf, contato)) {
+							System.out.println("CONTADO DELETADO COM SUCESSO");
+						}
+						if (Dao.crudFuncionario(acao, funcionario)) {
+							System.out.println("FUNCIONARIO DELETADO COM SUCESSO");
+							System.out.println("______________________________________");
+						} 
 						request.setAttribute("funcionario", Dao.listaFuncionario());
 						request.setAttribute("endereco", End.listaEndereco());
-						request.setAttribute("contato", Cont.listaContato());
+						request.setAttribute("contato", Cont.listaContato()); 
 						forward = tabela;
 						
 					} catch (Exception e) {
@@ -108,21 +113,26 @@ public class ControlFuncionario extends HttpServlet {
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			 cpf = request.getParameter("cpf");
-		  	 funcionario.setIdFunc(request.getParameter("idFunc"));
+		
 			 funcionario.setNome(request.getParameter("nome"));
 			 funcionario.setSobrenome(request.getParameter("sobrenome"));
 			 funcionario.setRg(request.getParameter("rg"));
-			 funcionario.setCpf(request.getParameter("cpf"));  
-			 funcionario.setSexo(request.getParameter("sexo")); 
-			 funcionario.setCargo(request.getParameter("cargo"));
-			 System.out.println("CARGO SELECIONADO: "+funcionario.getCargo());
+			 funcionario.setCpf(request.getParameter("cpf"));   
+			 
+		 	 if(request.getParameter("sexo").equals("M") || request.getParameter("sexo").equals("MASCULINO")){
+		 		 funcionario.setSexo("M");
+		 	 }else {
+		 		funcionario.setSexo("F");
+		 	 }
+		 	 
+			 funcionario.setCargo(request.getParameter("cargo")); 
 			 endereco.setCep(request.getParameter("cep"));
 			 endereco.setRua(request.getParameter("rua"));
 			 
 			 login.setUsuario(request.getParameter("login"));
 			 login.setSenha(request.getParameter("senha"));
 			 
-			 if(request.getParameter("numero") != null) {
+			 if(request.getParameter("numero") != "") {
 				 endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
 			 }
 			
@@ -168,7 +178,7 @@ public class ControlFuncionario extends HttpServlet {
 					 }
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("ERRO AO INSERIR FUNCIONARIO");
+				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR FUNCIONARIO");
 				System.out.println("_____________________________________");
 			}
 			  response.sendRedirect("ControlFuncionario?action=tabela");		

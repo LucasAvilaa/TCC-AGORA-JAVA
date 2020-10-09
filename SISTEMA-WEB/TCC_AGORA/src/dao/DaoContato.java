@@ -27,8 +27,7 @@ public class DaoContato {
 			ps.setString(2, tel.getNumero());
 			ps.setString(3, tel.getEmail());
 		}else if(acao.equals("E")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTATO E,?,NULL,NULL");  
-			System.out.println("CHEGOU AQUI " + cpf_cnpj);
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTATO E,?,NULL,NULL");   
 			ps.setString(1, cpf_cnpj);
 			
 		} 

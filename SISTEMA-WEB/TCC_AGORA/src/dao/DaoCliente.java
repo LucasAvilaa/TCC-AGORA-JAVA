@@ -64,6 +64,11 @@ public class DaoCliente {
 				cliente.setDtNasc(rs.getDate("DT_NASC"));
 				cliente.setAtivo(rs.getBoolean("ATIVO"));
 				cliente.setSexo(rs.getString("SEXO"));	
+				if(rs.getString("SEXO").equals("M")) {
+					cliente.setSexo("MASCULINO");	
+				}else {
+					cliente.setSexo("FEMININO");
+				} 
 				
 			} 	
 			ps.close();

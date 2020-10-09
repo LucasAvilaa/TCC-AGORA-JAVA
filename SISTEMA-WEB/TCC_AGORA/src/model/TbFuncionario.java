@@ -1,9 +1,21 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -11,6 +23,8 @@ import java.util.List;
  * 
  */
 @Entity
+@ManagedBean
+@SessionScoped
 @Table(name="TB_FUNCIONARIOS")
 @NamedQuery(name="TbFuncionario.findAll", query="SELECT t FROM TbFuncionario t")
 public class TbFuncionario implements Serializable {
@@ -57,7 +71,7 @@ public class TbFuncionario implements Serializable {
 	//bi-directional many-to-one association to TbPrincipalPessoa
 	@OneToMany(mappedBy="tbFuncionario")
 	private List<TbPrincipalPessoa> tbPrincipalPessoas;
-
+	
 	public TbFuncionario() {
 	}
 
@@ -169,6 +183,5 @@ public class TbFuncionario implements Serializable {
 		tbPrincipalPessoa.setTbFuncionario(null);
 
 		return tbPrincipalPessoa;
-	}
-
+	} 
 }

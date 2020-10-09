@@ -42,7 +42,7 @@
 					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.dtNasc}" /></td> 
 					<td><c:out value="${cliente.sexo}" /></td>
 					<td><a href='ControlCliente?action=edit&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-					<td><a href='ControlCliente?action=delete&idCli=<c:out value="${cliente.idCli}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>				
+					<td><a href='ControlCliente?action=delete&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>				
 				</tr> 
 			</c:forEach>
 		</tbody>		
