@@ -40,25 +40,25 @@ public class DaoFornecedor {
 			}
 }
 		
-	public TbFornecedore fornecedorPorId(TbFornecedore id) {
-			TbFornecedore forn = new TbFornecedore();
+	public TbFornecedore fornecedorPorId(TbFornecedore fornecedo) {
+			TbFornecedore fornecedor = new TbFornecedore();
 			try {
 				con = new Conexao();
 				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FORNECEDORES WHERE ID_FORN = ?"); 
-				ps.setString(1, forn.getIdForn());
+				ps.setString(1, fornecedo.getIdForn());
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) { 
-					forn.setIdForn(rs.getString("ID_FORN"));
-					forn.setCnpj(rs.getString("CPNJ"));
-					forn.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
-					forn.setAtivo(rs.getBoolean("ATIVO")); 							 
+					fornecedor.setIdForn(rs.getString("ID_FORN"));
+					fornecedor.setCnpj(rs.getString("CNPJ"));
+					fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
+					fornecedor.setAtivo(rs.getBoolean("ATIVO")); 							 
 				} 	
 				ps.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 
-			return forn;
+			return fornecedor;
 		}
 		
 	public List<TbFornecedore> listaFornecedor() {
@@ -72,7 +72,7 @@ public class DaoFornecedor {
 					TbFornecedore forn = new TbFornecedore(); 
 					
 					forn.setIdForn(rs.getString("ID_FORN"));
-					forn.setCnpj(rs.getString("CPNJ"));
+					forn.setCnpj(rs.getString("CNPJ"));
 					forn.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
 					forn.setAtivo(rs.getBoolean("ATIVO")); 
 								

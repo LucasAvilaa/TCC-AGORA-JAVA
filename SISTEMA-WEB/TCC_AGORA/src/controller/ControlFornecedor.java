@@ -22,14 +22,14 @@ import model.TbFornecedore;
 @WebServlet(name = "fornecedores", urlPatterns={"/ControlFornecedores"})
 public class ControlFornecedor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String tabela = "/Tabelafornecedor.jsp";
-    private static String criar_editar = "/fornecedor.jsp"; 
+    private static String tabela = "/TabelaFornecedor.jsp";
+    private static String criar_editar = "/Fornecedor.jsp"; 
 	private DaoFornecedor Dao;
 	private DaoEndereco End;
 	private DaoContato Cont;
 	private String cnpj = null;
-	private String acao = null; 
-	private String idForn = null;
+	private String acao = "I"; 
+	private String idForn;
 	private TbFornecedore fornecedor = new TbFornecedore(); 
 	private TbEndereco endereco = new TbEndereco();
 	private TbContato contato = new TbContato();
@@ -44,9 +44,11 @@ public class ControlFornecedor extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String forward = "";
 		 String action = request.getParameter("action");  
-		 String idForn = request.getParameter("idForn"); 
-		 if(idForn != null) {  
-			 idForn= String.valueOf(idForn);
+		 String idFor = request.getParameter("idForn"); 
+		 		cnpj = request.getParameter("cod");
+		
+ 		if(idFor != null) {  
+			 idForn = String.valueOf(idFor);
 			 fornecedor.setIdForn(idForn);
 		 }		 
 		 if(action.equalsIgnoreCase("tabela")) {			 	
@@ -60,25 +62,34 @@ public class ControlFornecedor extends HttpServlet {
 				}		 
 		 }
 		 else if(action.equalsIgnoreCase("delete")) { 
-					try {
-						acao = "E"; 
-						Dao.crudFornecedor(acao, fornecedor);
-						End.crudEndereco(acao, cnpj, endereco);
-						Cont.crudContato(acao, cnpj, contato);
-						
-						request.setAttribute("fornecedor", Dao.listaFornecedor());
-						request.setAttribute("endereco", End.listaEndereco());
-						request.setAttribute("contato", Cont.listaContato());
-						forward = tabela;
-						
-					} catch (Exception e) {
-						e.printStackTrace();
+			 try {
+					acao = "E"; 						
+					if(End.crudEndereco(acao, cnpj, endereco)) {
+						System.out.println("ENDEREÇO DELETADO COM SUCESSO");
 					}
+					if (Cont.crudContato(acao, cnpj, contato)) {
+						System.out.println("CONTADO DELETADO COM SUCESSO");
+					}
+					if (Dao.crudFornecedor(acao, fornecedor)) {
+						System.out.println("FORNECEDOR DELETADO COM SUCESSO");
+						System.out.println("______________________________________");
+					} 
+					request.setAttribute("fornecedor", Dao.listaFornecedor());
+					request.setAttribute("endereco", End.listaEndereco());
+					request.setAttribute("contato", Cont.listaContato());
+					forward = tabela;
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		 }
 		else if(action.equalsIgnoreCase("edit")){   
 			request.setAttribute("fornecedor", Dao.fornecedorPorId(fornecedor));
 			request.setAttribute("endereco", End.enderecoPorId(cnpj));
 			request.setAttribute("contato", Cont.contatoPorId(cnpj));
+			System.out.println("_____________________________________");
+			System.out.println("ID FORNECEDOR ALTERANDO " + fornecedor.getIdForn()); 
+			System.out.println("CNPJ FORNECEDOR ALTERANDO " + cnpj); 
 			acao = "A";
 			forward = criar_editar;
 		}
@@ -93,18 +104,18 @@ public class ControlFornecedor extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			 cnpj = request.getParameter("cnpj");
 			 
-		  	 fornecedor.setIdForn(request.getParameter("idForn"));
 			 fornecedor.setRazaoSocial(request.getParameter("razao-social"));
+			 fornecedor.setCnpj(request.getParameter("cnpj"));
 			 fornecedor.setAtivo(Boolean.valueOf(request.getParameter("ativo")));
 			 
-			 
-			 endereco.setCep(request.getParameter("cep"));
-			 endereco.setRua(request.getParameter("rua"));
-			 
-			 if(request.getParameter("numero") != null) {
+			 if(request.getParameter("numero") != "") {
 				 endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
-			 }
-			
+			 }	 
+			 
+			 if (request.getParameter("cep") != "") {
+				 endereco.setCep(request.getParameter("cep"));
+			}
+			 endereco.setRua(request.getParameter("rua"));
 			 endereco.setBairro(request.getParameter("bairro"));
 			 endereco.setEstado(request.getParameter("estado"));
 			 endereco.setCidade(request.getParameter("cidade"));
@@ -112,28 +123,35 @@ public class ControlFornecedor extends HttpServlet {
 			 contato.setEmail(request.getParameter("email"));
 			 contato.setNumero(request.getParameter("celular"));
 		 
-			 fornecedor.setAtivo(true); 
+			 fornecedor.setAtivo(Boolean.parseBoolean(request.getParameter("ativo"))); 
 			 
 			 try {
-				 System.out.println("AÇÃO: " + acao );
-				 if(acao.equals("I")) {				  
+				 System.out.println("AÇÃO: " + acao ); 	 
 					 if(Dao.crudFornecedor(acao, fornecedor)) {
-						 End.crudEndereco(acao, cnpj, endereco) ;
-						 Cont.crudContato(acao, cnpj, contato);
-						 System.out.println("CRIADO COM SUCESSO");
-						 	}							
-						}
-				 else{  
-					 fornecedor.setIdForn(idForn);
-					 Dao.crudFornecedor(acao,fornecedor);	
-					 End.crudEndereco(acao, cnpj, endereco);
-					 Cont.crudContato(acao, cnpj, contato);
-					System.out.println("ALTERADO COM SUCESSO: " + fornecedor.getIdForn());	
-				 }				
+						 System.out.println("FORNECEDOR INSERIDO COM SUCESSO"); 
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR FORNECEDOR"); 
+					 }
+				 	 if(End.crudEndereco(acao, cnpj, endereco)) {
+						 System.out.println("ENDERECO INSERIDO COM SUCESSO");
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR ENDERECO");  
+					 }
+				 	 if(Cont.crudContato(acao, cnpj, contato) ) {
+						 System.out.println("CONTATO INSERIDO COM SUCESSO");
+						 System.out.println("_____________________________________");
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR CONTATO");
+						 System.out.println("_____________________________________"); 
+					 }
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("ERRO AO INSERIR FORNECEDOR");
+				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR FORNECEDOR");
+				System.out.println("_____________________________________");
 			}
-			  response.sendRedirect("ControlFornecedor?action=tabela");		
+			  response.sendRedirect("ControlFornecedores?action=tabela");		
 	}	
 }

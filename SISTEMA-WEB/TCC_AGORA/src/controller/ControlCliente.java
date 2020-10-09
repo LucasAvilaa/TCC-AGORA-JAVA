@@ -32,7 +32,7 @@ public class ControlCliente extends HttpServlet {
 	private DaoEndereco End;
 	private DaoContato Cont;
 	private String cpf;
-	private String acao = null; 
+	private String acao = "I"; 
 	private String idcli;
 	private TbLogin login = new TbLogin();
 	private TbCliente cliente = new TbCliente(); 
@@ -51,15 +51,12 @@ public class ControlCliente extends HttpServlet {
 		 String forward = "";
 		 String action = request.getParameter("action");  
 		 String idCli = request.getParameter("idCli"); 
-		 cpf = request.getParameter("cod");
+		 		cpf = request.getParameter("cod");
+		 
 		 if(idCli != null) {  
 			 idcli = String.valueOf(idCli);
 			 cliente.setIdCli(idcli); 
-		 } 			 
-
-		 if(cpf !=null) {
-			 cliente.setCpf(cpf); 
-		 }
+		 } 
 		 
 		 if(action.equalsIgnoreCase("tabela")) {			 	
 				 try {				
@@ -123,10 +120,7 @@ public class ControlCliente extends HttpServlet {
 				 cliente.setSexo("M");
 		 	 }else {
 		 		cliente.setSexo("F");
-		 	 }	 	  
-			 
-			 endereco.setCep(request.getParameter("cep"));
-			 endereco.setRua(request.getParameter("rua"));
+		 	 }	
 			 
 			 login.setUsuario(request.getParameter("login"));
 			 login.setSenha(request.getParameter("senha"));
@@ -134,15 +128,16 @@ public class ControlCliente extends HttpServlet {
 			 if(request.getParameter("numero") != "") {
 				 endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
 			 } 
+			 endereco.setCep(request.getParameter("cep"));
+			 endereco.setRua(request.getParameter("rua"));
 			 endereco.setBairro(request.getParameter("bairro"));
 			 endereco.setEstado(request.getParameter("estado"));
 			 endereco.setCidade(request.getParameter("cidade"));
 	 
 			 contato.setEmail(request.getParameter("email"));
 			 contato.setNumero(request.getParameter("celular")); 
-			 cliente.setAtivo(Boolean.parseBoolean(request.getParameter("ativo"))); 
+			 cliente.setAtivo(Boolean.parseBoolean(request.getParameter("ativo")));  
 			 
-			 System.out.println(Boolean.parseBoolean(request.getParameter("ativo")));
 			 Date data = null;		
 			 try { 				
 					data = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data"));
