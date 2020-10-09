@@ -90,8 +90,7 @@ public class TbHierarquia implements Serializable {
 	@PostConstruct
 	public void listar() {		
 		try {
-			DaoHierarquia hierarquia = new DaoHierarquia();		
-			System.out.println("LISTA HIERARQUIA - SUCESSO");
+			DaoHierarquia hierarquia = new DaoHierarquia();		 
 			 setHierarquia(hierarquia.getListaHierarquia());
 		} catch (Exception e) {
 			e.printStackTrace();

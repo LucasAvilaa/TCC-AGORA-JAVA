@@ -42,7 +42,7 @@
 					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${funcionario.dtNasc}" /></td> 
 					<td><c:out value="${funcionario.sexo}" /></td>
 					<td><a href='ControlFuncionario?action=edit&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-					<td><a href='ControlFuncionario?action=delete&idFunc=<c:out value="${funcionario.idFunc}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>				
+					<td><a href='ControlFuncionario?action=delete&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>				
 				</tr> 
 			</c:forEach>
 		</tbody>		

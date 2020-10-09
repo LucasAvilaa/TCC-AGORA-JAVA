@@ -30,10 +30,11 @@
 			<p><label>CPF: <input name="cpf" id="cpf" value="<c:out value="${cliente.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/></label>
 			   <label>RG: <input name="rg" id="rg" value="<c:out value="${cliente.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></label></p>
 			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${cliente.dtNasc}"/>"   required="required" style="width: 148px; "></label>  
-			   <label> SEXO: <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">				
-						<f:selectItem itemLabel=" "  itemValue=" "/>
-						<f:selectItem itemLabel="Masculino" itemValue="M"/>
-						<f:selectItem itemLabel="Feminino" itemValue="F"/>				
+			  <label> SEXO: <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">				
+						<f:selectItem itemValue="#{cliente.sexo}"/>  
+						<f:selectItem noSelectionOption="true" itemValue=" "/>  
+						<f:selectItem itemValue="M" itemLabel="MASCULINO"/> 
+						<f:selectItem itemValue="F" itemLabel="FEMININO"/>   		
 					 </h:selectOneMenu>
 				</label>	 
  

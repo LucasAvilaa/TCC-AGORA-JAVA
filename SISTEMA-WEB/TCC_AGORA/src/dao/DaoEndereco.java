@@ -13,8 +13,7 @@ public class DaoEndereco {
 	Conexao con;
 	public boolean crudEndereco(String acao, String cpf_cnpj, TbEndereco end) throws Exception {
 		con = new Conexao(); 
-		PreparedStatement ps = null;
-		System.out.println("CPF: " +cpf_cnpj);
+		PreparedStatement ps = null; 
 		if(acao.equals("I")) {
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO I,?,?,?,?,?,?,?");  
 			ps.setString(1, cpf_cnpj); 

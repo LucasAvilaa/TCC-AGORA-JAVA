@@ -52,11 +52,15 @@ public class ControlCliente extends HttpServlet {
 		 String action = request.getParameter("action");  
 		 String idCli = request.getParameter("idCli"); 
 		 cpf = request.getParameter("cod");
-		 if(idCli != null && cpf !=null) {  
+		 if(idCli != null) {  
 			 idcli = String.valueOf(idCli);
-			 cliente.setIdCli(idcli);
-			 cliente.setCpf(cpf);
-		 } 	
+			 cliente.setIdCli(idcli); 
+		 } 			 
+
+		 if(cpf !=null) {
+			 cliente.setCpf(cpf); 
+		 }
+		 
 		 if(action.equalsIgnoreCase("tabela")) {			 	
 				 try {				
 					request.setAttribute("cliente", Dao.listaCliente());
@@ -70,12 +74,16 @@ public class ControlCliente extends HttpServlet {
 		 else if(action.equalsIgnoreCase("delete")) { 
 					try {
 						acao = "E"; 						
-						End.crudEndereco(acao, cpf, endereco);
-						Cont.crudContato(acao, cpf, contato);
-						Dao.crudCliente(acao, cliente);
-						System.out.println("_____________________________________");
-						System.out.println("ID CLIENTE DELETADO " + cliente.getIdCli());
-						System.out.println("CPF CLIENTE DELETADO " + cliente.getCpf());
+						if(End.crudEndereco(acao, cpf, endereco)) {
+							System.out.println("ENDEREÇO DELETADO COM SUCESSO");
+						}
+						if (Cont.crudContato(acao, cpf, contato)) {
+							System.out.println("CONTADO DELETADO COM SUCESSO");
+						}
+						if (Dao.crudCliente(acao, cliente)) {
+							System.out.println("CLIENTE DELETADO COM SUCESSO");
+							System.out.println("______________________________________");
+						} 
 						request.setAttribute("cliente", Dao.listaCliente());
 						request.setAttribute("endereco", End.listaEndereco());
 						request.setAttribute("contato", Cont.listaContato());
@@ -104,12 +112,18 @@ public class ControlCliente extends HttpServlet {
 	}
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
+			 cpf = request.getParameter("cpf");
+		
 			 cliente.setNome(request.getParameter("nome"));
 			 cliente.setSobrenome(request.getParameter("sobrenome"));
 			 cliente.setRg(request.getParameter("rg"));
-			 cliente.setCpf(request.getParameter("cpf"));  
-			 cliente.setSexo(request.getParameter("sexo"));  
+			 cliente.setCpf(request.getParameter("cpf"));   
+			 
+			 if(request.getParameter("sexo").equals("M") || request.getParameter("sexo").equals("MASCULINO")){
+				 cliente.setSexo("M");
+		 	 }else {
+		 		cliente.setSexo("F");
+		 	 }	 	 
 			 
 			 endereco.setCep(request.getParameter("cep"));
 			 endereco.setRua(request.getParameter("rua"));
@@ -117,7 +131,7 @@ public class ControlCliente extends HttpServlet {
 			 login.setUsuario(request.getParameter("login"));
 			 login.setSenha(request.getParameter("senha"));
 			 
-			 if(request.getParameter("numero") != null) {
+			 if(request.getParameter("numero") != "") {
 				 endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
 			 } 
 			 endereco.setBairro(request.getParameter("bairro"));
@@ -125,12 +139,10 @@ public class ControlCliente extends HttpServlet {
 			 endereco.setCidade(request.getParameter("cidade"));
 	 
 			 contato.setEmail(request.getParameter("email"));
-			 contato.setNumero(request.getParameter("celular"));
-			 System.out.println("Ativo: " + Boolean.parseBoolean(request.getParameter("ativo")));
+			 contato.setNumero(request.getParameter("celular")); 
 			 cliente.setAtivo(Boolean.parseBoolean(request.getParameter("ativo"))); 
 			 
-			 Date data = null;
-		
+			 Date data = null;		
 			 try { 				
 					data = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data"));
 					cliente.setDtNasc(data);
@@ -164,7 +176,7 @@ public class ControlCliente extends HttpServlet {
 					 }
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("ERRO AO INSERIR CLIENTE");
+				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR CLIENTE");
 				System.out.println("_____________________________________");
 			}
 			  response.sendRedirect("ControlCliente?action=tabela");		

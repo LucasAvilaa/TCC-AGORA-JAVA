@@ -29,10 +29,10 @@
 			   <label>RG: <input name="rg" id="rg" value="<c:out value="${funcionario.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></label></p>
 			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; "></label>  
 			   <label> SEXO: <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">				
-						<f:selectItem itemValue="#{funcionario.sexo}"/>
-						<f:selectItem noSelectionOption="true" itemValue=" "/>
-						<f:selectItem itemLabel="MASCULINO" itemValue="M"/>
-						<f:selectItem itemLabel="FEMININO" itemValue="F"/>				
+						<f:selectItem itemValue="#{funcionario.sexo}"/>  
+						<f:selectItem noSelectionOption="true" itemValue=" "/>  
+						<f:selectItem itemValue="M" itemLabel="MASCULINO"/> 
+						<f:selectItem itemValue="F" itemLabel="FEMININO"/>   		
 					 </h:selectOneMenu>
 				</label>	 
 			</p>
@@ -61,7 +61,7 @@
 			<legend>CONTATO</legend>
 			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com"></label></p>
 			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX "></label>
-			<label><input type="checkbox" name="ativo" id="ativo" value="true" checked="<c:out value="${funcionario.ativo}"/>" checked="checked">ATIVO</label> 
+			<label><input type="checkbox" name="ativo" id="ativo" value="true" checked="<c:out value="${funcionario.ativo}"/>">ATIVO</label> 
 				</p>
 		</fieldset>			 		 			 		 		 			
 		</form>	
