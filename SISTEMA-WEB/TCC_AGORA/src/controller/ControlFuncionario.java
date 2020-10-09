@@ -107,7 +107,7 @@ public class ControlFuncionario extends HttpServlet {
 	}
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+			 cpf = request.getParameter("cpf");
 		  	 funcionario.setIdFunc(request.getParameter("idFunc"));
 			 funcionario.setNome(request.getParameter("nome"));
 			 funcionario.setSobrenome(request.getParameter("sobrenome"));
