@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="UTF-8">	
 		<title>CADASTRO FUNCIONÁRIOS</title>
-		<link rel="stylesheet" type="text/css" href="css/Cadastrofuncionario.css"> 
+		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css"> 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 		
@@ -16,7 +16,7 @@
 	
 	<body>	
 	<f:view>
-		
+		 
 		<form action="ControlFuncionario" method="POST" name="cadastrofuncionario">  
 		
 		<h2>CADASTRO DE FUNCIONÁRIOS</h2>
@@ -29,6 +29,7 @@
 			   <label>RG: <input name="rg" id="rg" value="<c:out value="${funcionario.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/></label></p>
 			<p><label>NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; "></label>  
 			   <label> SEXO: <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">				
+						<f:selectItem itemValue="#{funcionario.sexo}"/>
 						<f:selectItem noSelectionOption="true" itemValue=" "/>
 						<f:selectItem itemLabel="MASCULINO" itemValue="M"/>
 						<f:selectItem itemLabel="FEMININO" itemValue="F"/>				
@@ -38,9 +39,9 @@
 			<p>
 				<label>  			 
 					<h:outputText value="CARGO: "/>
-					<h:selectOneMenu style="width: 166px; " value="#{tbHierarquia.hierarquia}">
-						<f:selectItem noSelectionOption="true" itemValue=" "/>
-						<f:selectItems value="#{tbHierarquia.hierarquia}" var="h" itemLabel="#{h.idHierarquia}" itemValue="#{h.cargo}"/>
+					<h:selectOneMenu style="width: 166px; " value="#{tbHierarquia.hierarquia}" id="cargo">
+						<f:selectItem noSelectionOption="true" itemValue="#{funcionario.cargo}"/>
+						<f:selectItems value="#{tbHierarquia.hierarquia}"  itemValue="#{tbHierarquia.hierarquia}"/>
 					</h:selectOneMenu>				 
 				 </label>
 			</p>

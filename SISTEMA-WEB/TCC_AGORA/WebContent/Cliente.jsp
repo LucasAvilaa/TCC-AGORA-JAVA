@@ -17,8 +17,7 @@
 	
 	<body>	
 	<f:view>
- 
-		
+ 		
 		<form action="ControlCliente" method="POST" name="cadastroCliente">  
 		
 		<h2>CADASTRO DE CLIENTE</h2>

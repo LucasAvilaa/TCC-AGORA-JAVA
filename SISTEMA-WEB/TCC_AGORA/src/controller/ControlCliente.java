@@ -69,10 +69,10 @@ public class ControlCliente extends HttpServlet {
 		 }
 		 else if(action.equalsIgnoreCase("delete")) { 
 					try {
-						acao = "E"; 
-						Dao.crudCliente(acao, cliente);
+						acao = "E"; 						
 						End.crudEndereco(acao, cpf, endereco);
 						Cont.crudContato(acao, cpf, contato);
+						Dao.crudCliente(acao, cliente);
 						System.out.println("_____________________________________");
 						System.out.println("ID CLIENTE DELETADO " + cliente.getIdCli());
 						System.out.println("CPF CLIENTE DELETADO " + cliente.getCpf());
@@ -130,15 +130,16 @@ public class ControlCliente extends HttpServlet {
 			 cliente.setAtivo(Boolean.parseBoolean(request.getParameter("ativo"))); 
 			 
 			 Date data = null;
-			 if(request.getParameter("data") != null) {
-				 try { 				
+		
+			 try { 				
 					data = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data"));
 					cliente.setDtNasc(data);
-				} catch (ParseException e) { 
+					
+			 	}catch (ParseException e) { 
 					e.printStackTrace();
 					System.out.println("ERRO NA CONVERSÃO DA DATA");
-				}				 
-			 }
+			 	}	
+			 
 			 try {
 				 System.out.println("AÇÃO: " + acao ); 			  
 					 if(Dao.crudCliente(acao, cliente)) {
