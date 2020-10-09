@@ -123,7 +123,7 @@ public class ControlCliente extends HttpServlet {
 				 cliente.setSexo("M");
 		 	 }else {
 		 		cliente.setSexo("F");
-		 	 }	 	 
+		 	 }	 	  
 			 
 			 endereco.setCep(request.getParameter("cep"));
 			 endereco.setRua(request.getParameter("rua"));
@@ -142,6 +142,7 @@ public class ControlCliente extends HttpServlet {
 			 contato.setNumero(request.getParameter("celular")); 
 			 cliente.setAtivo(Boolean.parseBoolean(request.getParameter("ativo"))); 
 			 
+			 System.out.println(Boolean.parseBoolean(request.getParameter("ativo")));
 			 Date data = null;		
 			 try { 				
 					data = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data"));
@@ -164,7 +165,7 @@ public class ControlCliente extends HttpServlet {
 						 System.out.println("ENDERECO INSERIDO COM SUCESSO");
 					 }
 					 else {
-						 System.out.println("ERRO AO INSERIR ENDERECO"); 
+						 System.out.println("ERRO AO INSERIR ENDERECO");  
 					 }
 					 if(Cont.crudContato(acao, cpf, contato) ) {
 						 System.out.println("CONTATO INSERIDO COM SUCESSO");
