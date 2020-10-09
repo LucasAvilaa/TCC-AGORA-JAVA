@@ -91,8 +91,8 @@ public class ControlEstabelecimento extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			 cnpj = request.getParameter("cnpj");
 			 
-		  	 estabelecimento.setIdEstab(request.getParameter("idEstab"));
 			 estabelecimento.setRazaoSocial(request.getParameter("razao-social"));			 
+			 estabelecimento.setCnpj(request.getParameter("cnpj"));
 			 
 			 endereco.setCep(request.getParameter("cep"));
 			 endereco.setRua(request.getParameter("rua"));

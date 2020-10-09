@@ -12,12 +12,12 @@
 		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">		
 </head>
 <body>
-	<f:view>
-	<a href="ControlFuncionario?action">
-		<img src="img/adicionar.png" style="width: 21px; height: 21px; " title="ADICIONAR">
-		
-	</a>
-	<br>
+	<f:view> 
+	<p>
+		<a href="ControlFuncionario?action">
+			<img src="img/adicionar.png" style="width: 31px; height: 28px; " title="ADICIONAR" />
+		</a>
+	</p> 
 	
 	<table border="1">			
 		 <thead>

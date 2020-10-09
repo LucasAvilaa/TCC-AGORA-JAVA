@@ -51,15 +51,12 @@ public class ControlFuncionario extends HttpServlet {
 		 String forward = "";
 		 String action = request.getParameter("action");  
 		 String idFun = request.getParameter("idFunc"); 
-		 cpf = request.getParameter("cod");
-		 if(idFun != null ) {  
+		 		cpf = request.getParameter("cod");
+		
+ 		 if(idFun != null ) {  
 			 idFunc = String.valueOf(idFun);
 			 funcionario.setIdFunc(idFunc);
-		 }  
-		 
-		 if(cpf !=null) {
-			 funcionario.setCpf(cpf); 
-		 }
+		 }   
 		 
 		 if(action.equalsIgnoreCase("tabela")) {			 	
 				 try {				

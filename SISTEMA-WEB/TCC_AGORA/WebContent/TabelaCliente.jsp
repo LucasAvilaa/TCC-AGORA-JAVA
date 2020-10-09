@@ -1,5 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
 <%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -13,12 +12,12 @@
 		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">		
 </head>
 <body>
-	<f:view>
-	<a href="ControlCliente?action">
-		<img src="img/adicionar.png" style="width: 21px; height: 21px; " title="ADICIONAR">
-		
-	</a>
-	<br>
+	<f:view> 
+	<p>
+		<a href="ControlCliente?action">
+			<img src="img/adicionar.png" style="width: 31px; height: 28px; " title="ADICIONAR" />
+		</a>
+	</p> 
 	
 	<table border="1">			
 		 <thead>
