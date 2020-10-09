@@ -47,6 +47,8 @@ public class TbHierarquia implements Serializable {
 	}
 
 	public TbHierarquia() {
+		super();
+		listar();
 	}
 
 	public int getIdHierarquia() {

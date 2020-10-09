@@ -14,9 +14,9 @@ public class DaoEndereco {
 	public boolean crudEndereco(String acao, String cpf_cnpj, TbEndereco end) throws Exception {
 		con = new Conexao(); 
 		PreparedStatement ps = null;
-		
+		System.out.println("CPF: " +cpf_cnpj);
 		if(acao.equals("I")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO I,?,?,?,?,?,?,?"); 
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO I,?,?,?,?,?,?,?");  
 			ps.setString(1, cpf_cnpj); 
 			ps.setString(2,  end.getCep());
 			ps.setString(3, end.getRua());
@@ -27,7 +27,7 @@ public class DaoEndereco {
 			  
 		}		
 		else if(acao.equals("A")) { 			
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO A,?,?,?,?,?,?,?");
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO A,?,?,?,?,?,?,?"); 
 			ps.setString(1, cpf_cnpj); 
 			ps.setString(2,  end.getCep());
 			ps.setString(3, end.getRua());

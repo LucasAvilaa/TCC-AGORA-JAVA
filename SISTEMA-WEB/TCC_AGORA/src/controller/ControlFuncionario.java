@@ -32,7 +32,7 @@ public class ControlFuncionario extends HttpServlet {
 	private DaoEndereco End;
 	private DaoContato Cont;
 	private String cpf = null;
-	private String acao = null; 
+	private String acao = "I"; 
 	private String idFunc = null;
 	private TbLogin login = new TbLogin();
 	private TbFuncionario funcionario = new TbFuncionario(); 
@@ -50,11 +50,17 @@ public class ControlFuncionario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String forward = "";
 		 String action = request.getParameter("action");  
-		 String idFunc = request.getParameter("idFunc"); 
-		 if(idFunc != null) {  
-			 idFunc= String.valueOf(idFunc);
+		 String idFun = request.getParameter("idFunc"); 
+		 cpf = request.getParameter("cod");
+		 if(idFun != null ) {  
+			 idFunc = String.valueOf(idFun);
 			 funcionario.setIdFunc(idFunc);
-		 }		 
+		 }  
+		 
+		 if(cpf !=null) {
+			 funcionario.setCpf(cpf); 
+		 }
+		 
 		 if(action.equalsIgnoreCase("tabela")) {			 	
 				 try {				
 					request.setAttribute("funcionario", Dao.listaFuncionario());
@@ -67,11 +73,12 @@ public class ControlFuncionario extends HttpServlet {
 		 }
 		 else if(action.equalsIgnoreCase("delete")) { 
 					try {
-						acao = "E"; 
-						Dao.crudFuncionario(acao, funcionario);
+						acao = "E"; 						
 						End.crudEndereco(acao, cpf, endereco);
 						Cont.crudContato(acao, cpf, contato);
-						
+					 	Dao.crudFuncionario(acao, funcionario); 
+						System.out.println("_____________________________________");
+						System.out.println("ID FUNCIONARIO DELETADO " + funcionario.getIdFunc()); 
 						request.setAttribute("funcionario", Dao.listaFuncionario());
 						request.setAttribute("endereco", End.listaEndereco());
 						request.setAttribute("contato", Cont.listaContato());
@@ -85,12 +92,14 @@ public class ControlFuncionario extends HttpServlet {
 			request.setAttribute("funcionario", Dao.funcionarioPorId(funcionario));
 			request.setAttribute("endereco", End.enderecoPorId(cpf));
 			request.setAttribute("contato", Cont.contatoPorId(cpf));
-			
+			System.out.println("_____________________________________");
+			System.out.println("ID FUNCIONARIO ALTERANDO " + funcionario.getIdFunc());
+			System.out.println("CPF FUNCIONARIO ALTERANDO " + funcionario.getCpf());
 			acao = "A";
 			forward = criar_editar;
 		}
 		else {
-			forward = criar_editar;
+			forward = criar_editar; 
 			acao = "I";
 		}		 
 		 RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -98,8 +107,7 @@ public class ControlFuncionario extends HttpServlet {
 	}
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			 cpf = request.getParameter("cpf");
-			 
+		
 		  	 funcionario.setIdFunc(request.getParameter("idFunc"));
 			 funcionario.setNome(request.getParameter("nome"));
 			 funcionario.setSobrenome(request.getParameter("sobrenome"));
@@ -107,7 +115,7 @@ public class ControlFuncionario extends HttpServlet {
 			 funcionario.setCpf(request.getParameter("cpf"));  
 			 funcionario.setSexo(request.getParameter("sexo")); 
 			 funcionario.setCargo(request.getParameter("cargo"));
-			 
+			 System.out.println("CARGO SELECIONADO: "+funcionario.getCargo());
 			 endereco.setCep(request.getParameter("cep"));
 			 endereco.setRua(request.getParameter("rua"));
 			 
@@ -125,37 +133,43 @@ public class ControlFuncionario extends HttpServlet {
 			 contato.setEmail(request.getParameter("email"));
 			 contato.setNumero(request.getParameter("celular"));
 		 
-			 funcionario.setAtivo(true); 
+			 funcionario.setAtivo(Boolean.parseBoolean(request.getParameter("ativo"))); 
 			 
 			 Date data = null;
-			 if(request.getParameter("data") != null) {
-				 try { 				
+			 try { 				
 					data = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data"));
 					funcionario.setDtNasc(data);
-				} catch (ParseException e) { 
+					
+			 	} catch (ParseException e) { 
 					e.printStackTrace();
 					System.out.println("ERRO NA CONVERSÃO DA DATA");
-				}				 
-			 }
+			 	}
 			 try {
-				 System.out.println("AÇÃO: " + acao );
-				 if(acao.equals("I")) {				  
+				 System.out.println("AÇÃO: " + acao ); 			  
 					 if(Dao.crudFuncionario(acao, funcionario)) {
-						 End.crudEndereco(acao, cpf, endereco) ;
-						 Cont.crudContato(acao, cpf, contato);
-						 System.out.println("CRIADO COM SUCESSO");
-						 	}							
-						}
-				 else{  
-					 funcionario.setIdFunc(idFunc);
-					 Dao.crudFuncionario(acao,funcionario);	
-					 End.crudEndereco(acao, cpf, endereco);
-					 Cont.crudContato(acao, cpf, contato);
-					System.out.println("ALTERADO COM SUCESSO: " + funcionario.getIdFunc());	
-				 }				
+						 System.out.println("FUNCIONARIO INSERIDO COM SUCESSO"); 						 
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR FUNCIONARIO");  
+					 }
+					 if(End.crudEndereco(acao, cpf, endereco)) {
+						 System.out.println("ENDERECO INSERIDO COM SUCESSO");
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR ENDERECO"); 
+					 }
+					 if(Cont.crudContato(acao, cpf, contato) ) {
+						 System.out.println("CONTATO INSERIDO COM SUCESSO");
+						 System.out.println("_____________________________________");
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR CONTATO");
+						 System.out.println("_____________________________________"); 
+					 }
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("ERRO AO INSERIR FUNCIONARIO");
+				System.out.println("_____________________________________");
 			}
 			  response.sendRedirect("ControlFuncionario?action=tabela");		
 	}	

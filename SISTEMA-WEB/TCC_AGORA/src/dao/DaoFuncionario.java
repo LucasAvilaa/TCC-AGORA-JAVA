@@ -67,7 +67,11 @@ public class DaoFuncionario {
 						func.setCargo(rs.getString("CARGO"));
 						func.setDtNasc(rs.getDate("DT_NASC"));
 						func.setAtivo(rs.getBoolean("ATIVO"));
-						func.setSexo(rs.getString("SEXO"));								 
+						if(rs.getString("SEXO").equals("M")) {
+							func.setSexo("MASCULINO");	
+						}else {
+							func.setSexo("FEMININO");
+						}  
 					} 	
 					ps.close();
 				} catch (Exception e) {
