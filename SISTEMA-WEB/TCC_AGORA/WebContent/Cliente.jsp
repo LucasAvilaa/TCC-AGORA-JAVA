@@ -58,9 +58,10 @@
  
 			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com"></label></p>
 			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX "></label>
-			<label><h:selectBooleanCheckbox value="#{cliente.ativo}" id="ativo"  >ATIVO</h:selectBooleanCheckbox> </label> 
-		 
-							
+			<label><h:selectBooleanCheckbox value="#{cliente.ativo}" >ATIVO</h:selectBooleanCheckbox> </label> 
+	 
+						
+					 
 						 
 				</p>
 		</fieldset>			 		 			 		 		 			

@@ -40,6 +40,10 @@ public class ControlLogin extends HttpServlet {
 				response.sendRedirect("ControlCliente?action=tabela");				
 				System.out.println("LOGADO COM SUCESSO");				
 			} 	 
+			else if(log.validaLogin(model)) {
+				response.sendRedirect("Login.xhtml"); 
+				System.out.println("USUARIO OU SENHA INCORRETO");
+			}
 			else{
 				response.sendRedirect("Login.xhtml"); 
 				System.out.println("USUARIO OU SENHA INCORRETO");
