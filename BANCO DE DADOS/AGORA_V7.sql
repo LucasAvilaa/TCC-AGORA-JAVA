@@ -529,7 +529,7 @@ AS
 							 BAIRRO = @BAIRRO,
 							 ESTADO = @ESTADO,
 							 CIDADE = @CIDADE
-						WHERE ID_END = @ID_GERAL
+						WHERE ID_GERAL_END = @ID_GERAL
 					END
 
 			ELSE IF(@ACAO = 'E') --EXCLUIR

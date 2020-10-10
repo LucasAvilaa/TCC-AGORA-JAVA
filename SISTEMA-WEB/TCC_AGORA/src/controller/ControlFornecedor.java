@@ -47,6 +47,11 @@ public class ControlFornecedor extends HttpServlet {
 		 String action = request.getParameter("action");  
 		 String idFor = request.getParameter("idForn"); 
 		 		cnpj = request.getParameter("cod");
+		 		if(acao.equals("I")) {
+		 			request.setAttribute("acao", "I");
+		 		}else {
+		 			request.setAttribute("acao", "A");		 			
+		 		}
 		
  		if(idFor != null) {  
 			 idForn = String.valueOf(idFor);
@@ -105,7 +110,12 @@ public class ControlFornecedor extends HttpServlet {
 	}
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			 
+		if(acao.equals("I")) {
+ 			request.setAttribute("acao", "I");
+ 		}else {
+ 			request.setAttribute("acao", "A");		 			
+ 		}
+		
 			if (acao.equals("I")) {
 				cnpj = request.getParameter("cnpj");
 				fornecedor.setAtivo(true);
