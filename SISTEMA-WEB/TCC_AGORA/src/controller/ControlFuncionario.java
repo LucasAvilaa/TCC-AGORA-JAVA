@@ -94,6 +94,7 @@ public class ControlFuncionario extends HttpServlet {
 			request.setAttribute("funcionario", Dao.funcionarioPorId(funcionario));
 			request.setAttribute("endereco", End.enderecoPorId(cpf));
 			request.setAttribute("contato", Cont.contatoPorId(cpf));
+			request.setAttribute("ativo", Dao.funcionarioPorId(funcionario));
 			System.out.println("_____________________________________");
 			System.out.println("ID FUNCIONARIO ALTERANDO " + funcionario.getIdFunc());
 			System.out.println("CPF FUNCIONARIO ALTERANDO " + funcionario.getCpf());
@@ -102,6 +103,7 @@ public class ControlFuncionario extends HttpServlet {
 		}
 		else {
 			forward = criar_editar; 
+			request.setAttribute("ativo", Dao.funcionarioPorId(funcionario));
 			acao = "I";
 		}		 
 		 RequestDispatcher view = request.getRequestDispatcher(forward);

@@ -14,7 +14,10 @@
 		
 	</head>
 	
-	<body>	
+	<body>
+	<jsp:include page="index.xhtml" flush="false">
+		<jsp:param name="cabecalho" value="cabecalho"/>
+	</jsp:include>	
 	<f:view>
 		 
 		<form action="ControlFuncionario" method="POST" name="cadastrofuncionario">  
@@ -61,7 +64,7 @@
 			<legend>CONTATO</legend>
 			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com"></label></p>
 			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX "></label>
-			<label><input type="checkbox" name="ativo" id="ativo" value="true" checked="<c:out value="${funcionario.ativo}"/>">ATIVO</label> 
+			<h:selectBooleanCheckbox value="#{ativo.ativo}"  id="ativo"></h:selectBooleanCheckbox> <label for="ativo">ATIVO</label> 
 				</p>
 		</fieldset>			 		 			 		 		 			
 		</form>	

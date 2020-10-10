@@ -9,9 +9,12 @@
 <meta charset="UTF-8">
 <title>Tabela Funcionário</title>
 
-		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">		
+<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">		
 </head>
 <body>
+<jsp:include page="index.xhtml" flush="false">
+		<jsp:param name="cabecalho" value="cabecalho"/>
+</jsp:include>
 	<f:view> 
 	<p>
 		<a href="ControlFuncionario?action">

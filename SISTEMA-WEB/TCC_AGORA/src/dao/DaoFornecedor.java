@@ -9,8 +9,16 @@ import factory.Conexao;
 import model.TbFornecedore;
 
 public class DaoFornecedor {
- 
-		Conexao con;
+	
+	private TbFornecedore fornecedor;
+	private Conexao con;
+	
+	public DaoFornecedor(){
+		super();
+		fornecedor = new TbFornecedore();
+		fornecedor.setAtivo(true);
+		
+	}	
 	public boolean crudFornecedor(String acao, TbFornecedore forn) throws Exception {
 			con = new Conexao(); 
 			PreparedStatement ps = null;
@@ -41,7 +49,7 @@ public class DaoFornecedor {
 }
 		
 	public TbFornecedore fornecedorPorId(TbFornecedore fornecedo) {
-			TbFornecedore fornecedor = new TbFornecedore();
+			fornecedor = new TbFornecedore();
 			try {
 				con = new Conexao();
 				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FORNECEDORES WHERE ID_FORN = ?"); 
@@ -83,5 +91,5 @@ public class DaoFornecedor {
 				e.printStackTrace();
 			}	 
 			return listaforn;
-		}	
+		}	 
 }

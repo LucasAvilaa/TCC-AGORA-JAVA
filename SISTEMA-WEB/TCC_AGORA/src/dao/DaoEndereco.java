@@ -15,7 +15,7 @@ public class DaoEndereco {
 		con = new Conexao(); 
 		PreparedStatement ps = null;  
 		if(acao.equals("I")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO I,?,?,?,?,?,?,?");  
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ENDERECO I,?,?,?,?,?,?,?"); 
 			ps.setString(1, cpf_cnpj); 
 			ps.setString(2,  end.getCep());
 			ps.setString(3, end.getRua());

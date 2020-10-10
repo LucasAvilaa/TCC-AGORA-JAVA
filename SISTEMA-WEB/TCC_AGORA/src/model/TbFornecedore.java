@@ -41,7 +41,7 @@ public class TbFornecedore implements Serializable {
 	@OneToMany(mappedBy="tbFornecedore")
 	private List<TbProduto> tbProdutos;
 
-	public TbFornecedore() {
+	public TbFornecedore() { 
 	}
 
 	public String getIdForn() {
@@ -59,7 +59,7 @@ public class TbFornecedore implements Serializable {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-
+	
 	public String getCnpj() {
 		return this.cnpj;
 	}

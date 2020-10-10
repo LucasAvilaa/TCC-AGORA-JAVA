@@ -9,8 +9,9 @@ import factory.Conexao;
 import model.TbProduto;
 
 public class DaoProduto {
- 
-		Conexao con;
+	 
+	private Conexao con;
+ 	
 	public boolean crudProduto(String acao,TbProduto prod) throws Exception {
 			con = new Conexao(); 
 			PreparedStatement ps = null;			

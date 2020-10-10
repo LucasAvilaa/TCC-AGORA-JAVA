@@ -12,6 +12,9 @@
 		<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">		
 </head>
 <body>
+<jsp:include page="index.xhtml">
+		<jsp:param name="cabecalho" value="cabecalho"/>
+</jsp:include>
 	<f:view>
 	<p>
 		<a href="ControlFornecedores?action">

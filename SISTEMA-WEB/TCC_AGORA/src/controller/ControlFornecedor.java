@@ -38,7 +38,8 @@ public class ControlFornecedor extends HttpServlet {
         super();
         Dao = new DaoFornecedor(); 
         End = new DaoEndereco();
-        Cont = new DaoContato(); 
+        Cont = new DaoContato();
+        fornecedor.setAtivo(true);        
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -87,6 +88,7 @@ public class ControlFornecedor extends HttpServlet {
 			request.setAttribute("fornecedor", Dao.fornecedorPorId(fornecedor));
 			request.setAttribute("endereco", End.enderecoPorId(cnpj));
 			request.setAttribute("contato", Cont.contatoPorId(cnpj));
+			request.setAttribute("ativo", Dao.fornecedorPorId(fornecedor));
 			System.out.println("_____________________________________");
 			System.out.println("ID FORNECEDOR ALTERANDO " + fornecedor.getIdForn()); 
 			System.out.println("CNPJ FORNECEDOR ALTERANDO " + cnpj); 
@@ -94,7 +96,8 @@ public class ControlFornecedor extends HttpServlet {
 			forward = criar_editar;
 		}
 		else {
-			forward = criar_editar;
+			forward = criar_editar; 
+			request.setAttribute("ativo", Dao.fornecedorPorId(fornecedor));
 			acao = "I";
 		}		 
 		 RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -102,7 +105,11 @@ public class ControlFornecedor extends HttpServlet {
 	}
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			 cnpj = request.getParameter("cnpj");
+			 
+			if (acao.equals("I")) {
+				cnpj = request.getParameter("cnpj");
+				fornecedor.setAtivo(true);
+			}
 			 
 			 fornecedor.setRazaoSocial(request.getParameter("razao-social"));
 			 fornecedor.setCnpj(request.getParameter("cnpj"));

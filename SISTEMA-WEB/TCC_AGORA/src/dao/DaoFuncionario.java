@@ -9,8 +9,16 @@ import factory.Conexao;
 import model.TbFuncionario;
 
 public class DaoFuncionario {
- 
-		Conexao con;
+	
+	private TbFuncionario funcionario;
+	private	Conexao con;
+	
+	public DaoFuncionario() {
+		super();
+		funcionario = new TbFuncionario();
+		funcionario.setAtivo(true);
+	}
+	
 	public boolean crudFuncionario(String acao,TbFuncionario func) throws Exception {
 			con = new Conexao(); 
 			PreparedStatement ps = null;
@@ -51,7 +59,7 @@ public class DaoFuncionario {
 }
 	
 	public TbFuncionario funcionarioPorId(TbFuncionario id) {
-				TbFuncionario func = new TbFuncionario();
+				funcionario = new TbFuncionario();
 				try {
 					con = new Conexao();
 					PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FUNCIONARIOS WHERE ID_FUNC=?"); 
@@ -59,25 +67,25 @@ public class DaoFuncionario {
 					ResultSet rs = ps.executeQuery();
 					
 					while (rs.next()) { 
-						func.setIdFunc(rs.getString("ID_FUNC"));
-						func.setNome(rs.getString("NOME"));
-						func.setSobrenome(rs.getString("SOBRENOME"));
-						func.setRg(rs.getString("RG"));
-						func.setCpf(rs.getString("CPF"));
-						func.setCargo(rs.getString("CARGO"));
-						func.setDtNasc(rs.getDate("DT_NASC"));
-						func.setAtivo(rs.getBoolean("ATIVO"));
+						funcionario.setIdFunc(rs.getString("ID_FUNC"));
+						funcionario.setNome(rs.getString("NOME"));
+						funcionario.setSobrenome(rs.getString("SOBRENOME"));
+						funcionario.setRg(rs.getString("RG"));
+						funcionario.setCpf(rs.getString("CPF"));
+						funcionario.setCargo(rs.getString("CARGO"));
+						funcionario.setDtNasc(rs.getDate("DT_NASC"));
+						funcionario.setAtivo(rs.getBoolean("ATIVO"));
 						if(rs.getString("SEXO").equals("M")) {
-							func.setSexo("MASCULINO");	
+							funcionario.setSexo("MASCULINO");	
 						}else {
-							func.setSexo("FEMININO");
+							funcionario.setSexo("FEMININO");
 						}  
 					} 	
 					ps.close();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}	 
-				return func;
+				return funcionario;
 			}
 	
 	public List<TbFuncionario> listaFuncionario() {
@@ -88,19 +96,19 @@ public class DaoFuncionario {
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {
-					TbFuncionario func = new TbFuncionario(); 
+					TbFuncionario funcionario = new TbFuncionario(); 
 					
-					func.setIdFunc(rs.getString("ID_FUNC"));
-					func.setNome(rs.getString("NOME"));
-					func.setSobrenome(rs.getString("SOBRENOME"));
-					func.setRg(rs.getString("RG"));
-					func.setCpf(rs.getString("CPF"));
-					func.setCargo(rs.getString("CARGO"));
-					func.setDtNasc(rs.getDate("DT_NASC"));
-					func.setAtivo(rs.getBoolean("ATIVO"));
-					func.setSexo(rs.getString("SEXO"));
+					funcionario.setIdFunc(rs.getString("ID_FUNC"));
+					funcionario.setNome(rs.getString("NOME"));
+					funcionario.setSobrenome(rs.getString("SOBRENOME"));
+					funcionario.setRg(rs.getString("RG"));
+					funcionario.setCpf(rs.getString("CPF"));
+					funcionario.setCargo(rs.getString("CARGO"));
+					funcionario.setDtNasc(rs.getDate("DT_NASC"));
+					funcionario.setAtivo(rs.getBoolean("ATIVO"));
+					funcionario.setSexo(rs.getString("SEXO"));
 								
-					listafunc.add(func);
+					listafunc.add(funcionario);
 				} 	
 				ps.close();
 			} catch (Exception e) {
