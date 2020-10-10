@@ -15,7 +15,10 @@
 		
 	</head>
 	
-	<body>	
+	<body>
+	<jsp:include page="index.xhtml" flush="false">
+		<jsp:param name="cabecalho" value="cabecalho"/>
+	</jsp:include>	
 	<f:view>
  		
 		<form action="ControlFornecedores" method="POST" name="cadastroFornecedores">  
@@ -34,10 +37,10 @@
  
 			<legend>ENDEREÇO</legend>
 			<p><label>CEP: <input type="text" name="cep" id="cep" style="width: 100px; " value="<c:out value="${endereco.cep}"/>"> </label>
-			   <label>CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "value="<c:out value="${endereco.cidade}"/>"></label></p>				    
-			<p><label>BAIRRO: <input type="text" name="bairro"  disabled="disabled" style="width: 232px; "value="<c:out value="${endereco.bairro}"/>"></label>
-				<label>ESTADO: <input type="text" name="estado" disabled="disabled" style="width: 40px; "  value="<c:out value="${endereco.estado}"/>"></label></p>				 								
-			<p><label>RUA: <input type="text" name="rua" disabled="disabled"  style="width: 221px; "value="<c:out value="${endereco.rua}"/>"></label>
+			   <label>CIDADE: <input type="text" name="cidade"  style="width: 205px; "value="<c:out value="${endereco.cidade}"/>"></label></p>				    
+			<p><label>BAIRRO: <input type="text" name="bairro"   style="width: 232px; "value="<c:out value="${endereco.bairro}"/>"></label>
+				<label>ESTADO: <input type="text" name="estado"   style="width: 40px; "  value="<c:out value="${endereco.estado}"/>"></label></p>				 								
+			<p><label>RUA: <input type="text" name="rua"  style="width: 221px; "value="<c:out value="${endereco.rua}"/>"></label>
 			   <label>NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>"></label> </p>
  
 		</fieldset>	 
@@ -47,10 +50,7 @@
  
 			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com"></label></p>
 			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX "></label>
-			<h:selectBooleanCheckbox value="#{fornecedor.ativo}" disabled="true" id="ativo"></h:selectBooleanCheckbox> <label for="ativo">ATIVO</label> 
-	 
-						
-					 
+			<h:selectBooleanCheckbox value="#{ativo.ativo}"  id="ativo"></h:selectBooleanCheckbox> <label for="ativo">ATIVO</label> 		 
 						 
 				</p>
 		</fieldset>			 		 			 		 		 			

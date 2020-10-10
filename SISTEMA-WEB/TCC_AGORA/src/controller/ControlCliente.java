@@ -94,6 +94,7 @@ public class ControlCliente extends HttpServlet {
 			request.setAttribute("cliente", Dao.ClientePorId(cliente));
 			request.setAttribute("endereco", End.enderecoPorId(cpf));
 			request.setAttribute("contato", Cont.contatoPorId(cpf));
+			request.setAttribute("ativo", Dao.ClientePorId(cliente));
 			System.out.println("_____________________________________");
 			System.out.println("ID CLIENTE ALTERANDO " + cliente.getIdCli());
 			System.out.println("CPF CLIENTE ALTERANDO " + cliente.getCpf());
@@ -102,6 +103,7 @@ public class ControlCliente extends HttpServlet {
 		}
 		else {
 			forward = criar_editar;
+			request.setAttribute("ativo", Dao.ClientePorId(cliente));
 			acao = "I";
 		}		 
 		 RequestDispatcher view = request.getRequestDispatcher(forward);

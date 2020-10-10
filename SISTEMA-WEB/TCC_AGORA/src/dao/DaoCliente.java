@@ -10,7 +10,15 @@ import model.TbCliente;
 
 public class DaoCliente {
 
-	Conexao con;
+	private TbCliente cliente;
+	private Conexao con;
+			
+	public DaoCliente() {
+		super();
+		cliente = new TbCliente();
+		cliente.setAtivo(true);	
+	}
+	
 	public boolean crudCliente(String acao,TbCliente tbclientes) throws Exception {
 		con = new Conexao(); 
 		PreparedStatement ps = null;
@@ -48,7 +56,7 @@ public class DaoCliente {
 }
 	
 	public TbCliente ClientePorId(TbCliente id) {
-		TbCliente cliente = new TbCliente();
+		cliente = new TbCliente();
 		try {
 			con = new Conexao();
 			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CLIENTES WHERE ID_CLI=?"); 

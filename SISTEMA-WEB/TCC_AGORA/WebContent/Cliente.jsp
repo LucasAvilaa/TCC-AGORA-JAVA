@@ -16,6 +16,9 @@
 	</head>
 	
 	<body>	
+	<jsp:include page="index.xhtml" flush="false">
+		<jsp:param name="cabecalho" value="cabecalho"/>
+	</jsp:include>
 	<f:view>
  		
 		<form action="ControlCliente" method="POST" name="cadastroCliente">  
@@ -58,11 +61,8 @@
  
 			<p><label>EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com"></label></p>
 			<p><label>CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX "></label>
-			<label><h:selectBooleanCheckbox value="#{cliente.ativo}" >ATIVO</h:selectBooleanCheckbox> </label> 
-	 
-						
-					 
-						 
+			<h:selectBooleanCheckbox value="#{ativo.ativo}"  id="ativo"></h:selectBooleanCheckbox> <label for="ativo">ATIVO</label> 		
+				 		 
 				</p>
 		</fieldset>			 		 			 		 		 			
 		</form>	
