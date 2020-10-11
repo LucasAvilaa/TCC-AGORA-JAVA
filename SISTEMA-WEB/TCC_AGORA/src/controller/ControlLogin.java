@@ -23,7 +23,7 @@ public class ControlLogin extends HttpServlet {
 		String action = request.getParameter("action");  
 		if(action.equalsIgnoreCase("Deslogar")) {
 			request.getSession().invalidate();
-			response.sendRedirect("login.xhtml");
+			response.sendRedirect("Login.xhtml");
 		}	
 	}
 

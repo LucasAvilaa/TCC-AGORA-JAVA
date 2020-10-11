@@ -16,8 +16,9 @@
       </jsp:include>
       <f:view>
          <p>
-         <h2>LISTA DE FUNCIONÁRIOS</h2>
-         </p> 
+         	<h2>LISTA DE FUNCIONÁRIOS</h2>
+       	</p>      
+         
          <br />
          <p>
             <a href="ControlFuncionario?action">
@@ -57,8 +58,8 @@
                      <td>
                         <c:out value="${funcionario.sexo}" />
                      </td>
-                     <td><a href='ControlFuncionario?action=edit&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                     <td><a href='ControlFuncionario?action=delete&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+                     <td><a href='ControlFuncionario?action=Edit&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+                     <td><a href='ControlFuncionario?action=Delete&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
                   </tr>
                </c:forEach>
             </tbody>

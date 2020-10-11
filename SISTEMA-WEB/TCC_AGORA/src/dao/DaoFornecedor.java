@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.model.SelectItem;
+
 import factory.Conexao;
 import model.TbFornecedore;
 
@@ -16,9 +18,9 @@ public class DaoFornecedor {
 	public DaoFornecedor(){
 		super();
 		fornecedor = new TbFornecedore();
-		fornecedor.setAtivo(true);
-		
+		fornecedor.setAtivo(true);		
 	}	
+	
 	public boolean crudFornecedor(String acao, TbFornecedore forn) throws Exception {
 			con = new Conexao(); 
 			PreparedStatement ps = null;
@@ -91,5 +93,21 @@ public class DaoFornecedor {
 				e.printStackTrace();
 			}	 
 			return listaforn;
+		}	
+	public List<SelectItem> getListaFornecedores() throws Exception { 
+		List<SelectItem> fornecedores = new ArrayList<SelectItem>(); 
+		try {
+			con = new Conexao();
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT ID_FORN, RAZAO_SOCIAL FROM TB_FORNECEDORES");  
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) { 
+				fornecedores.add(new SelectItem(rs.getString("ID_FORN"),rs.getString("CNPJ")));
+			} 
+			ps.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}	 
+		return fornecedores;
+	}
 }

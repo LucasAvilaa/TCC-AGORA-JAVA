@@ -1,7 +1,7 @@
 @charset "UTF-8";
  form{
      width: 505px;
-     margin: auto;
+     margin: auto;  
 }
  input, textarea {
      font-family: sans-serif;
@@ -17,7 +17,7 @@
      color: #888888;
      font-weight: bold;
      font-size: 13pt;
-     font-family: sans-serif;
+     font-family: sans-serif; 
 }
  fieldset {
      border-color: #cecece;
@@ -33,5 +33,5 @@
 }
  tr{
      font-size:18px;
-}
+} 
 	

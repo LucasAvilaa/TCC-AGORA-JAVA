@@ -27,7 +27,7 @@ import model.TbLogin;
 public class ControlFuncionario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaFuncionario.jsp";
-    private static String criar_editar = "/Funcionario.jsp"; 
+    private static String criar_editar = "/CadastroFuncionario.jsp"; 
 	private DaoFuncionario Dao;
 	private DaoEndereco End;
 	private DaoContato Cont;
@@ -58,7 +58,7 @@ public class ControlFuncionario extends HttpServlet {
 			 funcionario.setIdFunc(idFunc);
 		 }   
 		 
-		 if(action.equalsIgnoreCase("tabela")) {			 	
+		 if(action.equalsIgnoreCase("Tabela")) {			 	
 				 try {				
 					request.setAttribute("funcionario", Dao.listaFuncionario());
 					request.setAttribute("endereco", End.listaEndereco());
@@ -68,7 +68,7 @@ public class ControlFuncionario extends HttpServlet {
 					e.printStackTrace();
 				}		 
 		 }
-		 else if(action.equalsIgnoreCase("delete")) { 
+		 else if(action.equalsIgnoreCase("Delete")) { 
 					try {
 						acao = "E"; 						
 						if(End.crudEndereco(acao, cpf, endereco)) {
@@ -90,7 +90,7 @@ public class ControlFuncionario extends HttpServlet {
 						e.printStackTrace();
 					}
 		 }
-		else if(action.equalsIgnoreCase("edit")){   
+		else if(action.equalsIgnoreCase("Edit")){   
 			request.setAttribute("funcionario", Dao.funcionarioPorId(funcionario));
 			request.setAttribute("endereco", End.enderecoPorId(cpf));
 			request.setAttribute("contato", Cont.contatoPorId(cpf));
@@ -180,6 +180,6 @@ public class ControlFuncionario extends HttpServlet {
 				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR FUNCIONARIO");
 				System.out.println("_____________________________________");
 			}
-			  response.sendRedirect("ControlFuncionario?action=tabela");		
+			  response.sendRedirect("ControlFuncionario?action=Tabela");		
 	}	
 }

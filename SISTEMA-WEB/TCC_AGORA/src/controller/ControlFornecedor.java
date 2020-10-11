@@ -23,7 +23,7 @@ import model.TbFornecedore;
 public class ControlFornecedor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaFornecedor.jsp";
-    private static String criar_editar = "/Fornecedor.jsp"; 
+    private static String criar_editar = "/CadastroFornecedor.jsp"; 
 	private DaoFornecedor Dao;
 	private DaoEndereco End;
 	private DaoContato Cont;
@@ -38,8 +38,7 @@ public class ControlFornecedor extends HttpServlet {
         super();
         Dao = new DaoFornecedor(); 
         End = new DaoEndereco();
-        Cont = new DaoContato();
-        fornecedor.setAtivo(true);        
+        Cont = new DaoContato();  
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,17 +46,12 @@ public class ControlFornecedor extends HttpServlet {
 		 String action = request.getParameter("action");  
 		 String idFor = request.getParameter("idForn"); 
 		 		cnpj = request.getParameter("cod");
-		 		if(acao.equals("I")) {
-		 			request.setAttribute("acao", "I");
-		 		}else {
-		 			request.setAttribute("acao", "A");		 			
-		 		}
 		
  		if(idFor != null) {  
 			 idForn = String.valueOf(idFor);
 			 fornecedor.setIdForn(idForn);
 		 }		 
-		 if(action.equalsIgnoreCase("tabela")) {			 	
+		 if(action.equalsIgnoreCase("Tabela")) {			 	
 				 try {				
 					request.setAttribute("fornecedor", Dao.listaFornecedor());
 					request.setAttribute("endereco", End.listaEndereco());
@@ -67,7 +61,7 @@ public class ControlFornecedor extends HttpServlet {
 					e.printStackTrace();
 				}		 
 		 }
-		 else if(action.equalsIgnoreCase("delete")) { 
+		 else if(action.equalsIgnoreCase("Delete")) { 
 			 try {
 					acao = "E"; 						
 					if(End.crudEndereco(acao, cnpj, endereco)) {
@@ -89,11 +83,11 @@ public class ControlFornecedor extends HttpServlet {
 					e.printStackTrace();
 				}
 		 }
-		else if(action.equalsIgnoreCase("edit")){   
+		else if(action.equalsIgnoreCase("Edit")){   
 			request.setAttribute("fornecedor", Dao.fornecedorPorId(fornecedor));
 			request.setAttribute("endereco", End.enderecoPorId(cnpj));
 			request.setAttribute("contato", Cont.contatoPorId(cnpj));
-			request.setAttribute("ativo", Dao.fornecedorPorId(fornecedor));
+			request.setAttribute("ativo", fornecedor.getAtivo());
 			System.out.println("_____________________________________");
 			System.out.println("ID FORNECEDOR ALTERANDO " + fornecedor.getIdForn()); 
 			System.out.println("CNPJ FORNECEDOR ALTERANDO " + cnpj); 
@@ -101,8 +95,10 @@ public class ControlFornecedor extends HttpServlet {
 			forward = criar_editar;
 		}
 		else {
-			forward = criar_editar; 
-			request.setAttribute("ativo", Dao.fornecedorPorId(fornecedor));
+			forward = criar_editar;  
+			fornecedor.setAtivo(true);
+			request.setAttribute("ativo", fornecedor.getAtivo());
+			System.out.println("ATIVO: " +fornecedor.getAtivo());
 			acao = "I";
 		}		 
 		 RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -110,21 +106,16 @@ public class ControlFornecedor extends HttpServlet {
 	}
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(acao.equals("I")) {
- 			request.setAttribute("acao", "I");
- 		}else {
- 			request.setAttribute("acao", "A");		 			
- 		}
-		
+ 		
 			if (acao.equals("I")) {
-				cnpj = request.getParameter("cnpj");
-				fornecedor.setAtivo(true);
+				cnpj = request.getParameter("cnpj"); 
 			}
 			 
 			 fornecedor.setRazaoSocial(request.getParameter("razao-social"));
 			 fornecedor.setCnpj(request.getParameter("cnpj"));
 			 fornecedor.setAtivo(Boolean.valueOf(request.getParameter("ativo")));
 			 
+			 System.out.println("Campo ativo: " +Boolean.valueOf(request.getParameter("ativo")));
 			 if(request.getParameter("numero") != "") {
 				 endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
 			 }	 
@@ -139,9 +130,7 @@ public class ControlFornecedor extends HttpServlet {
 	 
 			 contato.setEmail(request.getParameter("email"));
 			 contato.setNumero(request.getParameter("celular"));
-		 
-			 fornecedor.setAtivo(Boolean.parseBoolean(request.getParameter("ativo"))); 
-			 
+		  
 			 try {
 				 System.out.println("AÇÃO: " + acao ); 	 
 					 if(Dao.crudFornecedor(acao, fornecedor)) {
@@ -169,6 +158,6 @@ public class ControlFornecedor extends HttpServlet {
 				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR FORNECEDOR");
 				System.out.println("_____________________________________");
 			}
-			  response.sendRedirect("ControlFornecedores?action=tabela");		
+			  response.sendRedirect("ControlFornecedores?action=Tabela");		
 	}	
 }
