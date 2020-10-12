@@ -7,7 +7,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Cadastro fornecedor</title>
+      <title>Cadastro Clientes</title>
       <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
@@ -17,64 +17,71 @@
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
       <f:view>
-         <form action="ControlFornecedores" method="POST" name="cadastroFornecedores">
+         <form action="ControlCliente" method="POST" name="cadastroCliente">
             <p>
-            <h2>CADASTRO DE FORNECEDOR</h2>
-            </p>
+            	<h2>CADASTRO DE CLIENTE</h2>
+            </p> 
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlFornecedores?action=tabela">CANCELAR</a> </p>
+            <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlCliente?action=Tabela">CANCELAR</a> </p>
             <fieldset id="informacoes">
                <legend>INFORMAÇÕES BÁSICAS </legend>
                <p>
                   <label>
-                     RAZÃO SOCIAL: <input name="razao-social"  maxlength="50" value="
-                     <c:out value="${fornecedor.razaoSocial}"/>
-                     " required="required" style="width: 364px; "/>
+                     NOME: <input name="nome"  maxlength="50" value="<c:out value="${cliente.nome}"/>" required="required" style="width: 364px; "/>
                   </label>
                </p>
                <p>
                   <label>
-                     CNPJ: <input name="cnpj" id="cnpj" value="
-                     <c:out value="${fornecedor.cnpj}"/>
-                     " placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
+                     SOBRENOME: <input name="sobrenome" maxlength="50" value="<c:out value="${cliente.sobrenome}"/>" required="required" style="width: 314px; "/>
                   </label>
+               </p>
+               <p>
+                  <label>
+                     CPF: <input name="cpf" id="cpf" value="<c:out value="${cliente.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
+                  </label>
+                  <label>
+                     RG: <input name="rg" id="rg" value="<c:out value="${cliente.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/>
+                  </label>
+               </p>
+               <p>
+                  <label>
+                     NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${cliente.dtNasc}"/>" required="required" style="width: 148px; ">
+                  </label>
+                  <label>
+                     SEXO: 
+                     <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">
+                        <f:selectItem itemValue="#{cliente.sexo}"/>
+                        <f:selectItem noSelectionOption="true" itemValue=" "/>
+                        <f:selectItem itemValue="M" itemLabel="MASCULINO"/>
+                        <f:selectItem itemValue="F" itemLabel="FEMININO"/>
+                     </h:selectOneMenu>
+                  </label>
+               </p>
             </fieldset>
             <fieldset id="endereco">
                <legend>ENDEREÇO</legend>
                <p>
                   <label>
-                     CEP: <input type="text" name="cep" id="cep" style="width: 100px; " value="
-                     <c:out value="${endereco.cep}"/>
-                     "> 
+                     CEP: <input type="text" name="cep" id="cep" style="width: 100px; " value="<c:out value="${endereco.cep}"/>"> 
                   </label>
                   <label>
-                     CIDADE: <input type="text" name="cidade"  style="width: 205px; "value="
-                     <c:out value="${endereco.cidade}"/>
-                     ">
+                     CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "value="<c:out value="${endereco.cidade}"/>">
                   </label>
                </p>
                <p>
                   <label>
-                     BAIRRO: <input type="text" name="bairro"   style="width: 232px; "value="
-                     <c:out value="${endereco.bairro}"/>
-                     ">
+                     BAIRRO: <input type="text" name="bairro"  disabled="disabled" style="width: 232px; "value="<c:out value="${endereco.bairro}"/>">
                   </label>
                   <label>
-                     ESTADO: <input type="text" name="estado"   style="width: 40px; "  value="
-                     <c:out value="${endereco.estado}"/>
-                     ">
+                     ESTADO: <input type="text" name="estado" disabled="disabled" style="width: 40px; "  value="<c:out value="${endereco.estado}"/>">
                   </label>
                </p>
                <p>
                   <label>
-                     RUA: <input type="text" name="rua"  style="width: 221px; "value="
-                     <c:out value="${endereco.rua}"/>
-                     ">
+                     RUA: <input type="text" name="rua" disabled="disabled"  style="width: 221px; "value="<c:out value="${endereco.rua}"/>">
                   </label>
                   <label>
-                     NÚMERO: <input type="number" name="numero" style="width: 69px; "value="
-                     <c:out value="${endereco.numero}"/>
-                     ">
+                     NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>">
                   </label>
                </p>
             </fieldset>
@@ -82,19 +89,15 @@
                <legend>CONTATO</legend>
                <p>
                   <label>
-                     EMAIL: <input type="text" name="email" style="width: 354px; "value="
-                     <c:out value="${contato.email}"/>
-                     " placeholder="seuemail@email.com">
+                     EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com">
                   </label>
                </p>
                <p>
                   <label>
-                     CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="
-                     <c:out value="${contato.numero}"/>
-                     " placeholder="(XX) XXXXX-XXXX ">
+                     CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX ">
                   </label>
                   <h:selectBooleanCheckbox value="#{ativo.ativo}"  id="ativo"></h:selectBooleanCheckbox>
-                  <label for="ativo">ATIVO</label> 		 
+                  <label for="ativo">ATIVO</label> 		
                </p>
             </fieldset>
          </form>
@@ -132,4 +135,4 @@
       }); 
    </script> 
    </body> 
-</html>
+</html>	

@@ -7,7 +7,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Tabela Fornecedores</title>
+      <title>Tabela Filiais</title>
       <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
    </head>
    <body>
@@ -16,36 +16,36 @@
       </jsp:include>
       <f:view>
          <p>
-         	<h2>LISTA DE FORNECEDORES</h2>
+         	<h2>LISTA DE FILIAIS</h2>
        	</p>
                  
          <br />
          <p>
-            <a href="ControlFornecedores?action">
+            <a href="ControlEstabelecimento?action">
             <img src="img/adicionar.png" style="width: 31px; height: 28px; " title="ADICIONAR" />
             </a>
          </p>
          <table border="1">
             <thead>
                <tr>
-                  <th style="width: 244px; ">RAZÃO SOCIAL</th>
-                  <th style="width: 166px; ">CNPJ</th>
+                  <th style="width: 357px; ">RAZÃO SOCIAL</th>
+                  <th style="width: 166px; ">CNPJ</th> 
                   <th colspan="2" style="width: 72px; ">AÇÃO</th>
                </tr>
             </thead>
             <tbody>
-               <c:forEach items="${fornecedor}" var="fornecedor">
+               <c:forEach items="${estabelecimento}" var="estabelecimento">
                   <tr>
                      <td>
-                        <c:out value="${fornecedor.razaoSocial}" />
+                        <c:out value="${estabelecimento.razaoSocial}" />
                      </td>
                      <td>
-                        <c:out value="${fornecedor.cnpj}" />
-                     </td>
-                     <td><a href='ControlFornecedores?action=Edit&idForn=<c:out value="${fornecedor.idForn}"/>&cod=<c:out value="${fornecedor.cnpj}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                     <td><a href='ControlFornecedores?action=Delete&idForn=<c:out value="${fornecedor.idForn}"/>&cod=<c:out value="${fornecedor.cnpj}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
-                  </tr>
-               </c:forEach>
+                        <c:out value="${estabelecimento.cnpj}" />
+                     </td>     
+                        <td><a href='ControlEstabelecimento?action=Edit&idEstab=<c:out value="${estabelecimento.idEstab}"/>&cod=<c:out value="${estabelecimento.cnpj}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+                 		<td><a href='ControlEstabelecimento?action=Delete&idEstab=<c:out value="${estabelecimento.idEstab}"/>&cod=<c:out value="${estabelecimento.cnpj}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+                      </tr>
+               </c:forEach>  
             </tbody>
          </table>
       </f:view>

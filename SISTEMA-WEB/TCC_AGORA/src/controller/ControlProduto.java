@@ -2,9 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,17 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DaoProduto;
+//import model.TbFornecedore;
 import model.TbProduto;
 
 @WebServlet(name = "produto", urlPatterns={"/ControlProduto"})
 public class ControlProduto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaProduto.jsp";
-    private static String criar_editar = "/Produto.jsp"; 
+    private static String criar_editar = "/CadastroProduto.jsp"; 
 	private DaoProduto Dao;
-	private String acao = null; 
+	private String acao = "I"; 
 	private Integer idProd = null;
-	private TbProduto prod = new TbProduto();
+	private TbProduto produto = new TbProduto();
+//	private TbFornecedore fornecedor = new TbFornecedore();
 	
     public ControlProduto() {
         super();
@@ -34,79 +33,71 @@ public class ControlProduto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String forward = "";
 		 String action = request.getParameter("action");  
-		 String idPro = request.getParameter("idProd"); 
-		 if(idProd != null) {  
-			 idProd = Integer.parseInt(idPro);
-			 prod.setIdProduto(idProd);
+		 String idPro = request.getParameter("idProd");  
+		
+ 		if(idPro != null) {  
+ 			 idProd = Integer.parseInt(idPro);
+			 produto.setIdProduto(idProd);
 		 }		 
-		 if(action.equalsIgnoreCase("tabela")) {			 	
+		 if(action.equalsIgnoreCase("Tabela")) {			 	
 				 try {				
-					request.setAttribute("produto", Dao.listaProdutos());
+					request.setAttribute("produto", Dao.listaProdutos()); 
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}		 
 		 }
-		 else if(action.equalsIgnoreCase("delete")) { 
-					try {
-						acao = "E"; 
-						Dao.crudProduto(acao, prod);						
-						request.setAttribute("produto", Dao.listaProdutos());
-						forward = tabela;
-						
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+		 else if(action.equalsIgnoreCase("Delete")) { 
+			 try {
+					acao = "E"; 		 
+					if (Dao.crudProduto(acao, produto)) {
+						System.out.println("PRODUTO DELETADO COM SUCESSO");
+						System.out.println("______________________________________");
+					} 
+					request.setAttribute("produto",  Dao.listaProdutos()); 
+					forward = tabela;
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		 }
-		else if(action.equalsIgnoreCase("edit")){   
-			request.setAttribute("produto", Dao.produtoPorId(prod));
+		else if(action.equalsIgnoreCase("Edit")){   
+			request.setAttribute("produto", Dao.produtoPorId(produto));  
+			System.out.println("_____________________________________");
+			System.out.println("ID PRODUTO ALTERANDO " + produto.getIdProduto());  
 			acao = "A";
 			forward = criar_editar;
 		}
 		else {
-			forward = criar_editar;
+			forward = criar_editar;   
 			acao = "I";
 		}		 
 		 RequestDispatcher view = request.getRequestDispatcher(forward);
 		 view.forward(request, response);
 	}
-	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			 
-		  	 prod.setIdProduto(Integer.parseInt(request.getParameter("idProd")));
-		 //	 prod.setAtivo(Boolean.valueOf(request.getParameter("ativo")));
-		  	 prod.setCategoria(request.getParameter("categoria"));
-		  	 prod.setDescricaoProduto(request.getParameter("descricao"));
-		  	 prod.setNomeProduto(request.getParameter("nome"));
-		  	 prod.setValorUniCompra(BigDecimal.valueOf(Double.valueOf(request.getParameter("vUnitCompra"))));
-		  	 prod.setValorUniVenda(BigDecimal.valueOf(Double.valueOf(request.getParameter("vUnitVenda"))));
-			 
-			 Date data = null;
-			 if(request.getParameter("dataCadastro") != null) {
-				 try { 				
-					data = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataCadastro"));
-					prod.setDataCadastro(data);
-				} catch (ParseException e) { 
-					e.printStackTrace();
-					System.out.println("ERRO NA CONVERSÃO DA DATA");
-				}				 
-			 }
+			   
+		//	fornecedor.set
+		//	produto.setTbFornecedore(fornecedor);
+			produto.setCategoria(request.getParameter("categoria"));
+			produto.setDescricaoProduto(request.getParameter("descricao"));
+			produto.setNomeProduto(request.getParameter("nomeProduto"));
+			produto.setValorUniCompra(BigDecimal.valueOf(Double.valueOf(request.getParameter("vUnitCompra"))));
+			produto.setValorUniVenda(BigDecimal.valueOf(Double.valueOf(request.getParameter("vUnitVenda"))));
+ 
 			 try {
-				 System.out.println("AÇÃO: " + acao );
-				 if(acao.equals("I")) {				  
-					 if(Dao.crudProduto(acao, prod)) {
-						 System.out.println("CRIADO COM SUCESSO");
-						 	}							
-						}
-				 else{  
-					 prod.setIdProduto(idProd);
-					 Dao.crudProduto(acao, prod);	
-					System.out.println("ALTERADO COM SUCESSO: " + prod.getIdProduto());	
-				 }				
+				 System.out.println("AÇÃO: " + acao ); 	 
+					 if(Dao.crudProduto(acao, produto)) {
+						 System.out.println("PRODUTO INSERIDO COM SUCESSO"); 
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR PRODUTO"); 
+					 }
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("ERRO AO INSERIR PRODUTO");
+				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR PRODUTO");
+				System.out.println("_____________________________________");
 			}
-			  response.sendRedirect("ControlProduto?action=tabela");		
+			  response.sendRedirect("ControlProduto?action=Tabela");		
 	}	
 }

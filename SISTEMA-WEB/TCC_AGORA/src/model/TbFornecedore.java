@@ -1,7 +1,13 @@
 package model;
 
 import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
 import javax.persistence.*;
+
+import dao.DaoFornecedor;
+
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +16,7 @@ import java.util.List;
  * The persistent class for the TB_FORNECEDORES database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_FORNECEDORES")
 @NamedQuery(name="TbFornecedore.findAll", query="SELECT t FROM TbFornecedore t")
@@ -40,6 +47,16 @@ public class TbFornecedore implements Serializable {
 	//bi-directional many-to-one association to TbProduto
 	@OneToMany(mappedBy="tbFornecedore")
 	private List<TbProduto> tbProdutos;
+	
+	private List<SelectItem> fornecedores;
+
+	public List<SelectItem> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(List<SelectItem> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
 
 	public TbFornecedore() { 
 	}
@@ -128,4 +145,14 @@ public class TbFornecedore implements Serializable {
 		return tbProduto;
 	}
 
+	public void listar() {
+		DaoFornecedor fornecedor = new DaoFornecedor();
+		try {
+			setFornecedores(fornecedor.getListaFornecedores());
+			System.out.println("FORNECEDORES LISTADOS");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("ERRO AO LISTAR FORNECEDORES");
+		}
+	}
 }

@@ -27,7 +27,7 @@ import model.TbLogin;
 public class ControlCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaCliente.jsp";
-    private static String criar_editar = "/Cliente.jsp"; 
+    private static String criar_editar = "/CadastroCliente.jsp"; 
 	private DaoCliente Dao;
 	private DaoEndereco End;
 	private DaoContato Cont;
@@ -58,7 +58,7 @@ public class ControlCliente extends HttpServlet {
 			 cliente.setIdCli(idcli); 
 		 } 
 		 
-		 if(action.equalsIgnoreCase("tabela")) {			 	
+		 if(action.equalsIgnoreCase("Tabela")) {			 	
 				 try {				
 					request.setAttribute("cliente", Dao.listaCliente());
 					request.setAttribute("endereco", End.listaEndereco());
@@ -68,7 +68,7 @@ public class ControlCliente extends HttpServlet {
 					e.printStackTrace();
 				}		 
 		 }
-		 else if(action.equalsIgnoreCase("delete")) { 
+		 else if(action.equalsIgnoreCase("Delete")) { 
 					try {
 						acao = "E"; 						
 						if(End.crudEndereco(acao, cpf, endereco)) {
@@ -90,7 +90,7 @@ public class ControlCliente extends HttpServlet {
 						e.printStackTrace();
 					}
 		 }
-		else if(action.equalsIgnoreCase("edit")){   
+		else if(action.equalsIgnoreCase("Edit")){   
 			request.setAttribute("cliente", Dao.ClientePorId(cliente));
 			request.setAttribute("endereco", End.enderecoPorId(cpf));
 			request.setAttribute("contato", Cont.contatoPorId(cpf));
@@ -177,6 +177,6 @@ public class ControlCliente extends HttpServlet {
 				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR CLIENTE");
 				System.out.println("_____________________________________");
 			}
-			  response.sendRedirect("ControlCliente?action=tabela");		
+			  response.sendRedirect("ControlCliente?action=Tabela");		
 	}	
 }
