@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -146,8 +147,14 @@ public class ControlFuncionario extends HttpServlet {
 			 
 			 Date data = null;
 			 try { 				
-					data = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data"));
-					funcionario.setDtNasc(data);
+				 DateFormat dataCru = new SimpleDateFormat("yyyy-mm-dd");
+				 	Date date = dataCru.parse(request.getParameter("data"));
+				 	
+				 	DateFormat dataConv = new SimpleDateFormat("dd-mm-yyyy"); 
+				    String date2 = dataConv.format(date); 
+				 	
+				 	data = new SimpleDateFormat("dd-MM-yyyy").parse(date2); 
+				 	funcionario.setDtNasc(data);
 					
 			 	} catch (ParseException e) { 
 					e.printStackTrace();

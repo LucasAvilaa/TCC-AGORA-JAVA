@@ -46,7 +46,7 @@
                </p>
                <p>
                   <label>
-                     NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="dd/MM/yyyy " value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; ">
+                     NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; ">
                   </label>
                   <label>
                      SEXO: 
@@ -72,7 +72,7 @@
                <legend>ENDEREÇO</legend>
                <p>
                   <label>
-                     CEP: <input type="text" name="cep" id="cep" style="width: 100px; " value="<c:out value="${endereco.cep}"/>"> 
+                     CEP: <input type="text" name="cep" id="cep" style="width: 100px; "  value="<c:out value="${endereco.cep}"/>"> 
                   </label>
                   <label>
                      CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "value="<c:out value="${endereco.cidade}"/>">
