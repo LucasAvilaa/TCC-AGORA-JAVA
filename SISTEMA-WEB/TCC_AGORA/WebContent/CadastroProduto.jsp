@@ -16,7 +16,7 @@
       <jsp:include page="index.xhtml" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
-      <f:view>
+  <f:view>  
          <form action="ControlProduto" method="POST" name="cadastroProduto">
             <p>
             	<h2>CADASTRO DE PRODUTO</h2>
@@ -27,18 +27,18 @@
                <legend>INFORMAÇÕES BÁSICAS </legend>
                <p>
                   <label>
-                     NOME: <input name="nomeProduto"  maxlength="50" value="<c:out value="${produto.nomeProduto}"/>" required="required" />
+                     NOME: <input name="nomeProduto"  maxlength="50" value="<c:out value="${produto.nomeProduto}"/>" required="required" style="width: 291px; "/>
                   </label>
                </p>
                <p>
                   <label>
-                     DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  />
+                     DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  style="width: 248px; "/>
                   </label>
                </p>
                <p>
                   <label>
                      CATEGORIA: 
-                  		 <h:selectOneMenu style="width: 115px; height: 24px" id="categoria">
+                  		 <h:selectOneMenu style="width: 195px; height: 24px" id="categoria">
 	                        <f:selectItem itemValue="#{produto.categoria}"/>
 	                        <f:selectItem noSelectionOption="true" itemValue="___________" itemDisabled="true"/>
 	                        <f:selectItem itemValue="MERCEARIA" itemLabel="MERCEARIA"/>
@@ -54,17 +54,16 @@
                   <label>
                      VALOR COMPRA: <input name="vUnitCompra" value="<c:out value="${produto.valorUniCompra}"/>" placeholder="R$000,00"  required="required" style="width: 90px; "/>
                   </label>
-               </p>
-               <p>
                   <label>
                      VALOR VENDA: <input name="vUnitVenda" type="text" value="<c:out value="${produto.valorUniVenda}"/>" required="required" placeholder="R$000,00"  style="width: 90px; ">
                   </label>
-                </p>  
+               </p>  
                  <p>  
                   <label>
                      FORNECEDOR: 
-                     <h:selectOneMenu style="width: 106px; height: 24px" id="fornecedor">                     
-                        <f:selectItem noSelectionOption="true" itemValue="#{tbProduto.tbFornecedore}"/> 
+                     <h:selectOneMenu style="width: 180px; height: 24px" id="fornecedor" >                     
+                        <f:selectItem itemValue="#{produto.tbFornecedore.razaoSocial}"/> 
+                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
                         <f:selectItems value="#{tbFornecedore.fornecedores}" itemValue="#{tbFornecedore.fornecedores}"/>
                      </h:selectOneMenu>
                   </label>
@@ -72,7 +71,7 @@
                
             </fieldset> 
          </form>
-      </f:view>
+   </f:view>
    </body> 
    </body> 
 </html>	

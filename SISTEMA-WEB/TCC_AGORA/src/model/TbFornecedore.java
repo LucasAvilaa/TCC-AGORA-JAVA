@@ -1,15 +1,22 @@
 package model;
 
 import java.io.Serializable;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.model.SelectItem;
-import javax.persistence.*;
-
-import dao.DaoFornecedor;
-
 import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import dao.DaoFornecedor;
 
 
 /**
@@ -145,14 +152,9 @@ public class TbFornecedore implements Serializable {
 		return tbProduto;
 	}
 
+	@PostConstruct
 	public void listar() {
-		DaoFornecedor fornecedor = new DaoFornecedor();
-		try {
-			setFornecedores(fornecedor.getListaFornecedores());
-			System.out.println("FORNECEDORES LISTADOS");
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("ERRO AO LISTAR FORNECEDORES");
-		}
+		DaoFornecedor fornecedor = new DaoFornecedor(); 
+			setFornecedores(fornecedor.getListaFornecedores());  
 	}
 }

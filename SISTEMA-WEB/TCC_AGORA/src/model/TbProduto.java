@@ -1,12 +1,25 @@
 package model;
 
 import java.io.Serializable;
-
-import javax.faces.bean.ManagedBean;
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import dao.DaoProduto;
 
 
 /**
@@ -59,6 +72,16 @@ public class TbProduto implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_FORN_PROD")
 	private TbFornecedore tbFornecedore;
+	
+	private List<SelectItem> lista;
+
+	public List<SelectItem> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<SelectItem> lista) {
+		this.lista = lista;
+	}
 
 	public TbProduto() {
 	}
@@ -191,6 +214,12 @@ public class TbProduto implements Serializable {
 
 	public void setTbFornecedore(TbFornecedore tbFornecedore) {
 		this.tbFornecedore = tbFornecedore;
+	}
+	
+	@PostConstruct
+	public void lista() {
+		DaoProduto produto = new DaoProduto();
+		setLista(produto.lista()); 
 	}
 
 }

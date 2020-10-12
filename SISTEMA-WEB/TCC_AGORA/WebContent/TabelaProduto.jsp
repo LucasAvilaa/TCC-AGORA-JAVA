@@ -54,8 +54,8 @@
                      <td>
                         <c:out value="${produto.valorUniVenda}" />
                      </td> 
-                     <td><a href='ControlProduto?action=Edit&idProd=<c:out value="${funcionario.idFunc}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                     <td><a href='ControlProduto?action=Delete&idProd=<c:out value="${funcionario.idFunc}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+                     <td><a href='ControlProduto?action=Edit&idProd=<c:out value="${produto.idProduto}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+                     <td><a href='ControlProduto?action=Delete&idProd=<c:out value="${produto.idProduto}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
                   </tr>
                </c:forEach>
             </tbody>

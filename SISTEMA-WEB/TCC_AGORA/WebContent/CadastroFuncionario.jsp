@@ -52,7 +52,7 @@
                      SEXO: 
                      <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">
                         <f:selectItem itemValue="#{funcionario.sexo}"/>
-                        <f:selectItem noSelectionOption="true" itemValue=" "/>
+                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
                         <f:selectItem itemValue="M" itemLabel="MASCULINO"/>
                         <f:selectItem itemValue="F" itemLabel="FEMININO"/>
                      </h:selectOneMenu>
@@ -61,7 +61,7 @@
                <p>
                   <label>
                      <h:outputText value="CARGO: "/>
-                     <h:selectOneMenu style="width: 166px; " value="#{tbHierarquia.hierarquia}" id="cargo">
+                     <h:selectOneMenu style="width: 166px; " id="cargo">
                         <f:selectItem noSelectionOption="true" itemValue="#{funcionario.cargo}"/>
                         <f:selectItems value="#{tbHierarquia.hierarquia}"  itemValue="#{tbHierarquia.hierarquia}"/>
                      </h:selectOneMenu>
