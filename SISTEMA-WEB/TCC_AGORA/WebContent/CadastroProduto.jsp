@@ -39,7 +39,7 @@
                   <label>
                      CATEGORIA: 
                   		 <h:selectOneMenu style="width: 195px; height: 24px" id="categoria">
-	                        <f:selectItem itemValue="#{produto.categoria}"/>
+	                        <f:selectItem itemValue="#{produto.categoria}" itemDisabled="true"/>
 	                        <f:selectItem noSelectionOption="true" itemValue="___________" itemDisabled="true"/>
 	                        <f:selectItem itemValue="MERCEARIA" itemLabel="MERCEARIA"/>
 	                        <f:selectItem itemValue="PRODUCAO" itemLabel="PRODUÇÃO"/>

@@ -40,23 +40,23 @@
                <legend>ENDEREÇO</legend>
                <p>
                   <label>
-                     CEP: <input type="text" name="cep" id="cep" style="width: 100px; " value="<c:out value="${endereco.cep}"/>"> 
+                     CEP: <input type="text" name="cep" id="cep" style="width: 100px; "  value="<c:out value="${endereco.cep}"/>"> 
                   </label>
                   <label>
-                     CIDADE: <input type="text" name="cidade"  style="width: 205px; "value="<c:out value="${endereco.cidade}"/>">
-                  </label>
-               </p>
-               <p>
-                  <label>
-                     BAIRRO: <input type="text" name="bairro"   style="width: 232px; "value="<c:out value="${endereco.bairro}"/>">
-                  </label>
-                  <label>
-                     ESTADO: <input type="text" name="estado"   style="width: 40px; "  value="<c:out value="${endereco.estado}"/>">
+                     CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "value="<c:out value="${endereco.cidade}"/>">
                   </label>
                </p>
                <p>
                   <label>
-                     RUA: <input type="text" name="rua"  style="width: 221px; "value="<c:out value="${endereco.rua}"/>">
+                     BAIRRO: <input type="text" name="bairro"  disabled="disabled" style="width: 232px; "value="<c:out value="${endereco.bairro}"/>">
+                  </label>
+                  <label>
+                     ESTADO: <input type="text" name="estado" disabled="disabled" style="width: 40px; "  value="<c:out value="${endereco.estado}"/>">
+                  </label>
+               </p>
+               <p>
+                  <label>
+                     RUA: <input type="text" name="rua" disabled="disabled"  style="width: 221px; "value="<c:out value="${endereco.rua}"/>">
                   </label>
                   <label>
                      NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>">

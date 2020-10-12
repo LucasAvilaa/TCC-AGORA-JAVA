@@ -30,8 +30,8 @@
                <tr>
                   <th style="width: 147px; ">NOME</th>
                   <th style="width: 141px; ">SOBRENOME</th>
-                  <th style="width: 105px; ">RG</th>
-                  <th style="width: 127px; ">CPF</th>
+                  <th style="width: 126px; ">RG</th>
+                  <th style="width: 147px; ">CPF</th>
                   <th style="width: 208px; height: 34px">DATA NASCIMENTO</th>
                   <th style="width: 67px; ">SEXO</th>
                   <th colspan="2" style="width: 72px; ">AÇÃO</th>

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,6 +57,10 @@ public class ControlCliente extends HttpServlet {
 		 if(idCli != null) {  
 			 idcli = String.valueOf(idCli);
 			 cliente.setIdCli(idcli); 
+		 } 
+		 
+		 if(cpf != null) {   
+			 cliente.setCpf(cpf);  
 		 } 
 		 
 		 if(action.equalsIgnoreCase("Tabela")) {			 	
@@ -141,8 +146,14 @@ public class ControlCliente extends HttpServlet {
 			 cliente.setAtivo(Boolean.parseBoolean(request.getParameter("ativo")));  
 			 
 			 Date data = null;		
-			 try { 				
-					data = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data"));
+			 try {  
+				 	DateFormat dataCru = new SimpleDateFormat("yyyy-mm-dd");
+				 	Date date = dataCru.parse(request.getParameter("data"));
+				 	
+				 	DateFormat dataConv = new SimpleDateFormat("dd-mm-yyyy"); 
+				    String date2 = dataConv.format(date); 
+				 	
+				 	data = new SimpleDateFormat("dd-MM-yyyy").parse(date2); 
 					cliente.setDtNasc(data);
 					
 			 	}catch (ParseException e) { 
