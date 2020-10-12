@@ -94,7 +94,8 @@ public class DaoFornecedor {
 			}	 
 			return listaforn;
 		}	
-	public List<SelectItem> getListaFornecedores() throws Exception { 
+	 
+	public List<SelectItem> getListaFornecedores()  { 
 		List<SelectItem> fornecedores = new ArrayList<SelectItem>(); 
 		try {
 			con = new Conexao();
@@ -102,12 +103,12 @@ public class DaoFornecedor {
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) { 
-				fornecedores.add(new SelectItem(rs.getString("ID_FORN"),rs.getString("CNPJ")));
+				fornecedores.add(new SelectItem(rs.getString("ID_FORN"),rs.getString("RAZAO_SOCIAL")));
 			} 
 			ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	 
 		return fornecedores;
-	}
+	} 
 }

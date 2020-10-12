@@ -51,7 +51,7 @@
                      SEXO: 
                      <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">
                         <f:selectItem itemValue="#{cliente.sexo}"/>
-                        <f:selectItem noSelectionOption="true" itemValue=" "/>
+                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
                         <f:selectItem itemValue="M" itemLabel="MASCULINO"/>
                         <f:selectItem itemValue="F" itemLabel="FEMININO"/>
                      </h:selectOneMenu>
