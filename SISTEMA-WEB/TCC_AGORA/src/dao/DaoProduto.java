@@ -138,5 +138,5 @@ public class DaoProduto {
 			e.printStackTrace();
 		} 
 		return lista; 
-	}
+	} 
 }
