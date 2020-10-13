@@ -53,7 +53,7 @@
                         <c:out value="${cliente.cpf}" />
                      </td>
                      <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.dtNasc}" />
+                        <fmt:formatDate pattern="yyyy-MM-dd" value="${cliente.dtNasc}" />
                      </td>
                      <td>
                         <c:out value="${cliente.sexo}" />
