@@ -1,10 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -57,25 +53,13 @@ public class ControlCompra extends HttpServlet {
 		 
 		else if(action.equalsIgnoreCase("Edit")){   
 			request.setAttribute("compra", Dao.CompraPorId(compra)); 
-			request.setAttribute("itens", Dao.itensPorCompra(compra));
+			request.setAttribute("itens", Dao.itensPorCompra(compra)); 
 			acao = "A"; 
 			forward = criar_editar;
 		}
 		 
 		else if(action.equalsIgnoreCase("CriarCompra"))  {
-			forward = criar_editar;
-			 
-			Date criada = null; 
-			DateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
-			Date d = null;
-			try {
-				d = formatar.parse(formatar.format(new Date()));
-			} catch (ParseException e) { 
-				e.printStackTrace();
-			}
-			
-			System.out.println(d);
-			  
+			forward = criar_editar; 
 			acao = "IC";
 		}		 
 		 RequestDispatcher view = request.getRequestDispatcher(forward);

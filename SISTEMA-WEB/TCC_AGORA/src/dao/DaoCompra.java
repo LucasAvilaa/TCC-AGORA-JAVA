@@ -78,10 +78,9 @@ public class DaoCompra {
 			return compra;
 		}
 		
-		public TbCompraProduto itensPorCompra(TbCompra id) {
-			TbCompraProduto itens = new TbCompraProduto();
-			TbProduto produto = new TbProduto();
-			TbFornecedore fornecedor = new TbFornecedore(); 
+		public List<TbCompraProduto> itensPorCompra(TbCompra id) {
+			List<TbCompraProduto> listaItens = new ArrayList<TbCompraProduto>();
+			
 			try {
 				con = new Conexao();
 				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_COMPRA WHERE ID_COMPRA = ?"); 
@@ -89,6 +88,10 @@ public class DaoCompra {
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) { 
+					TbCompraProduto itens = new TbCompraProduto();
+					TbProduto produto = new TbProduto();
+					TbFornecedore fornecedor = new TbFornecedore(); 
+					
 					itens.setQuantidade(rs.getInt("QUANTIDADE"));
 					
 					produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
@@ -97,16 +100,15 @@ public class DaoCompra {
 					fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
 					produto.setTbFornecedore(fornecedor);
 					itens.setTbProduto(produto); 
+					
+					listaItens.add(itens);
 				} 			
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 
-			return itens;
-		}
-		
-		
-		
+			return listaItens;
+		} 
 	 
 	public List<TbCompra> listaCompra() {
 		List<TbCompra> listaCompra = new ArrayList<TbCompra>();	
