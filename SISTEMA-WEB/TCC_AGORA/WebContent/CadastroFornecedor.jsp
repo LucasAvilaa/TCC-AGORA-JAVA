@@ -18,9 +18,9 @@
       </jsp:include>
       <f:view>
          <form action="ControlFornecedores" method="POST" name="cadastroFornecedores">
-            <p> 
+            
             	<h2>CADASTRO DE FORNECEDOR</h2>
-            </p> 
+           
                  
             <br />
             <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlFornecedores?action=tabela">CANCELAR</a> </p>

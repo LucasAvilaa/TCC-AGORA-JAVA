@@ -15,10 +15,9 @@
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
       <f:view>
-         <p>
-         	<h2>PRODUTOS EM ESTOQUE</h2>
-       	</p>      
          
+         	<h2>PRODUTOS EM ESTOQUE</h2>
+          
          <br />
          <p>
             <a href="ControlEstoque?action">
