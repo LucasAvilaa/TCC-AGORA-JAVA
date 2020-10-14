@@ -18,7 +18,7 @@ import model.TbContasPagar;
 public class ControlContasPagar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaContasPagar.jsp";
-    private static String criar_editar = "/ContasPagar.jsp"; 
+    private static String criar_editar = "/CadastroContasPagar.jsp"; 
 	private DaoContasPagar Dao; 
 	private String acao = null; 
 	private Integer idCompra = null;
