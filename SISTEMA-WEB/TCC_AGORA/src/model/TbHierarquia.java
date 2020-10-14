@@ -4,31 +4,27 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import dao.DaoHierarquia;
-
-
-/**
- * The persistent class for the TB_HIERARQUIA database table.
- * 
- */
+ 
 @Entity
+@ManagedBean
+@SessionScoped
 @Table(name="TB_HIERARQUIA")
 @NamedQuery(name="TbHierarquia.findAll", query="SELECT t FROM TbHierarquia t")
 public class TbHierarquia implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_HIERARQUIA")
 	private int idHierarquia;
 
@@ -38,7 +34,7 @@ public class TbHierarquia implements Serializable {
 	//bi-directional many-to-one association to TbLogin
 	@OneToMany(mappedBy="tbHierarquia")
 	private List<TbLogin> tbLogins;
-
+	
 	private List<SelectItem> hierarquia;
 	
 	 
@@ -50,7 +46,6 @@ public class TbHierarquia implements Serializable {
 		this.hierarquia = hierarquia;
 	}
 
-	
 	public TbHierarquia() {
 	}
 
@@ -91,7 +86,7 @@ public class TbHierarquia implements Serializable {
 
 		return tbLogin;
 	}
-	
+
 	@PostConstruct
 	public void listar() {		
 		try {
@@ -102,5 +97,4 @@ public class TbHierarquia implements Serializable {
 			System.out.println("ERRO AO LISTA HIERARQUIA");
 		}
 	}  
-
 }

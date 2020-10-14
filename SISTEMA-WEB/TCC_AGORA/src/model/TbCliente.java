@@ -1,7 +1,11 @@
 package model;
 
 import java.io.Serializable;
+
+import javax.faces.model.SelectItem;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +21,6 @@ public class TbCliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_CLI")
 	private String idCli;
 
@@ -55,7 +58,25 @@ public class TbCliente implements Serializable {
 	//bi-directional many-to-one association to TbPrincipalPessoa
 	@OneToMany(mappedBy="tbCliente")
 	private List<TbPrincipalPessoa> tbPrincipalPessoas;
+	
+	private List<SelectItem> listaSexo;
 
+	public List<SelectItem> getListaSexo() {
+		return listaSexo;
+	}
+
+	public void setListaSexo(List<SelectItem> listaSexo) {
+		this.listaSexo = listaSexo;
+	}
+	
+	public void ListaSexo() {
+		TbCliente sexo = new TbCliente();
+		List<SelectItem> listase = new ArrayList<SelectItem>(); 
+		listase.add(new SelectItem("MASCULINO","FEMININO"));		
+		
+		sexo.setListaSexo(listase); 
+	}
+		
 	public TbCliente() {
 	}
 

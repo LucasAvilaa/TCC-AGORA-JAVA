@@ -16,12 +16,8 @@ public class TbContasPagar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_PAGAR")
 	private int idPagar;
-
-	@Column(name="CATEGORIA")
-	private String categoria;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DATA_VENCIMENTO")
@@ -41,14 +37,6 @@ public class TbContasPagar implements Serializable {
 
 	public void setIdPagar(int idPagar) {
 		this.idPagar = idPagar;
-	}
-
-	public String getCategoria() {
-		return this.categoria;
-	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
 	}
 
 	public Date getDataVencimento() {

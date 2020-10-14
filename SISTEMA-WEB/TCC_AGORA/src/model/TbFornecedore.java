@@ -5,11 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -24,6 +23,7 @@ import dao.DaoFornecedor;
  * The persistent class for the TB_FORNECEDORES database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_FORNECEDORES")
 @NamedQuery(name="TbFornecedore.findAll", query="SELECT t FROM TbFornecedore t")
@@ -31,7 +31,6 @@ public class TbFornecedore implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_FORN")
 	private String idForn;
 
@@ -55,7 +54,7 @@ public class TbFornecedore implements Serializable {
 	//bi-directional many-to-one association to TbProduto
 	@OneToMany(mappedBy="tbFornecedore")
 	private List<TbProduto> tbProdutos;
-
+	
 	private List<SelectItem> fornecedores;
 
 	public List<SelectItem> getFornecedores() {
@@ -66,8 +65,7 @@ public class TbFornecedore implements Serializable {
 		this.fornecedores = fornecedores;
 	}
 
-	
-	public TbFornecedore() {
+	public TbFornecedore() { 
 	}
 
 	public String getIdForn() {
@@ -85,7 +83,7 @@ public class TbFornecedore implements Serializable {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-
+	
 	public String getCnpj() {
 		return this.cnpj;
 	}
@@ -153,11 +151,10 @@ public class TbFornecedore implements Serializable {
 
 		return tbProduto;
 	}
-	
+
 	@PostConstruct
 	public void listar() {
 		DaoFornecedor fornecedor = new DaoFornecedor(); 
 			setFornecedores(fornecedor.getListaFornecedores());  
 	}
-
 }

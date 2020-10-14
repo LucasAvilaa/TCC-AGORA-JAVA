@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,70 +44,66 @@ public class ControlContasPagar extends HttpServlet {
 			 pagar.setIdPagar(idPagar);
 		 }
 		 if(action.equalsIgnoreCase("Tabela")) {			 	
-			 try {				
-				request.setAttribute("conta", Dao.listaContaPagar()); 
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}		 
-	 }
-	 else if(action.equalsIgnoreCase("Delete")) { 
-				try {
-					acao = "E"; 						
-					if(Dao.crudContaPagar(acao, pagar, compra)) {
-						System.out.println("CONTA DELETADO COM SUCESSO");
-					} 
-					request.setAttribute("conta", Dao.listaContaPagar()); 
+				 try {				
+					request.setAttribute("conta", Dao.listaContaPagar());
 					forward = tabela;
-					
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
-	 }
-	else if(action.equalsIgnoreCase("Edit")){   
-		request.setAttribute("conta", Dao.ContaPagarPorId(pagar)); 
-		System.out.println("_____________________________________");
-		System.out.println("ID CONTA ALTERANDO " + pagar.getIdPagar()); 
-		acao = "A";
-		forward = criar_editar;
+				}		 
+		 }
+		 else if(action.equalsIgnoreCase("Delete")) { 
+					try {
+						acao = "E"; 
+						Dao.crudContaPagar(acao, pagar, compra);						
+						request.setAttribute("conta", Dao.listaContaPagar());
+						forward = tabela;
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+		 }
+		else if(action.equalsIgnoreCase("Edit")){   
+			request.setAttribute("conta", Dao.ContaPagarPorId(idCompra));
+			acao = "A";
+			forward = criar_editar;
+		}
+		else {
+			forward = criar_editar;
+			acao = "I";
+		}		 
+		 RequestDispatcher view = request.getRequestDispatcher(forward);
+		 view.forward(request, response);
 	}
-	else {
-		forward = criar_editar; 
-		acao = "I";
-	}		 
-	 RequestDispatcher view = request.getRequestDispatcher(forward);
-	 view.forward(request, response);
-}
+	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
- 
-			 Date data = null;		
-			 try {  
-				 	DateFormat dataCru = new SimpleDateFormat("yyyy-mm-dd");
-				 	Date date = dataCru.parse(request.getParameter("dataVencimento"));
-				 	
-				 	DateFormat dataConv = new SimpleDateFormat("dd-mm-yyyy"); 
-				    String date2 = dataConv.format(date); 
-				 	
-				 	data = new SimpleDateFormat("dd-MM-yyyy").parse(date2); 
-					pagar.setDataVencimento(data);
-					
-			 	}catch (ParseException e) { 
+		
+	 	 Date dataVencimento = null;
+			 if(request.getParameter("dataVencimento") != null) {
+				 try { 				
+					 dataVencimento = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataCadastro"));
+					pagar.setDataVencimento(dataVencimento);
+				} catch (ParseException e) { 
 					e.printStackTrace();
 					System.out.println("ERRO NA CONVERSÃO DA DATA");
-			 	}	
-			 
+				}				 
+			 }
 			 try {
-				 System.out.println("AÇÃO: " +  acao ); 			  
+				 System.out.println("AÇÃO: " + acao );
+				 if(acao.equals("I")) {				  
 					 if(Dao.crudContaPagar(acao, pagar, compra)) {
-						 System.out.println("CONTA INSERIDO COM SUCESSO"); 
-					 }
-					 else {
-						 System.out.println("ERRO AO INSERIR CONTA"); 
-					 } 
+						 System.out.println("CRIADO COM SUCESSO");
+						 	}							
+						}
+				 else{  
+					 pagar.setIdPagar(idPagar);
+					 compra.setIdCompra(idCompra);
+					 pagar.setTbCompra(compra);
+					 Dao.crudContaPagar(acao, pagar, compra);	
+					System.out.println("ALTERADO COM SUCESSO: " + pagar.getIdPagar());	
+				 }				
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR CONTA");
-				System.out.println("_____________________________________");
+				System.out.println("ERRO AO INSERIR CONTA");
 			}
 			  response.sendRedirect("ControlContasPagar?action=Tabela");		
 	}	
