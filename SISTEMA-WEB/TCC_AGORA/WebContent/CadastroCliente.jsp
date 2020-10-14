@@ -18,9 +18,9 @@
       </jsp:include>
       <f:view>
          <form action="ControlCliente" method="POST" name="cadastroCliente">
-            <p>
+            
             	<h2>CADASTRO DE CLIENTE</h2>
-            </p> 
+            
             <br />
             <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlCliente?action=Tabela">CANCELAR</a> </p>
             <fieldset id="informacoes">

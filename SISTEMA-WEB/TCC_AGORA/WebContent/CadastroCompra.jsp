@@ -18,9 +18,9 @@
    
   <f:view >  
          <form action="ControlCompra" method="POST" name="cadastroCompra">
-            <p>
+            
             	<h2>PEDIDO COMPRA</h2>
-            </p> 
+           
             <br />
             <p>
             	<input value="ENVIAR" type="submit" id="btn"> <a href="ControlCompra?action=Tabela">CANCELAR</a> 
@@ -48,7 +48,7 @@
             		<table border="1">
             			<thead>
             				<tr> 
-            					<th style="width: 193px; ">PRODUTO</th>
+            					<th style="width: 193px; " >PRODUTO</th>
             					<th style="width: 195px; ">FORNECEDOR</th>
             					<th style="width: 125px; ">QUANTIDADE</th>
             					<th style="width: 154px; ">VALOR UNITÁRIO</th>
@@ -59,16 +59,19 @@
             			<tbody>
             				<c:forEach items="${itens}" var="itens">
             					<tr>
-            						<td>
-            							<c:out value="${itens.tbProduto.nomeProduto}" />
+            						<td> 
+            							<c:out value="${itens.tbProduto.nomeProduto}"></c:out>
            							</td> 
            							<td>
-            							<c:out value="${itens.tbProduto.tbFornecedore.razaoSocial}" />
-           							</td><td>
+           							 	<c:out value="${itens.tbProduto.tbFornecedore.razaoSocial}"></c:out>
+           							</td>
+									<td contenteditable="true" align="center">
             							<c:out value="${itens.quantidade}" />
-           							</td><td>
+           							</td>
+           							<td contenteditable="true" align="center">
             							<c:out value="${itens.tbProduto.valorUniCompra}" />
-           							</td><td>
+           							</td>
+           							<td id="subtotal"  >
             							<c:out value="${itens.quantidade}*${itens.tbProduto.valorUniCompra}" />
             						 
            							</td>
@@ -92,6 +95,5 @@
             </fieldset>
          </form>
    </f:view>
-   </body> 
-   </body> 
+   </body>  
 </html>	

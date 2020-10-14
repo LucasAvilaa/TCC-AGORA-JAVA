@@ -15,9 +15,9 @@
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
       <f:view>
-         <p>
+        
          	<h2>LISTA DE CLIENTES</h2>
-         </p>  
+         
          
          <br />
          <p>

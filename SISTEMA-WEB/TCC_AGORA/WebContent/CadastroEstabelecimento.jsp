@@ -18,9 +18,9 @@
       </jsp:include>
       <f:view>
          <form action="ControlEstabelecimento" method="POST" name="cadastroEstabelecimento">
-            <p> 
+            
             	<h2>CADASTRO DE FILIAIS</h2>
-            </p> 
+          
                  
             <br />
             <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlEstabelecimento?action=Tabela">CANCELAR</a> </p>

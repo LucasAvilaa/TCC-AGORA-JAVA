@@ -14,11 +14,9 @@
       <jsp:include page="index.xhtml" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
-      <f:view>
-         <p>
+      <f:view> 
          	<h2>LISTA DE PRODUTOS</h2>
-       	</p>      
-         
+            
          <br />
          <p>
             <a href="ControlProduto?action">

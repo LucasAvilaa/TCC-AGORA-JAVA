@@ -18,9 +18,9 @@
       </jsp:include>
   <f:view>  
          <form action="ControlEstoque" method="POST" name="cadastroEstoque">
-            <p>
+             
             	<h2>INSERIR ITEM NO ESTOQUE</h2>
-            </p> 
+             
             <br />
             <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlEstoque?action=Tabela">CANCELAR</a> </p>
             <fieldset id="informacoes">
