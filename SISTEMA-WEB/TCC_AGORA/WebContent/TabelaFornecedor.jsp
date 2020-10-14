@@ -31,8 +31,6 @@
                <tr>
                   <th style="width: 244px; ">RAZÃO SOCIAL</th>
                   <th style="width: 166px; ">CNPJ</th>
-                  <th style="width: 244px; ">CIDADE</th>
-                  <th style="width: 166px; ">ESTADO</th>
                   <th colspan="2" style="width: 72px; ">AÇÃO</th>
                </tr>
             </thead>
@@ -44,12 +42,6 @@
                      </td>
                      <td>
                         <c:out value="${fornecedor.cnpj}" />
-                     </td>
-                     <td>
-                        <c:out value="${fornecedor.tbPrincipalPessoas.tbEnderecos.cidade}" />
-                     </td>
-                     <td>
-                        <c:out value="${fornecedor.tbPrincipalPessoas.tbEnderecos.estado}" />
                      </td>
                      <td><a href='ControlFornecedores?action=Edit&idForn=<c:out value="${fornecedor.idForn}"/>&cod=<c:out value="${fornecedor.cnpj}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
                      <td><a href='ControlFornecedores?action=Delete&idForn=<c:out value="${fornecedor.idForn}"/>&cod=<c:out value="${fornecedor.cnpj}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>

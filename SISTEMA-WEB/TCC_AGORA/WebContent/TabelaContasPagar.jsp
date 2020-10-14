@@ -8,7 +8,6 @@
    <head>
       <meta charset="UTF-8">
       <title>CONTAS A PAGAR</title>
-      <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
    </head>
    <body>
@@ -30,35 +29,32 @@
                   <th style="width: 147px; ">REFERÊNCIA</th>
                   <th style="width: 141px; ">DESCRIÇÃO</th> 
                   <th style="width: 141px; ">CATEGORIA</th> 
-                  <th style="width: 193px; ">DATA EMISSÃO</th> 
+                  <th style="width: 156px; ">DATA EMISSÃO</th> 
                   <th style="width: 105px; ">VENCIMENTO</th>
                   <th style="width: 181px; ">VALOR TOTAL</th>
                   <th colspan="2" style="width: 72px; ">AÇÃO</th>
                </tr>
             </thead>
             <tbody>
-               <c:forEach items="${conta}" var="conta">
+               <c:forEach items=" " var="contas">
                   <tr>
                      <td>
-                        <c:out value="CONTA/${conta.idPagar}" />
+                        <c:out value=" " />
                      </td>
                      <td>
-                        <c:out value="COMPRA/${conta.tbCompra.idCompra}" />
+                        <c:out value=" " />
                      </td>
                      <td>
-                        <c:out value="${conta.categoria}" />
+                        <c:out value=" " />
                      </td>
                      <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${conta.tbCompra.dataCriada}"/>
+                        <c:out value=" " />
                      </td>
                      <td>
-                     	<fmt:formatDate pattern="dd/MM/yyyy" value="${conta.dataVencimento}"/> 
-                     </td>
-                     <td>
-                        <c:out value="" />
+                        <c:out value=" " />
                      </td> 
-                     <td><a href='ControlContasPagar?action=Edit&idPagar=<c:out value="${conta.idPagar}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                     <td><a href='ControlContasPagar?action=Delete&idPagar=<c:out value="${conta.idPagar}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+                     <td><a href='ControlContasPagar?action=Edit&idPagar=<c:out value=" "/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+                     <td><a href='ControlContasPagar?action=Delete&idPagar=<c:out value=" "/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
                   </tr>
                </c:forEach>
             </tbody>

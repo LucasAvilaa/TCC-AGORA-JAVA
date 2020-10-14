@@ -6,11 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,6 +26,7 @@ import dao.DaoProduto;
  * The persistent class for the TB_PRODUTOS database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_PRODUTOS")
 @NamedQuery(name="TbProduto.findAll", query="SELECT t FROM TbProduto t")
@@ -34,7 +34,6 @@ public class TbProduto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_PRODUTO")
 	private int idProduto;
 
@@ -73,7 +72,7 @@ public class TbProduto implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_FORN_PROD")
 	private TbFornecedore tbFornecedore;
-
+	
 	private List<SelectItem> lista;
 
 	public List<SelectItem> getLista() {
@@ -84,8 +83,6 @@ public class TbProduto implements Serializable {
 		this.lista = lista;
 	}
 
-
-	
 	public TbProduto() {
 	}
 
@@ -218,13 +215,11 @@ public class TbProduto implements Serializable {
 	public void setTbFornecedore(TbFornecedore tbFornecedore) {
 		this.tbFornecedore = tbFornecedore;
 	}
-
-
+	
 	@PostConstruct
 	public void lista() {
 		DaoProduto produto = new DaoProduto();
 		setLista(produto.lista()); 
 	}
 
-	
 }

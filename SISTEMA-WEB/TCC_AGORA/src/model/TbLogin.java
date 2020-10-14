@@ -16,7 +16,6 @@ public class TbLogin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_LOGIN")
 	private int idLogin;
 

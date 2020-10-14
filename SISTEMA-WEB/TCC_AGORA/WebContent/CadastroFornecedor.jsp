@@ -44,7 +44,7 @@
                      CEP: <input type="text" name="cep" id="cep" style="width: 100px; "  value="<c:out value="${endereco.cep}"/>"> 
                   </label>
                   <label>
-                     CIDADE: <input type="text" name="cidade" id="cidade" disabled="disabled" style="width: 205px; "value="<c:out value="${endereco.cidade}"/>">
+                     CIDADE: <input type="text" name="cidade" disabled="disabled" style="width: 205px; "value="<c:out value="${endereco.cidade}"/>">
                   </label>
                </p>
                <p>

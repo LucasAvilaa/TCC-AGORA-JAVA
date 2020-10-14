@@ -28,22 +28,17 @@
                <legend>INFORMAÇÕES BÁSICAS </legend>
                <p>
                   <label>
-                     DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  style="width: 248px; "/>
+                     DATA VENCIMENTO: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  style="width: 248px; "/>
                   </label>
                </p> 
                <p>
                   <label>
-                     CATEGORIA: <h:selectOneMenu style="width: 210px; height: 24px" id="categoria">
-                        <f:selectItem itemValue=" "/>
-                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
-                        <f:selectItem itemValue="USO E CONSUMO" itemLabel="USO E CONSUMO"/>
-                        <f:selectItem itemValue="MATÉRIA PRIMA" itemLabel="MATÉRIA PRIMA"/>
-                        <f:selectItem itemValue="PRODUTO PARA REVENDA" itemLabel="PRODUTO PARA REVENDA"/>
-                     </h:selectOneMenu>
-						
+                     CATEGORIA: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  style="width: 248px; "/>
                   </label>
-               </p>  
-                
+               </p> 
+               USO E CONSUMO
+               MATÉRIA PRIMA
+               PRODUTO PARA REVENDA
                
                <p>
                   <label>
