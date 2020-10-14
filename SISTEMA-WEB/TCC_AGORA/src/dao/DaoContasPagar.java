@@ -69,24 +69,18 @@ public class DaoContasPagar {
 		}
 	
 	public List<TbCliente> listaContaPagar() {
-		List<TbCliente> ListaContaPagar = new ArrayList<TbCliente>();	
-		TbCompraProduto produto = new TbCompraProduto();
-		TbCompra compra = new TbCompra();
-		TbProduto prod = new TbProduto();
+		List<TbCliente> ListaContaPagar = new ArrayList<TbCliente>();	 
+		TbCompra compra = new TbCompra(); 
+		TbContasPagar contas = new TbContasPagar();
 		try {
 			con = new Conexao();
 			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR"); 
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) { 
-				compra.setIdCompra(Integer.parseInt( rs.getString("ID_COMPRA_PRODUTO")));
-				prod.setDescricaoProduto(rs.getString("DESCRICAO_PRODUTO"));
-				prod.setValorUniCompra(new BigDecimal(rs.getString("VALOR_UNI_COMPRA")));
-
-				produto.setTbCompra(compra);
-				produto.setTbProduto(prod);
-				produto.setId(Integer.parseInt(rs.getString("ID_PRODUTO")));
-				produto.setQuantidade(Integer.parseInt(rs.getString("QUANTIDADE")));		 
+				 compra.setDataCriada(rs.getDate("DATA_CRIADA"));	
+				 compra.setIdCompra(rs.getInt("ID_COMPRA"));
+				 contas.setDataVencimento(rs.getDate("DATA_VENCIMENTO"));  
 			} 		
 			ps.close();
 		} catch (Exception e) {

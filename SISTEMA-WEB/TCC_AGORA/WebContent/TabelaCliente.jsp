@@ -7,7 +7,8 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Tabela Cliente</title>
+      <title>TABELA DE CLIENTES</title>
+      <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
    </head>
    <body>
