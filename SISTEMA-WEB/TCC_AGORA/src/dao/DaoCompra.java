@@ -1,10 +1,14 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import factory.Conexao;
 import model.TbCompra;
 import model.TbCompraProduto;
+import model.TbFornecedore;
 import model.TbProduto;
 
 public class DaoCompra {
@@ -47,53 +51,87 @@ public class DaoCompra {
 			return false;
 		}
 }
-
-/*   ARRUMAR DAQUI PRA BAIXO -- TEM UMA VIEW PARA ISSO 
+ 
 	 
 		public TbCompra CompraPorId(TbCompra id) {
-			TbCompra cliente = new TbCompra();
+			TbCompra compra = new TbCompra(); 
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CLIENTES WHERE ID_CLI=?"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_COMPRAS WHERE ID_COMPRA = ?"); 
 				ps.setInt(1, id.getIdCompra());
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) { 
-					
-					 							 
+					compra.setIdCompra(rs.getInt("ID_COMPRA"));
+					if(rs.getString("STATUS").equals("F")) {
+						compra.setStatus("FINALIZADO");
+					}else {
+						compra.setStatus("PENDENTE");
+					} 
+					compra.setDataCriada(rs.getDate("DATA_CRIADA"));
+					compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA"));   
 				} 			
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 
-			return cliente;
+			return compra;
 		}
-	
-	public List<TbCliente> listaCliente() {
-		List<TbCliente> listacliente = new ArrayList<TbCliente>();	
+		
+		public TbCompraProduto itensPorCompra(TbCompra id) {
+			TbCompraProduto itens = new TbCompraProduto();
+			TbProduto produto = new TbProduto();
+			TbFornecedore fornecedor = new TbFornecedore(); 
+			try {
+				con = new Conexao();
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_COMPRA WHERE ID_COMPRA = ?"); 
+				ps.setInt(1, id.getIdCompra());
+				ResultSet rs = ps.executeQuery();
+				
+				while (rs.next()) { 
+					itens.setQuantidade(rs.getInt("QUANTIDADE"));
+					
+					produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
+					produto.setValorUniCompra(rs.getBigDecimal("VALOR_UNI_COMPRA"));
+					
+					fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
+					produto.setTbFornecedore(fornecedor);
+					itens.setTbProduto(produto); 
+				} 			
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	 
+			return itens;
+		}
+		
+		
+		
+	 
+	public List<TbCompra> listaCompra() {
+		List<TbCompra> listaCompra = new ArrayList<TbCompra>();	
+		
 		try {
 			con = new Conexao();
-			Statement stmt = con.getConexao().createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM VW_COMPRA");
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_COMPRAS");
+			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				TbCliente cliente = new TbCliente(); 
+				TbCompra compra = new TbCompra(); 
+				compra.setIdCompra(rs.getInt("ID_COMPRA")); 
+				if(rs.getString("STATUS").equals("F")) {
+					compra.setStatus("FINALIZADO");
+				}else {
+					compra.setStatus("PENDENTE");
+				}
+				compra.setDataCriada(rs.getDate("DATA_CRIADA"));
+				compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA")); 
 				
-				cliente.setIdCli(rs.getString("ID_CLI"));
-				cliente.setNome(rs.getString("NOME"));
-				cliente.setSobrenome(rs.getString("SOBRENOME"));
-				cliente.setRg(rs.getString("RG"));
-				cliente.setCpf(rs.getString("CPF"));
-				cliente.setDtNasc(rs.getDate("DT_NASC"));
-				cliente.setAtivo(rs.getBoolean("ATIVO"));
-				cliente.setSexo(rs.getString("SEXO"));
-				
-							
-				listacliente.add(cliente);
+				listaCompra.add(compra);
 			} 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	 
-		return listacliente;
-	}
-*/	
+		return listaCompra;
+	}  	
 }

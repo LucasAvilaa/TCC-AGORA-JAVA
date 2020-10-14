@@ -1,6 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,61 +25,57 @@ import model.TbProduto;
 public class ControlCompra extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaCompra.jsp";
-    private static String criar_editar = "/compra.jsp"; 
+    private static String criar_editar = "/CadastroCompra.jsp"; 
 	private DaoCompra Dao;
 	private String acao = null;  
+	private Integer idCompra = null;
 	private TbCompraProduto compralista = new TbCompraProduto();
  	private TbCompra compra = new TbCompra();
 	private TbProduto produto = new TbProduto();
 	
     public ControlCompra() {
         super(); 
+        Dao = new DaoCompra();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String forward = "";
 		 String action = request.getParameter("action");  
-		 String idCli = request.getParameter("idCli"); 
-		 if(idCli != null) {  
-//			 idcli = String.valueOf(idCli); 
-//			 cliente.setIdCli(idcli);
+		 String idCom = request.getParameter("idCompra"); 
+		 if(idCom != null) {  
+			 idCompra = Integer.parseInt(idCom); 
+			 compra.setIdCompra(idCompra);
 		 }		 
 		 if(action.equalsIgnoreCase("Tabela")) {			 	
 				 try {				
-	//				request.setAttribute("cliente", Dao.listaCliente()); 
+	 				request.setAttribute("compra", Dao.listaCompra()); 
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}		 
-		 }
-		 else if(action.equalsIgnoreCase("DeletarItem")) { 
-					try { 
-						Dao.crudCompra("EI", compralista, compra, produto); 
-//						request.setAttribute("cliente", Dao.listaCliente());
-						forward = tabela;
-						
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-		 }
-		 else if(action.equalsIgnoreCase("DeletarCompra")) { 
-				try { 
-					Dao.crudCompra("EC", compralista, compra, produto); 
-//					request.setAttribute("cliente", Dao.listaCliente());
-					forward = tabela;
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-	 }
-		else if(action.equalsIgnoreCase("Editar")){   
-//			request.setAttribute("compra", Dao.CompraPorId(compra.getId())); 
+		 } 
+		 
+		else if(action.equalsIgnoreCase("Edit")){   
+			request.setAttribute("compra", Dao.CompraPorId(compra)); 
+			request.setAttribute("itens", Dao.itensPorCompra(compra));
 			acao = "A"; 
 			forward = criar_editar;
 		}
 		 
 		else if(action.equalsIgnoreCase("CriarCompra"))  {
 			forward = criar_editar;
+			 
+			Date criada = null; 
+			DateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+			Date d = null;
+			try {
+				d = formatar.parse(formatar.format(new Date()));
+			} catch (ParseException e) { 
+				e.printStackTrace();
+			}
+			
+			System.out.println(d);
+			  
 			acao = "IC";
 		}		 
 		 RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -92,12 +92,7 @@ public class ControlCompra extends HttpServlet {
 					 	 Dao.crudCompra(acao, compralista, compra, produto);
 						 System.out.println("CRIADO COM SUCESSO");
 						 	}	 
-				 if(request.getParameter("idCompra") != null) {
-					 compra.setIdCompra(Integer.parseInt(request.getParameter("idCompra")));
-					 if(acao.equals("II")) {
-						 Dao.crudCompra(acao, compralista, compra, produto);
-					 }		
-				 }
+				   
 				 	
 			} catch (Exception e) {
 				e.printStackTrace();
