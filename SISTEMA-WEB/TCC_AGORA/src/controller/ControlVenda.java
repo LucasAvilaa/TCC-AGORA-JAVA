@@ -71,7 +71,7 @@ public class ControlVenda extends HttpServlet {
 					}
 		 }
 		else if(action.equalsIgnoreCase("edit")){   
-			request.setAttribute("conta", Dao.ContaPagarPorId(idCompra));
+			request.setAttribute("conta", Dao.ContaPagarPorId(pagar));
 			acao = "A";
 			forward = criar_editar;
 		}
