@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ import dao.DaoHierarquia;
  * The persistent class for the TB_HIERARQUIA database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_HIERARQUIA")
 @NamedQuery(name="TbHierarquia.findAll", query="SELECT t FROM TbHierarquia t")

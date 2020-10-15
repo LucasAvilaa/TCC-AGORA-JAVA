@@ -44,7 +44,7 @@ public class DaoContasPagar {
 			TbContasPagar contas = null;
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR WHERE ID_COMPRA = ?"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR WHERE ID_PAGAR = ?"); 
 				ps.setInt(1, pagar.getIdPagar());
 				ResultSet rs = ps.executeQuery();
 				
@@ -57,8 +57,7 @@ public class DaoContasPagar {
 					 contas.setIdPagar(rs.getInt("ID_PAGAR"));
 					 contas.setCategoria(rs.getString("CATEGORIA"));
 					 contas.setTbCompra(compra); 	 
-				} 			
-				ps.close();
+				} 			 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 

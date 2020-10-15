@@ -83,13 +83,8 @@ public class ControlContasPagar extends HttpServlet {
  
 			 Date data = null;		
 			 try {  
-				 	DateFormat dataCru = new SimpleDateFormat("yyyy-mm-dd");
-				 	Date date = dataCru.parse(request.getParameter("dataVencimento"));
-				 	
-				 	DateFormat dataConv = new SimpleDateFormat("dd-mm-yyyy"); 
-				    String date2 = dataConv.format(date); 
-				 	
-				 	data = new SimpleDateFormat("dd-MM-yyyy").parse(date2); 
+				 	DateFormat dataCru = new SimpleDateFormat("dd/MM/yyyy");
+				 	data = dataCru.parse(request.getParameter("dataVencimento"));  
 					pagar.setDataVencimento(data);
 					
 			 	}catch (ParseException e) { 
