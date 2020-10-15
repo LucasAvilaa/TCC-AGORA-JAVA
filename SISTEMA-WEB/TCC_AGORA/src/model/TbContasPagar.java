@@ -19,11 +19,6 @@ import java.util.Date;
 public class TbContasPagar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_PAGAR")
-	private int idPagar;
-
 	@Column(name="CATEGORIA")
 	private String categoria;
 	
@@ -37,20 +32,15 @@ public class TbContasPagar implements Serializable {
 	@Column(name="DATA_VENCIMENTO")
 	private Date dataVencimento;
 
-	//bi-directional many-to-one association to TbCompra
-	@ManyToOne
-	@JoinColumn(name="ID_COMPRA")
-	private TbCompra tbCompra;
+	@Column(name="ID_COMPRA")
+	private int idCompra;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID_PAGAR")
+	private int idPagar;
 
 	public TbContasPagar() {
-	}
-
-	public int getIdPagar() {
-		return this.idPagar;
-	}
-
-	public void setIdPagar(int idPagar) {
-		this.idPagar = idPagar;
 	}
 
 
@@ -87,12 +77,20 @@ public class TbContasPagar implements Serializable {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public TbCompra getTbCompra() {
-		return this.tbCompra;
+	public int getIdCompra() {
+		return this.idCompra;
 	}
 
-	public void setTbCompra(TbCompra tbCompra) {
-		this.tbCompra = tbCompra;
+	public void setIdCompra(int idCompra) {
+		this.idCompra = idCompra;
+	}
+
+	public int getIdPagar() {
+		return this.idPagar;
+	}
+
+	public void setIdPagar(int idPagar) {
+		this.idPagar = idPagar;
 	}
 
 }
