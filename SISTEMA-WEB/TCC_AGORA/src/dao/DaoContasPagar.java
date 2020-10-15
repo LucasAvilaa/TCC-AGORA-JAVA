@@ -6,30 +6,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import factory.Conexao;
-import model.TbCompra;
 import model.TbContasPagar;
 
 public class DaoContasPagar {
 
 	Conexao con;
-	public boolean crudContaPagar(String acao, TbContasPagar pagar, TbCompra compra) throws Exception {
+	public boolean crudContaPagar(String acao, TbContasPagar pagar) throws Exception {
 		con = new Conexao(); 
 		PreparedStatement ps = null;
 		
 		if(acao.equals("I")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_PAGAR I,NULL,?,?"); 
-			ps.setInt(1, compra.getIdCompra());
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_PAGAR I,NULL,?,?,?,?");  
+			ps.setString(1, pagar.getDescricao());
 			ps.setString(2, pagar.getCategoria());
-			ps.setDate(3, new java.sql.Date(pagar.getDataVencimento().getTime()));	
+			ps.setBigDecimal(3, pagar.getValorPagar());
+			ps.setDate(4, new java.sql.Date(pagar.getDataVencimento().getTime()));	
 		}		
 		else if(acao.equals("A")) { 			
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_PAGAR A,?,?,?");
-			ps.setInt(1, pagar.getIdPagar());
-			ps.setInt(2, compra.getIdCompra());
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_PAGAR A,?,?,?,?,?");
+			ps.setInt(1, pagar.getIdPagar()); 
+			ps.setString(2, pagar.getDescricao());
 			ps.setString(3, pagar.getCategoria());
-			ps.setDate(4, new java.sql.Date(pagar.getDataVencimento().getTime()));	
+			ps.setBigDecimal(4, pagar.getValorPagar());
+			ps.setDate(5, new java.sql.Date(pagar.getDataVencimento().getTime()));	
 		}else if(acao.equals("E")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_PAGAR E,?,NULL,NULL");  
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_PAGAR E,?,NULL,NULL,NULL,NULL");  
 			ps.setInt(1, pagar.getIdPagar()); 
 		}	
 		if(ps.executeUpdate()>0) { 
@@ -44,19 +45,17 @@ public class DaoContasPagar {
 			TbContasPagar contas = null;
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR WHERE ID_COMPRA = ?"); 
-				ps.setInt(1, pagar.getIdPagar());
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTAS_PAGAR"); 
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) { 
-					TbCompra compra = new TbCompra(); 
-					 contas = new TbContasPagar();
-					 compra.setDataCriada(rs.getDate("DATA_CRIADA"));	
-					 compra.setIdCompra(rs.getInt("ID_COMPRA"));
-					 contas.setDataVencimento(rs.getDate("DATA_VENCIMENTO"));  
+					 contas = new TbContasPagar(); 
+					 contas.setDataVencimento(rs.getDate("DATA_VENCIMENTO")); 
 					 contas.setIdPagar(rs.getInt("ID_PAGAR"));
-					 contas.setCategoria(rs.getString("CATEGORIA"));
-					 contas.setTbCompra(compra); 	 
+					 contas.setDescricao(rs.getString("DESCRICAO"));
+					 contas.setCategoria(rs.getString("CATEGORIA")); 
+					 contas.setValorPagar(rs.getBigDecimal("VALOR_PAGAR")); 
+					   
 				} 			
 				ps.close();
 			} catch (Exception e) {
@@ -70,23 +69,21 @@ public class DaoContasPagar {
 		
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR"); 
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTAS_PAGAR"); 
 			ResultSet rs = ps.executeQuery();
 			
-			while (rs.next()) { 
-				TbCompra compra = new TbCompra(); 
-				TbContasPagar contas = new TbContasPagar();
-				 compra.setDataCriada(rs.getDate("DATA_CRIADA"));	
-				 compra.setIdCompra(rs.getInt("ID_COMPRA"));
+			while (rs.next()) {  
+				TbContasPagar contas = new TbContasPagar(); 
 				 contas.setDataVencimento(rs.getDate("DATA_VENCIMENTO")); 
 				 contas.setIdPagar(rs.getInt("ID_PAGAR"));
-				 contas.setCategoria(rs.getString("CATEGORIA"));
-				 contas.setTbCompra(compra); 
+				 contas.setDescricao(rs.getString("DESCRICAO"));
+				 contas.setCategoria(rs.getString("CATEGORIA")); 
+				 contas.setValorPagar(rs.getBigDecimal("VALOR_PAGAR")); 
 				 
 				 ListaContaPagar.add(contas);
 				 
 			} 		
-			ps.close();
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	 

@@ -62,7 +62,7 @@ public class ControlVenda extends HttpServlet {
 		 else if(action.equalsIgnoreCase("delete")) { 
 					try {
 						acao = "E"; 
-						Dao.crudContaPagar(acao, pagar, compra);						
+			//			Dao.crudContaPagar(acao, pagar, compra);						
 						request.setAttribute("conta", Dao.listaContaPagar());
 						forward = tabela;
 						
@@ -99,15 +99,15 @@ public class ControlVenda extends HttpServlet {
 			 try {
 				 System.out.println("AÇÃO: " + acao );
 				 if(acao.equals("I")) {				  
-					 if(Dao.crudContaPagar(acao, pagar, compra)) {
+		//			 if(Dao.crudContaPagar(acao, pagar, compra)) {
 						 System.out.println("CRIADO COM SUCESSO");
 						 	}							
-						}
+			//			}
 				 else{  
 					 pagar.setIdPagar(idPagar);
-					 Dao.crudContaPagar(acao, pagar, compra);	
+	//				 Dao.crudContaPagar(acao, pagar, compra);	
 					System.out.println("ALTERADO COM SUCESSO: " + pagar.getIdPagar());	
-				 }				
+	 			 }				
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("ERRO AO INSERIR VENDA");

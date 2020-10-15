@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -55,7 +56,7 @@ public class ControlContasPagar extends HttpServlet {
 	 else if(action.equalsIgnoreCase("Delete")) { 
 				try {
 					acao = "E"; 						
-					if(Dao.crudContaPagar(acao, pagar, compra)) {
+					if(Dao.crudContaPagar(acao, pagar)) {
 						System.out.println("CONTA DELETADO COM SUCESSO");
 					} 
 					request.setAttribute("conta", Dao.listaContaPagar()); 
@@ -80,16 +81,19 @@ public class ControlContasPagar extends HttpServlet {
 	 view.forward(request, response);
 }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
- 
+			pagar.setDescricao(request.getParameter("descricao"));
+			pagar.setCategoria(request.getParameter("categoria"));
+			pagar.setValorPagar(BigDecimal.valueOf(Double.valueOf(request.getParameter("valor"))));
+		
+			if(request.getParameter("idCompra") != "") {
+				compra.setIdCompra(Integer.parseInt(request.getParameter("idCompra")));
+			}
+			
 			 Date data = null;		
 			 try {  
-				 	DateFormat dataCru = new SimpleDateFormat("yyyy-mm-dd");
-				 	Date date = dataCru.parse(request.getParameter("dataVencimento"));
-				 	
-				 	DateFormat dataConv = new SimpleDateFormat("dd-mm-yyyy"); 
-				    String date2 = dataConv.format(date); 
-				 	
-				 	data = new SimpleDateFormat("dd-MM-yyyy").parse(date2); 
+				 	DateFormat dataCru = new SimpleDateFormat("dd/MM/yyyy");
+				 	data = dataCru.parse(request.getParameter("dataVencimento")); 
+				 	 
 					pagar.setDataVencimento(data);
 					
 			 	}catch (ParseException e) { 
@@ -99,7 +103,7 @@ public class ControlContasPagar extends HttpServlet {
 			 
 			 try {
 				 System.out.println("AÇÃO: " +  acao ); 			  
-					 if(Dao.crudContaPagar(acao, pagar, compra)) {
+					 if(Dao.crudContaPagar(acao, pagar)) {
 						 System.out.println("CONTA INSERIDO COM SUCESSO"); 
 					 }
 					 else {

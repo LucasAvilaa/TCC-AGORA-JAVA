@@ -10,10 +10,7 @@ import javax.faces.model.SelectItem;
 import factory.Conexao;
 
 public class DaoHierarquia{
- 
-	
-	
-	
+  
 	Conexao con; 	 
 	public List<SelectItem> getListaHierarquia() throws Exception { 
 		List<SelectItem> hierarquia = new ArrayList<SelectItem>();

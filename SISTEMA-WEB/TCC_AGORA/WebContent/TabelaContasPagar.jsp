@@ -43,7 +43,7 @@
                         <c:out value="CONTA/${conta.idPagar}" />
                      </td>
                      <td>
-                        <c:out value="COMPRA/${conta.tbCompra.idCompra}" />
+                        <c:out value="${conta.descricao}" />
                      </td>
                      <td>
                         <c:out value="${conta.categoria}" />
@@ -55,7 +55,7 @@
                      	<fmt:formatDate pattern="dd/MM/yyyy" value="${conta.dataVencimento}"/> 
                      </td>
                      <td>
-                        <c:out value="" />
+                        <c:out value="R$ ${conta.valorPagar}" />
                      </td> 
                      <td><a href='ControlContasPagar?action=Edit&idPagar=<c:out value="${conta.idPagar}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
                      <td><a href='ControlContasPagar?action=Delete&idPagar=<c:out value="${conta.idPagar}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
