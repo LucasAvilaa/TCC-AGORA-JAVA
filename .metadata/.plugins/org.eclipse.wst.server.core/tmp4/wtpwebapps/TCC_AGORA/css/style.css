@@ -1,0 +1,147 @@
+@charset "UTF-8";
+ *{
+     margin: 0;
+     padding: 0;
+}
+ body{
+     font-size: 1em;
+     font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+/* Cabeçalho */
+ #area-cabecalho{
+     background-color: #454545;
+     padding: 1px;
+     text-align: center;
+     width: 100%;
+     height: 70px;
+     margin-bottom: 15px;
+}
+ #area-logo, #area-menu{
+     padding: 3px;
+}
+ #area-menu a{
+     text-decoration: none;
+     color: #fff;
+     padding: 8px 12px;
+}
+ #area-menu a:hover{
+     background-color:#8f8f8f;
+     height: 28px;
+}
+ #area-menu a:link a:visited {
+     color: #fff;
+     padding: 8px 12px;
+}
+ #imagem-menu{
+     width: 100%;
+     background: black;
+}
+/* Conteudo */
+ #conteudo{
+     width: 100%;
+     height: auto;
+}
+ #opcoes_menu{
+     width: 100%;
+     height: auto;
+     margin-left: 400px;
+}
+ #opcoes_menu h1{
+     position: relative;
+     left: 60px;
+}
+ #seguraLogin{
+     width: 50%;
+     height: 500px;
+     background: #f5f5f5;
+     margin: auto;
+}
+ #conteudo_tabelas h1{
+     text-align: center;
+     padding: 100px;
+}
+ #tabelas{
+}
+ #tabelas table{
+     width: 300px;
+     height: 600px;
+     margin: auto;
+}
+ td{
+}
+ .campos{
+     text-align: center;
+     margin-bottom: 25px;
+     margin-top: 25px;
+     display: block;
+     color: #3d3d3d;
+}
+ .campos input, button{
+     width: 250px;
+     height: 22px;
+}
+ .campos button{
+     background-color: #000000;
+     color: #fff;
+     height: 30px;
+     margin-top: 20px;
+}
+ .links_login{
+     text-decoration: none;
+     color: #000;
+     position: relative;
+     left: 210px;
+}
+ .links_login:hover{
+     background-color: #000;
+     color: #fff;
+}
+ p[class = display_block]{
+     position: relative;
+     right: 100px;
+}
+ .display_block{
+     display: block;
+}
+ .titulos{
+     text-align: center;
+     margin-bottom: 40px;
+     margin-top: 25px;
+}
+ .img_logo{
+     width: 150px;
+     height: 150px;
+     position: relative;
+     left: 250px;
+}
+ .img_opcoes{
+     width: 200px;
+     height: 300px;
+}
+ .linha_horizontal_1{
+     margin-top: 10px;
+     margin-left: 60px;
+     width: 500px;
+     height: 4px;
+     background-color: black;
+     margin-bottom: 20px;
+}
+ .linha_horizontal_2{
+     margin-top: 10px;
+     margin-left: 60px;
+     width: 800px;
+     height: 4px;
+     background-color: black;
+     margin-bottom: 20px;
+     position: relative;
+     right:150px;
+}
+ .imagem_conteudo{
+     width: 100%;
+     height: 500px;
+}
+ .img_conteudo{
+     width: 102.3%;
+     height: 470px;
+}
+ 

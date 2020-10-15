@@ -1,0 +1,111 @@
+package dao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import factory.Conexao;
+import model.TbCliente;
+import model.TbComanda;
+import model.TbContasReceber;
+import model.TbListaProduto;
+import model.TbProduto;
+
+public class DaoComandaProdutos {
+
+	Conexao con;	
+	public boolean crudProdutos(String acao,TbComanda comanda, TbListaProduto lista, TbContasReceber receber,TbProduto produto) throws Exception {
+		con = new Conexao(); 
+		PreparedStatement ps = null; 
+		
+		if(acao.equals("I")) {
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE I,?,?,?,?,?,?,?"); 
+			ps.setInt(1, comanda.getIdComanda());
+			ps.setInt(2, produto.getIdProduto());			
+			ps.setInt(3, lista.getQuantidade());			
+			ps.setString(4, receber.getMetodoPagamento());
+			ps.setBigDecimal(5, receber.getDinheiro());
+			ps.setBigDecimal(6, receber.getDebito());
+			ps.setBigDecimal(7, receber.getCredito());
+		}		
+		else if(acao.equals("E")) { 			
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE E,NULL,?,NULL,NULL,NULL,NULL,NULL");
+			ps.setInt(1, produto.getIdProduto());
+			
+		}else if(acao.equals("P")){ 
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE P,NULL,?,NULL,NULL,NULL,NULL,NULL");  
+			ps.setInt(1, comanda.getIdComanda());
+			ps.setInt(2, produto.getIdProduto());
+			ps.setInt(3, lista.getQuantidade());
+			ps.setString(4, receber.getMetodoPagamento());
+			ps.setBigDecimal(5, receber.getDinheiro());
+			ps.setBigDecimal(6, receber.getDebito());
+			ps.setBigDecimal(7, receber.getCredito());
+		} 
+		if(ps.executeUpdate()>0) { 
+			ps.close();
+			return true;			
+		}else {
+			return false;
+		}
+}
+
+	public TbListaProduto listaProdutoPorId(TbComanda id) {
+			TbListaProduto lista = new TbListaProduto();
+			TbComanda comanda = new TbComanda();
+			TbProduto produto = new TbProduto();
+			try {
+				con = new Conexao();
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_LISTA_PRODUTOS WHERE ID_COMANDA_LISTA = ?"); 
+				ps.setInt(1, id.getIdComanda());
+				ResultSet rs = ps.executeQuery();
+				
+				while (rs.next()) { 
+					lista.setDataCompra(rs.getDate("DATA_COMPRA"));
+					lista.setDataSaida(rs.getDate("DATA_SAIDA"));
+					lista.setQuantidade(rs.getInt("QUANTIDADE"));
+					lista.setIdCompra(rs.getInt("ID_COMPRA"));
+					comanda.setIdComanda(rs.getInt("ID_COMANDA_LISTA"));
+					produto.setIdProduto(rs.getInt("ID_PROD_LISTA"));
+					lista.setTbProduto(produto);
+					lista.setTbComanda(comanda);					 			 
+				} 	
+				ps.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	 
+			return lista;
+		}
+	
+	/**
+	 * FALTA ARRUMAR DAQUI PRA BAIXO
+	 */	
+	public List<TbCliente> listaComanda() {
+		List<TbCliente> listacliente = new ArrayList<TbCliente>();	
+		try {
+			con = new Conexao();
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_LISTA_PRODUTOS WHERE ID_COMANDA_LISTA = ?"); 
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				TbCliente cliente = new TbCliente(); 
+				
+				cliente.setIdCli(rs.getString("ID_CLI"));
+				cliente.setNome(rs.getString("NOME"));
+				cliente.setSobrenome(rs.getString("SOBRENOME"));
+				cliente.setRg(rs.getString("RG"));
+				cliente.setCpf(rs.getString("CPF"));
+				cliente.setDtNasc(rs.getDate("DT_NASC"));
+				cliente.setAtivo(rs.getBoolean("ATIVO"));
+				cliente.setSexo(rs.getString("SEXO"));
+							
+				listacliente.add(cliente);
+			} 	
+			ps.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	 
+		return listacliente;
+	}
+}	
