@@ -1,0 +1,12 @@
+127.0.0.1 - - [22/Sep/2020:21:32:04 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:32:06 -0300] "GET /TCC_AGORA/faces/TabelaCliente.jsp HTTP/1.1" 200 518
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:32:06 -0300] "GET /TCC_AGORA/faces/img/adicionar.png HTTP/1.1" 200 1341
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:32:17 -0300] "GET /TCC_AGORA/faces/ControlCliente?action HTTP/1.1" 200 1172
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:32:48 -0300] "POST /TCC_AGORA/faces/ControlCliente HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:32:48 -0300] "GET /TCC_AGORA/faces/ControlCliente?action=tabela HTTP/1.1" 200 1023
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:32:48 -0300] "GET /TCC_AGORA/faces/img/refresh-icon.png HTTP/1.1" 200 3731
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:32:48 -0300] "GET /TCC_AGORA/faces/img/delete.png HTTP/1.1" 200 2542
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:33:04 -0300] "GET /TCC_AGORA/faces/ControlCliente?action=edit&idCli=9E0F0E51-0196-4DD4-AD1F-97F8B999EF3A HTTP/1.1" 200 1214
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:33:50 -0300] "POST /TCC_AGORA/faces/ControlCliente HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:33:50 -0300] "GET /TCC_AGORA/faces/ControlCliente?action=tabela HTTP/1.1" 200 1025
+0:0:0:0:0:0:0:1 - - [22/Sep/2020:21:33:54 -0300] "GET /TCC_AGORA/faces/ControlCliente?action=delete&idCli=9E0F0E51-0196-4DD4-AD1F-97F8B999EF3A HTTP/1.1" 200 518

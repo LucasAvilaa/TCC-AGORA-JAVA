@@ -1,0 +1,10 @@
+127.0.0.1 - - [14/Sep/2020:10:01:53 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:01:55 -0300] "GET /TCC_AGORA/faces/pages/login.xhtml HTTP/1.1" 200 665
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:02:02 -0300] "POST /TCC_AGORA/faces/pages/Login.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:02:02 -0300] "GET /TCC_AGORA/faces/pages/index.jsp HTTP/1.1" 200 507
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:02:08 -0300] "GET /TCC_AGORA/faces/pages/deslogar.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:02:08 -0300] "GET /TCC_AGORA/faces/pages/login.xhtml HTTP/1.1" 200 665
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:02:14 -0300] "POST /TCC_AGORA/faces/pages/Login.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:02:14 -0300] "GET /TCC_AGORA/faces/pages/login.xhtml HTTP/1.1" 200 665
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:02:31 -0300] "POST /TCC_AGORA/faces/pages/Login.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Sep/2020:10:02:31 -0300] "GET /TCC_AGORA/faces/pages/login.xhtml HTTP/1.1" 200 665
