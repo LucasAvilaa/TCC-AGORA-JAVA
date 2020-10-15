@@ -98,11 +98,11 @@ public class ControlContasPagar extends HttpServlet {
 					
 			 	}catch (ParseException e) { 
 					e.printStackTrace();
-					System.out.println("ERRO NA CONVERSÃO DA DATA");
+					System.out.println("ERRO NA CONVERSï¿½O DA DATA");
 			 	}	
 			 
 			 try {
-				 System.out.println("AÇÃO: " +  acao ); 			  
+				 System.out.println("Aï¿½ï¿½O: " +  acao ); 			  
 					 if(Dao.crudContaPagar(acao, pagar)) {
 						 System.out.println("CONTA INSERIDO COM SUCESSO"); 
 					 }
