@@ -44,7 +44,7 @@ public class DaoContasPagar {
 			TbContasPagar contas = null;
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR WHERE ID_COMPRA = ?"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTAS_PAGAR WHERE ID_PAGAR = ?"); 
 				ps.setInt(1, pagar.getIdPagar());
 				ResultSet rs = ps.executeQuery();
 				

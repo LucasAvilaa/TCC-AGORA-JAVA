@@ -28,13 +28,18 @@
                <legend>INFORMAÇÕES BÁSICAS </legend>
                <p>
                   <label>
-                     DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  style="width: 248px; "/>
+                     DOCUMENTO DE ORIGEM: <input name="descricao" maxlength="50" value="<c:out value="${conta.tbCompra.idCompra}"/>" required="required"  style="width: 248px; "/>
+                  </label>
+               </p> 
+               <p>
+                  <label>
+                     DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${conta.descricao}"/>" required="required"  style="width: 248px; "/>
                   </label>
                </p> 
                <p>
                   <label>
                      CATEGORIA: <h:selectOneMenu style="width: 210px; height: 24px" id="categoria">
-                        <f:selectItem itemValue=" "/>
+                        <f:selectItem itemValue="#{conta.categoria}"/>
                         <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
                         <f:selectItem itemValue="USO E CONSUMO" itemLabel="USO E CONSUMO"/>
                         <f:selectItem itemValue="MATÉRIA PRIMA" itemLabel="MATÉRIA PRIMA"/>
@@ -42,17 +47,15 @@
                      </h:selectOneMenu>
 						
                   </label>
-               </p>  
-                
-               
+               </p>   
                <p>
                   <label>
-                     DATA VENCIMENTO: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  style="width: 248px; "/>
+                     DATA VENCIMENTO: <input name="descricao" maxlength="50" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${conta.dataVencimento}"/>" required="required"  style="width: 248px; "/>
                   </label>
                </p> 
                 <p>
                   <label>
-                     VALOR COMPRA: <input name="vUnitCompra" value="<c:out value="${produto.valorUniCompra}"/>" placeholder="R$000,00"  required="required" style="width: 90px; "/>
+                     VALOR COMPRA: <input name="vUnitCompra" value="<c:out value="${conta.valorPagar}"/>" placeholder="R$000,00"  required="required" style="width: 90px; "/>
                   </label> 
                </p>    
             </fieldset> 
