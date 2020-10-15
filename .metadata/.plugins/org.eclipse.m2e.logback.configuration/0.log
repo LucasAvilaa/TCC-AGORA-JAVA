@@ -3,7 +3,11 @@
 2020-10-15 16:30:32,675 [Worker-11: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2020-10-15 16:34:19,000 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2020-10-15 16:58:18,776 [Worker-28: Periodic workspace save.] ERROR o.e.m.c.i.p.r.ProjectRegistryReader - Can't write workspace state
+<<<<<<< HEAD
 java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\.metadata\.plugins\org.eclipse.m2e.core\workspaceState.ser (O sistema nï¿½o pode encontrar o caminho especificado)
+=======
+java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\.metadata\.plugins\org.eclipse.m2e.core\workspaceState.ser (O sistema não pode encontrar o caminho especificado)
+>>>>>>> df007f916c815f7f5142ef15e48e18bb7e582d5b
 	at java.base/java.io.FileOutputStream.open0(Native Method) ~[na:na]
 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291) ~[na:na]
 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234) ~[na:na]
@@ -20,7 +24,11 @@ java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-A
 	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55) ~[na:na]
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63) ~[org.eclipse.core.jobs_3.10.800.v20200421-0950.jar:na]
 2020-10-15 17:04:39,218 [Worker-30: Periodic workspace save.] ERROR o.e.m.c.i.p.r.ProjectRegistryReader - Can't write workspace state
+<<<<<<< HEAD
 java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\.metadata\.plugins\org.eclipse.m2e.core\workspaceState.ser (O sistema nï¿½o pode encontrar o caminho especificado)
+=======
+java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\.metadata\.plugins\org.eclipse.m2e.core\workspaceState.ser (O sistema não pode encontrar o caminho especificado)
+>>>>>>> df007f916c815f7f5142ef15e48e18bb7e582d5b
 	at java.base/java.io.FileOutputStream.open0(Native Method) ~[na:na]
 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291) ~[na:na]
 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234) ~[na:na]
@@ -37,7 +45,11 @@ java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-A
 	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55) ~[na:na]
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63) ~[org.eclipse.core.jobs_3.10.800.v20200421-0950.jar:na]
 2020-10-15 17:05:08,950 [ModalContext] ERROR o.e.m.c.i.p.r.ProjectRegistryReader - Can't write workspace state
+<<<<<<< HEAD
 java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\.metadata\.plugins\org.eclipse.m2e.core\workspaceState.ser (O sistema nï¿½o pode encontrar o caminho especificado)
+=======
+java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\.metadata\.plugins\org.eclipse.m2e.core\workspaceState.ser (O sistema não pode encontrar o caminho especificado)
+>>>>>>> df007f916c815f7f5142ef15e48e18bb7e582d5b
 	at java.base/java.io.FileOutputStream.open0(Native Method) ~[na:na]
 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291) ~[na:na]
 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234) ~[na:na]
@@ -53,4 +65,7 @@ java.io.FileNotFoundException: D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-A
 	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2333) ~[na:na]
 	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:509) ~[na:na]
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122) ~[org.eclipse.jface_3.20.0.v20200505-1952.jar:na]
+<<<<<<< HEAD
 2020-10-15 17:51:53,996 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+=======
+>>>>>>> df007f916c815f7f5142ef15e48e18bb7e582d5b
