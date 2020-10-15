@@ -31,6 +31,11 @@
                      DOCUMENTO DE ORIGEM: <input name="idCompra" maxlength="50" value="<c:out value=""/>"   style="width: 248px; "/>
                   </label>
                   <label>
+                     DOCUMENTO DE ORIGEM: <input name="descricao" maxlength="50" value="<c:out value="${conta.tbCompra.idCompra}"/>" required="required"  style="width: 248px; "/>
+                  </label>
+               </p> 
+               <p>
+                  <label>
                      DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${conta.descricao}"/>" required="required"  style="width: 248px; "/>
                   </label>
                </p> 
