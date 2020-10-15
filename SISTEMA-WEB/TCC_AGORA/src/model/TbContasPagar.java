@@ -25,6 +25,8 @@ public class TbContasPagar implements Serializable {
 	@Column(name="ID_COMPRA")
 	private int idCompra;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_PAGAR")
 	private int idPagar;
 
