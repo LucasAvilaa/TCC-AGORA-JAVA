@@ -1,8 +1,6 @@
 package model;
 
 import java.io.Serializable;
-
-import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +10,6 @@ import java.util.List;
  * The persistent class for the TB_COMPRAS database table.
  * 
  */
-@ManagedBean
 @Entity
 @Table(name="TB_COMPRAS")
 @NamedQuery(name="TbCompra.findAll", query="SELECT t FROM TbCompra t")
@@ -20,6 +17,7 @@ public class TbCompra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_COMPRA")
 	private int idCompra;
 

@@ -17,6 +17,7 @@ public class TbEstabelecimento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_ESTAB")
 	private String idEstab;
 

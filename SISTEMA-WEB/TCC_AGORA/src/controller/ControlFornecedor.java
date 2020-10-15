@@ -122,19 +122,19 @@ public class ControlFornecedor extends HttpServlet {
 			 
 			 if (request.getParameter("cep") != "") {
 				 endereco.setCep(request.getParameter("cep"));
-			}
+			}    
 			 endereco.setRua(request.getParameter("rua"));
 			 endereco.setBairro(request.getParameter("bairro"));
 			 endereco.setEstado(request.getParameter("estado"));
-			 endereco.setCidade(request.getParameter("cidade"));
-	 
+			 endereco.setCidade(request.getParameter("cidade")); 
+			 
 			 contato.setEmail(request.getParameter("email"));
 			 contato.setNumero(request.getParameter("celular"));
 		  
 			 try {
 				 System.out.println("AÇÃO: " + acao ); 	 
 					 if(Dao.crudFornecedor(acao, fornecedor)) {
-						 System.out.println("FORNECEDOR INSERIDO COM SUCESSO"); 
+						 System.out.println("FORNECEDOR INSERIDO COM SUCESSO");  
 					 }
 					 else {
 						 System.out.println("ERRO AO INSERIR FORNECEDOR"); 
