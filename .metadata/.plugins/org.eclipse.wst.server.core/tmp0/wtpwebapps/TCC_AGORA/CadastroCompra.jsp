@@ -30,18 +30,18 @@
             <fieldset id="informacoes"> 
                <p>
                   <label>
-                     REFERÊCIA: <input disabled="disabled" value="<c:out value="COMPRA/${compra.idCompra}"/>"/> 
+                     REFERÊCIA: <input readonly="readonly" value="<c:out value="COMPRA/${compra.idCompra}"/>"/> 
                   </label>
                   <label>
-                     DATA COMPRA: <input name="dataCompra" disabled="disabled" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataCriada}" />"  style="width: 100px; "/>
+                     DATA COMPRA: <input name="dataCompra" readonly="readonly" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataCriada}" />"  style="width: 100px; "/>
                   </label>
                </p> 
                <p> 
                   <label>
-                     SITUAÇÃO: <input disabled="disabled" value="<c:out value="${compra.status}"/>" /> 
+                     SITUAÇÃO: <input readonly="readonly" value="<c:out value="${compra.status}"/>" /> 
                   </label>
                   <label>
-                     DATA FINALIZADA: <input name="dataFinalizada" disabled="disabled" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataFinalizada}" />" style="width: 100px; "/>
+                     DATA FINALIZADA: <input name="dataFinalizada" readonly="readonly"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataFinalizada}" />" style="width: 100px; "/>
                   </label>
                </p>
                 
