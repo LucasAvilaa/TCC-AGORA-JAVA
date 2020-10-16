@@ -21,7 +21,7 @@ import model.TbContasReceber;
 public class ControlContasReceber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaContasReceber.jsp";
-    private static String criar_editar = "/contasReceber.jsp"; 
+    private static String criar_editar = "/CadastroContasReceber.jsp"; 
 	private DaoContasReceber Dao; 
 	private String acao = null; 
 	private Integer idComanda = null; 
@@ -37,11 +37,7 @@ public class ControlContasReceber extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String forward = "";
 		 String action = request.getParameter("action");   
-		 
-		 if(request.getParameter("idComanda") != null) {  
-			 idComanda = Integer.parseInt(request.getParameter("idComanda"));
-			 comanda.setIdComanda(idComanda);
-		 }		
+ 	
 		 if(request.getParameter("idReceber") != null) {  
 			idReceber = Integer.parseInt(request.getParameter("idReceber")); 
 			receber.setIdReceber(idReceber);
@@ -49,7 +45,7 @@ public class ControlContasReceber extends HttpServlet {
 		 
 		 if(action.equalsIgnoreCase("Tabela")) {			 	
 				 try {				
-					request.setAttribute("conta", Dao.ListaReceber());
+					request.setAttribute("receber", Dao.ListaReceber());
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +55,7 @@ public class ControlContasReceber extends HttpServlet {
 					try {
 						acao = "E"; 
 						Dao.crudContasReceber(acao, receber, comanda);						
-						request.setAttribute("conta", Dao.ListaReceber());
+						request.setAttribute("receber", Dao.ListaReceber());
 						forward = tabela;
 						
 					} catch (Exception e) {
@@ -67,7 +63,7 @@ public class ControlContasReceber extends HttpServlet {
 					}
 		 }
 		else if(action.equalsIgnoreCase("Edit")){   
-			request.setAttribute("conta", Dao.ContaReceberPorId(idReceber));
+			request.setAttribute("receber", Dao.ContaReceberPorId(idReceber));
 			acao = "A";
 			forward = criar_editar;
 		}
