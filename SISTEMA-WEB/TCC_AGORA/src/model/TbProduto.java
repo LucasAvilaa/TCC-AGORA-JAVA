@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,7 @@ import dao.DaoProduto;
  * The persistent class for the TB_PRODUTOS database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_PRODUTOS")
 @NamedQuery(name="TbProduto.findAll", query="SELECT t FROM TbProduto t")
@@ -225,6 +227,5 @@ public class TbProduto implements Serializable {
 		DaoProduto produto = new DaoProduto();
 		setLista(produto.lista()); 
 	}
-
-	
+ 
 }

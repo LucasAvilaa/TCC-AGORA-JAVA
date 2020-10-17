@@ -63,8 +63,7 @@ public class DaoFornecedor {
 					fornecedor.setCnpj(rs.getString("CNPJ"));
 					fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
 					fornecedor.setAtivo(rs.getBoolean("ATIVO")); 							 
-				} 	
-				ps.close();
+				} 	 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 
@@ -87,8 +86,7 @@ public class DaoFornecedor {
 					forn.setAtivo(rs.getBoolean("ATIVO")); 
 								
 					listaforn.add(forn);
-				} 
-				ps.close();
+				}  
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 
@@ -104,8 +102,7 @@ public class DaoFornecedor {
 			
 			while (rs.next()) { 
 				fornecedores.add(new SelectItem(rs.getString("ID_FORN"),rs.getString("RAZAO_SOCIAL")));
-			} 
-			ps.close();
+			}  
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	 

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +25,7 @@ import dao.DaoFornecedor;
  * The persistent class for the TB_FORNECEDORES database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_FORNECEDORES")
 @NamedQuery(name="TbFornecedore.findAll", query="SELECT t FROM TbFornecedore t")

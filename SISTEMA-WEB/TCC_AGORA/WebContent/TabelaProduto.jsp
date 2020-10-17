@@ -32,7 +32,7 @@
                   <th style="width: 105px; ">CATEGORIA</th>
                   <th style="width: 181px; ">VALOR COMPRA</th>
                   <th style="width: 156px; ">VALOR VENDA</th> 
-                  <th colspan="2" style="width: 72px; ">AÇÃO</th>
+                  <th colspan="2">AÇÃO</th>
                </tr>
             </thead>
             <tbody>
