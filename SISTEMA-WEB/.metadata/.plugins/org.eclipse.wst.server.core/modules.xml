@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <modules>
-<<<<<<< HEAD
   <module moduleId="org.eclipse.jst.jee.server:TCC_AGORA" serverId="Apache Tomcat v9.0 at localhost"/>
-=======
-  <module moduleId="org.eclipse.jst.jee.server:TCC_AGORA" serverId="Tomcat v9.0 Server at localhost"/>
->>>>>>> master
 </modules>

@@ -6,6 +6,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\SISTEMA-WEB"/>
+			<item value="D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA"/>
+			<item value="D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-BACKUP\SISTEMA-WEB"/>
 			<item value="D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC\SISTEMA-DESKTOP-INATIVO"/>
 			<item value="D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC\SISTEMA-WEB"/>
 		</list>
@@ -23,5 +26,13 @@
 			<item key="DIALOG_Y_ORIGIN" value="59"/>
 			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 		</section>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="380"/>
+		<item key="DIALOG_Y_ORIGIN" value="205"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
 	</section>
 </section>

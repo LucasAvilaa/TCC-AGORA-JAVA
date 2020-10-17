@@ -26,7 +26,7 @@ public class DaoEstabelecimento {
 			ps.setString(3, estab.getRazaoSocial()); 
 		}
 		else if(acao.equals("E")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FORNECEDORES E,?,NULL,NULL");   
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ESTABELECIMENTOS E,?,NULL,NULL");   
 			ps.setString(1, estab.getIdEstab()); 
 		} 
 		if(ps.executeUpdate()>0) { 
@@ -47,7 +47,7 @@ public class DaoEstabelecimento {
 				
 				while (rs.next()) { 
 					estab.setIdEstab(rs.getString("ID_ESTAB"));
-					estab.setCnpj(rs.getString("CPNJ"));
+					estab.setCnpj(rs.getString("CNPJ"));
 					estab.setRazaoSocial(rs.getString("RAZAO_SOCIAL")); 							 
 				} 			
 				ps.close();
@@ -67,7 +67,7 @@ public class DaoEstabelecimento {
 			while (rs.next()) {
 				TbEstabelecimento estab = new TbEstabelecimento(); 				
 				estab.setIdEstab(rs.getString("ID_ESTAB"));
-				estab.setCnpj(rs.getString("CPNJ"));
+				estab.setCnpj(rs.getString("CNPJ"));
 				estab.setRazaoSocial(rs.getString("RAZAO_SOCIAL")); 							
 				listaEstab.add(estab);
 			} 	

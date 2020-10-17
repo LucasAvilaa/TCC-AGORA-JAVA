@@ -12,7 +12,7 @@ import model.TbContasReceber;
 public class DaoContasReceber {
 
 	Conexao con;
-	public boolean crudReceber(String acao, TbContasReceber receber, TbComanda com) throws Exception {
+	public boolean crudContasReceber(String acao, TbContasReceber receber, TbComanda comanda) throws Exception {
 		con = new Conexao(); 
 		PreparedStatement ps = null;
 		
@@ -27,11 +27,7 @@ public class DaoContasReceber {
 		}		
 		else if(acao.equals("A")) { 			
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_RECEBER A,?,?,?,?,?,?,?");
-<<<<<<< HEAD
 			ps.setInt(1, receber.getIdReceber());
-=======
-			ps.setInt(1, com.getIdComanda());
->>>>>>> master
 			ps.setString(2, receber.getMetodoPagamento());
 			ps.setBigDecimal(3, receber.getDinheiro());
 			ps.setBigDecimal(4, receber.getDebito());
@@ -40,25 +36,18 @@ public class DaoContasReceber {
 			ps.setDate(7, new java.sql.Date(receber.getDataPrevistaReceber().getTime())); 
 		}else if(acao.equals("E")){ 
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_RECEBER E,?,NULL,NULL,NULL,NULL,NULL,NULL");  
-<<<<<<< HEAD
 			ps.setInt(1, receber.getIdReceber());
-=======
-			ps.setInt(1, com.getIdComanda()); 
->>>>>>> master
 		} 
 		if(ps.executeUpdate()>0) { 
 			ps.close();
 			return true;			
-		}else {
+		}		
+		else {
 			return false;
-		}
+		}		
 }
 	
-<<<<<<< HEAD
 	public TbContasReceber ContaReceberPorId(TbContasReceber recebe) {
-=======
-	public TbContasReceber ReceberPorId(Integer id) {
->>>>>>> master
 			TbContasReceber receber = new TbContasReceber();
 			try {
 				con = new Conexao();

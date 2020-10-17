@@ -20,6 +20,7 @@ public class TbContasReceber implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_RECEBER")
 	private int idReceber;
 

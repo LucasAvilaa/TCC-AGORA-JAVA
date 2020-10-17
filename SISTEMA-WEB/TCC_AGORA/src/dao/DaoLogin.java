@@ -38,17 +38,23 @@ public class DaoLogin {
 			  }
 	}
 	
-	public TbLogin validaLogin(TbLogin log) throws Exception{
+	public boolean validaLogin(TbLogin log) throws Exception{
 		con = new Conexao();  
-	 
+		TbLogin senha = null;
 		PreparedStatement ps  = con.getConexao().prepareStatement("SELECT SENHA FROM TB_LOGIN WHERE USUARIO = ?");
 		ps.setString(1, log.getUsuario());
 		ResultSet rs =  ps.executeQuery();
 		
 		while(rs.next()) { 
-			log.setSenha(rs.getString("SENHA"));		
+			senha = new TbLogin();
+			senha.setSenha(rs.getString("SENHA"));		
 		}
 		ps.close();
-		return log;
+		if(log.getSenha().equals(senha.getSenha())) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }	
