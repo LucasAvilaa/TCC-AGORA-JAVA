@@ -7,7 +7,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>CONTAS A PAGAR</title>
+      <title>CONTAS A RECEBER</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
    </head>
@@ -16,7 +16,7 @@
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
       <f:view> 
-         	<h2>CONTAS A PAGAR</h2>
+         	<h2>CONTAS A RECEBER</h2>
             
          <br />
          <p>
@@ -30,39 +30,43 @@
                   <th style="width: 147px; ">REFERÊNCIA</th>
                   <th style="width: 141px; ">METODO PAGAMENTO</th> 
                   <th style="width: 141px; ">DINHEIRO</th> 
-                  <th style="width: 193px; ">CARTÃO</th> 
-                  <th style="width: 105px; ">TOTAL</th>
+                  <th style="width: 193px; ">DEBITO</th> 
+                  <th style="width: 105px; ">CREDITO</th> 
+                  <th style="width: 181px; ">TOTAL</th>
                   <th style="width: 181px; ">DATA VENDA</th>
                   <th style="width: 181px; ">DATA PREVISTA RECEBER</th>
                   <th colspan="2" style="width: 72px; ">AÇÃO</th>
                </tr>
             </thead>
             <tbody>
-               <c:forEach items=" " var="conta">
+               <c:forEach items="${receber}" var="receber">
                   <tr>
                      <td>
-                        <c:out value="VENDA/ " />
+                        <c:out value="VENDA/ ${receber.idReceber}" />
                      </td>
                      <td>
-                        <c:out value=" " />
+                        <c:out value="${receber.metodoPagamento}" />
                      </td>
                      <td>
-                        <c:out value=" " />
+                        <c:out value="${receber.dinheiro}" />
                      </td>
                      <td>
-                        <c:out value=" " />
+                        <c:out value="${receber.debito}" />
                      </td>
                      <td>
-                     	<c:out value="R$  " /> 
+                        <c:out value="${receber.credito}" />
+                     </td>
+                     <td>
+                     	<c:out value="R$  ${receber.dinheiro} + ${receber.debito} + ${receber.credito}" /> 
                      </td>
                      <td> 
-                     	<fmt:formatDate pattern="dd/MM/yyyy" value=""/> 
+                     	<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataCompra}"/> 
                      </td>
                      <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy" value=""/>
+                        <fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataPrevistaReceber}"/>
                      </td> 
-                     <td><a href='ControlContasReceberr?action=Edit&idReceber=<c:out value=" "/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                     <td><a href='ControlContasReceber?action=Delete&idReceber=<c:out value=" "/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+                     <td><a href='ControlContasReceber?action=Edit&idReceber=<c:out value="${receber.idReceber}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+                     <td><a href='ControlContasReceber?action=Delete&idReceber=<c:out value="${receber.idReceber}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
                   </tr>
                </c:forEach>
             </tbody>

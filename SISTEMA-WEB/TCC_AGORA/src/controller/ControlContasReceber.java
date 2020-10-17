@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,8 +24,7 @@ public class ControlContasReceber extends HttpServlet {
     private static String tabela = "/TabelaContasReceber.jsp";
     private static String criar_editar = "/CadastroContasReceber.jsp"; 
 	private DaoContasReceber Dao; 
-	private String acao = null; 
-	private Integer idComanda = null; 
+	private String acao = "I";  
 	private Integer idReceber = null;
 	private TbContasReceber receber = new TbContasReceber(); 
 	private TbComanda comanda = new TbComanda();
@@ -63,7 +63,7 @@ public class ControlContasReceber extends HttpServlet {
 					}
 		 }
 		else if(action.equalsIgnoreCase("Edit")){   
-			request.setAttribute("receber", Dao.ContaReceberPorId(idReceber));
+			request.setAttribute("receber", Dao.ContaReceberPorId(receber));
 			acao = "A";
 			forward = criar_editar;
 		}
@@ -77,47 +77,53 @@ public class ControlContasReceber extends HttpServlet {
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
-		receber.setCredito(BigDecimal.valueOf(Double.parseDouble(request.getParameter("credito"))));		
-		receber.setDebito(BigDecimal.valueOf(Double.parseDouble(request.getParameter("debito"))));
-		receber.setDinheiro(BigDecimal.valueOf(Double.parseDouble(request.getParameter("dinheiro"))));
-		receber.setMetodoPagamento(request.getParameter("metodoPag"));
-		receber.setIdReceber(Integer.parseInt(request.getParameter("idReceber")) );
+		if(request.getParameter("credito") != "") {
+			receber.setCredito(BigDecimal.valueOf(Double.parseDouble(request.getParameter("credito"))));		
+		}
+		if(request.getParameter("debito") != "") {
+			receber.setDebito(BigDecimal.valueOf(Double.parseDouble(request.getParameter("debito"))));
+		}
+		if(request.getParameter("dinheiro") != "") {
+			receber.setDinheiro(BigDecimal.valueOf(Double.parseDouble(request.getParameter("dinheiro"))));
+		}
+		receber.setMetodoPagamento(request.getParameter("condicaoPagamento"));
+	//	receber.setIdReceber(Integer.parseInt(request.getParameter("idReceber")) );
 		
-	 	 Date dataPrevistaReceber = null;
-			 if(request.getParameter("dataPrevistaReceber") != null) {
-				 try { 				
-					 dataPrevistaReceber = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataPrevistaReceber"));
-					 receber.setDataPrevistaReceber(dataPrevistaReceber);
-				} catch (ParseException e) { 
+		 Date dataReceber = null;		
+		 try {  
+			 	DateFormat dataCru = new SimpleDateFormat("dd/MM/yyyy");
+			 	dataReceber = dataCru.parse(request.getParameter("dataPrevista")); 
+			 	 
+				receber.setDataPrevistaReceber(dataReceber); 
+				
+		 	}catch (ParseException e) { 
+				e.printStackTrace();
+				System.out.println("ERRO NA CONVERSÃO DA DATA");
+		 	}
+			 Date dataCompra = null;		
+			 try {  
+				 	DateFormat dataCru = new SimpleDateFormat("dd/MM/yyyy");
+				 	dataCompra = dataCru.parse(request.getParameter("dataVenda")); 
+				 	 
+					receber.setDataCompra(dataCompra); 
+					
+			 	}catch (ParseException e) { 
 					e.printStackTrace();
-					System.out.println("ERRO NA CONVERSÃO DA DATA PREVISTA");
-				}				 
-			 }
-			 Date dataCompra = null;
-			 if(request.getParameter("dataCompra") != null) {
-				 try { 				
-					 dataCompra = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataCompra"));
-					 receber.setDataCompra(dataCompra);
-				} catch (ParseException e) { 
-					e.printStackTrace();
-					System.out.println("ERRO NA CONVERSÃO DA DATA DA COMPRA");
-				}				 
-			 }
+					System.out.println("ERRO NA CONVERSÃO DA DATA");
+			 	}	
+			 
 			 try {
-				 System.out.println("AÇÃO: " + acao );
-				 if(acao.equals("I")) {				  
-					 if(Dao.crudContasReceber(acao, receber, comanda) ) {
-						 System.out.println("CRIADO COM SUCESSO");
-						 	}							
-						}
-				 else{  
-					 comanda.setIdComanda(idComanda);
-					 Dao.crudContasReceber(acao, receber, comanda) ;	
-					System.out.println("ALTERADO COM SUCESSO: " + receber.getIdReceber());	
-				 }				
+				 System.out.println("AÇÃO: " +  acao ); 			  
+					 if(Dao.crudContasReceber(acao, receber, comanda)) {
+						 System.out.println("CONTA INSERIDO COM SUCESSO"); 
+					 }
+					 else {
+						 System.out.println("ERRO AO INSERIR CONTA"); 
+					 } 
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("ERRO AO INSERIR CONTAS A RECEBER");
+				System.out.println("ERRO TRY/CATCH - ERRO AO INSERIR CONTA");
+				System.out.println("_____________________________________");
 			}
 			  response.sendRedirect("ControlContasReceber?action=Tabela");		
 	}	

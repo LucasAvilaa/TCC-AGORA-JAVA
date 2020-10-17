@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,6 +12,7 @@ import java.util.Date;
  * The persistent class for the TB_CONTAS_RECEBER database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_CONTAS_RECEBER")
 @NamedQuery(name="TbContasReceber.findAll", query="SELECT t FROM TbContasReceber t")

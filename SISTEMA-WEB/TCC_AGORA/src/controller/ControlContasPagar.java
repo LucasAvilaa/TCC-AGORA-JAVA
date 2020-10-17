@@ -22,7 +22,7 @@ public class ControlContasPagar extends HttpServlet {
     private static String tabela = "/TabelaContasPagar.jsp";
     private static String criar_editar = "/CadastroContasPagar.jsp"; 
 	private DaoContasPagar Dao; 
-	private String acao = null; 
+	private String acao = "I"; 
 	private Integer idCompra = null;
 	private Integer idPagar = null;
 	private TbContasPagar pagar = new TbContasPagar();

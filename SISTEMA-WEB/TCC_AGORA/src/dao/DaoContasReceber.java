@@ -27,7 +27,7 @@ public class DaoContasReceber {
 		}		
 		else if(acao.equals("A")) { 			
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_RECEBER A,?,?,?,?,?,?,?");
-			ps.setInt(1, comanda.getIdComanda());
+			ps.setInt(1, receber.getIdReceber());
 			ps.setString(2, receber.getMetodoPagamento());
 			ps.setBigDecimal(3, receber.getDinheiro());
 			ps.setBigDecimal(4, receber.getDebito());
@@ -36,7 +36,7 @@ public class DaoContasReceber {
 			ps.setDate(7, new java.sql.Date(receber.getDataPrevistaReceber().getTime())); 
 		}else if(acao.equals("E")){ 
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CONTAS_RECEBER E,?,NULL,NULL,NULL,NULL,NULL,NULL");  
-			ps.setInt(1, comanda.getIdComanda()); 
+			ps.setInt(1, receber.getIdReceber());
 		} 
 		if(ps.executeUpdate()>0) { 
 			ps.close();
@@ -47,12 +47,12 @@ public class DaoContasReceber {
 		}		
 }
 	
-	public TbContasReceber ContaReceberPorId(Integer id) {
+	public TbContasReceber ContaReceberPorId(TbContasReceber recebe) {
 			TbContasReceber receber = new TbContasReceber();
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTAS_RECEBER WHERE ID_COMANDA_RECEBER=?"); 
-				ps.setInt(1, id);
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTAS_RECEBER WHERE ID_RECEBER = ?"); 
+				ps.setInt(1, recebe.getIdReceber());
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) { 
@@ -62,9 +62,17 @@ public class DaoContasReceber {
 					receber.setDinheiro(rs.getBigDecimal("DINHEIRO"));
 					receber.setDataCompra(rs.getDate("DATA_COMPRA"));
 					receber.setDataPrevistaReceber(rs.getDate("DATA_PREVISTA_RECEBER"));
-					receber.setMetodoPagamento(rs.getString("METODO_PAGAMENTO"));
-				} 
-				ps.close();
+					
+					if(rs.getString("METODO_PAGAMENTO") == "C") {
+						receber.setMetodoPagamento("CARTÃO");
+					}
+					else if(rs.getString("METODO_PAGAMENTO") == "D") {
+						receber.setMetodoPagamento("DINHEIRO");
+					}
+					else{
+						receber.setMetodoPagamento("CARTÃO/DINHEIRO");
+					}
+				}  
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 
@@ -82,7 +90,9 @@ public class DaoContasReceber {
 				TbContasReceber receber = new TbContasReceber();
 				TbComanda comanda = new TbComanda();
 				
-				comanda.setIdComanda(Integer.parseInt(rs.getString("ID_COMANDA_RECEBER")));
+				if(rs.getString("ID_COMANDA_RECEBER") != null) {
+					comanda.setIdComanda(Integer.parseInt(rs.getString("ID_COMANDA_RECEBER")));
+				}
 				receber.setTbComanda(comanda);
 				
 				receber.setIdReceber(Integer.parseInt(rs.getString("ID_RECEBER")));				
@@ -91,11 +101,18 @@ public class DaoContasReceber {
 				receber.setDinheiro(rs.getBigDecimal("DINHEIRO"));
 				receber.setDataCompra(rs.getDate("DATA_COMPRA"));
 				receber.setDataPrevistaReceber(rs.getDate("DATA_PREVISTA_RECEBER"));
-				receber.setMetodoPagamento(rs.getString("METODO_PAGAMENTO"));
+				if(rs.getString("METODO_PAGAMENTO").equals("C")) {
+					receber.setMetodoPagamento("CARTÃO");
+				}
+				else if(rs.getString("METODO_PAGAMENTO").equals("D")) {
+					receber.setMetodoPagamento("DINHEIRO");
+				}
+				else{
+					receber.setMetodoPagamento("CARTÃO/DINHEIRO");
+				}
 							
 				ListaContaReceber.add(receber);
-			} 	
-			ps.close();
+			} 	 
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getClass();

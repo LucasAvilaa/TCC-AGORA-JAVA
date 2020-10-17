@@ -25,35 +25,38 @@
             <br />
             <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlContasReceber?action=Tabela">CANCELAR</a> </p>
             <fieldset id="informacoes">
-               <legend>INFORMAÇÕES BÁSICAS </legend>
+               <legend>INFORMAÇÕES BÁSICAS </legend> 
                <p>
                	<label>
-                     REFERÊNCIA VENDA: <input name="idVenda" maxlength="50" value="<c:out value=""/>"   style="width: 248px; "/>
+                     REFERÊNCIA VENDA: <input name="idVenda"  value="<c:out value="VENDA/ ${receber.idReceber}"/>"   style="width: 148px; "/>
                   </label>
-                  <label>
+                
+               </p> 
+               <p>
+               	  <label>
                      METODO DE PAGAMENTO: 
                       <h:selectOneMenu style="width: 150px; height: 24px" id="condicaoPagamento">
 	                        <f:selectItem itemValue="#{receber.metodoPagamento}"/>
 	                        <f:selectItem noSelectionOption="true" itemValue="_________"/>
-	                        <f:selectItem itemValue="DINHEIRO" itemLabel="DINHEIRO"/>
-	                        <f:selectItem itemValue="CARTÃO" itemLabel="CARTÃO"/>
-	                        <f:selectItem itemValue="CARTÃO/DINHEIRO" itemLabel="CARTÃO/DINHEIRO"/>
+	                        <f:selectItem itemValue="D" itemLabel="DINHEIRO"/>
+	                        <f:selectItem itemValue="C" itemLabel="CARTÃO"/>
+	                        <f:selectItem itemValue="CD" itemLabel="CARTÃO/DINHEIRO"/>
                      </h:selectOneMenu> 
-                  </label>
-               </p> 
-               <p>
-                  <label>
-                     DINHEIRO: <input name="dinheiro" value="<c:out value="${receber.dinheiro}"/>"   style="width: 248px; "/>
-                  </label>
-               </p>   
-               <p>
-                  <label>
-                     CARTÃO DEBITO: <input name="debito" value="<c:out value="${receber.debito}"/>"   style="width: 248px; "/>
                   </label>
                </p>
                <p>
                   <label>
-                     CARTÃO CRÉDITO: <input name="credito" value="<c:out value="${receber.credito}"/>"   style="width: 248px; "/>
+                     DINHEIRO: <input name="dinheiro" value="<c:out value="${receber.dinheiro}"/>"   style="width: 148px; "/>
+                  </label>
+               </p>   
+               <p>
+                  <label>
+                     CARTÃO DEBITO: <input name="debito" value="<c:out value="${receber.debito}"/>"   style="width: 148px; "/>
+                  </label>
+               </p>
+               <p>
+                  <label>
+                     CARTÃO CRÉDITO: <input name="credito" value="<c:out value="${receber.credito}"/>"   style="width: 148px; "/>
                   </label>
                </p> 
                 <p>
@@ -63,12 +66,12 @@
                </p>   
                <p>
                   <label>
-                     DATA DA VENDA: <input name="dataVenda"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="" />" style="width: 100px; "/>
+                     DATA DA VENDA: <input name="dataVenda"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataCompra}" />" style="width: 100px; "/>
                   </label> 
                </p>  
                <p>
                   <label>
-                     DATA PREVISTA RECEBER: <input name="dataPrevista" value="<fmt:formatDate pattern="dd/MM/yyyy" value="" />" style="width: 100px; "/>
+                     DATA PREVISTA RECEBER: <input name="dataPrevista" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataPrevistaReceber}" />" style="width: 100px; "/>
                   </label> 
                </p>  
             </fieldset> 
