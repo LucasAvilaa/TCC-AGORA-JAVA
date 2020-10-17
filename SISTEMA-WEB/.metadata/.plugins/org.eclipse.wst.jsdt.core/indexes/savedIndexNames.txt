@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+INDEX VERSION 1.4+D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC\SISTEMA-WEB\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3761072779.index
+1159436360.index
+3910587697.index
+3522534226.index
+1703555572.index
+2121876271.index
+3171820070.index
+=======
 INDEX VERSION 1.4+D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\SISTEMA-WEB\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 2184230913.index
 1168458863.index
@@ -5,4 +15,8 @@ INDEX VERSION 1.4+D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\SISTEMA-
 1547374453.index
 814632100.index
 3522534226.index
+<<<<<<< HEAD
 1703555572.index
+=======
+>>>>>>> a53d905
+>>>>>>> master

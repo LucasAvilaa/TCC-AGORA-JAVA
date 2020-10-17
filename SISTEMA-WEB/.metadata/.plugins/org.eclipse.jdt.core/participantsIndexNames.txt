@@ -1,3 +1,11 @@
 INDEX VERSION 1.131
+<<<<<<< HEAD
 D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\SISTEMA-WEB\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1703555572.index
+=======
+D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC\SISTEMA-WEB\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\949761076.index
+\TCC_AGORA\src
+D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC\SISTEMA-WEB\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1703555572.index
+\TCC_AGORA\src
+D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC\SISTEMA-WEB\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4066569962.index
+>>>>>>> master
 \TCC_AGORA\src

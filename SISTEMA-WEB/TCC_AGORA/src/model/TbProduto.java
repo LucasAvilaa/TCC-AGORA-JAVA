@@ -1,26 +1,10 @@
 package model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.faces.model.SelectItem;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import dao.DaoProduto;
 
 
 /**
@@ -34,7 +18,6 @@ public class TbProduto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_PRODUTO")
 	private int idProduto;
 
@@ -72,20 +55,8 @@ public class TbProduto implements Serializable {
 	//bi-directional many-to-one association to TbFornecedore
 	@ManyToOne
 	@JoinColumn(name="ID_FORN_PROD")
-	private TbFornecedore tbFornecedore;
+	private TbFornecedores tbFornecedore;
 
-	private List<SelectItem> lista;
-
-	public List<SelectItem> getLista() {
-		return lista;
-	}
-
-	public void setLista(List<SelectItem> lista) {
-		this.lista = lista;
-	}
-
-
-	
 	public TbProduto() {
 	}
 
@@ -211,20 +182,12 @@ public class TbProduto implements Serializable {
 		return tbListaProduto;
 	}
 
-	public TbFornecedore getTbFornecedore() {
+	public TbFornecedores getTbFornecedore() {
 		return this.tbFornecedore;
 	}
 
-	public void setTbFornecedore(TbFornecedore tbFornecedore) {
+	public void setTbFornecedore(TbFornecedores tbFornecedore) {
 		this.tbFornecedore = tbFornecedore;
 	}
 
-
-	@PostConstruct
-	public void lista() {
-		DaoProduto produto = new DaoProduto();
-		setLista(produto.lista()); 
-	}
-
-	
 }

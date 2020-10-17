@@ -1,0 +1,29 @@
+package dao;
+
+import java.sql.PreparedStatement;
+
+import factory.Conexao;
+import model.TbEstabelecimento;
+
+/*
+ * Verificar se é necessaria
+ *
+ */
+public class daoEstabelecimento {
+	
+	Conexao con;
+	public boolean crudEstab(String acao,TbEstabelecimento tbestab) throws Exception {
+		con = new Conexao();
+		String sql = "EXEC PROC_CRUD_ESTABELECIMENTOS ?,?,?";
+		PreparedStatement ps = con.getConexao().prepareStatement(sql);
+		ps.setString(1, acao);
+		ps.setString(2, tbestab.getCnpj());
+		ps.setString(3, tbestab.getRazaoSocial()); 
+		if(ps.executeUpdate()>0) {
+			ps.close();
+			return true;
+		}else {
+			return false;
+		}
+	}
+}
