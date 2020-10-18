@@ -22,24 +22,7 @@ public class DaoCompra {
 			ps = con.getConexao().prepareStatement("EXEC PROC_COMPRA_ESTAB IC,NULL,?,?"); 
 			ps.setInt(1, compralista.getQuantidade());
 			ps.setInt(2, produto.getIdProduto());			
-		}		
-		else if(acao.equals("II")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_COMPRA_ESTAB II,?,?,?"); 
-			ps.setInt(1, compra.getIdCompra());
-			ps.setInt(2, produto.getIdProduto());			
-			ps.setInt(3, compralista.getQuantidade());
-		}
-		else if(acao.equals("A")) { 			
-			ps = con.getConexao().prepareStatement("EXEC PROC_COMPRA_ESTAB A,?,NULL,?");
-			ps.setInt(1, compra.getIdCompra()); 
-			ps.setInt(2, produto.getIdProduto());			
-			ps.setInt(3, compralista.getQuantidade());
-		}
-		else if(acao.equals("EI")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_COMPRA_ESTAB EI,?,?,NULL");  
-			ps.setInt(1, compra.getIdCompra()); 
-			ps.setInt(2, produto.getIdProduto());			
-		}
+		} 
 		else if(acao.equals("EC")){ 
 			ps = con.getConexao().prepareStatement("EXEC PROC_COMPRA_ESTAB EC,?,NULL,NULL");   
 			ps.setInt(1, compra.getIdCompra());
@@ -51,6 +34,35 @@ public class DaoCompra {
 			return false;
 		}
 }
+	public boolean crudCompraItens(String acao,TbCompraProduto compralista, TbCompra compra, TbProduto produto) throws Exception {
+		con = new Conexao(); 
+		PreparedStatement ps = null;
+		 	
+		if(acao.equals("II")) {
+			ps = con.getConexao().prepareStatement("EXEC PROC_COMPRA_ESTAB II,?,?,?"); 
+			ps.setInt(1, compra.getIdCompra());
+			ps.setInt(2, produto.getIdProduto());			
+			ps.setInt(3, compralista.getQuantidade());
+		}
+		else if(acao.equals("AI")) { 			
+			ps = con.getConexao().prepareStatement("EXEC PROC_COMPRA_ESTAB A,?,NULL,?");
+			ps.setInt(1, compra.getIdCompra()); 
+			ps.setInt(2, produto.getIdProduto());			
+			ps.setInt(3, compralista.getQuantidade());
+		}
+		else if(acao.equals("EI")){ 
+			ps = con.getConexao().prepareStatement("EXEC PROC_COMPRA_ESTAB EI,?,?,NULL");  
+			ps.setInt(1, compra.getIdCompra()); 
+			ps.setInt(2, produto.getIdProduto());			
+		} 
+		if(ps.executeUpdate()>0) { 
+			ps.close();
+			return true;			
+		}else {
+			return false;
+		}
+}
+	
  
 	 
 		public TbCompra CompraPorId(TbCompra id) {
@@ -96,6 +108,7 @@ public class DaoCompra {
 					
 					produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
 					produto.setValorUniCompra(rs.getBigDecimal("VALOR_UNI_COMPRA"));
+					produto.setIdProduto(rs.getInt("ID_PRODUTO"));
 					
 					fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
 					produto.setTbFornecedore(fornecedor);
