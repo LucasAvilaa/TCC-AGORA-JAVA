@@ -55,8 +55,8 @@
                      <td> 
                         <c:out value="${compra.status}" />
                      </td> 
-                     <td><a href='ControlCompra?action=Edit&idCompra=<c:out value="${compra.idCompra}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                     <td><a href='ControlCompra?action=Delete&idCompra=<c:out value="${compra.idCompra}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+                     <td><a href='ControlCompra?action=EditCompra&idCompra=<c:out value="${compra.idCompra}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+                     <td><a href='ControlCompra?action=DeleteCompra&idCompra=<c:out value="${compra.idCompra}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
                   </tr>
                </c:forEach>
             </tbody>

@@ -40,7 +40,7 @@ public class TbCompra implements Serializable {
 	@OneToMany(mappedBy="tbCompra")
 	private List<TbContasPagar> tbContasPagars;
 
-	public TbCompra() {
+	public TbCompra() { 
 	}
 
 	public int getIdCompra() {

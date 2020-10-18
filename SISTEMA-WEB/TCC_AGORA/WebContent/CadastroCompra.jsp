@@ -10,6 +10,7 @@
       <title>PEDIDO DE COMPRA</title> 
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="css/inserirItens.css" media="screen" /> 
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
    </head>
    <body>
@@ -30,18 +31,18 @@
             <fieldset id="informacoes"> 
                <p>
                   <label>
-                     REFERÊCIA: <input readonly="readonly" value="<c:out value="COMPRA/${compra.idCompra}"/>"/> 
+                     REFERÊCIA: <c:out value="COMPRA/${compra.idCompra}"/>
                   </label>
-                  <label>
-                     DATA COMPRA: <input name="dataCompra" readonly="readonly" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataCriada}" />"  style="width: 100px; "/>
+                  <label style="padding-left: 90px">
+                     DATA COMPRA: <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataCriada}"/>
                   </label>
                </p> 
                <p> 
-                  <label>
-                     SITUAÇÃO: <input readonly="readonly" value="<c:out value="${compra.status}"/>" /> 
+                  <label >
+                     SITUAÇÃO: <c:out value="${compra.status}"/>
                   </label>
-                  <label>
-                     DATA FINALIZADA: <input name="dataFinalizada" readonly="readonly"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataFinalizada}" />" style="width: 100px; "/>
+                  <label style="padding-left: 168px">
+                     DATA FINALIZADA: <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataFinalizada}" />
                   </label>
                </p>
                 
@@ -76,14 +77,14 @@
             							<c:out value="${itens.quantidade}*${itens.tbProduto.valorUniCompra}" />
             						 
            							</td>
-            						<td><a href='ControlEstabelecimento?action=Edit&idCompra=<c:out value=" "/>&cod=<c:out value=" "/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                 					<td><a href='ControlEstabelecimento?action=Delete&idCompra=<c:out value=" "/>&cod=<c:out value=" "/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+            						<td><a href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+                 					<td><a href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
                  
             					</tr>
             				</c:forEach>
             				 	<tr>
 	            					<td colspan="7">
-	            						<a href="#">INSERIR ITENS</a>
+	            						<a href="#" onclick="abrir();">INSERIR ITENS</a>
 	            					</td>
 	            				</tr>	
 	            				<tr><td colspan="7" style="color: white">  0  </td> </tr>
@@ -95,6 +96,71 @@
             		</table>
             </fieldset>
          </form>
+         <div class="inserir-itens" id="inserir-itens">
+         <form action="ControlCompra" method="POST" name="cadastroCompra">
+            
+            	<h2>INSERIR PRODUTO</h2>
+           
+            <br />
+            <p><input value="INSERIR" type="submit" id="btn"> <a href="#" onclick="fechar();">CANCELAR</a> </p>
+            <fieldset id="informacoes">
+               <legend>INFORMAÇÕES BÁSICAS </legend>
+               <p>
+                  <label>
+                     NOME: <input name="nomeProduto"  maxlength="50" value="<c:out value="${produto.nomeProduto}"/>" required="required" style="width: 291px; "/>
+                  </label>
+               </p>
+               <p>
+                  <label>
+                     DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  style="width: 248px; "/>
+                  </label>
+               </p>
+               <p>
+                  <label>
+                     CATEGORIA: 
+                  		 <h:selectOneMenu style="width: 195px; height: 24px" id="categoria">
+	                        <f:selectItem itemValue="#{produto.categoria}" itemDisabled="true"/>
+	                        <f:selectItem noSelectionOption="true" itemValue="___________" itemDisabled="true"/>
+	                        <f:selectItem itemValue="MERCEARIA" itemLabel="MERCEARIA"/>
+	                        <f:selectItem itemValue="PRODUCAO" itemLabel="PRODUÇÃO"/>
+	                        <f:selectItem itemValue="REFRIGERANTE" itemLabel="REFRIGERANTE   "/>
+	                         <f:selectItem itemValue="LANCHES" itemLabel="LANCHES"/>
+	                         <f:selectItem itemValue="DOCES" itemLabel="DOCES"/>
+	                        <f:selectItem itemValue="COPA" itemLabel="COPA"/>
+                     	</h:selectOneMenu>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                     VALOR COMPRA: <input name="vUnitCompra" value="<c:out value="${produto.valorUniCompra}"/>" placeholder="R$000,00"  required="required" style="width: 90px; "/>
+                  </label>
+                  <label>
+                     VALOR VENDA: <input name="vUnitVenda" type="text" value="<c:out value="${produto.valorUniVenda}"/>" required="required" placeholder="R$000,00"  style="width: 90px; ">
+                  </label>
+               </p>  
+                 <p>  
+                  <label>
+                     FORNECEDOR: 
+                     <h:selectOneMenu style="width: 180px; height: 24px" id="fornecedor" >                     
+                        <f:selectItem itemValue="#{produto.tbFornecedore.razaoSocial}"/> 
+                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
+                        <f:selectItems value="#{tbFornecedore.fornecedores}" itemValue="#{tbFornecedore.fornecedores}"/>
+                     </h:selectOneMenu>
+                  </label>
+               </p> 
+               
+            </fieldset> 
+         </form>
+         </div>
    </f:view>
    </body>  
+   <script>
+   		function abrir(){
+   			document.getElementById("inserir-itens").style.display = 'block';	 
+   		}
+   		
+   		function fechar(){
+   			document.getElementById("inserir-itens").style.display = 'none'; 
+   		}
+   </script>
 </html>	
