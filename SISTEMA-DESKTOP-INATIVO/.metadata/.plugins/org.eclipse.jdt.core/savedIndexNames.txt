@@ -1,7 +1,0 @@
-INDEX VERSION 1.131+C:\Users\Lucas Andrade\Documents\MEUS\2020\INF3G\TCC\SISTEMA\.metadata\.plugins\org.eclipse.jdt.core
-733588209.index
-789344348.index
-2334109036.index
-4232620347.index
-705221636.index
-3008761735.index
