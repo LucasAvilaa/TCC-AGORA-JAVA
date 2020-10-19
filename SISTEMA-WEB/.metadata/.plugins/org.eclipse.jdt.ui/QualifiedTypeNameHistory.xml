@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="model.TbListaProduto"/>
     <fullyQualifiedTypeName name="dao.daoEnderecoContato"/>
     <fullyQualifiedTypeName name="factory.Conexao"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="model.TbCompra"/>
     <fullyQualifiedTypeName name="model.TbProduto"/>
     <fullyQualifiedTypeName name="controller.ControlCompra"/>
+    <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
 </qualifiedTypeNameHistroy>
