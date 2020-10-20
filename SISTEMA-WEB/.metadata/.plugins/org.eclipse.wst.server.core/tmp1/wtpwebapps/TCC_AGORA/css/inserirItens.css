@@ -17,6 +17,19 @@
 	 justify-content: center;
 	 align-items: center;
 }
+
+.inserir-itens-container-ativo{ 
+	 width: 100vw;
+	 height: 100vh; 	
+	 background: rgba(0,0,0,0.5);
+	 position: fixed;
+	 top: 0px; 
+	 left: 0px;   
+	 z-index: 2000; 
+	 display: flex;   
+	 justify-content: center;
+	 align-items: center;
+}
   
 .inserir-itens{ 
 	 background: rgba(255,255,255,1);

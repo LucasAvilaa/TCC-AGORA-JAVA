@@ -43,7 +43,7 @@
                         <c:out value="CONTA/${conta.idPagar}" />
                      </td>
                      <td>
-                        <c:out value="${conta.descricao}" />
+                        <c:out value="COMPRA/${conta.tbCompra.idCompra}" />
                      </td>
                      <td>
                         <c:out value="${conta.categoria}" />

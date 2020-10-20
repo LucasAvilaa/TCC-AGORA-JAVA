@@ -14,38 +14,35 @@ import model.TbLogin;
 public class ControlLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ControlLogin() {
-        super();
-      
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");  
-		if(action.equalsIgnoreCase("Deslogar")) {
-			request.getSession().invalidate();
-			response.sendRedirect("Login.xhtml");
-		}	
+	public ControlLogin() {
+		super(); 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		if (action.equalsIgnoreCase("Deslogar")) {
+			request.getSession().invalidate();
+			response.sendRedirect("Login.xhtml");
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		TbLogin model = new TbLogin();
 		model.setUsuario(request.getParameter("username"));
 		model.setSenha(request.getParameter("password"));
-		
-	 	DaoLogin log = new DaoLogin(); 
-	 	
-	 	try {
-			if(log.validaLogin(model)){ 
+
+		DaoLogin log = new DaoLogin();
+
+		try {
+			if (log.validaLogin(model)) {
 				request.setAttribute("usuario", model.getUsuario());
-				response.sendRedirect("ControlCliente?action=tabela");				
-				System.out.println("LOGADO COM SUCESSO");				
-			} 	 
-			else if(log.validaLogin(model)) {
-				response.sendRedirect("Login.xhtml"); 
+				response.sendRedirect("ControlCliente?action=tabela");
+				System.out.println("LOGADO COM SUCESSO");
+			} else if (log.validaLogin(model)) {
+				response.sendRedirect("Login.xhtml");
 				System.out.println("USUARIO OU SENHA INCORRETO");
-			}
-			else{
-				response.sendRedirect("Login.xhtml"); 
+			} else {
+				response.sendRedirect("Login.xhtml");
 				System.out.println("USUARIO OU SENHA INCORRETO");
 			}
 		} catch (Exception e) {

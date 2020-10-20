@@ -15,8 +15,6 @@ public class DaoFuncionario {
 	
 	public DaoFuncionario() {
 		super();
-		funcionario = new TbFuncionario();
-		funcionario.setAtivo(true);
 	}
 	
 	public boolean crudFuncionario(String acao,TbFuncionario func) throws Exception {
@@ -24,7 +22,7 @@ public class DaoFuncionario {
 			PreparedStatement ps = null;
 			
 			if(acao.equals("I")) {
-				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FUNCIONARIOS I,NULL,?,?,?,?,?,?,?,?"); 
+				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FUNCIONARIOS I,NULL,?,?,?,?,?,?,?"); 
 				ps.setString(1, func.getNome());
 				ps.setString(2, func.getSobrenome());
 				ps.setString(3, func.getRg());
@@ -32,10 +30,9 @@ public class DaoFuncionario {
 				ps.setDate(5, new java.sql.Date(func.getDtNasc().getTime()));
 				ps.setString(6, func.getSexo()); 
 				ps.setString(7, func.getCargo());
-				ps.setBoolean(8, func.getAtivo());
 			}				
 			else if(acao.equals("A")) { 			
-				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FUNCIONARIOS A,?,?,?,?,?,?,?,?,?");
+				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FUNCIONARIOS A,?,?,?,?,?,?,?,?");
 				ps.setString(1, func.getIdFunc());
 				ps.setString(2, func.getNome());
 				ps.setString(3, func.getSobrenome());
@@ -44,10 +41,9 @@ public class DaoFuncionario {
 				ps.setDate(6, new java.sql.Date(func.getDtNasc().getTime()));
 				ps.setString(7, func.getSexo());
 				ps.setString(8, func.getCargo());
-				ps.setBoolean(9, func.getAtivo());
 			}
 			else if(acao.equals("E")){ 
-				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FUNCIONARIOS E,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL");  
+				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FUNCIONARIOS E,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL");  
 				ps.setString(1, func.getIdFunc());
 			} 
 			if(ps.executeUpdate()>0) { 
@@ -74,7 +70,6 @@ public class DaoFuncionario {
 						funcionario.setCpf(rs.getString("CPF"));
 						funcionario.setCargo(rs.getString("CARGO"));
 						funcionario.setDtNasc(rs.getDate("DT_NASC"));
-						funcionario.setAtivo(rs.getBoolean("ATIVO"));
 						if(rs.getString("SEXO").equals("M")) {
 							funcionario.setSexo("MASCULINO");	
 						}else {
@@ -105,7 +100,6 @@ public class DaoFuncionario {
 					funcionario.setCpf(rs.getString("CPF"));
 					funcionario.setCargo(rs.getString("CARGO"));
 					funcionario.setDtNasc(rs.getDate("DT_NASC"));
-					funcionario.setAtivo(rs.getBoolean("ATIVO"));
 					funcionario.setSexo(rs.getString("SEXO"));
 								
 					listafunc.add(funcionario);

@@ -23,7 +23,7 @@
 	</jsp:include>
 
 	<f:view>
-		<form action="ControlItensCompra" method="POST" name="cadastroitens">
+		<form action="ControlItensCompra" method="POST" name="cadastroCompra">
 
 			<h2>PEDIDO COMPRA</h2>
 
@@ -34,7 +34,7 @@
 					<input type="button" value="FINALIZAR COMPRA" />
 				</a>
 				<a href="ControlCompra?action=Tabela"> 
-					<input type="button" value="CANCELAR" style="background: rgba(139,0,0, 1); color: white"> 
+					<input type="button" value="CANCELAR" style="background: rgba(178, 34, 34, 1); color: white"> 
 				</a>
 				
 			</p>
@@ -93,9 +93,8 @@
 							</tr>
 						</c:forEach>
 						<tr>
-							<td colspan="7">
-									<a href='ControlItensCompra?action=InserirItens&idCompra=<c:out value="${compra.idCompra}"/>'>INSERIR ITENS</a>
-							</td>
+							<td colspan="7"><a href="#" onclick="abrir()">INSERIR
+									ITENS</a></td>
 						</tr>
 						<tr>
 							<td colspan="7" style="color: white">0</td>
@@ -108,11 +107,11 @@
 				</table>
 			</fieldset>
 		</form>
-		<div class="inserir-itens-container" id="inserir-itens-container">
+		<div class="inserir-itens-container-ativo" id="inserir-itens-container">
 			<div class="inserir-itens">
-				<form action="ControlItensCompra" method="POST" name="cadastroItens">
+				<form action="ControlItensCompra" method="POST" name="cadastroItensCompra">
 
-					<fieldset id="produto">
+					<fieldset id="informacoes">
 						<legend>PRODUTO</legend>
 						<p>
 							<label> NOME: <h:selectOneMenu style="width: 260px;" id="idProd">
