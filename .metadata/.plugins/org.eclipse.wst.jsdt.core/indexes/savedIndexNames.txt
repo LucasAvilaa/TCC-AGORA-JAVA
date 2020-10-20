@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2704537329.index
-925634657.index
-3522534226.index
-2692126012.index
-365701150.index
-3786305450.index

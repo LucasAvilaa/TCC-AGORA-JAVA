@@ -74,8 +74,7 @@
                <p>
                   <label>
                      CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX ">
-                  </label>
-                  <h:selectBooleanCheckbox value="#{ativo}" id="ativo"></h:selectBooleanCheckbox><label for="ativo">ATIVO</label> 		 
+                  </label>	 
                </p>
             </fieldset>
          </form>

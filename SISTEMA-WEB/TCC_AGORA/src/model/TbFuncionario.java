@@ -19,10 +19,7 @@ public class TbFuncionario implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_FUNC")
-	private String idFunc;
-
-	@Column(name="ATIVO")
-	private boolean ativo;
+	private String idFunc; 
 
 	@Column(name="CARGO")
 	private String cargo;
@@ -68,15 +65,7 @@ public class TbFuncionario implements Serializable {
 
 	public void setIdFunc(String idFunc) {
 		this.idFunc = idFunc;
-	}
-
-	public boolean getAtivo() {
-		return this.ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
+	} 
 
 	public String getCargo() {
 		return this.cargo;

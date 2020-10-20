@@ -19,10 +19,7 @@ public class TbCliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_CLI")
-	private String idCli;
-
-	@Column(name="ATIVO")
-	private boolean ativo;
+	private String idCli; 
 
 	@Column(name="CPF")
 	private String cpf;
@@ -65,15 +62,7 @@ public class TbCliente implements Serializable {
 
 	public void setIdCli(String idCli) {
 		this.idCli = idCli;
-	}
-
-	public boolean getAtivo() {
-		return this.ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
+	} 
 
 	public String getCpf() {
 		return this.cpf;

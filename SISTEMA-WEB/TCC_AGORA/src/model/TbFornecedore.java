@@ -35,10 +35,7 @@ public class TbFornecedore implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID_FORN")
-	private String idForn;
-
-	@Column(name="ATIVO")
-	private boolean ativo;
+	private String idForn; 
 
 	@Column(name="CNPJ")
 	private String cnpj;
@@ -78,15 +75,7 @@ public class TbFornecedore implements Serializable {
 
 	public void setIdForn(String idForn) {
 		this.idForn = idForn;
-	}
-
-	public boolean getAtivo() {
-		return this.ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
+	} 
 
 	public String getCnpj() {
 		return this.cnpj;

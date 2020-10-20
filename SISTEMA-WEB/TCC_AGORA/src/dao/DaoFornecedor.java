@@ -16,9 +16,7 @@ public class DaoFornecedor {
 	private Conexao con;
 	
 	public DaoFornecedor(){
-		super();
-		fornecedor = new TbFornecedore();
-		fornecedor.setAtivo(true);		
+		super();	
 	}	
 	
 	public boolean crudFornecedor(String acao, TbFornecedore forn) throws Exception {
@@ -26,20 +24,18 @@ public class DaoFornecedor {
 			PreparedStatement ps = null;
 			 
 			if(acao.equals("I")) { 
-				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FORNECEDORES I,NULL,?,?,?");
+				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FORNECEDORES I,NULL,?,?");
 				ps.setString(1, forn.getCnpj());
 				ps.setString(2, forn.getRazaoSocial());
-				ps.setBoolean(3, forn.getAtivo());
 			}				
 			else if(acao.equals("A")) { 			
-				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FORNECEDORES A,?,?,?,?");
+				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FORNECEDORES A,?,?,?");
 				ps.setString(1, forn.getIdForn());
 				ps.setString(2, forn.getCnpj());
 				ps.setString(3, forn.getRazaoSocial());
-				ps.setBoolean(4, forn.getAtivo());
 			}
 			else if(acao.equals("E")){ 
-				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FORNECEDORES E,?,NULL,NULL,NULL");  
+				ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_FORNECEDORES E,?,NULL,NULL");  
 				ps.setString(1, forn.getIdForn());
 			} 
 			if(ps.executeUpdate()>0) { 
@@ -61,8 +57,7 @@ public class DaoFornecedor {
 				while (rs.next()) { 
 					fornecedor.setIdForn(rs.getString("ID_FORN"));
 					fornecedor.setCnpj(rs.getString("CNPJ"));
-					fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
-					fornecedor.setAtivo(rs.getBoolean("ATIVO")); 							 
+					fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));							 
 				} 	 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -82,8 +77,7 @@ public class DaoFornecedor {
 					
 					forn.setIdForn(rs.getString("ID_FORN"));
 					forn.setCnpj(rs.getString("CNPJ"));
-					forn.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
-					forn.setAtivo(rs.getBoolean("ATIVO")); 
+					forn.setRazaoSocial(rs.getString("RAZAO_SOCIAL")); 
 								
 					listaforn.add(forn);
 				}  

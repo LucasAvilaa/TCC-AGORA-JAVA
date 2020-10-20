@@ -15,8 +15,6 @@ public class DaoCliente {
 			
 	public DaoCliente() {
 		super();
-		cliente = new TbCliente();
-		cliente.setAtivo(true);	
 	}
 	
 	public boolean crudCliente(String acao,TbCliente tbclientes) throws Exception {
@@ -24,17 +22,16 @@ public class DaoCliente {
 		PreparedStatement ps = null;
 		
 		if(acao.equals("I")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CLIENTE I,NULL,?,?,?,?,?,?,?"); 
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CLIENTE I,NULL,?,?,?,?,?,?"); 
 			ps.setString(1, tbclientes.getNome());
 			ps.setString(2, tbclientes.getSobrenome());
 			ps.setString(3, tbclientes.getRg());
 			ps.setString(4, tbclientes.getCpf());
 			ps.setDate(5, new java.sql.Date(tbclientes.getDtNasc().getTime()));
 			ps.setString(6, tbclientes.getSexo()); 
-			ps.setBoolean(7, tbclientes.getAtivo());
 		}		
 		else if(acao.equals("A")) { 			
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CLIENTE A,?,?,?,?,?,?,?,?");
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CLIENTE A,?,?,?,?,?,?,?");
 			ps.setString(1, tbclientes.getIdCli());
 			ps.setString(2, tbclientes.getNome());
 			ps.setString(3, tbclientes.getSobrenome());
@@ -42,9 +39,8 @@ public class DaoCliente {
 			ps.setString(5, tbclientes.getCpf());
 			ps.setDate(6, new java.sql.Date(tbclientes.getDtNasc().getTime()));
 			ps.setString(7, tbclientes.getSexo()); 
-			ps.setBoolean(8, tbclientes.getAtivo());
 		}else if(acao.equals("E")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CLIENTE E,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL");  
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_CLIENTE E,?,NULL,NULL,NULL,NULL,NULL,NULL");  
 			ps.setString(1, tbclientes.getIdCli());
 		} 
 		if(ps.executeUpdate() > 0) { 
@@ -70,7 +66,6 @@ public class DaoCliente {
 				cliente.setRg(rs.getString("RG"));
 				cliente.setCpf(rs.getString("CPF"));
 				cliente.setDtNasc(rs.getDate("DT_NASC"));
-				cliente.setAtivo(rs.getBoolean("ATIVO"));
 				cliente.setSexo(rs.getString("SEXO"));	
 				if(rs.getString("SEXO").equals("M")) {
 					cliente.setSexo("MASCULINO");	
@@ -102,7 +97,6 @@ public class DaoCliente {
 				cliente.setRg(rs.getString("RG"));
 				cliente.setCpf(rs.getString("CPF"));
 				cliente.setDtNasc(rs.getDate("DT_NASC"));
-				cliente.setAtivo(rs.getBoolean("ATIVO"));
 				cliente.setSexo(rs.getString("SEXO"));
 				listacliente.add(cliente);
 			} 
