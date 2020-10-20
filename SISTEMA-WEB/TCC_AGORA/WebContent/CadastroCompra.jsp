@@ -77,14 +77,14 @@
             							<c:out value="${itens.quantidade}*${itens.tbProduto.valorUniCompra}" />
             						 
            							</td>
-            						<td><a href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
+            						<td><a href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>' > <img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"/></a> </td>
                  					<td><a href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
                  
             					</tr>
             				</c:forEach>
             				 	<tr>
 	            					<td colspan="7">
-	            						<a href="#" onclick="abrir();">INSERIR ITENS</a>
+	            						<a href="ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>" onclick="abrir()">INSERIR ITENS</a>
 	            					</td>
 	            				</tr>	
 	            				<tr><td colspan="7" style="color: white">  0  </td> </tr>
@@ -98,29 +98,24 @@
          </form>
          <div class="inserir-itens-container" id="inserir-itens-container"> 
          	<div class="inserir-itens">
-		         <form action="ControlCompra" method="POST" name="cadastroCompra">
-		            
-		            	<h2>INSERIR PRODUTO</h2>
-		           
-		            <br />
-		            <p><input value="INSERIR" type="submit" id="btn"> <a href="#" onclick="fechar();">CANCELAR</a> </p>
+		         <form action="ControlCompra" method="POST" name="cadastroCompra" >  
+		          
 		            <fieldset id="informacoes">
-		               <legend>INFORMAÇÕES BÁSICAS </legend>
+		               <legend>PRODUTO</legend>
 		               <p>
 		                  <label>
-		                     NOME: <input name="nomeProduto"  maxlength="50" value="<c:out value="${produto.nomeProduto}"/>" required="required" style="width: 291px; "/>
-		                  </label>
-		               </p>
-		               <p>
-		                  <label>
-		                     DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${produto.descricaoProduto}"/>" required="required"  style="width: 248px; "/>
+		                     NOME: <h:selectOneMenu style="width: 260px;" id="idProd" >                     
+				                        <f:selectItem itemValue="#{item.tbProduto.nomeProduto}" itemLabel="#{item.tbProduto.nomeProduto}"/> 
+				                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
+				                        <f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}"/>
+		                    		</h:selectOneMenu>
 		                  </label>
 		               </p>
 		               <p>
 		                  <label>
 		                     CATEGORIA: 
-		                  		 <h:selectOneMenu style="width: 195px; height: 24px" id="categoria">
-			                        <f:selectItem itemValue="#{produto.categoria}" itemDisabled="true"/>
+		                  		 <h:selectOneMenu style="width: 220px; " id="categoria">
+			                        <f:selectItem itemValue="#{item.tbProduto.categoria}" itemDisabled="true"/>
 			                        <f:selectItem noSelectionOption="true" itemValue="___________" itemDisabled="true"/>
 			                        <f:selectItem itemValue="MERCEARIA" itemLabel="MERCEARIA"/>
 			                        <f:selectItem itemValue="PRODUCAO" itemLabel="PRODUÇÃO"/>
@@ -130,20 +125,22 @@
 			                        <f:selectItem itemValue="COPA" itemLabel="COPA"/>
 		                     	</h:selectOneMenu>
 		                  </label>
+		               </p>
+		               <p>
+		                  <label>
+		                     QUANTIDADE: <input name="quantidade" value="<c:out value="${item.quantidade}"/>" required="required"  style="width: 200px; "/>
+		                  </label> 
 		                </p>
 		                <p>
 		                  <label>
-		                     VALOR COMPRA: <input name="vUnitCompra" value="<c:out value="${produto.valorUniCompra}"/>" placeholder="R$000,00"  required="required" style="width: 90px; "/>
-		                  </label>
-		                  <label>
-		                     VALOR VENDA: <input name="vUnitVenda" type="text" value="<c:out value="${produto.valorUniVenda}"/>" required="required" placeholder="R$000,00"  style="width: 90px; ">
-		                  </label>
+		                     VALOR COMPRA: <input name="vUnitCompra" value="<c:out value="${item.tbProduto.valorUniCompra}"/>" placeholder="R$000,00"  required="required" style="width: 186px; "/>
+		                  </label> 
 		               </p>  
 		                 <p>  
 		                  <label>
 		                     FORNECEDOR: 
-		                     <h:selectOneMenu style="width: 180px; height: 24px" id="fornecedor" >                     
-		                        <f:selectItem itemValue="#{produto.tbFornecedore.razaoSocial}"/> 
+		                     <h:selectOneMenu style="width: 205px; " id="fornecedor" >                     
+		                        <f:selectItem itemValue="#{item.tbProduto.tbFornecedore.razaoSocial}"/> 
 		                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
 		                        <f:selectItems value="#{tbFornecedore.fornecedores}" itemValue="#{tbFornecedore.fornecedores}"/>
 		                     </h:selectOneMenu>
@@ -151,18 +148,22 @@
 		               </p> 
 		               
 		            </fieldset> 
+		              <p>
+		            	<input value="INSERIR" type="submit" id="btn"> <a href="#" onclick="fechar();">CANCELAR</a>
+		            </p>
 		         </form> 
 		         </div>
          </div>
    </f:view>
    </body>  
-   <script>
-   		function abrir(){
-   			document.getElementById("inserir-itens-container").style.display = 'block';	 
-   		}
+   <script>     
+   		function abrir(){   
+   	   			document.getElementById("inserir-itens-container").style.display = 'flex'; 
+   		} 
    		
    		function fechar(){
    			document.getElementById("inserir-itens-container").style.display = 'none'; 
    		}
+   		  
    </script>
 </html>	
