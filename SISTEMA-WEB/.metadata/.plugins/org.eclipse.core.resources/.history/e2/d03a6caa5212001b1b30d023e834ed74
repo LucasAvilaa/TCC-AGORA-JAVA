@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+.inserir-itens-container{ 
+	 width: 100vw;
+	 height: 100vh;
+	 position: fixed;
+	 top: 0px;
+	 bottom: 0px;
+	 right: 0px;
+	 left: 0px; 
+	 padding: 15px; 
+	 border: solid 1px black;
+	 background: gray;
+	 display: none; 
+}
+  
+.inserir-itens{ 
+	 background: green;
+	 padding: 15px;  
+	 align-items: center;
+	 justify-content: center;
+}  
