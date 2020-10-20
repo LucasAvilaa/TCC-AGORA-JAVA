@@ -22,7 +22,7 @@ public class ControlCompra extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String tabela = "/TabelaCompra.jsp";
     private static String criar_editar = "/CadastroCompra.jsp"; 
-    private static String excluir_item = "ControlCompra?action=Edit&idCompra="; 
+    private static String criar_excluir_item = "/ControlCompra?action=EditCompra&idCompra="; 
 	private DaoCompra Dao;
 	private String acao = null;  
 	private Integer idCompra = null;
@@ -62,7 +62,7 @@ public class ControlCompra extends HttpServlet {
 		else if(action.equalsIgnoreCase("EditCompra")){   
 			request.setAttribute("compra", Dao.CompraPorId(compra)); 
 			request.setAttribute("itens", Dao.itensPorCompra(compra));  
-			acao = "A"; 
+			acao = "AI"; 
 			forward = criar_editar;
 		}
 		 
@@ -72,16 +72,27 @@ public class ControlCompra extends HttpServlet {
 			acao = "IC";
 		}	
 		
-		else if(action.equalsIgnoreCase("DeleteCompra")) {
-			acao = "EC";
+		else if(action.equalsIgnoreCase("InserirItens")) {  
+				acao = "II"; 
+		}
+		 
+		else if(action.equalsIgnoreCase("EditItens")) {
+			request.setAttribute("item", Dao.itensPorId(compra, produto)); 
+			acao = "AI";
+			forward = criar_excluir_item + compra.getIdCompra();			
+		}
+		 
+		else if(action.equalsIgnoreCase("DeleteCompra")) { 
 			try {
+				acao = "EC";
 				if(Dao.crudCompra(acao, compralista, compra, produto)) {
-					System.out.println("COMPRA EXCLUIDA COM SUCESSO. ID COMPRA: " + compra.getIdCompra());
+					System.out.println("COMPRA EXCLUIDA COM SUCESSO. ID COMPRA: " + compra.getIdCompra()); 
+					request.setAttribute("compra", Dao.listaCompra()); 
+					forward = tabela;
 				}
 				else{
 					System.out.println("ERRO AO EXCLUIR COMPRA. ID COMPRA: " + compra.getIdCompra());
-				}
-				forward = tabela;
+				} 
 			} catch (Exception e) { 
 				e.printStackTrace();
 			}
@@ -92,11 +103,12 @@ public class ControlCompra extends HttpServlet {
 				acao = "EI"; 
 				if(Dao.crudCompraItens(acao, compralista, compra, produto)) {
 					System.out.println("COMPRA:" +compra.getIdCompra()+ " ITEM EXCLUIDO COM SUCESSO: " + produto.getIdProduto());
+					forward = criar_excluir_item + compra.getIdCompra(); 
 				}
 				else {
 					System.out.println("COMPRA:" +compra.getIdCompra()+ " FALHA AO EXCLUIR ITEM: " + produto.getIdProduto());
 				}
-				forward = excluir_item + compra.getIdCompra();
+				
 				 
 			} catch (Exception e) { 
 				e.printStackTrace();
@@ -116,7 +128,14 @@ public class ControlCompra extends HttpServlet {
 					 	 Dao.crudCompra(acao, compralista, compra, produto);
 						 System.out.println("CRIADO COM SUCESSO");
 						 	}	 
-				   
+				 else if(acao.equals("II")) {
+					 if(Dao.crudCompraItens(acao, compralista, compra, produto)) {
+							System.out.println("ITEM: " + compralista.getId() + " INCLUIDO COM SUCESSO NA COMPRA: " + compra.getIdCompra());
+						
+						}else {
+							System.out.println("ERRO AO INSERIR ITEM NA COMPRA");
+						}
+				 }
 				 	
 			} catch (Exception e) {
 				e.printStackTrace();
