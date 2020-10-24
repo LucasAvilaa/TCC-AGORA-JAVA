@@ -20,12 +20,15 @@
   <f:view>  
          <form action="ControlEstoque" method="POST" name="cadastroEstoque">
              
-            	<h2>INSERIR ITEM NO ESTOQUE</h2>
+            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de Estoque</span></h1>
+<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
+            
              
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlEstoque?action=Tabela">CANCELAR</a> </p>
+            <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em">
+             <a href="ControlEstoque?action=Tabela" class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
-               <legend>PRODUTO</legend>
+               <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">PRODUTO</legend>
                <p>
                   <label>
                      NOME:  <h:selectOneMenu style="width: 180px; height: 24px" id="idProd" >                     
@@ -52,6 +55,7 @@
                </p>  
                
             </fieldset> 
+            </div>
          </form>
    </f:view>
    </body> 

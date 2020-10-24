@@ -20,13 +20,15 @@
       <f:view>
          <form action="ControlFuncionario" method="POST" name="cadastrofuncionario">
            
-            	<h2>CADASTRO DE FUNCIONÁRIOS</h2>
-            
+            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de Funcionários</span></h1>
+<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
            
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlFuncionario?action=tabela">CANCELAR</a> </p>
+            <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em">
+             <a href="ControlFuncionario?action=tabela" class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
-               <legend>INFORMAÇÕES BÁSICAS </legend>
+               <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark"
+               >INFORMAÇÕES BÁSICAS </legend>
                <p>
                   <label>
                      NOME: <input name="nome"  maxlength="50" value="<c:out value="${funcionario.nome}"/>" required="required" style="width: 364px; "/>
@@ -109,12 +111,13 @@
                   </label>
                </p>
             </fieldset>
+            </div>
          </form>
       </f:view>
    </body>
    <script>	
       $("#cep").mask("99999-999");
-      //	$("#data").mask("99/99/9999");
+      $("#data").mask("99/99/9999");
       $("#celular").mask("(99)99999-9999");
       $("#rg").mask("99.999.999-9");
       $("#cpf").mask("999.999.999-99");

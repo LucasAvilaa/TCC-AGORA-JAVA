@@ -20,14 +20,16 @@
       <f:view>
          <form action="ControlEstabelecimento" method="POST" name="cadastroEstabelecimento">
             
-            	<h2>CADASTRO DE FILIAIS</h2>
+            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de filiais</span></h1>
+<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
+            
           
                  
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlEstabelecimento?action=Tabela">CANCELAR</a> </p>
+            <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em"> <a href="ControlEstabelecimento?action=Tabela" class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
-               <legend>INFORMAÇÕES BÁSICAS </legend>
-               <p>
+               <legend style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
+               <p style="text-align: center">
                   <label>
                      RAZÃO SOCIAL: <input name="razao-social"  maxlength="50" value="<c:out value="${estabelecimento.razaoSocial}"/>" required="required" style="width: 319px; "/>
                   </label>
@@ -77,18 +79,19 @@
                   </label>                   		 
                </p>
             </fieldset>
+            </div>
          </form>
       </f:view>
    </body>
    <script>	
       $("#cep").mask("99999-999");
-      //	$("#data").mask("99/99/9999");
+      $("#cnpj").mask("99.999.999/9999-99");
+      $("#data").mask("99/99/9999");
       $("#celular").mask("(99)99999-9999");
       $("#rg").mask("99.999.999-9");
       $("#cpf").mask("999.999.999-99");
       
-      const $campoCep = document.querySelector('[name=cep]');
-      
+      const $campoCep = document.querySelector('[name=cep]'); 
       const $campoCidade = document.querySelector('[name=cidade]');
       const $campoRua = document.querySelector('[name=rua]');
       const $campoEstado = document.querySelector('[name=estado]');

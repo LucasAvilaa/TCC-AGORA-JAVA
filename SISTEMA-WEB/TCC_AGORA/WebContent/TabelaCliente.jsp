@@ -17,16 +17,19 @@
       </jsp:include>
       <f:view>
         
-         	<h2>LISTA DE CLIENTES</h2>
+         	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Lista de CLientes</span></h1>
+            
          
          
          <br />
          <p>
             <a href="ControlCliente?action">
-            <img src="img/adicionar.png" style="width: 31px; height: 28px; " title="ADICIONAR" />
+             <button class="btn btn-success" style="height: 2.2em"> Adicionar
+            <img src="img/plus.svg" style="width: 31px; height: 28px; " title="ADICIONAR" />
+            </button>
             </a>
          </p>
-         <table border="1">
+         <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
                   <th style="width: 147px; ">NOME</th>
@@ -59,8 +62,8 @@
                      <td>
                         <c:out value="${cliente.sexo}" />
                      </td>
-                     <td><a href='ControlCliente?action=Edit&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                     <td><a href='ControlCliente?action=Delete&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+                     <td><a href='ControlCliente?action=Edit&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><button class="btn btn-success" style="height: 2.2em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
+                     <td><a href='ControlCliente?action=Delete&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><button class="btn btn-success" style="height: 2.2em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

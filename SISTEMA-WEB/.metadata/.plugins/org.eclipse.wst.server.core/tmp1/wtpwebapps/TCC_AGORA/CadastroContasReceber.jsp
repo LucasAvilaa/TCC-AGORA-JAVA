@@ -20,12 +20,15 @@
   <f:view>  
          <form action="ControlContasReceber" method="POST" name="cadastroContasReceber">
             
-            	<h2>CONTAS A RECEBER</h2>
+            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Contas a receber</span></h1>
+<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
+            
            
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlContasReceber?action=Tabela">CANCELAR</a> </p>
+            <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em"> <a href="ControlContasReceber?action=Tabela" class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
-               <legend>INFORMAÇÕES BÁSICAS </legend> 
+               <legend style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark"
+               >INFORMAÇÕES BÁSICAS </legend> 
                <p>
                	<label>
                      REFERÊNCIA VENDA: <input name="idVenda"  value="<c:out value="VENDA/ ${receber.idReceber}"/>"   style="width: 148px; "/>
@@ -75,6 +78,7 @@
                   </label> 
                </p>  
             </fieldset> 
+            </div>
          </form>
    </f:view>
    </body> 
