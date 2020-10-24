@@ -192,8 +192,8 @@ public class DaoCompra {
 
 			while (rs.next()) {
 				TbCompra compra = new TbCompra();
-				compra.setIdCompra(rs.getInt("ID_COMPRA"));
-				if (rs.getString("STATUS").equals("F")) {
+				compra.setIdCompra(rs.getInt("ID_COMPRA")); 
+				if (rs.getString("STATUS").equals("F")) { 
 					compra.setStatus("FINALIZADO");
 				} else {
 					compra.setStatus("PENDENTE");

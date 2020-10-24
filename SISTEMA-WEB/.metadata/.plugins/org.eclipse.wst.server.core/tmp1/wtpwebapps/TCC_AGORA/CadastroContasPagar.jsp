@@ -35,7 +35,7 @@
                <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
                <p style="text-align: center">
                	<label>
-                     DOCUMENTO DE ORIGEM: <input name="idCompra" maxlength="50" value="<c:out value=""/>"   style="width: 248px; "/>
+                     DOCUMENTO DE ORIGEM: <input readonly="readonly" maxlength="50" value="<c:out value="COMPRA/${conta.tbCompra.idCompra}"/>"   style="width: 248px; "/>
                   </label>
                   <label>
                      DESCRIÇÃO:  <br/><input name="descricao" maxlength="50" value="<c:out value="${conta.descricao}"/>" required="required"  style="width: 248px; "/>

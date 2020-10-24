@@ -46,13 +46,13 @@
                         <c:out value="CONTA/${conta.idPagar}" />
                      </td>
                      <td>
-                        <c:out value="COMPRA/${conta.tbCompra.idCompra}" />
+                        <c:out value="${conta.descricao}" />
                      </td>
                      <td>
                         <c:out value="${conta.categoria}" />
                      </td>
                      <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${conta.tbCompra.dataCriada}"/>
+                        <fmt:formatDate pattern="dd/MM/yyyy" value="${conta.tbCompra.dataCriada}"/> 
                      </td>
                      <td>
                      	<fmt:formatDate pattern="dd/MM/yyyy" value="${conta.dataVencimento}"/> 
