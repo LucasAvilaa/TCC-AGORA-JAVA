@@ -1,6 +1,9 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
 
@@ -8,6 +11,7 @@ import javax.persistence.*;
  * The persistent class for the TB_COMPRA_PRODUTO database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_COMPRA_PRODUTO")
 @NamedQuery(name="TbCompraProduto.findAll", query="SELECT t FROM TbCompraProduto t")
@@ -31,6 +35,27 @@ public class TbCompraProduto implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_PRODUTO")
 	private TbProduto tbProduto;
+	
+	private BigDecimal subtotal; 
+		
+	public BigDecimal getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(BigDecimal subtotal) {
+		this.subtotal = subtotal;
+	}
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
+	private BigDecimal total;
+	
 
 	public TbCompraProduto() {
 	}

@@ -50,8 +50,6 @@
     <fullyQualifiedTypeName name="dao.DaoContasPagar"/>
     <fullyQualifiedTypeName name="model.TbContasReceber"/>
     <fullyQualifiedTypeName name="dao.DaoContasReceber"/>
-    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
-    <fullyQualifiedTypeName name="java.lang.Double"/>
     <fullyQualifiedTypeName name="model.TbComanda"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="model.TbCompra"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="dao.DaoCompra"/>
     <fullyQualifiedTypeName name="model.TbCompraProduto"/>
     <fullyQualifiedTypeName name="model.TbProduto"/>
+    <fullyQualifiedTypeName name="java.lang.Double"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
 </qualifiedTypeNameHistroy>
