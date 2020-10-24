@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Itens"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="ativo"/>
 			<item value="itens"/>
 			<item value="produ"/>
 			<item value="prod"/>
@@ -22,7 +23,6 @@
 			<item value="funcionario"/>
 			<item value="cliente"/>
 			<item value="func"/>
-			<item value="tbclientes"/>
 		</list>
 		<list key="replacehistory">
 			<item value="produto"/>

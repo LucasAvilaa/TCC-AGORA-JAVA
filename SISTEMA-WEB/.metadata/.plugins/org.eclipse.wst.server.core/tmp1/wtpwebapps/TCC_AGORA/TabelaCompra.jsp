@@ -17,16 +17,19 @@
       </jsp:include>
       <f:view>
        
-         	<h2>COMPRAS</h2>
+         	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Compras</span></h1>
             
          
          <br />
          <p>
             <a href="ControlCompra?action=CriarCompra">
-            <img src="img/adicionar.png" style="width: 31px; height: 28px; " title="ADICIONAR" />
+            <button class="btn btn-success" style="height: 2.2em"> Adicionar
+            <img src="img/plus.svg" style="width: 31px; height: 28px; " title="ADICIONAR" />
+            </button>
             </a>
+            
          </p>
-         <table border="1">
+         <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
                   <th style="width: 141px; ">REFERÊNCIA</th>
@@ -50,13 +53,13 @@
                         <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataFinalizada}"/>
                      </td>
                      <td> 
-                        <c:out value=" " />
+                        <c:out value="R$ ${total.total}" />
                      </td>
                      <td> 
                         <c:out value="${compra.status}" />
                      </td> 
-                     <td><a href='ControlCompra?action=EditCompra&idCompra=<c:out value="${compra.idCompra}"/>'><img src="img/refresh-icon.png" style="width: 21px; height: 21px; " title="ATUALIZAR"></a></td>
-                     <td><a href='ControlCompra?action=DeleteCompra&idCompra=<c:out value="${compra.idCompra}"/>'><img src="img/delete.png" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+                     <td><a href='ControlCompra?action=EditCompra&idCompra=<c:out value="${compra.idCompra}"/>'> <button class="btn btn-success" style="height: 2.2em;"> Editar <img src="img/edit.svg" style="width: 25px; height: 25px;" title="ATUALIZAR"> </button></a></td>
+                     <td><a href='ControlCompra?action=DeleteCompra&idCompra=<c:out value="${compra.idCompra}"/>'><button class="btn btn-success" style="height: 2.2em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

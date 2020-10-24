@@ -23,18 +23,17 @@
 	</jsp:include>
 
 	<f:view>
-		<form action="ControlItensCompra" method="POST" name="cadastroitens">
+		<form action="ControlItensCompra" method="POST" name="cadastroCompra">
 
 			<h2>PEDIDO COMPRA</h2>
 
 			<br />
-			<p>
-				<input value="SALVAR" type="submit" id="btn">
+			<p> 
 				<a href="ControlCompra?action=FinalizarCompra&idCompra=<c:out value="${compra.idCompra}"/>">
-					<input type="button" value="FINALIZAR COMPRA" />
+					<input type="button" value=" FINALIZAR COMPRA " />
 				</a>
 				<a href="ControlCompra?action=Tabela"> 
-					<input type="button" value="CANCELAR" style="background: rgba(139,0,0, 1); color: white"> 
+					<input type="button" value=" VOLTAR " style="background: rgba(178, 34, 34, 1); color: white"> 
 				</a>
 				
 			</p>
@@ -70,16 +69,17 @@
 							<tr>
 								<td><c:out value="${itens.tbProduto.nomeProduto}"></c:out>
 								</td>
-								<td><c:out
-										value="${itens.tbProduto.tbFornecedore.razaoSocial}"></c:out>
+								<td><c:out value="${itens.tbProduto.tbFornecedore.razaoSocial}"></c:out>
 								</td>
-								<td contenteditable="true" align="center"><c:out
-										value="${itens.quantidade}" /></td>
-								<td contenteditable="true" align="center"><c:out
-										value="${itens.tbProduto.valorUniCompra}" /></td>
-								<td id="subtotal"><c:out
-										value="${itens.quantidade}*${itens.tbProduto.valorUniCompra}" />
-
+								<td contenteditable="true" align="center" onchange="multiplica()">
+									<c:out value="${itens.quantidade}" />
+									
+								</td>
+								<td contenteditable="true" align="center">  
+									<c:out value="${itens.tbProduto.valorUniCompra}"></c:out>
+								</td>
+								<td> 
+									<c:out value="${itens.subtotal}"></c:out>
 								</td>
 								<td><a
 									href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'
@@ -94,15 +94,15 @@
 						</c:forEach>
 						<tr>
 							<td colspan="7">
-									<a href='ControlItensCompra?action=InserirItens&idCompra=<c:out value="${compra.idCompra}"/>'>INSERIR ITENS</a>
+								<a href="#" onclick="abrir()">INSERIR ITENS</a>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="7" style="color: white">0</td>
+							<td colspan="7" style="color: white">.</td>
 						</tr>
 						<tr>
 							<td colspan="4">TOTAL</td>
-							<td colspan="3">R$ XXX,XX</td>
+							<td colspan="3"><c:out value="R$ ${total.total}"></c:out></td>
 						</tr>
 					</tbody>
 				</table>
@@ -110,9 +110,9 @@
 		</form>
 		<div class="inserir-itens-container" id="inserir-itens-container">
 			<div class="inserir-itens">
-				<form action="ControlItensCompra" method="POST" name="cadastroItens">
+				<form action="ControlCompra" method="POST" name="cadastroItensCompra">
 
-					<fieldset id="produto">
+					<fieldset id="informacoes">
 						<legend>PRODUTO</legend>
 						<p>
 							<label> NOME: <h:selectOneMenu style="width: 260px;" id="idProd">
@@ -121,52 +121,17 @@
 									<f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}" />
 								</h:selectOneMenu>
 							</label>
-						</p>
-						<p>
-							<label> CATEGORIA: <h:selectOneMenu
-									style="width: 220px; " id="categoria">
-									<f:selectItem itemValue="#{item.tbProduto.categoria}"
-										itemDisabled="true" />
-									<f:selectItem noSelectionOption="true" itemValue="___________"
-										itemDisabled="true" />
-									<f:selectItem itemValue="MERCEARIA" itemLabel="MERCEARIA" />
-									<f:selectItem itemValue="PRODUCAO" itemLabel="PRODUÇÃO" />
-									<f:selectItem itemValue="REFRIGERANTE"
-										itemLabel="REFRIGERANTE   " />
-									<f:selectItem itemValue="LANCHES" itemLabel="LANCHES" />
-									<f:selectItem itemValue="DOCES" itemLabel="DOCES" />
-									<f:selectItem itemValue="COPA" itemLabel="COPA" />
-								</h:selectOneMenu>
-							</label>
-						</p>
+						</p> 
 						<p>
 							<label> QUANTIDADE: <input name="quantidade"
 								value="<c:out value="${item.quantidade}"/>" required="required"
 								style="width: 200px;" />
 							</label>
-						</p>
-						<p>
-							<label> VALOR COMPRA: <input name="vUnitCompra"
-								value="<c:out value="${item.tbProduto.valorUniCompra}"/>"
-								placeholder="R$000,00" required="required" style="width: 186px;" />
-							</label>
-						</p>
-						<p>
-							<label> FORNECEDOR: <h:selectOneMenu
-									style="width: 205px; " id="fornecedor">
-									<f:selectItem
-										itemValue="#{item.tbProduto.tbFornecedore.razaoSocial}" />
-									<f:selectItem noSelectionOption="true"
-										itemValue="___________________" itemDisabled="true" />
-									<f:selectItems value="#{tbFornecedore.fornecedores}"
-										itemValue="#{tbFornecedore.fornecedores}" />
-								</h:selectOneMenu>
-							</label>
-						</p>
-
+						</p> 
+						 
 					</fieldset>
 					<p>
-						<input value="INSERIR" type="submit">
+						<input value="ADICIONAR" type="submit">
 						<a href="#"onclick="fechar();">CANCELAR</a>
 					</p>
 				</form>
@@ -174,15 +139,16 @@
 		</div>
 	</f:view>
 </body>
-<script>     
-   		function abrir(){   
-   				console.log("CHAMOU A FUNCTION ABRIR");
+<script>   
+		window.onload = multiplica;
+
+   		function abrir(){    
    	   			document.getElementById("inserir-itens-container").style.display = 'flex'; 
    		} 
    		
    		function fechar(){
    			document.getElementById("inserir-itens-container").style.display = 'none'; 
-   		}
-   		  
+   		}  
+	 
    </script>
 </html>

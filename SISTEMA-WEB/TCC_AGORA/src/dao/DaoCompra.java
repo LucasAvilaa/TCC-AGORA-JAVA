@@ -129,20 +129,19 @@ public class DaoCompra {
 			ps.setInt(2, produtoId.getIdProduto());
 			ResultSet rs = ps.executeQuery();
 
-			while (rs.next()) {
-				TbCompraProduto itens = new TbCompraProduto();
+			while (rs.next()) { 
 				TbProduto produto = new TbProduto();
 				TbFornecedore fornecedor = new TbFornecedore();
 
-				itens.setQuantidade(rs.getInt("QUANTIDADE"));
+				listaItens.setQuantidade(rs.getInt("QUANTIDADE"));
 
 				produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
 				produto.setValorUniCompra(rs.getBigDecimal("VALOR_UNI_COMPRA"));
 				produto.setIdProduto(rs.getInt("ID_PRODUTO"));
-
+				listaItens.setSubtotal(rs.getBigDecimal("SUBTOTAL")); 
 				fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
 				produto.setTbFornecedore(fornecedor);
-				itens.setTbProduto(produto);
+				listaItens.setTbProduto(produto);
 			}
 
 		} catch (Exception e) {
@@ -165,12 +164,11 @@ public class DaoCompra {
 				TbProduto produto = new TbProduto();
 				TbFornecedore fornecedor = new TbFornecedore();
 
-				itens.setQuantidade(rs.getInt("QUANTIDADE"));
-
+				itens.setQuantidade(rs.getInt("QUANTIDADE")); 
 				produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
 				produto.setValorUniCompra(rs.getBigDecimal("VALOR_UNI_COMPRA"));
-				produto.setIdProduto(rs.getInt("ID_PRODUTO"));
-
+				produto.setIdProduto(rs.getInt("ID_PRODUTO")); 
+				itens.setSubtotal(rs.getBigDecimal("SUBTOTAL")); 
 				fornecedor.setRazaoSocial(rs.getString("RAZAO_SOCIAL"));
 				produto.setTbFornecedore(fornecedor);
 				itens.setTbProduto(produto);
@@ -209,5 +207,25 @@ public class DaoCompra {
 			e.printStackTrace();
 		}
 		return listaCompra;
+	}
+	
+	public TbCompraProduto valorTotal(TbCompra compra) {
+		TbCompraProduto listaItens = new TbCompraProduto();
+
+		try {
+			con = new Conexao();
+			PreparedStatement ps = con.getConexao()
+					.prepareStatement("SELECT SUM(SUBTOTAL) AS TOTAL FROM VW_COMPRA WHERE ID_COMPRA = ?");
+			ps.setInt(1, compra.getIdCompra()); 
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) { 
+				listaItens.setTotal(rs.getBigDecimal("TOTAL"));   
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listaItens;
 	}
 }

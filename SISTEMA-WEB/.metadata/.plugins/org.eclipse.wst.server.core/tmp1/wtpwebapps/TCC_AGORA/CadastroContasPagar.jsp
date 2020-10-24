@@ -1,3 +1,4 @@
+
 <%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -12,31 +13,37 @@
       <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+      <style>
+      	
+      </style>
    </head>
    <body>
       <jsp:include page="index.xhtml" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
   <f:view>  
-         <form action="ControlContasPagar" method="POST" name="cadastroContasPagar">
+         <form action="ControlContasPagar" method="POST" name="cadastroContasPagar"> 
+         
+            <h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Inserir conta a pagar</span></h1>
+<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
             
-            	<h2>INSERIR CONTAS A PAGAR</h2>
            
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn"> <a href="ControlContasPagar?action=Tabela">CANCELAR</a> </p>
+            <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em">
+             <a href="ControlContasPagar?action=Tabela"  class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
-               <legend>INFORMAÇÕES BÁSICAS </legend>
-               <p>
+               <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
+               <p style="text-align: center">
                	<label>
                      DOCUMENTO DE ORIGEM: <input name="idCompra" maxlength="50" value="<c:out value=""/>"   style="width: 248px; "/>
                   </label>
                   <label>
-                     DESCRIÇÃO: <input name="descricao" maxlength="50" value="<c:out value="${conta.descricao}"/>" required="required"  style="width: 248px; "/>
+                     DESCRIÇÃO:  <br/><input name="descricao" maxlength="50" value="<c:out value="${conta.descricao}"/>" required="required"  style="width: 248px; "/>
                   </label>
                </p> 
-               <p>
+               <p style="text-align: center">
                   <label>
-                     CATEGORIA: <h:selectOneMenu style="width: 210px; height: 24px" id="categoria">
+                     CATEGORIA:  <br/><h:selectOneMenu style="width: 248px; height: 24px" id="categoria">
                         <f:selectItem itemValue="#{conta.categoria}"/>
                         <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
                         <f:selectItem itemValue="USO E CONSUMO" itemLabel="USO E CONSUMO"/>
@@ -45,17 +52,18 @@
                      </h:selectOneMenu> 
                   </label>
                </p>   
-               <p>
+               <p style="text-align: center">
                   <label>
-                     DATA VENCIMENTO: <input name="dataVencimento"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${conta.dataVencimento}"/>" required="required"  style="width: 167px; "/>
+                     DATA VENCIMENTO:  <br/><input name="dataVencimento"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${conta.dataVencimento}"/>" required="required"  style="width: 248px; "/>
                   </label>
                </p> 
-                <p>
+                <p style="text-align: center">
                   <label>
-                     VALOR COMPRA: <input name="valor" type="number" value='<c:out value="${conta.valorPagar}"></c:out>' placeholder="R$000,00"  required="required" style="width: 90px; "/>
+                     VALOR COMPRA: <br/> <input name="valor" type="number" value='<c:out value="${conta.valorPagar}"></c:out>' placeholder="R$000,00"  required="required" style="width: 248px; "/>
                   </label> 
                </p>    
             </fieldset> 
+            </div>
          </form>
    </f:view>
    </body> 
