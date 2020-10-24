@@ -6,12 +6,14 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import dao.DaoContasPagar;
 import model.TbCompra;
 import model.TbContasPagar;
@@ -26,7 +28,7 @@ public class ControlContasPagar extends HttpServlet {
 	private Integer idCompra = null;
 	private Integer idPagar = null;
 	private TbContasPagar pagar = new TbContasPagar();
-	private TbCompra compra = new TbCompra();
+	private TbCompra compra = new TbCompra(); 
 
 	public ControlContasPagar() {
 		super();
@@ -47,7 +49,7 @@ public class ControlContasPagar extends HttpServlet {
 		}
 		if (action.equalsIgnoreCase("Tabela")) {
 			try {
-				request.setAttribute("conta", Dao.listaContaPagar());
+				request.setAttribute("conta", Dao.listaContaPagar()); 
 				forward = tabela;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -82,11 +84,7 @@ public class ControlContasPagar extends HttpServlet {
 		pagar.setDescricao(request.getParameter("descricao"));
 		pagar.setCategoria(request.getParameter("categoria"));
 		pagar.setValorPagar(BigDecimal.valueOf(Double.valueOf(request.getParameter("valor"))));
-
-		if (request.getParameter("idCompra") != "") {
-			compra.setIdCompra(Integer.parseInt(request.getParameter("idCompra")));
-		}
-
+ 
 		Date data = null;
 		try {
 			DateFormat dataCru = new SimpleDateFormat("dd/MM/yyyy");

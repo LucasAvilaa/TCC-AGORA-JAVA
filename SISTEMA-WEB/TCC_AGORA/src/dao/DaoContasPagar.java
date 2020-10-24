@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import factory.Conexao;
+import model.TbCompra;
 import model.TbContasPagar;
 
 public class DaoContasPagar {
@@ -43,21 +44,29 @@ public class DaoContasPagar {
 	
 	public TbContasPagar ContaPagarPorId(TbContasPagar pagar) { 
 			TbContasPagar contas = null;
+			TbCompra compra = null;
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTAS_PAGAR"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT *, (SELECT DATA_CRIADA FROM TB_COMPRAS) AS DATA_CRIADA FROM TB_CONTAS_PAGAR WHERE ID_PAGAR = ?");
+				ps.setInt(1, pagar.getIdPagar());
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) { 
 					 contas = new TbContasPagar(); 
+					 compra = new TbCompra();
+					 compra.setDataCriada(rs.getDate("DATA_CRIADA"));
+					 if(rs.getInt("ID_COMPRA") != 0) {
+						 compra.setIdCompra(rs.getInt("ID_COMPRA"));
+						 
+					 }
+					 
+					 contas.setTbCompra(compra);
 					 contas.setDataVencimento(rs.getDate("DATA_VENCIMENTO")); 
 					 contas.setIdPagar(rs.getInt("ID_PAGAR"));
 					 contas.setDescricao(rs.getString("DESCRICAO"));
 					 contas.setCategoria(rs.getString("CATEGORIA")); 
-					 contas.setValorPagar(rs.getBigDecimal("VALOR_PAGAR")); 
-					   
-				} 			
-				ps.close();
+					 contas.setValorPagar(rs.getBigDecimal("VALOR_PAGAR"));  
+				} 			 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 
@@ -66,22 +75,25 @@ public class DaoContasPagar {
 	
 	public List<TbContasPagar> listaContaPagar() {
 		List<TbContasPagar> ListaContaPagar = new ArrayList<TbContasPagar>();	 
-		
+		TbContasPagar contas = null;
+		TbCompra compra = null;
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTAS_PAGAR"); 
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT *, (SELECT DATA_CRIADA FROM TB_COMPRAS) AS DATA_CRIADA FROM TB_CONTAS_PAGAR"); 
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {  
-				TbContasPagar contas = new TbContasPagar(); 
+				 contas = new TbContasPagar(); 
+				 compra = new TbCompra();
+				 compra.setDataCriada(rs.getDate("DATA_CRIADA"));
+				 contas.setTbCompra(compra);
 				 contas.setDataVencimento(rs.getDate("DATA_VENCIMENTO")); 
 				 contas.setIdPagar(rs.getInt("ID_PAGAR"));
 				 contas.setDescricao(rs.getString("DESCRICAO"));
 				 contas.setCategoria(rs.getString("CATEGORIA")); 
 				 contas.setValorPagar(rs.getBigDecimal("VALOR_PAGAR")); 
 				 
-				 ListaContaPagar.add(contas);
-				 
+				 ListaContaPagar.add(contas); 
 			} 		
 			 
 		} catch (Exception e) {

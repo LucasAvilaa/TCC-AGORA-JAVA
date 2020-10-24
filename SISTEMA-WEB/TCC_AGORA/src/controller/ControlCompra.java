@@ -22,8 +22,7 @@ public class ControlCompra extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String tabela = "/TabelaCompra.jsp";
 	private static String criar_editar = "/CadastroCompra.jsp";
-	private static String criar_excluir_item = "/ControlCompra?action=EditCompra&idCompra=";
-	private static String editar_item = "ControlCompra?action=EditItens&idCompra=";
+	private static String criar_excluir_item = "/ControlCompra?action=EditCompra&idCompra="; 
 	private DaoCompra Dao;
 	private String acao = null;
 	private Integer idCompra = null;
@@ -103,7 +102,7 @@ public class ControlCompra extends HttpServlet {
 				e.printStackTrace();
 				System.out.println("FALHA AO FINALIZAR COMPRA -- TRY/CATCH");
 			}
-			forward = criar_editar;
+			forward = criar_excluir_item + compra.getIdCompra();
 		}
 		
 		else if (action.equalsIgnoreCase("DeleteCompra")) {
@@ -126,13 +125,13 @@ public class ControlCompra extends HttpServlet {
 			acao = "II";  
 			request.setAttribute("itens", Dao.itensPorCompra(compra));
 			request.setAttribute("total", Dao.valorTotal(compra));
-			forward = criar_excluir_item;
+			forward = criar_excluir_item + compra.getIdCompra();
 		}
 		
 		else if (action.equalsIgnoreCase("EditItens")) {
 			acao = "AI";  
 			request.setAttribute("item", Dao.itensPorId(compra, produto)); 
-			forward = editar_item + compra.getIdCompra() + "&idItem=" + produto.getIdProduto();
+			forward = criar_excluir_item + compra.getIdCompra();
 		}
 		
 		else if (action.equalsIgnoreCase("DeleteItens")) {
