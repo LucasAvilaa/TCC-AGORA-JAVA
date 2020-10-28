@@ -29,3 +29,8 @@
 	 padding: 7px; 
 	 margin: 10px;  
 }
+
+.div-alinhada div{ 
+	width: 49%;
+	display: inline-block;
+}
