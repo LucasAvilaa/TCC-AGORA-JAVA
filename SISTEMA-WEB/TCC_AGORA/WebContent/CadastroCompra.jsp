@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>PEDIDO DE COMPRA</title>
 <link rel="shortcut icon" href="img/Logo_Padaria.png" />
 <script

@@ -20,28 +20,31 @@ public class DaoVenda {
 		PreparedStatement ps = null; 
 		
 		if(acao.equals("I")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE I,?,?,?,?,?,?,?"); 
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE I,?,?,?,NULL,NULL,NULL,NULL"); 
 			ps.setInt(1, comanda.getIdComanda());
 			ps.setInt(2, produto.getIdProduto());			
-			ps.setInt(3, lista.getQuantidade());			
-			ps.setString(4, receber.getMetodoPagamento());
-			ps.setBigDecimal(5, receber.getDinheiro());
-			ps.setBigDecimal(6, receber.getDebito());
-			ps.setBigDecimal(7, receber.getCredito());
-		}		
+			ps.setInt(3, lista.getQuantidade());	 
+		}	
+		
+		else if(acao.equals("A")) {
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE A,?,?,?,NULL,NULL,NULL,NULL");
+			ps.setInt(1, comanda.getIdComanda());
+			ps.setInt(2, produto.getIdProduto());			
+			ps.setInt(3, lista.getQuantidade());		 
+		}	
+		
 		else if(acao.equals("E")) { 			
 			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE E,NULL,?,NULL,NULL,NULL,NULL,NULL");
-			ps.setInt(1, produto.getIdProduto());
-			
-		}else if(acao.equals("P")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE P,NULL,?,NULL,NULL,NULL,NULL,NULL");  
 			ps.setInt(1, comanda.getIdComanda());
 			ps.setInt(2, produto.getIdProduto());
-			ps.setInt(3, lista.getQuantidade());
-			ps.setString(4, receber.getMetodoPagamento());
-			ps.setBigDecimal(5, receber.getDinheiro());
-			ps.setBigDecimal(6, receber.getDebito());
-			ps.setBigDecimal(7, receber.getCredito());
+			
+		}else if(acao.equals("P")){ 
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE P,?,NULL,NULL,?,?,?,?");  
+			ps.setInt(1, comanda.getIdComanda()); 
+			ps.setString(2, receber.getMetodoPagamento());
+			ps.setBigDecimal(3, receber.getDinheiro());
+			ps.setBigDecimal(4, receber.getDebito());
+			ps.setBigDecimal(5, receber.getCredito());
 		} 
 		if(ps.executeUpdate()>0) { 
 			ps.close();
@@ -51,7 +54,7 @@ public class DaoVenda {
 		}
 }
 
-	public TbListaProduto listaProdutoPorId(TbComanda id) {
+	public TbListaProduto listaProdutoPorComanda(TbComanda id) {
 			TbListaProduto lista = new TbListaProduto();
 			TbComanda comanda = new TbComanda();
 			TbProduto produto = new TbProduto();
@@ -70,8 +73,7 @@ public class DaoVenda {
 					produto.setIdProduto(rs.getInt("ID_PROD_LISTA"));
 					lista.setTbProduto(produto);
 					lista.setTbComanda(comanda);					 			 
-				} 	
-				ps.close();
+				} 	 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 

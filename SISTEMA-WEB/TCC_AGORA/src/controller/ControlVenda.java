@@ -1,102 +1,85 @@
 package controller;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dao.DaoContasPagar;
-import model.TbCompra;
-import model.TbContasPagar;
+
+import dao.DaoVenda;
+import model.TbComanda;
+import model.TbContasReceber;
+import model.TbListaProduto;
+import model.TbProduto;
 
 @WebServlet(name = "venda", urlPatterns = { "/ControlVenda" })
 public class ControlVenda extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static String tabela = "/TabelaVenda.jsp";
-	private static String criar_editar = "/venda.jsp";
-	private DaoContasPagar Dao;
+	private static String tabela = "/TelaCaixa.jsp";
+	private static String criar_editar = "/ControlVenda?action=Edit.jsp"; //ARRUMAR ESSE LINK 
+	private DaoVenda Dao;
 	private String acao = null;
-	private Integer idCompra = null;
-	private Integer idPagar = null;
-	private TbContasPagar pagar = new TbContasPagar();
-	private TbCompra compra = new TbCompra();
+	private Integer idComanda = null;  
+	private Integer idProduto = null;   
+	private TbProduto produto = new TbProduto();
+	private TbListaProduto lista = new TbListaProduto();
+	private TbComanda comanda = new TbComanda();
+	private TbContasReceber receber = new TbContasReceber();
 
 	public ControlVenda() {
 		super();
-		Dao = new DaoContasPagar();
+		Dao = new DaoVenda();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
-		String idComp = request.getParameter("idCompra");
-		String idPag = request.getParameter("idPagar");
+		String idComp = request.getParameter("idComanda"); 
+		String idProd = request.getParameter("codItem"); 
+		
 		if (idComp != null) {
-			idCompra = Integer.parseInt(idComp);
-			compra.setIdCompra(idCompra);
+			idComanda = Integer.parseInt(idComp); 
+			comanda.setIdComanda(idComanda);
+		} 
+		
+		if(idProd != null) {
+			idProduto = Integer.parseInt(idProd);
+			produto.setIdProduto(idProduto);
 		}
-		if (idPag != null) {
-			idPagar = Integer.parseInt(idPag);
-			pagar.setIdPagar(idPagar);
-		}
-		if (action.equalsIgnoreCase("tabela")) {
-			try {
-				request.setAttribute("conta", Dao.listaContaPagar());
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		
+		if (action.equalsIgnoreCase("pesquisaComanda")) {
+			
+			forward = tabela;			 
 		} else if (action.equalsIgnoreCase("delete")) {
-			try {
-				acao = "E";
-				// Dao.crudContaPagar(acao, pagar, compra);
-				request.setAttribute("conta", Dao.listaContaPagar());
-				forward = tabela;
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			
+			 forward = tabela;
 		} else if (action.equalsIgnoreCase("edit")) {
-			request.setAttribute("conta", Dao.ContaPagarPorId(pagar));
-			acao = "A";
+			
 			forward = criar_editar;
-		} else {
-			forward = criar_editar;
-			acao = "I";
 		}
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-		// pagar.setIdPagar(idPagar); ARRUMAR OS SET
-		// pagar.setTbCompra(request.getparam);
-		Date dataVencimento = null;
-		if (request.getParameter("dataVencimento") != null) {
-			try {
-				dataVencimento = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataCadastro"));
-				pagar.setDataVencimento(dataVencimento);
-			} catch (ParseException e) {
-				e.printStackTrace();
-				System.out.println("ERRO NA CONVERSÃO DA DATA");
-			}
-		}
+		lista.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+		produto.setIdProduto(Integer.parseInt(request.getParameter("produto")));
+		lista.setTbProduto(produto);
+		comanda.setIdComanda(Integer.parseInt(request.getParameter("comanda")));
+		lista.setTbComanda(comanda);
+
+		
 		try {
 			System.out.println("AÇÃO: " + acao);
-			if (acao.equals("I")) {
-				// if(Dao.crudContaPagar(acao, pagar, compra)) {
+			if (acao.equals("I")) { 
+				Dao.crudVenda(acao, comanda, lista, receber, produto);
 				System.out.println("CRIADO COM SUCESSO");
-			}
-			// }
-			else {
-				pagar.setIdPagar(idPagar);
-				// Dao.crudContaPagar(acao, pagar, compra);
-				System.out.println("ALTERADO COM SUCESSO: " + pagar.getIdPagar());
+			} 
+			else { 
+				System.out.println("ALTERADO COM SUCESSO: ");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

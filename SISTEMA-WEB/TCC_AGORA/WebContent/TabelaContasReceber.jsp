@@ -9,7 +9,7 @@
       <meta charset="UTF-8">
       <title>CONTAS A RECEBER</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
-      <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
+      <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css" />
    </head>
    <body>
       <jsp:include page="index.xhtml" flush="false">
