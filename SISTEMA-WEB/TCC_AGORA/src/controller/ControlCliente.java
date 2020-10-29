@@ -53,6 +53,7 @@ public class ControlCliente extends HttpServlet {
 		String action = request.getParameter("action");
 		String idCli = request.getParameter("idCli");
 		cpf = request.getParameter("cod");
+		 
 
 		if (idCli != null) {
 			idcli = String.valueOf(idCli);
@@ -63,15 +64,23 @@ public class ControlCliente extends HttpServlet {
 			cliente.setCpf(cpf);
 		}
 
-		if (action.equalsIgnoreCase("Tabela")) {
-			try {
-				request.setAttribute("cliente", Dao.listaCliente());
-				request.setAttribute("endereco", End.listaEndereco());
-				request.setAttribute("contato", Cont.listaContato());
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if (action.equalsIgnoreCase("Tabela")) {  
+			String sessao = (String) request.getSession().getAttribute("usuario"); 
+			if(sessao != null) {     
+				if(sessao.toString() != null) {
+					try {
+						request.setAttribute("cliente", Dao.listaCliente());
+						request.setAttribute("endereco", End.listaEndereco());
+						request.setAttribute("contato", Cont.listaContato());
+						forward = tabela;
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}else {
+				forward = "Login.xhtml";
+			}  
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";

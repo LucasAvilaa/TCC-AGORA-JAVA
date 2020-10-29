@@ -14,7 +14,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
    </head>
    <body>
-      <jsp:include page="index.xhtml" flush="false">
+   	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%>
+      <jsp:include page="index.jsp" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
       <f:view>

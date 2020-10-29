@@ -39,13 +39,20 @@ public class ControlProduto extends HttpServlet {
 			idProd = Integer.parseInt(idPro);
 			produto.setIdProduto(idProd);
 		}
-		if (action.equalsIgnoreCase("Tabela")) {
-			try {
-				request.setAttribute("produto", Dao.listaProdutos());
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if (action.equalsIgnoreCase("Tabela")) { 
+			String sessao = (String) request.getSession().getAttribute("usuario"); 
+			if(sessao != null) {     
+				if(sessao.toString() != null) {    
+				try {
+					request.setAttribute("produto", Dao.listaProdutos());
+					forward = tabela;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				}	
+			}else {
+				forward = "Login.xhtml";
+			}  
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";

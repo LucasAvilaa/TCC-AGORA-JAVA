@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="dao.daoClientes"/>
-    <fullyQualifiedTypeName name="org.hibernate.annotations.Entity"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.text.ParseException"/>
     <fullyQualifiedTypeName name="jdk.jfr.Timestamp"/>
@@ -17,7 +14,6 @@
     <fullyQualifiedTypeName name="controller.controlContasReceber"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="dao.DaoClientes"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="org.apache.catalina.ha.backend.Sender"/>
@@ -26,7 +22,6 @@
     <fullyQualifiedTypeName name="dao.DaoEnderecoContato"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="javax.faces.convert.BigDecimalConverter"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="dao.DaoComandaProdutos"/>
@@ -35,8 +30,6 @@
     <fullyQualifiedTypeName name="model.TbContato"/>
     <fullyQualifiedTypeName name="dao.DaoEndereco"/>
     <fullyQualifiedTypeName name="dao.DaoContato"/>
-    <fullyQualifiedTypeName name="model.TbLogin"/>
-    <fullyQualifiedTypeName name="model.TbFuncionario"/>
     <fullyQualifiedTypeName name="dao.DaoFuncionarios"/>
     <fullyQualifiedTypeName name="model.TbFornecedores"/>
     <fullyQualifiedTypeName name="dao.DaoFornecedores"/>
@@ -52,12 +45,19 @@
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="model.TbCompraProduto"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
-    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
     <fullyQualifiedTypeName name="controller.ControlCompra"/>
     <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
     <fullyQualifiedTypeName name="dao.DaoCompra"/>
     <fullyQualifiedTypeName name="model.TbCompra"/>
-    <fullyQualifiedTypeName name="model.TbListaProduto"/>
     <fullyQualifiedTypeName name="model.TbProduto"/>
     <fullyQualifiedTypeName name="model.TbComanda"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="factory.Conexao"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="model.TbFuncionario"/>
+    <fullyQualifiedTypeName name="model.TbLogin"/>
+    <fullyQualifiedTypeName name="dao.DaoLogin"/>
+    <fullyQualifiedTypeName name="model.TbListaProduto"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
 </qualifiedTypeNameHistroy>

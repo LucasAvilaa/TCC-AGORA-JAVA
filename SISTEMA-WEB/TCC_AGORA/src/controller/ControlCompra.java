@@ -54,15 +54,21 @@ public class ControlCompra extends HttpServlet {
 		} 
 		
 		if (action.equalsIgnoreCase("Tabela")) {
-			try {
-				request.setAttribute("compra", Dao.listaCompra());
-				request.setAttribute("total", Dao.valorTotal(compra));
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			String sessao = (String) request.getSession().getAttribute("usuario"); 
+			if(sessao != null) {     
+				if(sessao.toString() != null) {
+				try {
+					request.setAttribute("compra", Dao.listaCompra());
+					request.setAttribute("total", Dao.valorTotal(compra));
+					forward = tabela;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				}
+			}else {
+				forward = "Login.xhtml";
+			}  
 		}
-
 		else if (action.equalsIgnoreCase("EditCompra")) {
 			request.setAttribute("compra", Dao.CompraPorId(compra));
 			request.setAttribute("itens", Dao.itensPorCompra(compra));  

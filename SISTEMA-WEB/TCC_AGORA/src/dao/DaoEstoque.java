@@ -71,7 +71,7 @@ public class DaoEstoque {
 	public List<TbEstoque> listaEstoque() throws Exception {
 		List<TbEstoque> listaEstoque = new ArrayList<TbEstoque>();	
 		con = new Conexao();
-		PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_ESTOQUE"); 
+		PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_ESTOQUE ORDER BY NOME_PRODUTO ASC"); 
 		
 		try {
 			ResultSet rs = ps.executeQuery();

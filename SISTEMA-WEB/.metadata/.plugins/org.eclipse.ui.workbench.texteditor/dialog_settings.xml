@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="criar_excluir_item"/>
+		<item key="selection" value=" "/>
 		<list key="findhistory">
+			<item value="${venda.idCompra}"/>
+			<item value="${venda.tbProduto.idProduto}"/>
+			<item value="login"/>
 			<item value="criar_excluir_item"/>
 			<item value="body"/>
 			<item value="image"/>
@@ -20,11 +23,10 @@
 			<item value="fornecedor"/>
 			<item value="fornecedores"/>
 			<item value="TbFornecedores"/>
-			<item value="cpf"/>
-			<item value="crudfornecedor"/>
-			<item value="setIdFunc"/>
 		</list>
 		<list key="replacehistory">
+			<item value=" "/>
+			<item value="${venda.idCompra}"/>
 			<item value="produto"/>
 			<item value="estoque"/>
 			<item value="estabelecimento"/>
