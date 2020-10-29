@@ -14,7 +14,13 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
    </head>
    <body>
-      <jsp:include page="index.xhtml" flush="false">
+   	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%>
+      <jsp:include page="index.jsp" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
   <f:view>  
@@ -45,12 +51,13 @@
                </p>                
                 <p>
                 	<label>
-                    	 DATA ENTRADA: <input name="dataEntrada" type="text"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${estoque.dataEntrada}"/>" disabled="disabled" required="required" style="width: 98px; ">
+                    	 DATA ENTRADA: <input name="dataEntrada" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${estoque.dataEntrada}"/>" required="required" style="width: 155px; ">
                   	</label>                  
                </p>  
                <p>
                	 <label>
-                     DATA VENCIMENTO: <input name="dataVencimento" type="date" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${estoque.dataVencimento}"/>" required="required" style="width: 155px; ">
+                     DATA VENCIMENTO: <input name="dataVencimento" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${estoque.dataVencimento}"/>" required="required" style="width: 155px; ">
+                  
                   </label>
                </p>  
                

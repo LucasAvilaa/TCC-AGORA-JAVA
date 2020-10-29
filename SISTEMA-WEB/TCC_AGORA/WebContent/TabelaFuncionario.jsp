@@ -12,7 +12,14 @@
       <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
    </head>
    <body>
-      <jsp:include page="index.xhtml" flush="false">
+   
+   	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%>
+      <jsp:include page="index.jsp" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
       <f:view>

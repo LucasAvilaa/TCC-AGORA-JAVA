@@ -61,7 +61,7 @@ public class DaoEstabelecimento {
 		List<TbEstabelecimento> listaEstab = new ArrayList<TbEstabelecimento>();	
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_ESTABELECIMENTOS"); 
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_ESTABELECIMENTOS ORDER BY RAZAO_SOCIAL ASC"); 
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {

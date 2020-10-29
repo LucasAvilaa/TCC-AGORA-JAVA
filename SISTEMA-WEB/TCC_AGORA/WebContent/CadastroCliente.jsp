@@ -14,8 +14,14 @@
       <script type="text/javascript" src="js/javascript.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
    </head>
-   <body>
-      <jsp:include page="index.xhtml" flush="false">
+   <body> 
+   	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%>
+      <jsp:include page="index.jsp" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
       <f:view>
@@ -107,8 +113,7 @@
       </f:view> 
    </body>  
  <script>	
-     $("#cep").mask("99999-999");
-     $("#data").mask("99/99/9999");
+     $("#cep").mask("99999-999"); 
      $("#celular").mask("(99)99999-9999");
      $("#rg").mask("99.999.999-9");
      $("#cpf").mask("999.999.999-99");

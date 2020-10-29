@@ -85,7 +85,7 @@ public class DaoCliente {
 		List<TbCliente> listacliente = new ArrayList<TbCliente>();	
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CLIENTES"); 
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CLIENTES ORDER BY NOME ASC"); 
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {

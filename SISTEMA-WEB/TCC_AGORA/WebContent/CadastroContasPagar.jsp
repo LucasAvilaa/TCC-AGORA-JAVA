@@ -18,7 +18,13 @@
       </style>
    </head>
    <body>
-      <jsp:include page="index.xhtml" flush="false">
+   	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%>
+      <jsp:include page="index.jsp" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
   <f:view>  
@@ -54,7 +60,8 @@
                </p>   
                <p style="text-align: center">
                   <label>
-                     DATA VENCIMENTO:  <br/><input name="dataVencimento"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${conta.dataVencimento}"/>" required="required"  style="width: 248px; "/>
+                     DATA VENCIMENTO:  <br/><input name="dataVencimento" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${conta.dataVencimento}"/>" required="required" style="width: 248px; ">
+                  
                   </label>
                </p> 
                 <p style="text-align: center">

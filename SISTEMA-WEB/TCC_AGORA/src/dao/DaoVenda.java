@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import factory.Conexao;
-import model.TbCliente;
 import model.TbComanda;
 import model.TbContasReceber;
 import model.TbListaProduto;
@@ -20,26 +19,26 @@ public class DaoVenda {
 		PreparedStatement ps = null; 
 		
 		if(acao.equals("I")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE I,?,?,?,NULL,NULL,NULL,NULL"); 
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_ESTAB I,?,?,?,NULL,NULL,NULL,NULL"); 
 			ps.setInt(1, comanda.getIdComanda());
 			ps.setInt(2, produto.getIdProduto());			
 			ps.setInt(3, lista.getQuantidade());	 
 		}	
 		
 		else if(acao.equals("A")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE A,?,?,?,NULL,NULL,NULL,NULL");
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_ESTAB A,?,?,?,NULL,NULL,NULL,NULL");
 			ps.setInt(1, comanda.getIdComanda());
 			ps.setInt(2, produto.getIdProduto());			
 			ps.setInt(3, lista.getQuantidade());		 
 		}	
 		
 		else if(acao.equals("E")) { 			
-			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE E,NULL,?,NULL,NULL,NULL,NULL,NULL");
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_ESTAB E,?,?,NULL,NULL,NULL,NULL,NULL");
 			ps.setInt(1, comanda.getIdComanda());
 			ps.setInt(2, produto.getIdProduto());
 			
 		}else if(acao.equals("P")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_CLIENTE P,?,NULL,NULL,?,?,?,?");  
+			ps = con.getConexao().prepareStatement("EXEC PROC_VENDA_ESTAB P,?,NULL,NULL,?,?,?,?");  
 			ps.setInt(1, comanda.getIdComanda()); 
 			ps.setString(2, receber.getMetodoPagamento());
 			ps.setBigDecimal(3, receber.getDinheiro());
@@ -54,66 +53,82 @@ public class DaoVenda {
 		}
 }
 
-	public TbListaProduto listaProdutoPorComanda(TbComanda id) {
-			TbListaProduto lista = new TbListaProduto();
-			TbComanda comanda = new TbComanda();
-			TbProduto produto = new TbProduto();
+	public List<TbListaProduto> listaProdutoPorComanda(TbComanda comanda) {
+		List<TbListaProduto> listaProduto = new ArrayList<TbListaProduto>(); 
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_LISTA_PRODUTOS WHERE ID_COMANDA_LISTA = ?"); 
-				ps.setInt(1, id.getIdComanda());
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_VENDA WHERE ID_COMANDA_LISTA = ?"); 
+				ps.setInt(1, comanda.getIdComanda());
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) { 
+					TbListaProduto lista = new TbListaProduto();
+					TbComanda comand = new TbComanda();
+					TbProduto produto = new TbProduto();
 					lista.setDataCompra(rs.getDate("DATA_COMPRA"));
 					lista.setDataSaida(rs.getDate("DATA_SAIDA"));
 					lista.setQuantidade(rs.getInt("QUANTIDADE"));
-					lista.setIdCompra(rs.getInt("ID_COMPRA"));
-					comanda.setIdComanda(rs.getInt("ID_COMANDA_LISTA"));
+					lista.setIdCompra(rs.getInt("ID_COMPRA")); 
+					lista.setSubtotal(rs.getBigDecimal("SUBTOTAL"));
+					comand.setIdComanda(rs.getInt("ID_COMANDA_LISTA"));
+					produto.setValorUniVenda(rs.getBigDecimal("VALOR_UNI_VENDA"));
 					produto.setIdProduto(rs.getInt("ID_PROD_LISTA"));
 					lista.setTbProduto(produto);
-					lista.setTbComanda(comanda);					 			 
+					lista.setTbComanda(comand);		
+					listaProduto.add(lista);
 				} 	 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	 
-			return lista;
+			return listaProduto;
 		}
 	
-	/**
-	 * FALTA ARRUMAR DAQUI PRA BAIXO
-	 */	
-	public List<TbCliente> listaComanda() {
-		List<TbCliente> listacliente = new ArrayList<TbCliente>();	
+	public TbListaProduto produtoPorId(TbComanda comanda, TbListaProduto idProduto) {
+		 
+		TbListaProduto lista = new TbListaProduto();
+		TbComanda comand = new TbComanda();
+		TbProduto produto = new TbProduto();
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_LISTA_PRODUTOS WHERE ID_COMANDA_LISTA = ?"); 
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_VENDA WHERE ID_COMANDA_LISTA = ? AND ID_PROD_LISTA = ?"); 
+			ps.setInt(1, comanda.getIdComanda());
+			ps.setInt(2,idProduto.getTbProduto().getIdProduto());
 			ResultSet rs = ps.executeQuery();
 			
-			while (rs.next()) {
-				TbCliente cliente = new TbCliente(); 
-				
-/*				cliente.setIdCli(rs.getString("ID_CLI"));
-				cliente.setNome(rs.getString("NOME"));
-				cliente.setSobrenome(rs.getString("SOBRENOME"));
-				cliente.setRg(rs.getString("RG"));
-				cliente.setCpf(rs.getString("CPF"));
-				cliente.setDtNasc(rs.getDate("DT_NASC"));
-				cliente.setAtivo(rs.getBoolean("ATIVO"));
-				cliente.setSexo(rs.getString("SEXO"));
-				ID_COMPRA
-				ID_PROD_LISTA
-				ID_COMANDA_LISTA
-				QUANTIDADE
-				DATA_COMPRA
-				DATA_SAIDA
-*/							
-				listacliente.add(cliente);
-			} 	
-			ps.close();
+			while (rs.next()) { 
+				lista.setDataCompra(rs.getDate("DATA_COMPRA"));
+				lista.setDataSaida(rs.getDate("DATA_SAIDA"));
+				lista.setQuantidade(rs.getInt("QUANTIDADE"));
+				lista.setIdCompra(rs.getInt("ID_COMPRA"));
+				lista.setSubtotal(rs.getBigDecimal("SUBTOTAL"));
+				comand.setIdComanda(rs.getInt("ID_COMANDA_LISTA"));
+				produto.setIdProduto(rs.getInt("ID_PROD_LISTA"));
+				lista.setTbProduto(produto);
+				lista.setTbComanda(comand);		 
+			} 	 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	 
-		return listacliente;
+		return lista;
+	}
+	
+	public TbListaProduto valorTotal(TbComanda comanda) {
+		TbListaProduto listaItens = new TbListaProduto();
+
+		try {
+			con = new Conexao();
+			PreparedStatement ps = con.getConexao()
+					.prepareStatement("SELECT SUM(SUBTOTAL) AS TOTAL FROM VW_VENDA WHERE ID_COMANDA_LISTA = ?");
+			ps.setInt(1, comanda.getIdComanda()); 
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) { 
+				listaItens.setTotal(rs.getBigDecimal("TOTAL"));   
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listaItens;
 	}
 }	

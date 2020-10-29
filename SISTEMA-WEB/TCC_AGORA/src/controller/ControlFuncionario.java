@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.DaoContato;
 import dao.DaoEndereco;
 import dao.DaoFuncionario;
+import dao.DaoLogin;
 import model.TbContato;
 import model.TbEndereco;
 import model.TbFuncionario;
@@ -30,6 +31,7 @@ public class ControlFuncionario extends HttpServlet {
 	private static String tabela = "/TabelaFuncionario.jsp";
 	private static String criar_editar = "/CadastroFuncionario.jsp";
 	private DaoFuncionario Dao;
+	private DaoLogin DaoLogin;
 	private DaoEndereco End;
 	private DaoContato Cont;
 	private String cpf = null;
@@ -42,6 +44,7 @@ public class ControlFuncionario extends HttpServlet {
 
 	public ControlFuncionario() {
 		super();
+		DaoLogin = new DaoLogin();
 		Dao = new DaoFuncionario();
 		End = new DaoEndereco();
 		Cont = new DaoContato();
@@ -59,15 +62,25 @@ public class ControlFuncionario extends HttpServlet {
 			funcionario.setIdFunc(idFunc);
 		}
 
-		if (action.equalsIgnoreCase("Tabela")) {
-			try {
-				request.setAttribute("funcionario", Dao.listaFuncionario());
-				request.setAttribute("endereco", End.listaEndereco());
-				request.setAttribute("contato", Cont.listaContato());
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if (action.equalsIgnoreCase("Tabela")) {   
+			String sessao = (String) request.getSession().getAttribute("usuario"); 
+			if(sessao != null) {     
+				if(sessao.toString() != null) {
+					try {
+						request.setAttribute("funcionario", Dao.listaFuncionario());
+						request.setAttribute("endereco", End.listaEndereco());
+						request.setAttribute("contato", Cont.listaContato());
+						forward = tabela;
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}else {
+				forward = "Login.xhtml";
+			}  
+			
+			
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";
@@ -90,6 +103,7 @@ public class ControlFuncionario extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (action.equalsIgnoreCase("Edit")) {
+			request.setAttribute("user", DaoLogin.loginFuncionario(funcionario));
 			request.setAttribute("funcionario", Dao.funcionarioPorId(funcionario));
 			request.setAttribute("endereco", End.enderecoPorId(cpf));
 			request.setAttribute("contato", Cont.contatoPorId(cpf));
@@ -126,6 +140,11 @@ public class ControlFuncionario extends HttpServlet {
 		endereco.setCep(request.getParameter("cep"));
 		endereco.setRua(request.getParameter("rua"));
 
+		if(request.getParameter("idLogin") != null) {
+			System.out.println("ID LOGIN " + request.getParameter("idLogin")); 
+			login.setIdLogin(Integer.parseInt(request.getParameter("idLogin")));
+		}
+		
 		login.setUsuario(request.getParameter("login"));
 		login.setSenha(request.getParameter("senha"));
 
@@ -137,7 +156,7 @@ public class ControlFuncionario extends HttpServlet {
 		endereco.setEstado(request.getParameter("estado"));
 		endereco.setCidade(request.getParameter("cidade"));
 
-		contato.setEmail(request.getParameter("email"));
+		contato.setEmail(request.getParameter("emailContato"));
 		contato.setNumero(request.getParameter("celular"));
 
 
@@ -163,6 +182,12 @@ public class ControlFuncionario extends HttpServlet {
 			} else {
 				System.out.println("ERRO AO INSERIR FUNCIONARIO");
 			}
+			if(DaoLogin.crudLogin(acao, login)) {
+				System.out.println("USUARIO CRIADO COM SUCESSO");
+			}else {
+				System.out.println("ERRO AO CRIAR USUARIO");
+			}
+			
 			if (End.crudEndereco(acao, cpf, endereco)) {
 				System.out.println("ENDERECO INSERIDO COM SUCESSO");
 			} else {
