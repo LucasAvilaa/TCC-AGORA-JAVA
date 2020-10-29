@@ -47,13 +47,20 @@ public class ControlContasPagar extends HttpServlet {
 			idPagar = Integer.parseInt(request.getParameter("idPagar"));
 			pagar.setIdPagar(idPagar);
 		}
-		if (action.equalsIgnoreCase("Tabela")) {
-			try {
-				request.setAttribute("conta", Dao.listaContaPagar()); 
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if (action.equalsIgnoreCase("Tabela")) { 
+			String sessao = (String) request.getSession().getAttribute("usuario"); 
+			if(sessao != null) {     
+				if(sessao.toString() != null) { 
+				try {
+					request.setAttribute("conta", Dao.listaContaPagar()); 
+					forward = tabela;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				}	
+			}else {
+				forward = "Login.xhtml";
+			}  
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";
@@ -85,17 +92,22 @@ public class ControlContasPagar extends HttpServlet {
 		pagar.setCategoria(request.getParameter("categoria"));
 		pagar.setValorPagar(BigDecimal.valueOf(Double.valueOf(request.getParameter("valor"))));
  
+		
 		Date data = null;
 		try {
-			DateFormat dataCru = new SimpleDateFormat("dd/MM/yyyy");
-			data = dataCru.parse(request.getParameter("dataVencimento"));
+			DateFormat dataCru = new SimpleDateFormat("yyyy-mm-dd");
+			Date date = dataCru.parse(request.getParameter("dataVencimento"));
 
+			DateFormat dataConv = new SimpleDateFormat("dd-mm-yyyy");
+			String date2 = dataConv.format(date);
+
+			data = new SimpleDateFormat("dd-MM-yyyy").parse(date2);
 			pagar.setDataVencimento(data);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 			System.out.println("ERRO NA CONVERSÃO DA DATA");
-		}
+		} 
 
 		try {
 			System.out.println("AÇÃO: " + acao);

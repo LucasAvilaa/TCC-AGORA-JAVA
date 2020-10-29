@@ -78,10 +78,8 @@ public class DaoProduto {
 						produto.setCategoria(rs.getString("CATEGORIA"));
 						produto.setValorUniCompra(rs.getBigDecimal("VALOR_UNI_COMPRA"));
 						produto.setValorUniVenda(rs.getBigDecimal("VALOR_UNI_VENDA"));
-						produto.setDataCadastro(rs.getDate("DATA_CADASTRO"));
-			//			produto.setAtivo(rs.getBoolean("ATIVO"));
-					}
-					ps.close();
+						produto.setDataCadastro(rs.getDate("DATA_CADASTRO")); 
+					} 
 				} catch (Exception e) {
 					e.printStackTrace();
 					System.out.println("ERRO AO BUSCAR PRODUTO POR ID ");
@@ -95,7 +93,7 @@ public class DaoProduto {
 			
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_PRODUTOS"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_PRODUTOS ORDER BY NOME_PRODUTO ASC"); 
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) { 
@@ -111,11 +109,9 @@ public class DaoProduto {
 					produto.setCategoria(rs.getString("CATEGORIA"));
 					produto.setValorUniCompra(rs.getBigDecimal("VALOR_UNI_COMPRA"));
 					produto.setValorUniVenda(rs.getBigDecimal("VALOR_UNI_VENDA"));
-					produto.setDataCadastro(rs.getDate("DATA_CADASTRO"));	
-		//			produto.setAtivo(rs.getBoolean("ATIVO"));	
+					produto.setDataCadastro(rs.getDate("DATA_CADASTRO"));	 
 					listaprod.add(produto);
-				} 	
-				ps.close();
+				} 	 
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("ERRO AO BUSCAR A LISTA PRODUTO ");

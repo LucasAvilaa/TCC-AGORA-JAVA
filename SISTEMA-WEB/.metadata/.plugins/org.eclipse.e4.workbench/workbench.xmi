@@ -96,8 +96,13 @@
                 <tags>categoryTag:Java Browsing</tags>
               </children>
             </children>
+<<<<<<< HEAD
             <children xsi:type="basic:PartSashContainer" xmi:id="_0SawWxlvEeuWk-Qhc3WNvw" containerData="7677" selectedElement="_0SawYhlvEeuWk-Qhc3WNvw">
               <children xsi:type="basic:PartSashContainer" xmi:id="_0SawXBlvEeuWk-Qhc3WNvw" containerData="3562" selectedElement="_0SawXRlvEeuWk-Qhc3WNvw" horizontal="true">
+=======
+            <children xsi:type="basic:PartSashContainer" xmi:id="_0SawWxlvEeuWk-Qhc3WNvw" containerData="7677" selectedElement="_0SawXBlvEeuWk-Qhc3WNvw">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_0SawXBlvEeuWk-Qhc3WNvw" containerData="7645" selectedElement="_0SawXRlvEeuWk-Qhc3WNvw" horizontal="true">
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
                 <children xsi:type="advanced:Placeholder" xmi:id="_0SawXRlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ui.editorss" containerData="7000" ref="_0SbY-BlvEeuWk-Qhc3WNvw"/>
                 <children xsi:type="basic:PartStack" xmi:id="_0SawXhlvEeuWk-Qhc3WNvw" elementId="topRight" visible="false" containerData="3000" selectedElement="_0SawXxlvEeuWk-Qhc3WNvw">
                   <tags>Minimized</tags>
@@ -115,9 +120,14 @@
                   </children>
                 </children>
               </children>
+<<<<<<< HEAD
               <children xsi:type="basic:PartStack" xmi:id="_0SawYhlvEeuWk-Qhc3WNvw" elementId="bottomRight" containerData="6438" selectedElement="_0SawbhlvEeuWk-Qhc3WNvw">
                 <tags>Terminal</tags>
                 <tags>active</tags>
+=======
+              <children xsi:type="basic:PartStack" xmi:id="_0SawYhlvEeuWk-Qhc3WNvw" elementId="bottomRight" containerData="2355" selectedElement="_0SawahlvEeuWk-Qhc3WNvw">
+                <tags>Terminal</tags>
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
                 <children xsi:type="advanced:Placeholder" xmi:id="_0SawYxlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ui.views.AllMarkersView" ref="_0SbZUhlvEeuWk-Qhc3WNvw" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:General</tags>
@@ -646,6 +656,10 @@
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_0SbY-BlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ui.editorss" selectedElement="_CnsIUBoWEeu5XpWal7bc3w">
       <children xsi:type="basic:PartStack" xmi:id="_CnsIUBoWEeu5XpWal7bc3w" elementId="PartStack@597de2df" selectedElement="_V11ekBoeEeu5XpWal7bc3w">
+<<<<<<< HEAD
+=======
+        <tags>active</tags>
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
         <children xsi:type="basic:Part" xmi:id="_v270gBoUEeu5XpWal7bc3w" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ControlVenda.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ControlVenda.java&quot; partName=&quot;ControlVenda.java&quot; title=&quot;ControlVenda.java&quot; tooltip=&quot;TCC_AGORA/src/controller/ControlVenda.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/TCC_AGORA/src/controller/ControlVenda.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;34&quot; selectionOffset=&quot;2982&quot; selectionTopPixel=&quot;975&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
@@ -659,10 +673,16 @@
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_V11ekBoeEeu5XpWal7bc3w" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TelaCaixa.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
+<<<<<<< HEAD
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;TelaCaixa.jsp&quot; partName=&quot;TelaCaixa.jsp&quot; title=&quot;TelaCaixa.jsp&quot; tooltip=&quot;TCC_AGORA/WebContent/TelaCaixa.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/TCC_AGORA/WebContent/TelaCaixa.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;952&quot; selectionTopPixel=&quot;285&quot;/>&#xD;&#xA;&lt;/editor>"/>
+=======
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;TelaCaixa.jsp&quot; partName=&quot;TelaCaixa.jsp&quot; title=&quot;TelaCaixa.jsp&quot; tooltip=&quot;TCC_AGORA/WebContent/TelaCaixa.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/TCC_AGORA/WebContent/TelaCaixa.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;952&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.jst.jsp.core.jspsource.source</tags>
+          <tags>active</tags>
+          <tags>activeOnClose</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_kqbCUBogEeuTXdy-37MQnQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="index.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;index.jsp&quot; partName=&quot;index.jsp&quot; title=&quot;index.jsp&quot; tooltip=&quot;TCC_AGORA/WebContent/index.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/TCC_AGORA/WebContent/index.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;150&quot;/>&#xD;&#xA;&lt;/editor>"/>
@@ -750,6 +770,10 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot;>&#xD;&#xA;&lt;lastRecentlyUsedFilters/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:Server</tags>
+<<<<<<< HEAD
+=======
+      <tags>highlighted</tags>
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
       <menus xmi:id="_0SbZaBlvEeuWk-Qhc3WNvw" elementId="org.eclipse.wst.server.ui.ServersView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -808,7 +832,11 @@
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
+<<<<<<< HEAD
       <toolbar xmi:id="_0Sb-ixlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ui.console.ConsoleView" visible="false"/>
+=======
+      <toolbar xmi:id="_0Sb-ixlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ui.console.ConsoleView"/>
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_0Sb-mhlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ui.views.BookmarkView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Bookmarks" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/bkmrk_nav.png" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.internal.views.markers.BookmarksView"/>
@@ -915,16 +943,23 @@
     <sharedElements xsi:type="basic:Part" xmi:id="_0Sb-tBlvEeuWk-Qhc3WNvw" elementId="org.eclipse.tm.terminal.view.ui.TerminalsView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Terminal" iconURI="platform:/plugin/org.eclipse.tm.terminal.view.ui/icons/eview16/terminal_view.gif" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.tm.terminal.view.ui"/>
       <persistedState key="originalCompatibilityViewClass" value="org.eclipse.tm.terminal.view.ui.view.TerminalsView"/>
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view>&#xD;&#xA;&lt;terminalConnections id=&quot;org.eclipse.tm.terminal.view.ui.TerminalsView&quot;>&#xD;&#xA;&lt;connection delegateId=&quot;org.eclipse.tm.terminal.connector.local.launcher.local&quot; encoding=&quot;UTF-8&quot; terminal.forceNew=&quot;true&quot;/>&#xD;&#xA;&lt;/terminalConnections>&#xD;&#xA;&lt;/view>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view>&#xD;&#xA;&lt;terminalConnections id=&quot;org.eclipse.tm.terminal.view.ui.TerminalsView&quot;/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:Terminal</tags>
+<<<<<<< HEAD
       <tags>active</tags>
       <tags>activeOnClose</tags>
+=======
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
       <menus xmi:id="_0Sb-tRlvEeuWk-Qhc3WNvw" elementId="org.eclipse.tm.terminal.view.ui.TerminalsView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
+<<<<<<< HEAD
       <toolbar xmi:id="_0Sb-txlvEeuWk-Qhc3WNvw" elementId="org.eclipse.tm.terminal.view.ui.TerminalsView"/>
+=======
+      <toolbar xmi:id="_0Sb-txlvEeuWk-Qhc3WNvw" elementId="org.eclipse.tm.terminal.view.ui.TerminalsView" visible="false"/>
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_0Sb-wxlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ant.ui.views.AntView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Ant" iconURI="platform:/plugin/org.eclipse.ant.ui/icons/full/eview16/ant_view.png" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.ant.ui"/>
@@ -1017,7 +1052,11 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_0Sb-2RlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
+<<<<<<< HEAD
         <children xsi:type="menu:HandledToolItem" xmi:id="_nGsMQBonEeu1cN8u1XHM-w" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_0SedqRlvEeuWk-Qhc3WNvw"/>
+=======
+        <children xsi:type="menu:HandledToolItem" xmi:id="_LIguUBogEeuTXdy-37MQnQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_0SedqRlvEeuWk-Qhc3WNvw"/>
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_0Sb-6BlvEeuWk-Qhc3WNvw" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1066,7 +1105,11 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_0Sb_UBlvEeuWk-Qhc3WNvw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
+<<<<<<< HEAD
         <children xsi:type="menu:HandledToolItem" xmi:id="_nGxr0BonEeu1cN8u1XHM-w" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_0SedTBlvEeuWk-Qhc3WNvw"/>
+=======
+        <children xsi:type="menu:HandledToolItem" xmi:id="_LIoqIBogEeuTXdy-37MQnQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_0SedTBlvEeuWk-Qhc3WNvw"/>
+>>>>>>> d68df48b8dc0fbe3a1732ef24c828e9f6a2040fb
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_0Sb_XBlvEeuWk-Qhc3WNvw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>

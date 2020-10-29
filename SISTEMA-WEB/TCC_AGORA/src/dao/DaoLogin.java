@@ -3,6 +3,7 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet; 
 import factory.Conexao;
+import model.TbFuncionario;
 import model.TbLogin;
 
 public class DaoLogin {
@@ -56,5 +57,26 @@ public class DaoLogin {
 		else {
 			return false;
 		}
+	}
+	
+	public TbLogin loginFuncionario(TbFuncionario funcionario) {
+		TbLogin login = null;
+		try {
+			con = new Conexao();
+			String url = "SELECT * FROM TB_LOGIN WHERE ID_LOGIN = (SELECT ID_LOGIN FROM TB_FUNCIONARIOS WHERE ID_FUNC = ?)";
+			PreparedStatement ps = con.getConexao().prepareStatement(url);
+			ps.setString(1, funcionario.getIdFunc());
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				login = new TbLogin();
+				login.setIdLogin(rs.getInt("ID_LOGIN"));
+				login.setUsuario(rs.getString("USUARIO"));
+				login.setSenha(rs.getString("SENHA"));
+			}
+		} catch (Exception e) { 
+			e.printStackTrace();
+		}
+		return login;
 	}
 }	

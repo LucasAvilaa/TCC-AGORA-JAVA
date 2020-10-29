@@ -14,7 +14,23 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
    </head>
    <body>
-      <jsp:include page="index.xhtml" flush="false">
+   <script type="text/javascript"> 
+   function email(){
+      var nome =  document.cadastrofuncionario.nome.value.toLowerCase()
+      var sobrenome = document.cadastrofuncionario.sobrenome.value.toLowerCase()
+      var cpf = document.cadastrofuncionario.cpf.value.substr(0,5).replace('.','')
+	 	  document.cadastrofuncionario.login.value =
+	 		 nome.replace(" ", "")  + '.' + sobrenome.replace(" ", "") + cpf + '@RedeAgora.com'; 
+	   }
+    
+   </script>
+   	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%>
+      <jsp:include page="index.jsp" flush="false">
          <jsp:param name="cabecalho" value="cabecalho"/>
       </jsp:include>
       <f:view>
@@ -24,24 +40,24 @@
 <div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
            
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em">
+            <p><input value="ENVIAR" type="submit"  id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em">
              <a href="ControlFuncionario?action=tabela" class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
                <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark"
                >INFORMAÇÕES BÁSICAS </legend>
                <p>
                   <label>
-                     NOME: <input name="nome"  maxlength="50" value="<c:out value="${funcionario.nome}"/>" required="required" style="width: 364px; "/>
+                     NOME: <input name="nome"  maxlength="50" onchange="email()" onblur="email()" value="<c:out value="${funcionario.nome}"/>" required="required" style=" width: 364px; "/>
                   </label>
                </p>
                <p>
                   <label>
-                     SOBRENOME: <input name="sobrenome" maxlength="50" value="<c:out value="${funcionario.sobrenome}"/>" required="required" style="width: 314px; "/>
+                     SOBRENOME: <input name="sobrenome" onchange="email()" onblur="email()" maxlength="50" value="<c:out value="${funcionario.sobrenome}"/>" required="required" style="width: 314px; "/>
                   </label>
                </p>
                <p>
                   <label>
-                     CPF: <input name="cpf" id="cpf" value="<c:out value="${funcionario.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
+                     CPF: <input name="cpf" id="cpf" onchange="email()" onblur="email()" value="<c:out value="${funcionario.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
                   </label>
                   <label>
                      RG: <input name="rg" id="rg" value="<c:out value="${funcionario.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/>
@@ -50,6 +66,7 @@
                <p>
                   <label>
                      NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; ">
+                 				 
                   </label>
                   <label>
                      SEXO: 
@@ -102,7 +119,7 @@
                <legend>CONTATO</legend>
                <p>
                   <label>
-                     EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com">
+                     EMAIL: <input type="text" name="emailContato" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com">
                   </label>
                </p>
                <p>
@@ -111,13 +128,26 @@
                   </label>
                </p>
             </fieldset>
+            <fieldset id="Conjuntologin">
+               <legend>LOGIN</legend>
+               <p>
+                  <label>
+                     LOGIN: <input type="email" name="login"  readonly="readonly" style="width: 354px; "value="<c:out value="${user.usuario}"/>" placeholder="seuemail@email.com">
+                  </label>
+               </p>
+               <p>
+                  <label>
+                     SENHA: <input type="password"  name="senha" style="width: 174px; "value="<c:out value="**************"/>" placeholder="******************">
+                  </label>
+               </p>
+            </fieldset>
             </div>
          </form>
       </f:view>
    </body>
-   <script>	
-      $("#cep").mask("99999-999");
-      $("#data").mask("99/99/9999");
+   <script> 
+   
+      $("#cep").mask("99999-999"); 
       $("#celular").mask("(99)99999-9999");
       $("#rg").mask("99.999.999-9");
       $("#cpf").mask("999.999.999-99");
@@ -145,6 +175,6 @@
       
       });
       });    
-      
-   </script>
+       
+   </script> 
 </html>

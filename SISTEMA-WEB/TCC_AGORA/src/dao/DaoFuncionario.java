@@ -87,7 +87,7 @@ public class DaoFuncionario {
 			List<TbFuncionario> listafunc = new ArrayList<TbFuncionario>();	
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FUNCIONARIOS"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FUNCIONARIOS ORDER BY NOME ASC"); 
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {

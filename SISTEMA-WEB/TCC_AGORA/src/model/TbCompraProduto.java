@@ -35,7 +35,7 @@ public class TbCompraProduto implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_PRODUTO")
 	private TbProduto tbProduto;
-	
+	 
 	private BigDecimal subtotal; 
 		
 	public BigDecimal getSubtotal() {
@@ -53,7 +53,7 @@ public class TbCompraProduto implements Serializable {
 	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
-
+ 
 	private BigDecimal total;
 	
 

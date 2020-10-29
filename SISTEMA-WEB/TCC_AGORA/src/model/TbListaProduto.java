@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -40,6 +42,27 @@ public class TbListaProduto implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_PROD_LISTA")
 	private TbProduto tbProduto;
+
+	private BigDecimal total;
+	
+	private BigDecimal subtotal;
+	
+	
+	public BigDecimal getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(BigDecimal subtotal) {
+		this.subtotal = subtotal;
+	}
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
 
 	public TbListaProduto() {
 	}

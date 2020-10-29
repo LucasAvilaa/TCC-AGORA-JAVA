@@ -43,13 +43,20 @@ public class ControlContasReceber extends HttpServlet {
 			receber.setIdReceber(idReceber);
 		}
 
-		if (action.equalsIgnoreCase("Tabela")) {
-			try {
-				request.setAttribute("receber", Dao.ListaReceber());
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if (action.equalsIgnoreCase("Tabela")) { 
+			String sessao = (String) request.getSession().getAttribute("usuario"); 
+			if(sessao != null) {     
+				if(sessao.toString() != null) {    
+				try {
+					request.setAttribute("receber", Dao.ListaReceber());
+					forward = tabela;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				}
+			}else {
+				forward = "Login.xhtml";
+			}  
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";

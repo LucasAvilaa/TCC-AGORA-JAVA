@@ -12,17 +12,22 @@
 <title>CAIXA</title>
 </head>
 <body>
-
+	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%>
 	<f:view>
-		<jsp:include page="index.xhtml" flush="false">
+		<jsp:include page="index.jsp" flush="false">
 			<jsp:param name="cabecalho" value="cabecalho" />
 		</jsp:include>
 		<h2 style="background-color: white; text-align: center">CAIXA</h2>
 		<div class="div-alinhada">
-			<div style="background-color: rgba(255, 255, 204, 1)">
+			<div style="background-color: rgba(255, 255, 204, 1)"  >
 				<p>
-					<label> NÚMERO COMANDA: <input type="text" /> <input
-						type="button" value=" PROCURAR " />
+					<label> NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />"/> 
+											<a href="#" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+document.getElementById('idComanda').value">PESQUISAR</a> 
 					</label>
 				</p>
 				<table border="1">
@@ -37,47 +42,49 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach items="${venda}" var="venda">
 						<tr>
-							<td><c:out value="1000" /></td>
-							<td><c:out value="COCA-COLA" /></td>
-							<td><c:out value="10" /></td>
-							<td><c:out value="12" /></td>
-							<td><c:out value="120" /></td>
+							<td><c:out value="${venda.tbProduto.idProduto}" /></td>
+							<td><c:out value="${venda.tbProduto.nomeProduto}" /></td>
+							<td><c:out value="${venda.quantidade}" /></td>
+							<td><c:out value="${venda.tbProduto.valorUniVenda}" /></td>
+							<td><c:out value="${venda.subtotal}" /></td>
 							<td><a
-								href='ControlVenda?action=Edit&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'><img
+								href='ControlVenda?action=Edit&idComanda=<c:out value="${comanda}"/>&codItem=<c:out value="${venda.tbProduto.idProduto}"/>'><img
 									src="img/edit.svg" style="width: 21px; height: 21px;"
 									title="ATUALIZAR" /></a></td>
 							<td><a
-								href='ControlVenda?action=Delete&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'><img
+								href='ControlVenda?action=Delete&idComanda=<c:out value="${comanda}"/>&codItem=<c:out value="${venda.tbProduto.idProduto}"/>'><img
 									src="img/trash-2.svg" style="width: 21px; height: 21px;"
 									title="EXCLUIR ITEM" /></a></td>
 
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
-			<div style="background-color: #CCE5FF">
+			<div style="background-color: #CCE5FF"  >
 				<form action="ControlVenda" method="post">
 					<p>
-						<label> PRODUTO <input type="text" value="${c}" />
+						<label> PRODUTO <input type="text" value=" " />
 						</label>
 					</p>
 					<p>
-						<label> QUANTIDADE <input type="text" value="${c}" />
+						<label> QUANTIDADE <input type="text" value=" " />
 						</label>
 					</p>
 					<p>
-						<label> PRECO UNITÁRIO <input type="text" value="${c}"
+						<label> PRECO UNITÁRIO <input type="text" value=" "
 							readonly="readonly" />
 						</label>
 					</p>
 					<p>
 						<label> QUANTIDADE X UNITÁRIO <input type="text"
-							value="${c}" readonly="readonly" />
+							value=" " readonly="readonly" />
 						</label>
 					</p>
 					<p>
-						<label> TOTAL <input type="text" readonly="readonly" />
+						<label> TOTAL <input type="text" readonly="readonly" value="<c:out value="${total.total}" />"> 
 						</label>
 					</p>
 					<p>

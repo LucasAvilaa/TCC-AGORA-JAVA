@@ -51,15 +51,23 @@ public class ControlFornecedor extends HttpServlet {
 			idForn = String.valueOf(idFor);
 			fornecedor.setIdForn(idForn);
 		}
-		if (action.equalsIgnoreCase("Tabela")) {
-			try {
-				request.setAttribute("fornecedor", Dao.listaFornecedor());
-				request.setAttribute("endereco", End.listaEndereco());
-				request.setAttribute("contato", Cont.listaContato());
-				forward = tabela;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if (action.equalsIgnoreCase("Tabela")) { 
+			String sessao = (String) request.getSession().getAttribute("usuario"); 
+			if(sessao != null) {     
+				if(sessao.toString() != null) {   
+				try {
+					request.setAttribute("fornecedor", Dao.listaFornecedor());
+					request.setAttribute("endereco", End.listaEndereco());
+					request.setAttribute("contato", Cont.listaContato());
+					forward = tabela;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				}
+			}else {
+				forward = "Login.xhtml";
+			} 
+			
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";
