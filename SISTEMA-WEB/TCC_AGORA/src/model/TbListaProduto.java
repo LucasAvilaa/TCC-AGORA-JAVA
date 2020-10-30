@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  * The persistent class for the TB_LISTA_PRODUTOS database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_LISTA_PRODUTOS")
 @NamedQuery(name="TbListaProduto.findAll", query="SELECT t FROM TbListaProduto t")

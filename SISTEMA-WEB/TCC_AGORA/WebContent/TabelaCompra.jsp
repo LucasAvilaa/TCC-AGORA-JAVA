@@ -53,7 +53,7 @@
                         <c:out value="COMP/${compra.idCompra}" />
                      </td>
                      <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataCriada}"/>
+                        <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataCriada}"/> 
                      </td>
                      <td>
                         <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataFinalizada}"/>

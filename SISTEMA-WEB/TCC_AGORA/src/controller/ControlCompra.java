@@ -22,7 +22,7 @@ public class ControlCompra extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String tabela = "/TabelaCompra.jsp";
 	private static String criar_editar = "/CadastroCompra.jsp";
-	private static String criar_excluir_item = "/ControlCompra?action=EditCompra&idCompra="; 
+	private static String editar_compra = "/ControlCompra?action=EditCompra&idCompra=";  
 	private DaoCompra Dao;
 	private String acao = null;
 	private Integer idCompra = null;
@@ -42,8 +42,7 @@ public class ControlCompra extends HttpServlet {
 		String idCom = request.getParameter("idCompra");
 		String idProd = request.getParameter("idItem");   
 		
-		if (idCom != null) {
-			System.out.println(idCom);
+		if (idCom != null) { 
 			idCompra = Integer.parseInt(idCom);
 			compra.setIdCompra(idCompra);
 		}
@@ -76,14 +75,19 @@ public class ControlCompra extends HttpServlet {
 			acao = "II";
 			forward = criar_editar;
 		}
-
+		
+		else if (action.equalsIgnoreCase("ConfirmarCompra")) {
+			Dao.confirmaCompra(compra);
+			request.setAttribute("compra", Dao.CompraPorId(compra)); 
+			forward = editar_compra + compra.getIdCompra();
+		} 
+		
 		else if (action.equalsIgnoreCase("CriarCompra")) {
 
 			try {
 				acao = "IC";
-				if (Dao.crudCompra(acao, compralista, compra, produto)) {
-					request.setAttribute("compra", Dao.CompraGerada());
-					System.out.println("COMPRA CRIADA COM SUCESSO");
+				if (Dao.crudCompra(acao, compralista, compra, produto)) {  
+					request.setAttribute("compra", Dao.CompraGerada().getIdCompra());  
 					acao ="II";
 				} else {
 					System.out.println("FALHA AO CRIAR COMPRA");
@@ -92,7 +96,7 @@ public class ControlCompra extends HttpServlet {
 				e.printStackTrace();
 				System.out.println("FALHA AO CRIAR COMPRA -- TRY/CATCH");
 			}
-			forward =  criar_editar;
+			forward =  editar_compra + Dao.CompraGerada().getIdCompra();
 		}
 
 		else if (action.equalsIgnoreCase("FinalizarCompra")) {
@@ -108,7 +112,7 @@ public class ControlCompra extends HttpServlet {
 				e.printStackTrace();
 				System.out.println("FALHA AO FINALIZAR COMPRA -- TRY/CATCH");
 			}
-			forward = criar_excluir_item + compra.getIdCompra();
+			forward = editar_compra + compra.getIdCompra();
 		}
 		
 		else if (action.equalsIgnoreCase("DeleteCompra")) {
@@ -129,15 +133,19 @@ public class ControlCompra extends HttpServlet {
 		
 		if (action.equalsIgnoreCase("InserirItens")) { 
 			acao = "II";  
+			request.setAttribute("compra", compra.getIdCompra());
 			request.setAttribute("itens", Dao.itensPorCompra(compra));
 			request.setAttribute("total", Dao.valorTotal(compra));
-			forward = criar_excluir_item + compra.getIdCompra();
+			forward = editar_compra + compra.getIdCompra();
 		}
 		
 		else if (action.equalsIgnoreCase("EditItens")) {
 			acao = "AI";  
 			request.setAttribute("item", Dao.itensPorId(compra, produto)); 
-			forward = criar_excluir_item + compra.getIdCompra();
+			System.out.println(Dao.itensPorId(compra, produto));
+			//forward = "ControlCompra?action=EditItens&idCompra=" + compra.getIdCompra() + "&idItem=" + produto.getIdProduto();
+			forward = editar_compra + compra.getIdCompra();
+			
 		}
 		
 		else if (action.equalsIgnoreCase("DeleteItens")) {
@@ -158,7 +166,7 @@ public class ControlCompra extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			forward = criar_excluir_item + compra.getIdCompra();
+			forward = editar_compra + compra.getIdCompra();
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -174,7 +182,7 @@ public class ControlCompra extends HttpServlet {
 		try {
 			System.out.println("AÇÃO: " + acao); 
 				if (Dao.crudCompraItens(acao, compralista, compra, produto)) {
-					System.out.println("ITEM: " + compralista.getId() + " INCLUIDO/ALTERADO COM SUCESSO NA COMPRA: "
+					System.out.println("ITEM: " + produto.getIdProduto() + " INCLUIDO/ALTERADO COM SUCESSO NA COMPRA: "
 							+ compra.getIdCompra());
 
 				} else {

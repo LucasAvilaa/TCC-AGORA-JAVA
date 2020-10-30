@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/inserirItens.css" />
 <title>CAIXA</title>
 </head>
-<body>
+<body> 
 	<%
    		String usuario = (String) session.getAttribute("usuario");
    		if(usuario == null){
@@ -26,8 +26,14 @@
 		<div class="div-alinhada">
 			<div style="background-color: rgba(255, 255, 204, 1)"  >
 				<p>
-					<label> NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />"/> 
+					<label>
+						 NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />"/> 
 											<a href="#" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+document.getElementById('idComanda').value">PESQUISAR</a> 
+					</label>					
+				</p>
+				<p>
+					<label>
+						STATUS COMANDA:  <c:out value="${status.statusComanda}"/> 
 					</label>
 				</p>
 				<table border="1">
@@ -66,21 +72,24 @@
 			<div style="background-color: #CCE5FF"  >
 				<form action="ControlVenda" method="post">
 					<p>
-						<label> PRODUTO <input type="text" value=" " />
+						<label> PRODUTO <h:selectOneMenu style="width: 180px; height: 24px" id="produto" >                     
+					                        <f:selectItem itemValue="#{item.tbProduto.nomeProduto}" itemLabel="#{estoque.tbProduto.nomeProduto}"/> 
+					                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
+					                        <f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}"/>
+					                    </h:selectOneMenu> 
+						
 						</label>
 					</p>
 					<p>
-						<label> QUANTIDADE <input type="text" value=" " />
+						<label> QUANTIDADE <input type="text" name="quantidade" value="<c:out value='${item.quantidade}' />" />
 						</label>
 					</p>
 					<p>
-						<label> PRECO UNITÁRIO <input type="text" value=" "
-							readonly="readonly" />
+						<label> PRECO UNITÁRIO <input type="text" value="<c:out value='${item.tbProduto.valorUniVenda}' />" readonly="readonly" />
 						</label>
 					</p>
 					<p>
-						<label> QUANTIDADE X UNITÁRIO <input type="text"
-							value=" " readonly="readonly" />
+						<label> QUANTIDADE X UNITÁRIO <input type="text" value="<c:out value='${item.subtotal}' />" readonly="readonly" />
 						</label>
 					</p>
 					<p>
@@ -98,10 +107,7 @@
 					</p>
 					<p>
 						<label>
-						  	<a href='ControlVenda?action=Delete&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'> 
-								INSERIR ITEM <img src="img/trash-2.svg"
-									style="width: 21px; height: 21px;" title="INSERIR ITEM" />
-							 </a>
+							<input type="submit" value=" INSERIR ITEM ">							 
 						</label>	
 					</p>
 
@@ -110,45 +116,40 @@
 			</div>
 		</div>
 		<div style="background-color: gray">
-			<p>OPERADOR: DATA: HORA:</p>
+			<p>OPERADOR: <c:out value="${usuario}"/>   DATA: <c:out value="30/10/2020"/>  HORA: <c:out value="15:30:15"/></p>
 		</div>
-		<div class="inserir-itens-container" id="inserir-itens-container">
+		<div class="inserir-itens-container" id="inserir-itens-container" >
 			<div class="inserir-itens">
-				<form action="ControlVenda" method="post"
-					name="cadastroVenda">
+				<form action="ControlVenda" method="post" name="pagamento">
 
-					<fieldset id="informacoes">
+					<fieldset id="informacoes" >
 						<legend>FINALIZAR COMPRA</legend>
 						<p>
 							<label>  
 								FORMA DE PAGAMENTO:	<h:selectOneMenu style="width: 248px; height: 24px" id="formaPagamento">
-								                        <f:selectItem itemValue=" "/>
+								                        <f:selectItem itemValue="" itemLabel=""/>
 								                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
-								                        <f:selectItem itemValue="D" itemLabel="DINHEIRO"/>
-								                        <f:selectItem itemValue="C" itemLabel="CARTÃO"/>
-								                        <f:selectItem itemValue="CD" itemLabel="CARTÃO/DINHEIRO"/>
+								                        <f:selectItem itemValue="DI" itemLabel="DINHEIRO"/>
+								                        <f:selectItem itemValue="DE" itemLabel="DEBITO"/>
+								                        <f:selectItem itemValue="CR" itemLabel="CREDITO"/>
 								                     </h:selectOneMenu> 
 							</label> 
 						</p>
-						<p>
-							<label> VALOR TOTAL: <input name=" " 
-								value="<c:out value=" "/>" 
-								style="width: 200px;" />
-							</label>	
-						</p>
 						<p>		
-							<label> DINHEIRO RECEBIDO: <input name=" "
-								value="<c:out value=" "/>"  
-								style="width: 200px;" />
+							<label> 
+								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" onchange="troco()" style="width: 200px;" />
 							</label> 
 						</p>
 						<p>
-							 <label> TROCO: <input name=" "
-								value="<c:out value=" "/>" 
-								style="width: 200px;" />
+							 <label>
+							 	TROCO: <input name="troco" readonly="readonly" style="width: 200px;" />
 							</label>
+						</p> 
+						<p>
+							<label> 
+								VALOR TOTAL: <input name="valorTotal" readonly="readonly" value="<c:out value="${total.total}"/>"	style="width: 200px;" />
+							</label>	
 						</p>
-
 					</fieldset>
 					<p>
 						<input value=" RECEBER E FINALIZAR " type="submit" /> <a href="#"
@@ -158,17 +159,21 @@
 			</div>
 		</div>
 	</f:view>
-	<script>   
-		window.onload = multiplica;
-
+	<script>     
    		function abrir(){    
-   	   			document.getElementById("inserir-itens-container").style.display = 'flex'; 
+   	   		 document.getElementById("inserir-itens-container").style.display = 'flex'; 
    		} 
    		
    		function fechar(){
    			document.getElementById("inserir-itens-container").style.display = 'none'; 
-   		}  
-	 
+   		} 
+
+   		function troco(){  
+			document.pagamento.troco.value = 
+			   Number(document.pagamento.dinheiroRecebido.value) -
+			   Number(document.pagamento.valorTotal.value); 
+			   
+   		} 
 </script>
 
 </body>
