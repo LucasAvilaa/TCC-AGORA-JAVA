@@ -41,8 +41,7 @@
                   <th style="width: 141px; ">METODO PAGAMENTO</th> 
                   <th style="width: 141px; ">DINHEIRO</th> 
                   <th style="width: 193px; ">DEBITO</th> 
-                  <th style="width: 105px; ">CREDITO</th> 
-                  <th style="width: 181px; ">TOTAL</th>
+                  <th style="width: 105px; ">CREDITO</th>  
                   <th style="width: 181px; ">DATA VENDA</th>
                   <th style="width: 181px; ">DATA PREVISTA RECEBER</th>
                   <th colspan="2" style="width: 72px; ">AÇÃO</th>
@@ -65,10 +64,7 @@
                      </td>
                      <td>
                         <c:out value="${receber.credito}" />
-                     </td>
-                     <td>
-                     	<c:out value="R$  ${receber.dinheiro} + ${receber.debito} + ${receber.credito}" /> 
-                     </td>
+                     </td> 
                      <td> 
                      	<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataCompra}"/> 
                      </td>

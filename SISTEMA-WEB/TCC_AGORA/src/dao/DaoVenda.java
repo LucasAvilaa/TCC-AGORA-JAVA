@@ -70,7 +70,9 @@ public class DaoVenda {
 					lista.setQuantidade(rs.getInt("QUANTIDADE"));
 					lista.setIdCompra(rs.getInt("ID_COMPRA")); 
 					lista.setSubtotal(rs.getBigDecimal("SUBTOTAL"));
+					comand.setStatusComanda(rs.getString("STATUS_COMANDA"));
 					comand.setIdComanda(rs.getInt("ID_COMANDA_LISTA"));
+					produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
 					produto.setValorUniVenda(rs.getBigDecimal("VALOR_UNI_VENDA"));
 					produto.setIdProduto(rs.getInt("ID_PROD_LISTA"));
 					lista.setTbProduto(produto);
@@ -83,7 +85,7 @@ public class DaoVenda {
 			return listaProduto;
 		}
 	
-	public TbListaProduto produtoPorId(TbComanda comanda, TbListaProduto idProduto) {
+	public TbListaProduto produtoPorId(TbComanda comanda, TbProduto idProduto) {
 		 
 		TbListaProduto lista = new TbListaProduto();
 		TbComanda comand = new TbComanda();
@@ -92,16 +94,19 @@ public class DaoVenda {
 			con = new Conexao();
 			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_VENDA WHERE ID_COMANDA_LISTA = ? AND ID_PROD_LISTA = ?"); 
 			ps.setInt(1, comanda.getIdComanda());
-			ps.setInt(2,idProduto.getTbProduto().getIdProduto());
+			ps.setInt(2,idProduto.getIdProduto());
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) { 
 				lista.setDataCompra(rs.getDate("DATA_COMPRA"));
 				lista.setDataSaida(rs.getDate("DATA_SAIDA"));
 				lista.setQuantidade(rs.getInt("QUANTIDADE"));
-				lista.setIdCompra(rs.getInt("ID_COMPRA"));
+				lista.setIdCompra(rs.getInt("ID_COMPRA")); 
 				lista.setSubtotal(rs.getBigDecimal("SUBTOTAL"));
+				comand.setStatusComanda(rs.getString("STATUS_COMANDA"));
 				comand.setIdComanda(rs.getInt("ID_COMANDA_LISTA"));
+				produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
+				produto.setValorUniVenda(rs.getBigDecimal("VALOR_UNI_VENDA"));
 				produto.setIdProduto(rs.getInt("ID_PROD_LISTA"));
 				lista.setTbProduto(produto);
 				lista.setTbComanda(comand);		 
@@ -130,5 +135,30 @@ public class DaoVenda {
 			e.printStackTrace();
 		}
 		return listaItens;
+	}
+	
+	public TbComanda status(TbComanda comanda) {
+		TbComanda status = new TbComanda();
+
+		try {
+			con = new Conexao();
+			PreparedStatement ps = con.getConexao()
+					.prepareStatement("SELECT DISTINCT STATUS_COMANDA FROM VW_VENDA WHERE ID_COMANDA_LISTA = ?");
+			ps.setInt(1, comanda.getIdComanda()); 
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) { 
+				if(rs.getString("STATUS_COMANDA").equals("A")) {
+					status.setStatusComanda("ABERTA");   
+				}
+				else if(rs.getString("STATUS_COMANDA").equals("D")) {
+					status.setStatusComanda("FECHADA");   
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
 	}
 }	

@@ -80,8 +80,11 @@ public class DaoCompra {
 				compra.setIdCompra(rs.getInt("ID_COMPRA"));
 				if (rs.getString("STATUS").equals("F")) {
 					compra.setStatus("FINALIZADO");
-				} else {
+				} 
+				else if (rs.getString("STATUS").equals("P")){
 					compra.setStatus("PENDENTE");
+				}else {
+					compra.setStatus("COTAÇÃO");
 				}
 				compra.setDataCriada(rs.getDate("DATA_CRIADA"));
 				compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA"));
@@ -105,8 +108,11 @@ public class DaoCompra {
 				compra.setIdCompra(rs.getInt("ID_COMPRA"));
 				if (rs.getString("STATUS").equals("F")) {
 					compra.setStatus("FINALIZADO");
-				} else {
+				} 
+				else if (rs.getString("STATUS").equals("P")){
 					compra.setStatus("PENDENTE");
+				}else {
+					compra.setStatus("COTAÇÃO");
 				}
 				compra.setDataCriada(rs.getDate("DATA_CRIADA"));
 				compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA"));
@@ -116,7 +122,7 @@ public class DaoCompra {
 			e.printStackTrace();
 		}
 		return compra;
-	}
+	} 
 
 	public TbCompraProduto itensPorId(TbCompra compra, TbProduto produtoId) {
 		TbCompraProduto listaItens = new TbCompraProduto();
@@ -193,10 +199,13 @@ public class DaoCompra {
 			while (rs.next()) {
 				TbCompra compra = new TbCompra();
 				compra.setIdCompra(rs.getInt("ID_COMPRA")); 
-				if (rs.getString("STATUS").equals("F")) { 
+				if (rs.getString("STATUS").equals("F")) {
 					compra.setStatus("FINALIZADO");
-				} else {
+				} 
+				else if (rs.getString("STATUS").equals("P")){
 					compra.setStatus("PENDENTE");
+				}else {
+					compra.setStatus("COTAÇÃO");
 				}
 				compra.setDataCriada(rs.getDate("DATA_CRIADA"));
 				compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA"));
@@ -207,6 +216,20 @@ public class DaoCompra {
 			e.printStackTrace();
 		}
 		return listaCompra;
+	}
+	
+	public void confirmaCompra(TbCompra compra) {
+		try {
+			con = new Conexao();
+			String sql = "UPDATE TB_COMPRAS SET STATUS = 'P' WHERE ID_COMPRA = ?";
+			PreparedStatement ps = con.getConexao().prepareStatement(sql);
+			ps.setInt(1, compra.getIdCompra());
+			ps.executeUpdate();
+			
+		} catch (Exception e) { 
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public TbCompraProduto valorTotal(TbCompra compra) {
@@ -227,5 +250,5 @@ public class DaoCompra {
 			e.printStackTrace();
 		}
 		return listaItens;
-	}
+	} 
 }

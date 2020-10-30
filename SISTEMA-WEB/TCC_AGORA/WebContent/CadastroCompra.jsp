@@ -17,24 +17,21 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 </head>
-<body>
-	<%
-   		String usuario = (String) session.getAttribute("usuario");
-   		if(usuario == null){
-   			response.sendRedirect("Login.xhtml");
-   		}
-   	%>
+<body> 
 	<jsp:include page="index.jsp" flush="false">
 		<jsp:param name="cabecalho" value="cabecalho" />
 	</jsp:include>
 
 	<f:view>
-		<form action="ControlItensCompra" method="POST" name="cadastroCompra">
+		<form action="ControlItensCompra" method="POST" name="cadastroCompra" style="background-color: white">
 
 			<h2>PEDIDO COMPRA</h2>
 
 			<br />
 			<p> 
+				<a href="ControlCompra?action=ConfirmarCompra&idCompra=<c:out value="${compra.idCompra}"/>">
+					<input type="button" value=" CONFIRMAR COMPRA " />
+				</a>
 				<a href="ControlCompra?action=FinalizarCompra&idCompra=<c:out value="${compra.idCompra}"/>">
 					<input type="button" value=" FINALIZAR COMPRA " />
 				</a>
@@ -104,7 +101,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="7" style="color: white">.</td>
+							<td colspan="7" style="color: white">TO COMENDO O CU DE QUEM TA LENDO, VULGO JOÃO</td>
 						</tr>
 						<tr>
 							<td colspan="4">TOTAL</td>
@@ -145,8 +142,7 @@
 		</div>
 	</f:view>
 </body>
-<script>   
-		window.onload = multiplica;
+<script>    
 
    		function abrir(){    
    	   			document.getElementById("inserir-itens-container").style.display = 'flex'; 

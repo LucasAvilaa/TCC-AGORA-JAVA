@@ -47,7 +47,7 @@ public class DaoContasPagar {
 			TbCompra compra = null;
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT *, (SELECT DATA_CRIADA FROM TB_COMPRAS) AS DATA_CRIADA FROM TB_CONTAS_PAGAR WHERE ID_PAGAR = ?");
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR WHERE ID_PAGAR = ?");
 				ps.setInt(1, pagar.getIdPagar());
 				ResultSet rs = ps.executeQuery();
 				
@@ -56,10 +56,8 @@ public class DaoContasPagar {
 					 compra = new TbCompra();
 					 compra.setDataCriada(rs.getDate("DATA_CRIADA"));
 					 if(rs.getInt("ID_COMPRA") != 0) {
-						 compra.setIdCompra(rs.getInt("ID_COMPRA"));
-						 
-					 }
-					 
+						 compra.setIdCompra(rs.getInt("ID_COMPRA")); 
+					 } 
 					 contas.setTbCompra(compra);
 					 contas.setDataVencimento(rs.getDate("DATA_VENCIMENTO")); 
 					 contas.setIdPagar(rs.getInt("ID_PAGAR"));
@@ -79,7 +77,7 @@ public class DaoContasPagar {
 		TbCompra compra = null;
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT *, (SELECT DATA_CRIADA FROM TB_COMPRAS) AS DATA_CRIADA FROM TB_CONTAS_PAGAR"); 
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR"); 
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {  

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,9 +20,9 @@ import model.TbProduto;
 public class ControlVenda extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String tabela = "/TelaCaixa.jsp";
-	private static String criar_editar = "/ControlVenda?action=Edit.jsp"; //ARRUMAR ESSE LINK 
+	private static String criar_editar = "/ControlVenda?action=pesquisaComanda&idComanda="; //ARRUMAR ESSE LINK 
 	private DaoVenda Dao;
-	private String acao = null;
+	private String acao = "I";
 	private Integer idComanda = null;  
 	private Integer idProduto = null;   
 	private TbProduto produto = new TbProduto();
@@ -43,69 +44,96 @@ public class ControlVenda extends HttpServlet {
 		if (idComp != null) {
 			idComanda = Integer.parseInt(idComp); 
 			comanda.setIdComanda(idComanda);
-			request.setAttribute("comanda", comanda.getIdComanda()); 
-			System.out.println("COMANDA SELECIONADA " + comanda.getIdComanda());
+			request.setAttribute("comanda", comanda.getIdComanda());  
 		}  
 		
 		if(idItem != null) {
 			idProduto = Integer.parseInt(idItem);
-			produto.setIdProduto(idProduto);
+			produto.setIdProduto(idProduto); 
 		} 
 		
 		if(action.equalsIgnoreCase("Caixa")) { 
 			forward = tabela;
 		}
 		
-		if (action.equalsIgnoreCase("pesquisaComanda")) { 
+		else if (action.equalsIgnoreCase("pesquisaComanda")) { 
+			acao = "P";
 			request.setAttribute("venda", Dao.listaProdutoPorComanda(comanda));
+			request.setAttribute("status", Dao.status(comanda));
 			request.setAttribute("total", Dao.valorTotal(comanda));
 			forward = tabela;			 
-		} else if (action.equalsIgnoreCase("Delete")) { 
+		} 
+		else if (action.equalsIgnoreCase("Delete")) { 
 			 try {
 				 acao = "E";
 					if (Dao.crudVenda(acao, comanda, lista, receber, produto)) {
 						System.out.println("ITEM EXCLUIDA COM SUCESSO. ID COMANDA: " + comanda.getIdComanda());
 						request.setAttribute("venda", Dao.listaProdutoPorComanda(comanda));
-						
-					} else {
+						request.setAttribute("status", Dao.status(comanda));
+						request.setAttribute("total", Dao.valorTotal(comanda));
+ 				} else {
 						System.out.println("ERRO AO EXCLUIR ITEM. ID COMANDA: " + comanda.getIdComanda());
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				forward = tabela;
-			 request.setAttribute("venda", Dao.listaProdutoPorComanda(comanda));
 			 forward = tabela;
-		} else if (action.equalsIgnoreCase("Edit")) {
-			request.setAttribute("venda", Dao.produtoPorId(comanda, lista));
-			acao = "I";
-			forward = criar_editar;
+		} 
+		else if (action.equalsIgnoreCase("Edit")) {
+			acao = "A";
+			request.setAttribute("item", Dao.produtoPorId(comanda, produto));	 
+			forward = criar_editar + comanda.getIdComanda();
 		}
+		
+		else if(action.equalsIgnoreCase("FinalizarVenda")) {
+			acao = "P";  
+		}
+	  
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}
-
+	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-		lista.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
-		produto.setIdProduto(Integer.parseInt(request.getParameter("produto")));
-		lista.setTbProduto(produto);
-		comanda.setIdComanda(Integer.parseInt(request.getParameter("comanda")));
-		lista.setTbComanda(comanda);
-
+		if(request.getParameter("quantidade") != null) {
+			lista.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+		}
 		
+		if(request.getParameter("produto") != null) {
+			produto.setIdProduto(Integer.parseInt(request.getParameter("produto")));
+			lista.setTbProduto(produto);
+		}
+		
+		if(request.getParameter("formaPagamento") != null) {
+			receber.setMetodoPagamento(request.getParameter("formaPagamento"));
+			System.out.println("METODO DE PAGAMENTO " + receber.getMetodoPagamento());
+			
+			if(request.getParameter("formaPagamento").equals("DI")) {
+				receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
+			}
+			else if(request.getParameter("formaPagamento").equals("DE")) {
+				  receber.setDebito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
+			}
+			else if(request.getParameter("formaPagamento").equals("CR")) {
+				  receber.setCredito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
+			}
+			System.out.println("DINHEIRO: " + receber.getDinheiro() + "\n DEBITO: " + receber.getDebito() + "\n CREDITO: " + receber.getCredito());
+		} 
+		
+		comanda.setIdComanda(idComanda);
+		lista.setTbComanda(comanda);
+ 
 		try {
-			System.out.println("AÇÃO: " + acao);
-			if (acao.equals("I")) { 
-				Dao.crudVenda(acao, comanda, lista, receber, produto);
-				System.out.println("CRIADO COM SUCESSO");
-			} 
+			System.out.println("AÇÃO: " + acao); 
+				if(Dao.crudVenda(acao, comanda, lista, receber, produto)) {
+				System.out.println("CRIADO/ALTERADO COM SUCESSO");
+				} 
 			else { 
-				System.out.println("ALTERADO COM SUCESSO: ");
+				System.out.println("ERRO AO CRIAR/ALTERAR VENDA");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("ERRO AO INSERIR VENDA");
 		}
-		response.sendRedirect("ControlVenda?action=tabela");
+		response.sendRedirect("ControlVenda?action=pesquisaComanda&idComanda=" + comanda.getIdComanda());
 	}
 }
