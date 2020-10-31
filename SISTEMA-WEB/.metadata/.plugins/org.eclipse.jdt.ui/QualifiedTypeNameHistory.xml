@@ -46,18 +46,18 @@
     <fullyQualifiedTypeName name="model.TbCompraProduto"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
     <fullyQualifiedTypeName name="controller.ControlCompra"/>
-    <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
     <fullyQualifiedTypeName name="dao.DaoCompra"/>
-    <fullyQualifiedTypeName name="model.TbCompra"/>
     <fullyQualifiedTypeName name="model.TbProduto"/>
-    <fullyQualifiedTypeName name="model.TbComanda"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="factory.Conexao"/>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="model.TbFuncionario"/>
     <fullyQualifiedTypeName name="model.TbLogin"/>
     <fullyQualifiedTypeName name="dao.DaoLogin"/>
     <fullyQualifiedTypeName name="model.TbListaProduto"/>
     <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+    <fullyQualifiedTypeName name="model.TbComanda"/>
+    <fullyQualifiedTypeName name="model.TbCompra"/>
+    <fullyQualifiedTypeName name="factory.Conexao"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 </qualifiedTypeNameHistroy>
