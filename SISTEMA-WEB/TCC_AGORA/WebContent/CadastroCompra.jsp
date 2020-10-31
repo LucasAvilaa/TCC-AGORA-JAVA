@@ -86,8 +86,9 @@
 								</td>
 								<td><a
 									href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'
-									onclick="abrir()"> <img src="img/refresh-icon.png"
+									 > <img src="img/refresh-icon.png"
 										style="width: 21px; height: 21px;" title="ATUALIZAR" /></a></td>
+									<!-- ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/> -->
 								<td><a
 									href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'><img
 										src="img/delete.png" style="width: 21px; height: 21px;"
@@ -119,7 +120,7 @@
 						<legend>PRODUTO</legend>
 						<p>
 							<label> NOME: <h:selectOneMenu style="width: 260px;" id="idProd">
-									<f:selectItem itemValue="#{item.tbProduto.nomeProduto}"	itemLabel="#{item.tbProduto.nomeProduto}" />
+									<f:selectItem itemValue="#{item.tbProduto.idProduto}"	itemLabel="#{item.tbProduto.nomeProduto}" />
 									<f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true" />
 									<f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}" />
 								</h:selectOneMenu>
@@ -142,15 +143,17 @@
 		</div>
 	</f:view>
 </body>
-<script>    
-
-   		function abrir(){    
-   	   			document.getElementById("inserir-itens-container").style.display = 'flex'; 
-   		} 
-   		
+<script>     
+	var url_atual = window.location.href;
+   	if(url_atual.indexOf("/ControlCompra?action=EditItens&idCompra=") != -1){
+   		document.getElementById("inserir-itens-container").style.display = 'flex';
+   		console.log("funcionou");
+   	}	 
+	   function abrir(){
+		document.getElementById("inserir-itens-container").style.display = 'flex';
+	   }
    		function fechar(){
    			document.getElementById("inserir-itens-container").style.display = 'none'; 
-   		}  
-	 
+   		}   
    </script>
 </html>

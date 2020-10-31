@@ -80,9 +80,12 @@ public class ControlProduto extends HttpServlet {
 		view.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-
-		fornecedor.setIdForn(request.getParameter("fornecedor"));
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException { 
+		if(request.getParameter("fornecedor") != "") {
+			fornecedor.setIdForn(request.getParameter("fornecedor"));
+		}else {
+			fornecedor.setIdForn(null);
+		}
 		produto.setTbFornecedore(fornecedor);
 
 		produto.setCategoria(request.getParameter("categoria"));
