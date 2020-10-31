@@ -85,9 +85,7 @@ public class TbProduto implements Serializable {
 	public void setLista(List<SelectItem> lista) {
 		this.lista = lista;
 	}
-
-
-	
+ 
 	public TbProduto() {
 	}
 
@@ -220,8 +218,7 @@ public class TbProduto implements Serializable {
 	public void setTbFornecedore(TbFornecedore tbFornecedore) {
 		this.tbFornecedore = tbFornecedore;
 	}
-
-
+ 
 	@PostConstruct
 	public void lista() {
 		DaoProduto produto = new DaoProduto();

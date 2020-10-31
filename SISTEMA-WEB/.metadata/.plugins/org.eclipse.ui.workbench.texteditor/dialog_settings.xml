@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=" "/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="troco"/>
 			<item value="${venda.idCompra}"/>
 			<item value="${venda.tbProduto.idProduto}"/>
 			<item value="login"/>
@@ -22,7 +23,6 @@
 			<item value="produto"/>
 			<item value="fornecedor"/>
 			<item value="fornecedores"/>
-			<item value="TbFornecedores"/>
 		</list>
 		<list key="replacehistory">
 			<item value=" "/>

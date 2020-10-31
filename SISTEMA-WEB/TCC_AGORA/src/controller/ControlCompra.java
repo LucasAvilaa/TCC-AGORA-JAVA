@@ -22,11 +22,11 @@ public class ControlCompra extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String tabela = "/TabelaCompra.jsp";
 	private static String criar_editar = "/CadastroCompra.jsp";
-	private static String editar_compra = "/ControlCompra?action=EditCompra&idCompra=";  
+	private static String editar_compra = "/ControlCompra?action=EditCompra&idCompra=";    
 	private DaoCompra Dao;
-	private String acao = null;
+	private String acao = "II"; 
 	private Integer idCompra = null;
-	private Integer idProduto = null; 
+	private Integer idProduto = null;  
 	private TbCompraProduto compralista = new TbCompraProduto();
 	private TbCompra compra = new TbCompra();
 	private TbProduto produto = new TbProduto();
@@ -120,9 +120,9 @@ public class ControlCompra extends HttpServlet {
 				acao = "EC";
 				if (Dao.crudCompra(acao, compralista, compra, produto)) {
 					System.out.println("COMPRA EXCLUIDA COM SUCESSO. ID COMPRA: " + compra.getIdCompra());
-					request.setAttribute("compra", Dao.listaCompra());
-					
-				} else {
+					request.setAttribute("compra", Dao.listaCompra()); 
+				} 
+				else {
 					System.out.println("ERRO AO EXCLUIR COMPRA. ID COMPRA: " + compra.getIdCompra());
 				}
 			} catch (Exception e) {
@@ -139,13 +139,10 @@ public class ControlCompra extends HttpServlet {
 			forward = editar_compra + compra.getIdCompra();
 		}
 		
-		else if (action.equalsIgnoreCase("EditItens")) {
-			acao = "AI";  
-			request.setAttribute("item", Dao.itensPorId(compra, produto)); 
-			System.out.println(Dao.itensPorId(compra, produto));
-			//forward = "ControlCompra?action=EditItens&idCompra=" + compra.getIdCompra() + "&idItem=" + produto.getIdProduto();
-			forward = editar_compra + compra.getIdCompra();
-			
+		else if (action.equalsIgnoreCase("EditItens")) {  
+					acao = "AI"; 
+					request.setAttribute("item", Dao.itensPorId(compra, produto));   
+					forward = editar_compra + compra.getIdCompra();
 		}
 		
 		else if (action.equalsIgnoreCase("DeleteItens")) {
@@ -161,8 +158,7 @@ public class ControlCompra extends HttpServlet {
 					System.out.println(
 							"COMPRA:" + compra.getIdCompra() + " FALHA AO EXCLUIR ITEM: " + produto.getIdProduto());
 				}
-				
-
+				 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -192,7 +188,7 @@ public class ControlCompra extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("ERRO AO INSERIR ITEM NA COMPRA  --TRY/CATCH");
-		}
+		}  
 		response.sendRedirect("ControlCompra?action=EditCompra&idCompra=" + compra.getIdCompra());
 	
 	}
