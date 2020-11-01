@@ -28,7 +28,7 @@
          <br />
          <p>
             <a href="ControlContasPagar?action">
-          		 <button class="btn btn-success" style="height: 2.2em"> Adicionar
+          		 <button class="btn btn-success" style="height: 2.2em; width: 8em;"> Adicionar
             <img src="img/plus.svg" style="width: 31px; height: 28px; " title="ADICIONAR" />
             </button>
             </a>
@@ -66,8 +66,8 @@
                      <td>
                         <c:out value="R$ ${conta.valorPagar}" />
                      </td> 
-                     <td><a href='ControlContasPagar?action=Edit&idPagar=<c:out value="${conta.idPagar}"/>'><button class="btn btn-success" style="height: 2.2em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
-                     <td><a href='ControlContasPagar?action=Delete&idPagar=<c:out value="${conta.idPagar}"/>'><button class="btn btn-success" style="height: 2.2em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
+                     <td><a href='ControlContasPagar?action=Edit&idPagar=<c:out value="${conta.idPagar}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
+                     <td><a href='ControlContasPagar?action=Delete&idPagar=<c:out value="${conta.idPagar}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

@@ -53,11 +53,11 @@ public class ControlVenda extends HttpServlet {
 		} 
 		
 		if(action.equalsIgnoreCase("Caixa")) { 
+			acao = "I";
 			forward = tabela;
 		}
 		
-		else if (action.equalsIgnoreCase("pesquisaComanda")) { 
-			acao = "P";
+		else if (action.equalsIgnoreCase("pesquisaComanda")) {  
 			request.setAttribute("venda", Dao.listaProdutoPorComanda(comanda));
 			request.setAttribute("status", Dao.status(comanda));
 			request.setAttribute("total", Dao.valorTotal(comanda));
@@ -77,6 +77,7 @@ public class ControlVenda extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			 acao = "I";
 			 forward = tabela;
 		} 
 		else if (action.equalsIgnoreCase("Edit")) {
@@ -107,11 +108,12 @@ public class ControlVenda extends HttpServlet {
 			receber.setMetodoPagamento(request.getParameter("formaPagamento"));
 			System.out.println("METODO DE PAGAMENTO " + receber.getMetodoPagamento());
 			
-			if(request.getParameter("formaPagamento").equals("DI")) {
-				receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
-			}
-			else if(request.getParameter("formaPagamento").equals("DE")) {
+
+			if(request.getParameter("formaPagamento").equals("DE")) {
 				  receber.setDebito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
+			}
+			else if(request.getParameter("formaPagamento").equals("DI")) {
+				receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
 			}
 			else if(request.getParameter("formaPagamento").equals("CR")) {
 				  receber.setCredito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
@@ -126,6 +128,7 @@ public class ControlVenda extends HttpServlet {
 			System.out.println("AÇÃO: " + acao); 
 				if(Dao.crudVenda(acao, comanda, lista, receber, produto)) {
 				System.out.println("CRIADO/ALTERADO COM SUCESSO");
+				acao = "I";
 				} 
 			else { 
 				System.out.println("ERRO AO CRIAR/ALTERAR VENDA");

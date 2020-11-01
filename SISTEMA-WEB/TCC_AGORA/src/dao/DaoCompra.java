@@ -82,7 +82,7 @@ public class DaoCompra {
 					compra.setStatus("FINALIZADO");
 				} 
 				else if (rs.getString("STATUS").equals("P")){
-					compra.setStatus("PENDENTE");
+					compra.setStatus("CONFIRMADA");
 				}else {
 					compra.setStatus("COTAÇÃO");
 				}
@@ -110,7 +110,7 @@ public class DaoCompra {
 					compra.setStatus("FINALIZADO");
 				} 
 				else if (rs.getString("STATUS").equals("P")){
-					compra.setStatus("PENDENTE");
+					compra.setStatus("CONFIRMADA");
 				}else {
 					compra.setStatus("COTAÇÃO");
 				}
@@ -195,6 +195,9 @@ public class DaoCompra {
 			con = new Conexao();
 			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_COMPRAS");
 			ResultSet rs = ps.executeQuery();
+			
+	//		PreparedStatement ps2 = con.getConexao().prepareStatement("SELECT DISTINCT SUM(SUBTOTAL) AS TOTAL FROM VW_COMPRA GROUP BY ID_COMPRA");
+	//		ResultSet rs2 = ps2.executeQuery();
 
 			while (rs.next()) {
 				TbCompra compra = new TbCompra();
@@ -203,13 +206,13 @@ public class DaoCompra {
 					compra.setStatus("FINALIZADO");
 				} 
 				else if (rs.getString("STATUS").equals("P")){
-					compra.setStatus("PENDENTE");
+					compra.setStatus("CONFIRMADA");
 				}else {
 					compra.setStatus("COTAÇÃO");
 				}
 				compra.setDataCriada(rs.getDate("DATA_CRIADA"));
 				compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA"));
-
+		//		compra.setTotal(rs2.getBigDecimal("TOTAL"));
 				listaCompra.add(compra);
 			}
 		} catch (Exception e) {
@@ -232,7 +235,7 @@ public class DaoCompra {
 		
 	}
 	
-	public TbCompraProduto valorTotal(TbCompra compra) {
+	public TbCompraProduto valorTotalIndividual(TbCompra compra) {
 		TbCompraProduto listaItens = new TbCompraProduto();
 
 		try {
@@ -251,4 +254,25 @@ public class DaoCompra {
 		}
 		return listaItens;
 	} 
+	
+	public List<TbCompra>valorTotal() {
+		List<TbCompra> lista = new ArrayList<TbCompra>();  
+		try {
+			con = new Conexao();
+			PreparedStatement ps = con.getConexao().prepareStatement(""); 
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {  
+				TbCompra compra = new TbCompra(); 
+				compra.setTotal(rs.getBigDecimal("TOTAL"));    
+				lista.add(compra); 
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lista;
+	} 
+	
+	
 }

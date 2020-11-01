@@ -31,7 +31,7 @@
          <form action="ControlContasPagar" method="POST" name="cadastroContasPagar"> 
          
             <h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Inserir conta a pagar</span></h1>
-<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
+<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 6%; width: 27em; font-family: sans-serif">
             
            
             <br />
@@ -40,15 +40,15 @@
             <fieldset id="informacoes">
                <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
                <p style="text-align: center">
-               	<label>
+               	<label class="font-weight-bold" style="text-align: left; padding-left: 5.7em;">
                      DOCUMENTO DE ORIGEM: <input readonly="readonly" maxlength="50" value="<c:out value="COMPRA/${conta.tbCompra.idCompra}"/>"   style="width: 248px; "/>
                   </label>
-                  <label>
+                  <label class="font-weight-bold" style="text-align: left">
                      DESCRIÇÃO:  <br/><input name="descricao" maxlength="50" value="<c:out value="${conta.descricao}"/>" required="required"  style="width: 248px; "/>
                   </label>
                </p> 
                <p style="text-align: center">
-                  <label>
+                  <label class="font-weight-bold" style="text-align: left">
                      CATEGORIA:  <br/><h:selectOneMenu style="width: 248px; height: 24px" id="categoria">
                         <f:selectItem itemValue="#{conta.categoria}"/>
                         <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
@@ -59,13 +59,13 @@
                   </label>
                </p>   
                <p style="text-align: center">
-                  <label>
+                  <label class="font-weight-bold" style="text-align: left">
                      DATA VENCIMENTO:  <br/><input name="dataVencimento" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${conta.dataVencimento}"/>" required="required" style="width: 248px; ">
                   
                   </label>
                </p> 
                 <p style="text-align: center">
-                  <label>
+                  <label class="font-weight-bold" style="text-align: left">
                      VALOR COMPRA: <br/> <input name="valor" type="number" value='<c:out value="${conta.valorPagar}"></c:out>' placeholder="R$000,00"  required="required" style="width: 248px; "/>
                   </label> 
                </p>    

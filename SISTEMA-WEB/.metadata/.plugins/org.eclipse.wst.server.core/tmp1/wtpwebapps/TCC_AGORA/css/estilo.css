@@ -1,6 +1,6 @@
 
 body{
-	background-image: url('../img/Red_background_abstract_aperture_4K_HD_3840x2400.jpg');
+	background-image: url('https://images3.alphacoders.com/536/53625.jpg');
 	background-repeat: no-repeat;
  	background-attachment: fixed;
     background-size: cover;
@@ -8,4 +8,8 @@ body{
  
 .margin{
 	margin-bottom: 2px;
+}
+button{
+	height: 2.2em; 
+	width: 8em;
 }

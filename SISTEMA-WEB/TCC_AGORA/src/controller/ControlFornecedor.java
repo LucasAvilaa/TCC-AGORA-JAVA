@@ -56,9 +56,7 @@ public class ControlFornecedor extends HttpServlet {
 			if(sessao != null) {     
 				if(sessao.toString() != null) {   
 				try {
-					request.setAttribute("fornecedor", Dao.listaFornecedor());
-					request.setAttribute("endereco", End.listaEndereco());
-					request.setAttribute("contato", Cont.listaContato());
+					request.setAttribute("fornecedor", Dao.listaFornecedor()); 
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();

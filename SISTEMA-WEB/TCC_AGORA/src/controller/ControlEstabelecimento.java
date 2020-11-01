@@ -120,6 +120,7 @@ public class ControlEstabelecimento extends HttpServlet {
 		if (request.getParameter("cep") != "") {
 			endereco.setCep(request.getParameter("cep"));
 		}
+		endereco.setCep(request.getParameter("cep"));
 		endereco.setRua(request.getParameter("rua"));
 		endereco.setBairro(request.getParameter("bairro"));
 		endereco.setEstado(request.getParameter("estado"));
