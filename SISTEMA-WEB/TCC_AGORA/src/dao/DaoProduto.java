@@ -129,7 +129,6 @@ public class DaoProduto {
 			
 			while (rs.next() ) {
 				lista.add(new SelectItem(rs.getInt("ID_PRODUTO"),rs.getString("NOME_PRODUTO")));
-				System.out.println("LISTA PRODUTOS:" + lista);
 			} 
 		} catch (Exception e) {			 
 			e.printStackTrace();

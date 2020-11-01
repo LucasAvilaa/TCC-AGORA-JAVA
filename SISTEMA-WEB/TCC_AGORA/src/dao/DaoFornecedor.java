@@ -8,6 +8,7 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 import factory.Conexao;
+import model.TbEndereco;
 import model.TbFornecedore;
 
 public class DaoFornecedor {
@@ -69,12 +70,15 @@ public class DaoFornecedor {
 			List<TbFornecedore> listaforn = new ArrayList<TbFornecedore>();	
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FORNECEDORES ORDER BY RAZAO_SOCIAL ASC");  
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_FORNECEDOR ORDER BY RAZAO_SOCIAL ASC");  
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {
+					TbEndereco endereco = new TbEndereco();
 					TbFornecedore forn = new TbFornecedore(); 
 					
+					endereco.setCidade(rs.getString("CIDADE"));
+					endereco.setEstado(rs.getString("ESTADO")); 
 					forn.setIdForn(rs.getString("ID_FORN"));
 					forn.setCnpj(rs.getString("CNPJ"));
 					forn.setRazaoSocial(rs.getString("RAZAO_SOCIAL")); 

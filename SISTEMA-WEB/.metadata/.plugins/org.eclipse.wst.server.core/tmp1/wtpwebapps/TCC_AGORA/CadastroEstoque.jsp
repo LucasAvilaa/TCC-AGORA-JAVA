@@ -27,7 +27,7 @@
          <form action="ControlEstoque" method="POST" name="cadastroEstoque">
              
             	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de Estoque</span></h1>
-<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
+<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 6%; width: 27em; font-family: sans-serif">
             
              
             <br />
@@ -35,28 +35,28 @@
              <a href="ControlEstoque?action=Tabela" class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
                <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">PRODUTO</legend>
-               <p>
-                  <label>
-                     NOME:  <h:selectOneMenu style="width: 180px; height: 24px" id="idProd" >                     
+               <p style="text-align:center">
+                  <label  class="font-weight-bold" style="text-align: left">
+                     NOME: <br /> <h:selectOneMenu style="height: 1.5em; width: 20em" id="idProd" >                     
 		                        <f:selectItem itemValue="#{estoque.tbProduto.idProduto}" itemLabel="#{estoque.tbProduto.nomeProduto}"/> 
 		                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
 		                        <f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}"/>
 		                    </h:selectOneMenu>
                   </label>
                </p>
-               <p>
-                  <label>
-                     QUANTIDADE: <input name="quantidade" type="number" maxlength="20" value="<c:out value="${estoque.quantidade}"/>" required="required" style="width: 138px; "/>
+               <p style="text-align:center">
+                  <label  class="font-weight-bold" style="text-align: left">
+                     QUANTIDADE: <br /><input name="quantidade" type="number" maxlength="20" value="<c:out value="${estoque.quantidade}"/>" required="required" style="height: 1.5em; width: 20em"/>
                   </label>
                </p>                
-                <p>
-                	<label>
-                    	 DATA ENTRADA: <input name="dataEntrada" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${estoque.dataEntrada}"/>" required="required" style="width: 155px; ">
+                <p style="text-align:center">
+                	<label  class="font-weight-bold" style="text-align: left">
+                    	 DATA ENTRADA: <br /><input name="dataEntrada" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${estoque.dataEntrada}"/>" required="required" style="height: 1.5em; width: 20em">
                   	</label>                  
                </p>  
-               <p>
-               	 <label>
-                     DATA VENCIMENTO: <input name="dataVencimento" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${estoque.dataVencimento}"/>" required="required" style="width: 155px; ">
+               <p style="text-align:center">
+               	 <label  class="font-weight-bold" style="text-align: left">
+                     DATA VENCIMENTO: <br /><input name="dataVencimento" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${estoque.dataVencimento}"/>" required="required" style="height: 1.5em; width: 20em">
                   
                   </label>
                </p>  

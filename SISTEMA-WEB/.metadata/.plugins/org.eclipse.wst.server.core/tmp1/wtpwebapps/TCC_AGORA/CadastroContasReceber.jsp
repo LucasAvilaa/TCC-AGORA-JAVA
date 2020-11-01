@@ -27,7 +27,7 @@
          <form action="ControlContasReceber" method="POST" name="cadastroContasReceber">
             
             	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Contas a receber</span></h1>
-<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 33%; width: 27em; font-family: sans-serif">
+<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 5%; width: 27em; font-family: sans-serif">
             
            
             <br />
@@ -36,50 +36,50 @@
                <legend style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark"
                >INFORMAÇÕES BÁSICAS </legend> 
                <p>
-               	<label>
+               	<label  class="font-weight-bold" style="text-align: left">
                      REFERÊNCIA VENDA: <input name="idVenda"  value="<c:out value="VENDA/ ${receber.idReceber}"/>"   style="width: 148px; "/>
                   </label>
                 
                </p> 
                <p>
-               	  <label>
+               	  <label  class="font-weight-bold" style="text-align: left">
                      METODO DE PAGAMENTO: 
                       <h:selectOneMenu style="width: 150px; height: 24px" id="condicaoPagamento">
 	                        <f:selectItem itemValue="#{receber.metodoPagamento}"/>
 	                        <f:selectItem noSelectionOption="true" itemValue="_________"/>
-	                        <f:selectItem itemValue="D" itemLabel="DINHEIRO"/>
-	                        <f:selectItem itemValue="C" itemLabel="CARTÃO"/>
-	                        <f:selectItem itemValue="CD" itemLabel="CARTÃO/DINHEIRO"/>
+	                        <f:selectItem itemValue="DI" itemLabel="DINHEIRO"/>
+	                        <f:selectItem itemValue="DE" itemLabel="DEBITO"/>
+	                        <f:selectItem itemValue="CR" itemLabel="CREDITO"/>
                      </h:selectOneMenu> 
                   </label>
                </p>
                <p>
-                  <label>
+                  <label  class="font-weight-bold" style="text-align: left">
                      DINHEIRO: <input name="dinheiro" value="<c:out value="${receber.dinheiro}"/>"   style="width: 148px; "/>
                   </label>
                </p>   
                <p>
-                  <label>
+                  <label  class="font-weight-bold" style="text-align: left">
                      CARTÃO DEBITO: <input name="debito" value="<c:out value="${receber.debito}"/>"   style="width: 148px; "/>
                   </label>
                </p>
                <p>
-                  <label>
+                  <label  class="font-weight-bold" style="text-align: left">
                      CARTÃO CRÉDITO: <input name="credito" value="<c:out value="${receber.credito}"/>"   style="width: 148px; "/>
                   </label>
                </p> 
                 <p>
-                  <label>
+                  <label  class="font-weight-bold" style="text-align: left">
                      TOTAL: <input name="total" type="number" readonly="readonly" value='<c:out value=""></c:out>' placeholder="R$000,00"  required="required" style="width: 90px; "/>
                   </label> 
                </p>   
                <p>
-                  <label>
+                  <label  class="font-weight-bold" style="text-align: left">
                      DATA DA VENDA: <input name="dataVenda"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataCompra}" />" style="width: 100px; "/>
                   </label> 
                </p>  
                <p>
-                  <label>
+                  <label  class="font-weight-bold" style="text-align: left">
                      DATA PREVISTA RECEBER: <input name="dataPrevista" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataPrevistaReceber}" />" style="width: 100px; "/>
                   </label> 
                </p>  

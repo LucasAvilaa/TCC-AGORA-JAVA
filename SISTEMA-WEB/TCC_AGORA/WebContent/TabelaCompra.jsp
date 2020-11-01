@@ -29,7 +29,7 @@
          <br />
          <p>
             <a href="ControlCompra?action=CriarCompra">
-            <button class="btn btn-success" style="height: 2.2em"> Adicionar
+            <button class="btn btn-success" style="height: 2.2em; width: 8em;"> Adicionar
             <img src="img/plus.svg" style="width: 31px; height: 28px; " title="ADICIONAR" />
             </button>
             </a>
@@ -59,13 +59,13 @@
                         <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataFinalizada}"/>
                      </td>
                      <td> 
-                        <c:out value="R$ ${total.total}" />
+                        <c:out value="R$ ${compra.total}" />
                      </td>
                      <td> 
                         <c:out value="${compra.status}" />
                      </td> 
-                     <td><a href='ControlCompra?action=EditCompra&idCompra=<c:out value="${compra.idCompra}"/>'> <button class="btn btn-success" style="height: 2.2em;"> Editar <img src="img/edit.svg" style="width: 25px; height: 25px;" title="ATUALIZAR"> </button></a></td>
-                     <td><a href='ControlCompra?action=DeleteCompra&idCompra=<c:out value="${compra.idCompra}"/>'><button class="btn btn-success" style="height: 2.2em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
+                     <td><a href='ControlCompra?action=EditCompra&idCompra=<c:out value="${compra.idCompra}"/>'> <button class="btn btn-success" style="height: 2.2em; width: 8em;"> Editar <img src="img/edit.svg" style="width: 25px; height: 25px;" title="ATUALIZAR"> </button></a></td>
+                     <td><a href='ControlCompra?action=DeleteCompra&idCompra=<c:out value="${compra.idCompra}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

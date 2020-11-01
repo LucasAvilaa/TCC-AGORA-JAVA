@@ -1,13 +1,22 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
  * The persistent class for the TB_ENDERECO database table.
  * 
- */
+ */ 
 @Entity
 @Table(name="TB_ENDERECO")
 @NamedQuery(name="TbEndereco.findAll", query="SELECT t FROM TbEndereco t")

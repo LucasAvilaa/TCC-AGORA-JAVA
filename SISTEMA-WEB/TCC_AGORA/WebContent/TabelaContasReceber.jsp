@@ -28,7 +28,7 @@
          <br />
          <p>
             <a href="ControlContasReceber?action">
-           <button class="btn btn-success" style="height: 2.2em"> Adicionar
+           <button class="btn btn-success" style="height: 2.2em; width: 8em;"> Adicionar
             <img src="img/plus.svg" style="width: 31px; height: 28px; " title="ADICIONAR" />
             </button>
             </a>
@@ -71,8 +71,8 @@
                      <td>
                         <fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataPrevistaReceber}"/>
                      </td> 
-                     <td><a href='ControlContasReceber?action=Edit&idReceber=<c:out value="${receber.idReceber}"/>'><button class="btn btn-success" style="height: 2.2em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
-                     <td><a href='ControlContasReceber?action=Delete&idReceber=<c:out value="${receber.idReceber}"/>'><button class="btn btn-success" style="height: 2.2em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
+                     <td><a href='ControlContasReceber?action=Edit&idReceber=<c:out value="${receber.idReceber}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
+                     <td><a href='ControlContasReceber?action=Delete&idReceber=<c:out value="${receber.idReceber}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>
