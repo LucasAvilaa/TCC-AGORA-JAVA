@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +41,16 @@ public class TbCompra implements Serializable {
 	//bi-directional many-to-one association to TbContasPagar
 	@OneToMany(mappedBy="tbCompra")
 	private List<TbContasPagar> tbContasPagars;
+
+	private BigDecimal total;
+	
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
 
 	public TbCompra() { 
 	}

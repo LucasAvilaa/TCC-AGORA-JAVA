@@ -8,8 +8,33 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<link rel="shortcut icon" href="img/Logo_Padaria.png"/>
 <link rel="stylesheet" type="text/css" href="css/inserirItens.css" />
 <title>CAIXA</title>
+<style>
+input{
+height: 1.8em; width: 15em;
+}
+body{
+
+}
+.div-alinhada{
+	weight:30em;
+	height: 27.8em;
+	float: left	;
+	border: 1px solid black;
+}
+#tabela_centro{
+	height: 25em;
+	position: relative;
+	left: 20%;
+	float: left;
+}
+#elemento_centro{
+	border:1px solid black;
+}
+	
+</style>
 </head>
 <body> 
 	<%
@@ -22,21 +47,22 @@
 		<jsp:include page="index.jsp" flush="false">
 			<jsp:param name="cabecalho" value="cabecalho" />
 		</jsp:include>
-		<h2 style="background-color: white; text-align: center">CAIXA</h2>
+		<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Caixa</span></h1>
+            
 		<div class="div-alinhada">
-			<div style="background-color: rgba(255, 255, 204, 1)"  >
+			<div id="tabela_centro" >
 				<p>
-					<label>
+					<label class="font-weight-bold text-white" >
 						 NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />"/> 
 											<a href="#" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+document.getElementById('idComanda').value">PESQUISAR</a> 
 					</label>					
 				</p>
 				<p>
-					<label>
+					<label  class="font-weight-bold text-white" >
 						STATUS COMANDA:  <c:out value="${status.statusComanda}"/> 
 					</label>
 				</p>
-				<table border="1">
+				<table border="1" class="table table-hover table-dark" >
 					<thead>
 						<tr style="height: 25px; font-size: 12px">
 							<th style="width: 83px;">COD. PROD</th>
@@ -65,49 +91,51 @@
 									title="EXCLUIR ITEM" /></a></td>
 
 						</tr>
+					
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
-			<div style="background-color: #CCE5FF"  >
+			</div>
+			<div>
+			<div id="elemento_centro">
 				<form action="ControlVenda" method="post">
-					<p>
-						<label> PRODUTO <h:selectOneMenu style="width: 180px; height: 24px" id="produto" >                     
-					                        <f:selectItem itemValue="#{item.tbProduto.nomeProduto}" itemLabel="#{estoque.tbProduto.nomeProduto}"/> 
+					<p style="text-align:center">
+						<label  class="font-weight-bold text-white" style="text-align: left"> PRODUTO <br /><h:selectOneMenu style="height: 1.8em; width: 15em" id="produto" >                     
+					                        <f:selectItem itemValue="#{item.tbProduto.idProduto}" itemLabel="#{item.tbProduto.nomeProduto}"/> 
 					                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
 					                        <f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}"/>
 					                    </h:selectOneMenu> 
 						
 						</label>
 					</p>
-					<p>
-						<label> QUANTIDADE <input type="text" name="quantidade" value="<c:out value='${item.quantidade}' />" />
+					<p style="text-align:center">
+						<label class="font-weight-bold text-white" style="text-align: left"> QUANTIDADE <br /><input type="text" name="quantidade" value="<c:out value='${item.quantidade}' />" />
 						</label>
 					</p>
-					<p>
-						<label> PRECO UNITÁRIO <input type="text" value="<c:out value='${item.tbProduto.valorUniVenda}' />" readonly="readonly" />
+					<p style="text-align:center">
+						<label class="font-weight-bold text-white" style="text-align: left"> PRECO UNITÁRIO <br /><input type="text" value="<c:out value='${item.tbProduto.valorUniVenda}' />"  style="background-color: #bab8b5; padding-left: 5px" readonly="readonly" />
 						</label>
 					</p>
-					<p>
-						<label> QUANTIDADE X UNITÁRIO <input type="text" value="<c:out value='${item.subtotal}' />" readonly="readonly" />
+					<p style="text-align:center">
+						<label class="font-weight-bold text-white" style="text-align: left"> SUBTOTAL <br /><input type="text" style="background-color: #bab8b5; padding-left: 5px" value="<c:out value='${item.subtotal}' />" readonly="readonly" />
 						</label>
 					</p>
-					<p>
-						<label> TOTAL <input type="text" readonly="readonly" value="<c:out value="${total.total}" />"> 
+					<p style="text-align:center">
+						<label  class="font-weight-bold text-white" style="text-align: left"> TOTAL <br /><input type="text" readonly="readonly" style="background-color: #bab8b5; padding-left: 5px" value="<c:out value="${total.total}" />"> 
 						</label>
 					</p>
-					<p>
+					<p style="text-align:center">
 						<label>
-							<a href="#" onclick="abrir()"> 
+							<a href="#" onclick="abrir()" class="btn btn-success" style="height: 2.2em; width: 12em;"> 
 								FINALIZAR COMPRA <img src="img/edit.svg"
 									style="width: 21px; height: 21px;" title="FINALIZAR COMPRA" />
 						 	</a>
 						</label>
 						
-					</p>
-					<p>
-						<label>
-							<input type="submit" value=" INSERIR ITEM ">							 
+					
+						<label class="font-weight-bold text-white" >
+							<input type="submit" value=" INSERIR ITEM " class="btn btn-primary" style="height: 2.2em; width: 12em;">							 
 						</label>	
 					</p>
 
@@ -127,7 +155,7 @@
 						<p>
 							<label>  
 								FORMA DE PAGAMENTO:	<h:selectOneMenu style="width: 248px; height: 24px" id="formaPagamento">
-								                        <f:selectItem itemValue="" itemLabel=""/>
+								                   	     <f:selectItem itemValue="" itemLabel=""/>
 								                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
 								                        <f:selectItem itemValue="DI" itemLabel="DINHEIRO"/>
 								                        <f:selectItem itemValue="DE" itemLabel="DEBITO"/>

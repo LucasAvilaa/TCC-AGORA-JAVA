@@ -57,8 +57,7 @@ public class ControlCompra extends HttpServlet {
 			if(sessao != null) {     
 				if(sessao.toString() != null) {
 				try {
-					request.setAttribute("compra", Dao.listaCompra());
-					request.setAttribute("total", Dao.valorTotal(compra));
+					request.setAttribute("compra", Dao.listaCompra());  
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -71,8 +70,7 @@ public class ControlCompra extends HttpServlet {
 		else if (action.equalsIgnoreCase("EditCompra")) {
 			request.setAttribute("compra", Dao.CompraPorId(compra));
 			request.setAttribute("itens", Dao.itensPorCompra(compra));  
-			request.setAttribute("total", Dao.valorTotal(compra));
-			acao = "II";
+			request.setAttribute("total", Dao.valorTotalIndividual(compra)); 
 			forward = criar_editar;
 		}
 		
@@ -120,7 +118,7 @@ public class ControlCompra extends HttpServlet {
 				acao = "EC";
 				if (Dao.crudCompra(acao, compralista, compra, produto)) {
 					System.out.println("COMPRA EXCLUIDA COM SUCESSO. ID COMPRA: " + compra.getIdCompra());
-					request.setAttribute("compra", Dao.listaCompra()); 
+					request.setAttribute("compra", Dao.listaCompra());  
 				} 
 				else {
 					System.out.println("ERRO AO EXCLUIR COMPRA. ID COMPRA: " + compra.getIdCompra());
@@ -135,7 +133,7 @@ public class ControlCompra extends HttpServlet {
 			acao = "II";  
 			request.setAttribute("compra", compra.getIdCompra());
 			request.setAttribute("itens", Dao.itensPorCompra(compra));
-			request.setAttribute("total", Dao.valorTotal(compra));
+			request.setAttribute("total", Dao.valorTotalIndividual(compra));
 			forward = editar_compra + compra.getIdCompra();
 		}
 		
@@ -143,16 +141,16 @@ public class ControlCompra extends HttpServlet {
 					acao = "AI"; 
 					request.setAttribute("item", Dao.itensPorId(compra, produto));   
 					forward = editar_compra + compra.getIdCompra();
+					System.out.println("EDITAR ITENS. AÇÃO: " + acao);
 		}
 		
 		else if (action.equalsIgnoreCase("DeleteItens")) {
 			try {
 				acao = "EI";
 				if (Dao.crudCompraItens(acao, compralista, compra, produto)) {
-					System.out.println(
-							"COMPRA:" + compra.getIdCompra() + " ITEM EXCLUIDO COM SUCESSO: " + produto.getIdProduto());
-
+					System.out.println(	"COMPRA:" + compra.getIdCompra() + " ITEM EXCLUIDO COM SUCESSO: " + produto.getIdProduto());						
 					request.setAttribute("item", Dao.itensPorId(compra, produto));
+					acao = "II";
 					
 				} else {
 					System.out.println(

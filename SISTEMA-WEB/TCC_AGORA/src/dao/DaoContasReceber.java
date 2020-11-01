@@ -62,15 +62,14 @@ public class DaoContasReceber {
 					receber.setDinheiro(rs.getBigDecimal("DINHEIRO"));
 					receber.setDataCompra(rs.getDate("DATA_COMPRA"));
 					receber.setDataPrevistaReceber(rs.getDate("DATA_PREVISTA_RECEBER"));
-					
-					if(rs.getString("METODO_PAGAMENTO") == "C") {
-						receber.setMetodoPagamento("CARTÃO");
+					if(rs.getString("METODO_PAGAMENTO").equals("DE")) {
+						receber.setMetodoPagamento("DEBITO");
 					}
-					else if(rs.getString("METODO_PAGAMENTO") == "D") {
+					else if(rs.getString("METODO_PAGAMENTO").equals("DI")) {
 						receber.setMetodoPagamento("DINHEIRO");
 					}
-					else{
-						receber.setMetodoPagamento("CARTÃO/DINHEIRO");
+					else if(rs.getString("METODO_PAGAMENTO").equals("CR")){
+						receber.setMetodoPagamento("CREDITO");
 					}
 				}  
 			} catch (Exception e) {
@@ -101,14 +100,14 @@ public class DaoContasReceber {
 				receber.setDinheiro(rs.getBigDecimal("DINHEIRO"));
 				receber.setDataCompra(rs.getDate("DATA_COMPRA"));
 				receber.setDataPrevistaReceber(rs.getDate("DATA_PREVISTA_RECEBER"));
-				if(rs.getString("METODO_PAGAMENTO").equals("C")) {
-					receber.setMetodoPagamento("CARTÃO");
+				if(rs.getString("METODO_PAGAMENTO").equals("DE")) {
+					receber.setMetodoPagamento("DEBITO");
 				}
-				else if(rs.getString("METODO_PAGAMENTO").equals("D")) {
+				else if(rs.getString("METODO_PAGAMENTO").equals("DI")) {
 					receber.setMetodoPagamento("DINHEIRO");
 				}
-				else{
-					receber.setMetodoPagamento("CARTÃO/DINHEIRO");
+				else if(rs.getString("METODO_PAGAMENTO").equals("CR")){
+					receber.setMetodoPagamento("CREDITO");
 				}
 							
 				ListaContaReceber.add(receber);

@@ -23,40 +23,41 @@
 	</jsp:include>
 
 	<f:view>
-		<form action="ControlItensCompra" method="POST" name="cadastroCompra" style="background-color: white">
+		<form action="ControlItensCompra" method="POST" name="cadastroCompra">
 
-			<h2>PEDIDO COMPRA</h2>
+			<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">PEDIDO DE COMPRA</span></h1>
+            
 
 			<br />
 			<p> 
-				<a href="ControlCompra?action=ConfirmarCompra&idCompra=<c:out value="${compra.idCompra}"/>">
-					<input type="button" value=" CONFIRMAR COMPRA " />
+				<a  href="ControlCompra?action=ConfirmarCompra&idCompra=<c:out value="${compra.idCompra}"/>">
+					<input type="button" value=" CONFIRMAR COMPRA" class="btn btn-success" style="width: 12em; height: 2.5em; margin-right:0.4em" />
 				</a>
 				<a href="ControlCompra?action=FinalizarCompra&idCompra=<c:out value="${compra.idCompra}"/>">
-					<input type="button" value=" FINALIZAR COMPRA " />
+					<input type="button" value=" FINALIZAR COMPRA " class="btn btn-primary" style="width: 12em; height: 2.5em; margin-right:0.4em"/>
 				</a>
 				<a href="ControlCompra?action=Tabela"> 
-					<input type="button" value=" VOLTAR " style="background: rgba(178, 34, 34, 1); color: white"> 
+					<input type="button" value=" VOLTAR " class="btn btn-danger" style="height: 2.5em;"> 
 				</a>
 				
 			</p>
 			<br />
 			<fieldset id="informacoes">
-				<p>
-					<label> REFERÊCIA: <c:out value="COMPRA/${compra.idCompra}" />
-					</label> <label style="padding-left: 90px"> DATA COMPRA: <fmt:formatDate
+				<p >
+					<label class="text-white font-weight-bold"> REFERÊCIA: <c:out value="COMPRA/${compra.idCompra}" />
+					</label> <label style="padding-left: 90px" class="text-white font-weight-bold"> DATA COMPRA: <fmt:formatDate
 							pattern="dd/MM/yyyy" value="${compra.dataCriada}" />
 					</label>
 				</p>
 				<p>
-					<label> SITUAÇÃO: <c:out value="${compra.status}" />
-					</label> <label style="padding-left: 168px"> DATA FINALIZADA: <fmt:formatDate
+					<label class="text-white font-weight-bold"> SITUAÇÃO: <c:out value="${compra.status}" />
+					</label> <label style="padding-left: 168px " class="text-white font-weight-bold"> DATA FINALIZADA: <fmt:formatDate
 							pattern="dd/MM/yyyy" value="${compra.dataFinalizada}" />
 					</label>
 				</p>
 
 				<br />
-				<table border="1">
+				<table border="1" class="table table-hover table-dark">
 					<thead>
 						<tr>
 							<th style="width: 193px;">PRODUTO</th>
@@ -86,13 +87,12 @@
 								</td>
 								<td><a
 									href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'
-									 > <img src="img/refresh-icon.png"
-										style="width: 21px; height: 21px;" title="ATUALIZAR" /></a></td>
+									 >  Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
 									<!-- ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/> -->
 								<td><a
-									href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'><img
-										src="img/delete.png" style="width: 21px; height: 21px;"
-										title="EXCLUIR"></a></td>
+									href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
+									Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR">
+										</a></td>
 
 							</tr>
 						</c:forEach>
@@ -102,7 +102,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="7" style="color: white">TO COMENDO O CU DE QUEM TA LENDO, VULGO JOÃO</td>
+							<td colspan="7" style="color: white"></td>
 						</tr>
 						<tr>
 							<td colspan="4">TOTAL</td>
@@ -117,26 +117,27 @@
 				<form action="ControlCompra" method="POST" name="cadastroItensCompra">
 
 					<fieldset id="informacoes">
-						<legend>PRODUTO</legend>
-						<p>
-							<label> NOME: <h:selectOneMenu style="width: 260px;" id="idProd">
+					<legend class="text-center margintop h2" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">ITEM</span></legend>
+ 
+						<p style="text-align:center; "  >
+							<label  class="font-weight-bold" style="text-align: left" > NOME: <br /><h:selectOneMenu style="height: 1.5em; width: 20em"   id="idProd">
 									<f:selectItem itemValue="#{item.tbProduto.idProduto}"	itemLabel="#{item.tbProduto.nomeProduto}" />
 									<f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true" />
 									<f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}" />
 								</h:selectOneMenu>
 							</label>
 						</p> 
-						<p>
-							<label> QUANTIDADE: <input name="quantidade"
+						<p style="text-align:center">
+							<label  class="font-weight-bold" style="text-align: left"> QUANTIDADE: <br /><input name="quantidade"
 								value="<c:out value="${item.quantidade}"/>" required="required"
-								style="width: 200px;" />
+								style="height: 1.5em; width: 20em" />
 							</label>
 						</p> 
 						 
 					</fieldset>
 					<p>
-						<input value="ADICIONAR" type="submit">
-						<a href="#"onclick="fechar();">CANCELAR</a>
+						<input value="ADICIONAR" type="submit" class="btn btn-success">
+						<a href="#"onclick="fechar();" class="btn btn-dark">CANCELAR</a>
 					</p>
 				</form>
 			</div>
@@ -146,8 +147,7 @@
 <script>     
 	var url_atual = window.location.href;
    	if(url_atual.indexOf("/ControlCompra?action=EditItens&idCompra=") != -1){
-   		document.getElementById("inserir-itens-container").style.display = 'flex';
-   		console.log("funcionou");
+   		document.getElementById("inserir-itens-container").style.display = 'flex';  
    	}	 
 	   function abrir(){
 		document.getElementById("inserir-itens-container").style.display = 'flex';

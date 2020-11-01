@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="btn"/>
 		<list key="findhistory">
-			<item value="troco"/>
-			<item value="${venda.idCompra}"/>
-			<item value="${venda.tbProduto.idProduto}"/>
-			<item value="login"/>
-			<item value="criar_excluir_item"/>
-			<item value="body"/>
-			<item value="image"/>
-			<item value="0"/>
-			<item value="ativo"/>
-			<item value="itens"/>
-			<item value="produ"/>
-			<item value="prod"/>
-			<item value="produto"/>
-			<item value="fornecedor"/>
-			<item value="fornecedores"/>
+			<item value="btn"/>
+			<item value="PE"/>
+			<item value="PES"/>
+			<item value="p"/>
+			<item value="pe"/>
+			<item value="pes"/>
+			<item value="pesq"/>
+			<item value="pesqu"/>
+			<item value="pesqui"/>
+			<item value="pesquis"/>
+			<item value="pesquisa"/>
+			<item value="pesquisar"/>
+			<item value="coma"/>
+			<item value="número"/>
+			<item value="#"/>
 		</list>
 		<list key="replacehistory">
 			<item value=" "/>

@@ -4,19 +4,59 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>LOGIN</title>
-      <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css" />
+         <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
+      <link rel="stylesheet" href="css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="css/estilo.css"/>
+      <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" /> 
+      <style >
+      body{
+      background-image: url(https://images3.alphacoders.com/536/53625.jpg);
+      
+      }
+      fieldset{
+      border: 0px solid red;
+      margin: 0 auto;
+      background: 
+      }
+      legend{
+      width: 15em;
+ 
+      }
+      legend img{
+      width: 10em;
+      height: 8em;
+      display: block;
+      position: relative;
+      left: 2em;
+      }
+      form{
+      margin-top: 5em;
+      width:50em;
+      height:30em;
+      text-align: center;
+ 	
+      }
+      input{
+      height: 1.8em;
+      width: 18em;
+      }
+
+      
+      </style>
    </head>
    <body>
-      <form style="width: 351px; height: 352px; " action="ControlLogin" method="post">
-         <fieldset id="login" style="width: 370px; ">
-            <legend><img src="img/Logo_Padaria.png" style=" width: 187px; height: 150px;"  /></legend>
-            <h2>REDE DE PADARIAS ÀGORA</h2>
-            <p><label for="">USUÁRIO </label></p>
-            <p><input style="width: 294px;" type="text" name="username"/></p>
-            <p><label for="">SENHA</label></p>
-            <p><input type="password" name="password" style="width: 294px;"  /></p>
-            <p><input type="submit" value="ENTRAR" style="width: 294px;" /></p>
+      <form action="ControlLogin" method="post">
+         <fieldset id="login">
+            <legend><img src="img/Logo_Padaria.png"/></legend>
+            <div id="fundo">
+            <h2 class="bg-dark text-white">REDE DE PADARIAS ÀGORA</h2>
+            <p><label for="" class="bg-dark text-white d-block">USUÁRIO </label></p>
+            <p><input  type="text" name="username"/></p>
+            <p><label for="" class="bg-dark text-white d-block">SENHA</label></p>
+            <p><input type="password" name="password"   /></p>
+            <p><input type="submit" value="ENTRAR" class="btn btn-success botao" style="height: 2.4em;"/></p>
+            </div>
          </fieldset>
       </form>
    </body>

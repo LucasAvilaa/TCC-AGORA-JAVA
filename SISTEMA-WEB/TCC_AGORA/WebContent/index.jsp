@@ -12,6 +12,49 @@
       <link rel="stylesheet" href="css/bootstrap.min.css"/>
       <link rel="stylesheet" href="css/estilo.css"/>
       <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" /> 
+      <style>
+      .dropbtn {
+  
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 15em;
+ 
+}
+
+.dropdown-content a{
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover{
+ background-color: ##1d2124;
+}
+
+.dropdown:hover .dropdown-content{
+display: block;
+}
+
+.dropdown:hover .dropbtn{
+
+}
+      </style>
    </head>
    <body>
    <%
@@ -26,13 +69,18 @@
             <a href="ControlProduto?action=Tabela" class="nav-link text-light bg-dark d-inline">Produtos</a>
             <a href="ControlFornecedores?action=Tabela" class="nav-link text-light bg-dark d-inline">Fornecedores</a>
             <a href="ControlCliente?action=Tabela" class="nav-link text-light bg-dark d-inline">Clientes</a>
-            <a href="ControlContasPagar?action=Tabela" class="nav-link text-light bg-dark d-inline">conta pagar</a>
             <a href="ControlEstoque?action=Tabela" class="nav-link text-light bg-dark d-inline">Estoque</a> 
             <a href="ControlFuncionario?action=Tabela" class="nav-link text-light bg-dark d-inline">Funcionarios</a>
-            <a href="ControlContasReceber?action=Tabela" class="nav-link text-light bg-dark d-inline">Conta receber</a>
             <a href="ControlEstabelecimento?action=Tabela" class="nav-link text-light bg-dark d-inline">Filiais</a>
-            <a href="ControlVenda?action=Caixa" class="nav-link text-light bg-dark d-inline">Venda</a>
-            <a href="ControlLogin?action=Deslogar" class="nav-link text-light bg-dark d-inline">Sair</a></h5>
+            <a href="ControlVenda?action=Caixa" class="nav-link text-light bg-dark d-inline">Venda</a></h5>
+             <div class="dropdown">
+  			<button class="dropbtn  text-light bg-dark d-inline font-weight-bold nav-link" style="margin-bottom: 2em"><h5>Financeiro</h5></button>
+  			<div class="dropdown-content bg-dark text-white">
+   				 <a href="ControlContasPagar?action=Tabela">Contas a pagar</a>
+   			 	  <a href="ControlContasReceber?action=Tabela">Contas a receber</a>
+  				</div>
+			</div>
+           <h5> <a href="ControlLogin?action=Deslogar" class="nav-link text-light bg-dark d-inline">Sair</a></h5>
   </div>
 
       <!-- Fim Cabeçalho -->
