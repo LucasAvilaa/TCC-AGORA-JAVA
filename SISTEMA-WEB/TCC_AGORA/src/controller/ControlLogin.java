@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +23,18 @@ public class ControlLogin extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		String forward = "";
 		if (action.equalsIgnoreCase("Deslogar")) { 
 			request.getSession().invalidate(); 
-			response.sendRedirect("Login.xhtml");
+			forward = "Login.xhtml"; 
 		}  
+		
+		if(action.equalsIgnoreCase("alterarSenha")) {
+			forward = "AlterarSenha.xhtml"; 
+		}
+		
+		RequestDispatcher view = request.getRequestDispatcher(forward);
+		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {

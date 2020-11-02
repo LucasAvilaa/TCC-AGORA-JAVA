@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,6 +42,16 @@ public class ControlVenda extends HttpServlet {
 		String action = request.getParameter("action");
 		String idComp = request.getParameter("idComanda"); 
 		String idItem = request.getParameter("codItem"); 
+		 
+		Date data = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); 
+		String dataFormatada = dateFormat.format(data);
+		request.setAttribute("data", dataFormatada);  
+		
+		Date hora = new Date();
+		SimpleDateFormat horaFormat = new SimpleDateFormat("hh:mm:ss"); 
+		String horaFormatada = horaFormat.format(hora);
+		request.setAttribute("hora", horaFormatada); 
 		
 		if (idComp != null) {
 			idComanda = Integer.parseInt(idComp); 
@@ -47,11 +59,12 @@ public class ControlVenda extends HttpServlet {
 			request.setAttribute("comanda", comanda.getIdComanda());  
 		}  
 		
+		
 		if(idItem != null) {
 			idProduto = Integer.parseInt(idItem);
 			produto.setIdProduto(idProduto); 
-		} 
-		
+		}  
+	
 		if(action.equalsIgnoreCase("Caixa")) { 
 			acao = "I";
 			forward = tabela;
