@@ -144,7 +144,7 @@ body{
 			</div>
 		</div>
 		<div style="background-color: gray">
-			<p>OPERADOR: <c:out value="${usuario}"/>   DATA: <c:out value="30/10/2020"/>  HORA: <c:out value="15:30:15"/></p>
+			<p>OPERADOR: <c:out value="${usuario}"/>   DATA: <c:out value="${data}"/> HORA: <c:out value="${hora}"/></p>
 		</div>
 		<div class="inserir-itens-container" id="inserir-itens-container" >
 			<div class="inserir-itens">

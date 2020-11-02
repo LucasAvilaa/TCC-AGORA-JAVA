@@ -42,7 +42,7 @@ public class DaoContato {
 			TbContato cont = new TbContato();
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTATO  WHERE ID_GERAL_TEL = (SELECT DBO.PROCURA_ID_GERAL(?))"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_CONTATO  WHERE ID_GERAL_TEL = (SELECT DBO.PROCURA_ID_GERAL_CPF_CNPJ(?))"); 
 				ps.setString(1, id);
 				ResultSet rs = ps.executeQuery();
 				

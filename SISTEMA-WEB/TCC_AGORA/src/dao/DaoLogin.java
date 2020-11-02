@@ -14,21 +14,21 @@ public class DaoLogin {
 		PreparedStatement ps = null;
 		
 		if(acao.equals("I")) {
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_LOGIN I,NULL,?,?");
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_LOGIN I,?,?");
 			ps.setString(1, log.getUsuario());
 			ps.setString(2, log.getSenha());		
 			
 		}				
 		else if(acao.equals("A")) { 			
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_LOGIN A,?,?,?");
-			ps.setInt(1, log.getIdLogin());
-			ps.setString(2, log.getUsuario());
-			ps.setString(3, log.getSenha());		
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_LOGIN A,?,?"); 
+			System.out.println("SENHA QUE CHEGOU NO DAO: " + log.getSenha());
+			ps.setString(1, log.getUsuario());
+			ps.setString(2, log.getSenha());		
 			
 		}
 		else if(acao.equals("E")){ 
-			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_LOGIN E,?,NULL,NULL");
-			ps.setString(1, acao); 	
+			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_LOGIN E,?,NULL");
+			ps.setString(1, log.getUsuario());	
 		} 
 		
 		if(ps.executeUpdate()>0) {		

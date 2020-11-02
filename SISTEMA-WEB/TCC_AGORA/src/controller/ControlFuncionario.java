@@ -92,6 +92,9 @@ public class ControlFuncionario extends HttpServlet {
 				}
 				if (Dao.crudFuncionario(acao, funcionario)) {
 					System.out.println("FUNCIONARIO DELETADO COM SUCESSO");
+				}
+				if(DaoLogin.crudLogin(acao, login)) {
+					System.out.println("USUARIO EXCLUIDO COM SUCESSO");
 					System.out.println("______________________________________");
 				}
 				request.setAttribute("funcionario", Dao.listaFuncionario());
@@ -146,7 +149,10 @@ public class ControlFuncionario extends HttpServlet {
 		}
 		
 		login.setUsuario(request.getParameter("login"));
-		login.setSenha(request.getParameter("senha"));
+		System.out.println("SENHA SELECIONADA: " + request.getParameter("senha"));
+		if(!request.getParameter("senha").equals("**************")) {
+			login.setSenha(request.getParameter("senha"));
+		}
 
 		if (request.getParameter("numero") != "") {
 			endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
@@ -176,18 +182,17 @@ public class ControlFuncionario extends HttpServlet {
 			System.out.println("ERRO NA CONVERSÃO DA DATA");
 		}
 		try {
-			System.out.println("AÇÃO: " + acao);
-			if (Dao.crudFuncionario(acao, funcionario)) {
-				System.out.println("FUNCIONARIO INSERIDO COM SUCESSO");
-			} else {
-				System.out.println("ERRO AO INSERIR FUNCIONARIO");
-			}
+			System.out.println("AÇÃO: " + acao); 
 			if(DaoLogin.crudLogin(acao, login)) {
 				System.out.println("USUARIO CRIADO COM SUCESSO");
 			}else {
 				System.out.println("ERRO AO CRIAR USUARIO");
 			}
-			
+			if (Dao.crudFuncionario(acao, funcionario)) {
+				System.out.println("FUNCIONARIO INSERIDO COM SUCESSO");
+			} else {
+				System.out.println("ERRO AO INSERIR FUNCIONARIO");
+			} 
 			if (End.crudEndereco(acao, cpf, endereco)) {
 				System.out.println("ENDERECO INSERIDO COM SUCESSO");
 			} else {
