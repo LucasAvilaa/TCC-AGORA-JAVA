@@ -13,7 +13,6 @@
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="dao.DaoClientes"/>
     <fullyQualifiedTypeName name="org.apache.catalina.ha.backend.Sender"/>
-    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="model.TbCliente"/>
     <fullyQualifiedTypeName name="dao.DaoEnderecoContato"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
@@ -40,7 +39,6 @@
     <fullyQualifiedTypeName name="controller.ControlCompra"/>
     <fullyQualifiedTypeName name="dao.DaoCompra"/>
     <fullyQualifiedTypeName name="model.TbProduto"/>
-    <fullyQualifiedTypeName name="model.TbFuncionario"/>
     <fullyQualifiedTypeName name="model.TbLogin"/>
     <fullyQualifiedTypeName name="dao.DaoLogin"/>
     <fullyQualifiedTypeName name="model.TbListaProduto"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="model.TbFuncionario"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 </qualifiedTypeNameHistroy>

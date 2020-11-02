@@ -15,42 +15,40 @@ import model.TbLogin;
 
 @WebServlet("/ControlLogin")
 public class ControlLogin extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 1L; 
 	public ControlLogin() {
-		super(); 
+		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String action = request.getParameter("action");
 		String forward = "";
-		if (action.equalsIgnoreCase("Deslogar")) { 
-			request.getSession().invalidate(); 
-			forward = "Login.xhtml"; 
-		}  
-		
-		if(action.equalsIgnoreCase("alterarSenha")) {
-			forward = "AlterarSenha.xhtml"; 
-		}
-		
+		if (action.equalsIgnoreCase("Deslogar")) {
+			request.getSession().invalidate();
+			forward = "Login.xhtml";
+		} 
+
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		DaoLogin log = new DaoLogin();  
+		  
 		TbLogin model = new TbLogin();
 		model.setUsuario(request.getParameter("username"));
 		model.setSenha(request.getParameter("password"));
 
-		DaoLogin log = new DaoLogin();
-
 		try {
-			if (log.validaLogin(model)) { 
+			if (log.validaLogin(model)) {
 				HttpSession http = request.getSession();
-				http.setAttribute("usuario", model.getUsuario()); 
+				http.setAttribute("usuario", model.getUsuario());
 				response.sendRedirect("index.jsp");
-				System.out.println("LOGADO COM SUCESSO"); 
-			}else {
+				System.out.println("LOGADO COM SUCESSO");
+			} else {
 				response.sendRedirect("Login.xhtml");
 				System.out.println("USUARIO OU SENHA INCORRETO");
 			}
@@ -58,5 +56,4 @@ public class ControlLogin extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }
