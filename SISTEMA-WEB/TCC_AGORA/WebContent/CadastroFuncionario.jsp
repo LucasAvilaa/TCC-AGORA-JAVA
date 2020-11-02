@@ -83,6 +83,7 @@
                      <h:outputText value="CARGO: "/>
                      <h:selectOneMenu style="width: 166px; " id="cargo">
                         <f:selectItem noSelectionOption="true" itemValue="#{funcionario.cargo}"/>
+                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
                         <f:selectItems value="#{tbHierarquia.hierarquia}"  itemValue="#{tbHierarquia.hierarquia}"/>
                      </h:selectOneMenu>
                   </label>

@@ -70,7 +70,7 @@ public class DaoFornecedor {
 			List<TbFornecedore> listaforn = new ArrayList<TbFornecedore>();	
 			try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_FORNECEDOR ORDER BY RAZAO_SOCIAL ASC");  
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FORNECEDORES ORDER BY RAZAO_SOCIAL ASC");  
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {
