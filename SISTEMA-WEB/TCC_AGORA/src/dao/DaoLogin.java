@@ -79,4 +79,25 @@ public class DaoLogin {
 		}
 		return login;
 	}
+	
+	public boolean alterarSenha(TbLogin login, TbFuncionario funcionario) { 
+		try {
+			con = new Conexao(); 
+			PreparedStatement ps = con.getConexao().prepareStatement("EXEC PROC_ALTERA_LOGIN ?,?,?");
+			ps.setString(1, funcionario.getCpf());
+			ps.setString(2, login.getUsuario());
+			ps.setString(3, login.getSenha()); 
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		} catch (Exception e) { 
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 }	
