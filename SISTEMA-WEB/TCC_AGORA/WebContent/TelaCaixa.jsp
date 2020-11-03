@@ -36,7 +36,7 @@ body{
 	
 </style>
 </head>
-<body> 
+<body>  
 	<%
    		String usuario = (String) session.getAttribute("usuario");
    		if(usuario == null){
@@ -127,9 +127,8 @@ body{
 					</p>
 					<p style="text-align:center">
 						<label>
-							<a href="#" onclick="abrir()" class="btn btn-success" style="height: 2.2em; width: 12em;"> 
-								FINALIZAR COMPRA <img src="img/edit.svg"
-									style="width: 21px; height: 21px;" title="FINALIZAR COMPRA" />
+							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'" class="btn btn-success" style="height: 2.2em; width: 12em;"> 
+								FINALIZAR COMPRA <img src="img/edit.svg" style="width: 21px; height: 21px;" title="FINALIZAR COMPRA" />
 						 	</a>
 						</label>
 						
@@ -165,7 +164,7 @@ body{
 						</p>
 						<p>		
 							<label> 
-								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" onchange="troco()" style="width: 200px;" />
+								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" onchange="teste();" style="width: 200px;" />
 							</label> 
 						</p>
 						<p>
@@ -180,28 +179,35 @@ body{
 						</p>
 					</fieldset>
 					<p>
-						<input value=" RECEBER E FINALIZAR " type="submit" /> <a href="#"
-							onclick="fechar();">CANCELAR</a>
+						<input value=" RECEBER E FINALIZAR " type="submit" /> 
+						<a href="#"	onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+${comanda} ">CANCELAR</a>
 					</p>
 				</form>
 			</div>
 		</div>
 	</f:view>
-	<script>     
+	<script >    
+		var url_atual = window.location.href;
+		if(url_atual.indexOf("/ControlVenda?action=FinalizarVenda") != -1){
+			document.getElementById("inserir-itens-container").style.display = 'flex'; 
+		}  
+		
+		function teste(){     
+			   	var dinheiro = document.querySelector('[name=dinheiroRecebido]');
+				var troco = document.querySelector('[name=troco]');
+				var total = document.querySelector('[name=valorTotal]');
+				troco.value = dinheiro.value - total.value; 
+		} 
+ 
    		function abrir(){    
    	   		 document.getElementById("inserir-itens-container").style.display = 'flex'; 
    		} 
    		
    		function fechar(){
    			document.getElementById("inserir-itens-container").style.display = 'none'; 
-   		} 
-
-   		function troco(){  
-			document.pagamento.troco.value = 
-			   Number(document.pagamento.dinheiroRecebido.value) -
-			   Number(document.pagamento.valorTotal.value); 
-			   
-   		} 
+   		}  
+   		
+   		
 </script>
 
 </body>

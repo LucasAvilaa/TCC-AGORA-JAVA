@@ -57,13 +57,13 @@
                         <c:out value="${receber.metodoPagamento}" />
                      </td>
                      <td>
-                        <c:out value="${receber.dinheiro}" />
+                        <c:out value="R$ ${receber.dinheiro}" />
                      </td>
                      <td>
-                        <c:out value="${receber.debito}" />
+                        <c:out value="R$ ${receber.debito}" />
                      </td>
                      <td>
-                        <c:out value="${receber.credito}" />
+                        <c:out value="R$ ${receber.credito}" />
                      </td> 
                      <td> 
                      	<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataCompra}"/> 

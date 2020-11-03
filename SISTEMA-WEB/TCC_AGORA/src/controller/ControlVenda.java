@@ -101,6 +101,7 @@ public class ControlVenda extends HttpServlet {
 		
 		else if(action.equalsIgnoreCase("FinalizarVenda")) {
 			acao = "P";  
+			forward = criar_editar + comanda.getIdComanda();		
 		}
 	  
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -126,7 +127,7 @@ public class ControlVenda extends HttpServlet {
 				  receber.setDebito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
 			}
 			else if(request.getParameter("formaPagamento").equals("DI")) {
-				receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
+				receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal")))); 
 			}
 			else if(request.getParameter("formaPagamento").equals("CR")) {
 				  receber.setCredito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
@@ -145,6 +146,7 @@ public class ControlVenda extends HttpServlet {
 				} 
 			else { 
 				System.out.println("ERRO AO CRIAR/ALTERAR VENDA");
+				acao = "I";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

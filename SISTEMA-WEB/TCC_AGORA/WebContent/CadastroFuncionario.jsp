@@ -16,12 +16,15 @@
    <body>
    <script type="text/javascript"> 
    function email(){
-      var nome =  document.cadastrofuncionario.nome.value.toLowerCase()
-      var sobrenome = document.cadastrofuncionario.sobrenome.value.toLowerCase()
-      var cpf = document.cadastrofuncionario.cpf.value.substr(0,5).replace('.','')
-	 	  document.cadastrofuncionario.login.value =
-	 		 nome.replace(" ", "")  + '.' + sobrenome.replace(" ", "") + cpf + '@RedeAgora.com'; 
-	   }
+	  var url_atual = window.location.href;
+	   	if(url_atual.indexOf("/ControlFuncionario?action=Edit&idFunc=") == -1){ 	   
+		      var nome =  document.cadastrofuncionario.nome.value.toLowerCase()
+		      var sobrenome = document.cadastrofuncionario.sobrenome.value.toLowerCase()
+		      var cpf = document.cadastrofuncionario.cpf.value.substr(0,5).replace('.','')
+			 	  document.cadastrofuncionario.login.value =
+			 		 nome.replace(" ", "")  + '.' + sobrenome.replace(" ", "") + cpf + '@RedeAgora.com'; 
+			   	}
+	 }
     
    </script>
    	<%
@@ -147,6 +150,8 @@
       </f:view>
    </body>
    <script> 
+   
+   
    
       $("#cep").mask("99999-999"); 
       $("#celular").mask("(99)99999-9999");

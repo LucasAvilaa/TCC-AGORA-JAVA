@@ -55,24 +55,19 @@
                </p>
                <p>
                   <label  class="font-weight-bold" style="text-align: left">
-                     DINHEIRO: <input name="dinheiro" value="<c:out value="${receber.dinheiro}"/>"   style="width: 148px; "/>
+                     DINHEIRO: <input name="dinheiro" value="<c:out value="R$ ${receber.dinheiro}"/>"   style="width: 148px; "/>
                   </label>
                </p>   
                <p>
                   <label  class="font-weight-bold" style="text-align: left">
-                     CARTÃO DEBITO: <input name="debito" value="<c:out value="${receber.debito}"/>"   style="width: 148px; "/>
+                     CARTÃO DEBITO: <input name="debito" value="<c:out value=" R$ ${receber.debito}"/>"   style="width: 148px; "/>
                   </label>
                </p>
                <p>
                   <label  class="font-weight-bold" style="text-align: left">
-                     CARTÃO CRÉDITO: <input name="credito" value="<c:out value="${receber.credito}"/>"   style="width: 148px; "/>
+                     CARTÃO CRÉDITO: <input name="credito" value="<c:out value="R$ ${receber.credito}"/>"   style="width: 148px; "/>
                   </label>
-               </p> 
-                <p>
-                  <label  class="font-weight-bold" style="text-align: left">
-                     TOTAL: <input name="total" type="number" readonly="readonly" value='<c:out value=""></c:out>' placeholder="R$000,00"  required="required" style="width: 90px; "/>
-                  </label> 
-               </p>   
+               </p>    
                <p>
                   <label  class="font-weight-bold" style="text-align: left">
                      DATA DA VENDA: <input name="dataVenda"  value="<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataCompra}" />" style="width: 100px; "/>

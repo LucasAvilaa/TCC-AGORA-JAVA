@@ -128,7 +128,7 @@
 							</label>
 						</p> 
 						<p style="text-align:center">
-							<label  class="font-weight-bold" style="text-align: left"> QUANTIDADE: <br /><input name="quantidade"
+							<label  class="font-weight-bold" style="text-align: left"> QUANTIDADE: <br /><input name="quantidade" type="number"
 								value="<c:out value="${item.quantidade}"/>" required="required"
 								style="height: 1.5em; width: 20em" />
 							</label>
@@ -137,7 +137,7 @@
 					</fieldset>
 					<p>
 						<input value="ADICIONAR" type="submit" class="btn btn-success">
-						<a href="#"onclick="fechar();" class="btn btn-dark">CANCELAR</a>
+						<a href="#" onclick="this.href='ControlCompra?action=EditCompra&idCompra='+ ${compra.idCompra}" class="btn btn-dark">CANCELAR</a>
 					</p>
 				</form>
 			</div>
