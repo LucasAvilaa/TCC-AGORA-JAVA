@@ -84,7 +84,7 @@ public class DaoVenda {
 			}	 
 			return listaProduto;
 		}
-	
+	  
 	public TbListaProduto produtoPorId(TbComanda comanda, TbProduto idProduto) {
 		 
 		TbListaProduto lista = new TbListaProduto();
@@ -143,7 +143,7 @@ public class DaoVenda {
 		try {
 			con = new Conexao();
 			PreparedStatement ps = con.getConexao()
-					.prepareStatement("SELECT DISTINCT STATUS_COMANDA FROM VW_VENDA WHERE ID_COMANDA_LISTA = ?");
+					.prepareStatement("SELECT STATUS_COMANDA FROM TB_COMANDA WHERE ID_COMANDA = ?");
 			ps.setInt(1, comanda.getIdComanda()); 
 			ResultSet rs = ps.executeQuery();
 

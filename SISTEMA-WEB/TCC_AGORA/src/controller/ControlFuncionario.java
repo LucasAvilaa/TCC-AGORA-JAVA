@@ -147,13 +147,9 @@ public class ControlFuncionario extends HttpServlet {
 			System.out.println("ID LOGIN " + request.getParameter("idLogin")); 
 			login.setIdLogin(Integer.parseInt(request.getParameter("idLogin")));
 		}
-		
-		login.setUsuario(request.getParameter("login"));
-		System.out.println("SENHA SELECIONADA: " + request.getParameter("senha"));
-		if(!request.getParameter("senha").equals("**************")) {
-			login.setSenha(request.getParameter("senha"));
-		}
-
+		 
+			login.setUsuario(request.getParameter("login"));
+		  
 		if (request.getParameter("numero") != "") {
 			endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
 		}
@@ -182,11 +178,18 @@ public class ControlFuncionario extends HttpServlet {
 			System.out.println("ERRO NA CONVERSÃO DA DATA");
 		}
 		try {
-			System.out.println("AÇÃO: " + acao); 
-			if(DaoLogin.crudLogin(acao, login)) {
-				System.out.println("USUARIO CRIADO COM SUCESSO");
-			}else {
-				System.out.println("ERRO AO CRIAR USUARIO");
+			System.out.println("AÇÃO: " + acao);  
+			if(!request.getParameter("senha").equals("**************") || acao == "E") {
+				login.setSenha(request.getParameter("senha")); 
+				if(DaoLogin.crudLogin(acao, login)) {
+					System.out.println("USUARIO CRIADO COM SUCESSO");
+
+				}else {
+					System.out.println("ERRO AO CRIAR USUARIO");
+				}	
+			}
+			else {
+				System.out.println("A SENHA NÃO FOI DEFINIDA");
 			}
 			if (Dao.crudFuncionario(acao, funcionario)) {
 				System.out.println("FUNCIONARIO INSERIDO COM SUCESSO");

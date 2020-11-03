@@ -57,7 +57,7 @@ public class ControlCompra extends HttpServlet {
 			if(sessao != null) {     
 				if(sessao.toString() != null) {
 				try {
-					request.setAttribute("compra", Dao.listaCompra());  
+					request.setAttribute("compra", Dao.listaCompra());
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();

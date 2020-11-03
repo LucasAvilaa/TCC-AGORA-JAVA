@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,6 +11,7 @@ import java.util.Date;
  * The persistent class for the TB_ESTOQUE database table.
  * 
  */
+@ManagedBean
 @Entity
 @Table(name="TB_ESTOQUE")
 @NamedQuery(name="TbEstoque.findAll", query="SELECT t FROM TbEstoque t")
