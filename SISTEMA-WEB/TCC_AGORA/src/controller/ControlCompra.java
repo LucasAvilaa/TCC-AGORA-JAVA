@@ -106,6 +106,7 @@ public class ControlCompra extends HttpServlet {
 				} else {
 					System.out.println("FALHA AO FINALIZAR COMPRA");
 				}
+				acao = "I";
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("FALHA AO FINALIZAR COMPRA -- TRY/CATCH");

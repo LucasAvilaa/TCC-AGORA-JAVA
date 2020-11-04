@@ -3,13 +3,13 @@
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
    <head>
-      <meta charset="UTF-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>ESTOQUE</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
-      <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
+      <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
    </head>
    <body>
    	<%
@@ -18,9 +18,7 @@
    			response.sendRedirect("Login.xhtml");
    		}
    	%>
-      <jsp:include page="index.jsp" flush="false" >
-         <jsp:param name="cabecalho" value="cabecalho"/>
-      </jsp:include>
+      <jsp:include page="index.jsp"></jsp:include>
       <f:view>
          
          	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Produtos Estoque</span></h1>
@@ -63,8 +61,8 @@
                      <td> 
                         <fmt:formatDate pattern="dd/MM/yyyy" value="${estoque.dataVencimento}"/>
                      </td> 
-                     <td><a href='ControlEstoque?action=Edit&idEstoque=<c:out value="${estoque.idEstoque}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
-                     <td><a href='ControlEstoque?action=Delete&idEstoque=<c:out value="${estoque.idEstoque}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></button></a></td>
+                     <td><a href='ControlEstoque?action=Edit&idEstoque=<c:out value="${estoque.idEstoque}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlEstoque?action=Delete&idEstoque=<c:out value="${estoque.idEstoque}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

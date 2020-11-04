@@ -1,13 +1,11 @@
 <%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
-<%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
 <link rel="stylesheet" type="text/css" href="css/inserirItens.css" />
 <title>CAIXA</title>
@@ -44,9 +42,7 @@ body{
    		}
    	%>
 	<f:view>
-		<jsp:include page="index.jsp" flush="false">
-			<jsp:param name="cabecalho" value="cabecalho" />
-		</jsp:include>
+		<jsp:include page="index.jsp"></jsp:include>
 		<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Caixa</span></h1>
             
 		<div class="div-alinhada">
@@ -122,7 +118,7 @@ body{
 						</label>
 					</p>
 					<p style="text-align:center">
-						<label  class="font-weight-bold text-white" style="text-align: left"> TOTAL <br /><input type="text" readonly="readonly" style="background-color: #bab8b5; padding-left: 5px" value="<c:out value="${total.total}" />"> 
+						<label  class="font-weight-bold text-white" style="text-align: left"> TOTAL <br /><input type="text" readonly="readonly" style="background-color: #bab8b5; padding-left: 5px" value="<c:out value="${total.total}" />" /> 
 						</label>
 					</p>
 					<p style="text-align:center">
@@ -134,7 +130,7 @@ body{
 						
 					
 						<label class="font-weight-bold text-white" >
-							<input type="submit" value=" INSERIR ITEM " class="btn btn-primary" style="height: 2.2em; width: 12em;">							 
+							<input type="submit" value=" INSERIR ITEM " class="btn btn-primary" style="height: 2.2em; width: 12em;" />							 
 						</label>	
 					</p>
 
