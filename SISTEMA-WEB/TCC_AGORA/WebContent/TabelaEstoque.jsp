@@ -10,6 +10,7 @@
       <title>ESTOQUE</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
+
    </head>
    <body>
    	<%
@@ -35,12 +36,12 @@
          <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
-                  <th style="width: 467px; ">PRODUTO</th>
-                  <th style="width: 141px; ">CATEGORIA</th>                  
-                  <th style="width: 156px; ">QUANTIDADE</th> 
-                  <th style="width: 160px; ">DATA ENTRADA</th>
-                  <th style="width: 216px; ">DATA VENCIMENTO</th>
-                  <th colspan="2" style="width: 72px; ">AÇÃO</th>
+                  <th >PRODUTO</th>
+                  <th >CATEGORIA</th>                  
+                  <th >QUANTIDADE</th> 
+                  <th >DATA ENTRADA</th>
+                  <th >DATA VENCIMENTO</th>
+                  <th colspan="2" style="text-align: center" >AÇÃO</th>
                </tr>
             </thead>
             <tbody>
@@ -56,13 +57,13 @@
                         <c:out value="${estoque.quantidade}" />
                      </td>
                      <td> 
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${estoque.dataEntrada}"/>
+                        <fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${estoque.dataEntrada}"/>
                      </td>
                      <td> 
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${estoque.dataVencimento}"/>
+                        <fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${estoque.dataVencimento}"/>
                      </td> 
-                     <td><a href='ControlEstoque?action=Edit&idEstoque=<c:out value="${estoque.idEstoque}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
-                     <td><a href='ControlEstoque?action=Delete&idEstoque=<c:out value="${estoque.idEstoque}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlEstoque?action=Edit&idEstoque=<c:out value="${estoque.idEstoque}"/>'><button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                     <td><a href='ControlEstoque?action=Delete&idEstoque=<c:out value="${estoque.idEstoque}"/>'><button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

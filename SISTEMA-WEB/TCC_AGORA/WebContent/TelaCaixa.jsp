@@ -18,21 +18,35 @@ body{
 
 }
 .div-alinhada{
-	weight:30em;
-	height: 27.8em;
+	width:66%;
+	min-height: 27.8em;
 	float: left	;
 	border: 1px solid black;
+
+
 }
 #tabela_centro{
-	height: 25em;
+	min-height: 25em;
+	width:80%;
 	position: relative;
-	left: 20%;
+	left: 15%;
 	float: left;
+
 }
 #elemento_centro{
 	border:1px solid black;
-}
+	float: left;
+	height:31.4em;
 	
+}
+#rodape{
+background-color: gray;
+clear:both;
+height:2em;
+}
+table{
+
+}
 </style>
 </head>
 <body>  
@@ -45,7 +59,7 @@ body{
 	<f:view>
 		<jsp:include page="index.jsp"></jsp:include>
 		<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">CAIXA</span></h1>
-            
+    
 		<div class="div-alinhada">
 			<div id="tabela_centro" >
 				<p>
@@ -61,10 +75,10 @@ body{
 				</p>
 				<p>
 					<label  class="font-weight-bold text-white" >
-						DATA ABERTA: <c:out value="${data}"/> 
+						DATA/HORA ABERTA:   <fmt:formatDate value="${dataAberta.dataCompra}" pattern="dd/MM/yyyy hh:mm:ss"/>
 					</label>
 				</p>
-				<table border="1" class="table table-hover table-dark" >
+				<table border="1" class="table table-hover table-dark">
 					<thead>
 						<tr style="height: 25px; font-size: 12px">
 							<th style="width: 83px;">COD. PROD</th>
@@ -83,11 +97,11 @@ body{
 							<td><c:out value="${venda.quantidade}" /></td>
 							<td><c:out value="${venda.tbProduto.valorUniVenda}" /></td>
 							<td><c:out value="${venda.subtotal}" /></td>
-							<td><a
+							<td><a class="btn btn-success"
 								href='ControlVenda?action=Edit&idComanda=<c:out value="${comanda}"/>&codItem=<c:out value="${venda.tbProduto.idProduto}"/>'><img
 									src="img/edit.svg" style="width: 21px; height: 21px;"
 									title="ATUALIZAR" /></a></td>
-							<td><a
+							<td><a class="btn btn-success"
 								href='ControlVenda?action=Delete&idComanda=<c:out value="${comanda}"/>&codItem=<c:out value="${venda.tbProduto.idProduto}"/>'><img
 									src="img/trash-2.svg" style="width: 21px; height: 21px;"
 									title="EXCLUIR ITEM" /></a></td>
@@ -127,24 +141,22 @@ body{
 						<label  class="font-weight-bold text-white" style="text-align: left"> TOTAL <br /><input type="text" readonly="readonly" style="background-color: #bab8b5; padding-left: 5px" value="<c:out value="${total.total}" />" /> 
 						</label>
 					</p>
-					<p style="text-align:center">
+					<p style="text-align:center; margin-top: 2em;">
 						<label>
 							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'" class="btn btn-success" style="height: 2.2em; width: 12em;"> 
 								FINALIZAR COMPRA 
 						 	</a>
 						</label>
-						
-					
+						 
 						<label class="font-weight-bold text-white" >
 							<input type="submit" value=" INSERIR ITEM " class="btn btn-primary" style="height: 2.2em; width: 12em;" />							 
 						</label>	
-					</p>
-
+					</p> 
 
 				</form>
 			</div>
 		</div>
-		<div style="background-color: gray">
+		<div id="rodape">
 			<p>OPERADOR: <c:out value="${usuario}"/>   DATA: <c:out value="${data}"/> HORA: <c:out value="${hora}"/></p>
 		</div>
 		<div class="inserir-itens-container" id="inserir-itens-container" >
@@ -180,9 +192,9 @@ body{
 							</label>	
 						</p>
 					</fieldset>
-					<p>
-						<input value=" RECEBER E FINALIZAR " type="submit" /> 
-						<a href="#"	onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+${comanda} ">CANCELAR</a>
+					<p style="text-align: center">
+						<input value=" RECEBER E FINALIZAR " type="submit" class="btn btn-success" style="height: 2.3em;"/> 
+						<a href="#"	class="btn btn-secondary" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+${comanda} ">CANCELAR</a>
 					</p>
 				</form>
 			</div>
@@ -219,10 +231,7 @@ body{
    		
    		function fechar(){
    			document.getElementById("inserir-itens-container").style.display = 'none'; 
-   		}  
-   		
-   		
+   		}    
 </script>
-
 </body>
 </html>

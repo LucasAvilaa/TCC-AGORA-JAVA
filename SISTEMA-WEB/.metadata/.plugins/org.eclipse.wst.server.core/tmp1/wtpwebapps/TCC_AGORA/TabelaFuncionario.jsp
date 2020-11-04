@@ -10,6 +10,7 @@
       <title>TABELA DE FUNCIONÁRIOS</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
+ 
    </head>
    <body>
    
@@ -37,13 +38,13 @@
          <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
-                  <th style="width: 147px; ">NOME</th>
-                  <th style="width: 141px; ">SOBRENOME</th>
-                  <th style="width: 126px; ">RG</th>
-                  <th style="width: 147px; ">CPF</th>
-                  <th style="width: 208px; height: 34px">DATA NASCIMENTO</th>
-                  <th style="width: 67px; ">SEXO</th>
-                  <th colspan="2" style="width: 72px; ">AÇÃO</th>
+                  <th>NOME</th>
+                  <th>SOBRENOME</th>
+                  <th>RG</th>
+                  <th>CPF</th>
+                  <th>DATA NASCIMENTO</th>
+                  <th>SEXO</th>
+                  <th colspan="2" style="text-align: center" >AÇÃO</th>
                </tr>
             </thead>
             <tbody>
@@ -67,8 +68,8 @@
                      <td>
                         <c:out value="${funcionario.sexo}" />
                      </td>
-                     <td><a href='ControlFuncionario?action=Edit&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
-                     <td><a href='ControlFuncionario?action=Delete&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlFuncionario?action=Edit&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                     <td><a href='ControlFuncionario?action=Delete&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

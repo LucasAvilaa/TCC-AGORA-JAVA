@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="trocou"/>
 		<list key="findhistory">
+			<item value="trocou"/>
+			<item value="funcionario"/>
 			<item value="PROC_VENDA_ESTAB"/>
 			<item value="800"/>
 			<item value="receber.getDinheiro()"/>
@@ -21,8 +23,6 @@
 			<item value="SYSO"/>
 			<item value="btn"/>
 			<item value="PE"/>
-			<item value="PES"/>
-			<item value="p"/>
 		</list>
 		<list key="replacehistory">
 			<item value=" "/>
