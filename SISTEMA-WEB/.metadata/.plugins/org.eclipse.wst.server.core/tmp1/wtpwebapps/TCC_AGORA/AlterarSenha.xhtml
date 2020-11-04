@@ -5,6 +5,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="shortcut icon" href="img/Logo_Padaria.png"/>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 	<title>ALTERAR SENHA</title>
 </head>
 
@@ -15,10 +17,10 @@
 			<img></img>
 
 			<fieldset id="alterarSenha">
-				<legend> </legend>
+				<legend>ALTERAR SENHA</legend>
 
 				<p><label for="user">USUÁRIO</label></p>
-				<p><input style="width: 294px;" type="text" id="user" name="username" required="required" placeholder="email@email.com"/></p>
+				<p><input style="width: 294px;" type="email" id="user" name="username" required="required" placeholder="email@email.com"/></p>
 
 				<p><label for="cpf">CPF</label></p>
 				<p>	<input style="width: 294px;" type="text" id="cpf" name="cpf" required="required" placeholder="XXX.XXX.XXX-XX"/></p>
@@ -27,16 +29,26 @@
 				<p>	<input type="password" name="password" id="senha" style="width: 294px;" required="required" placeholder="*****************"/></p>
 
 				<p><label for="senhaCon">CONFIRMAR SENHA</label></p>
-				<p>	<input type="password" name="passwordConf" id="senhaCon" style="width: 294px;" required="required" placeholder="*****************"/></p>
+				<p>	<input type="password" name="passwordConf" id="senhaCon" onchange="valida();" style="width: 294px;" required="required" placeholder="*****************"/></p>
 
 				<p> <input type="submit" value="ALTERAR" style="width: 294px;" />
 					<a href="Login.xhtml">CANCELAR</a>
 				</p>	
-			</fieldset>
-
-		</form>
-
+			</fieldset> 
+		</form> 
 	</div>
-</body>
-
+	<script type="text/javascript">
+	$("#cpf").mask("999.999.999-99");
+	
+		function valida(){
+			var senha = document.getElementById("senha").value;
+			var confirmaSenha = document.getElementById("senhaCon").value;	
+			if(senha != confirmaSenha){
+				window.alert("AS SENHA NÃO CONFEREM");
+				document.getElementById("senhaCon").value = "";
+				document.getElementById("senhaCon").focus();
+			} 
+		} 
+	</script>
+</body> 
 </html>

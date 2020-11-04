@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>PEDIDO DE COMPRA</title>
 <link rel="shortcut icon" href="img/Logo_Padaria.png" />
 <script
@@ -23,7 +23,7 @@
 	</jsp:include>
 
 	<f:view>
-		<form action="ControlItensCompra" method="POST" name="cadastroCompra">
+		<form action="ControlItensCompra" method="post" name="cadastroCompra">
 
 			<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">PEDIDO DE COMPRA</span></h1>
             
@@ -37,7 +37,7 @@
 					<input type="button" value=" FINALIZAR COMPRA " class="btn btn-primary" style="width: 12em; height: 2.5em; margin-right:0.4em"/>
 				</a>
 				<a href="ControlCompra?action=Tabela"> 
-					<input type="button" value=" VOLTAR " class="btn btn-danger" style="height: 2.5em;"> 
+					<input type="button" value=" VOLTAR " class="btn btn-danger" style="height: 2.5em;" /> 
 				</a>
 				
 			</p>
@@ -87,11 +87,11 @@
 								</td>
 								<td><a
 									href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'
-									 >  Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR"></a></td>
+									 >  Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></a></td>
 									<!-- ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/> -->
 								<td><a
 									href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
-									Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR">
+									Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" />
 										</a></td>
 
 							</tr>
@@ -114,7 +114,7 @@
 		</form>
 		<div class="inserir-itens-container" id="inserir-itens-container">
 			<div class="inserir-itens">
-				<form action="ControlCompra" method="POST" name="cadastroItensCompra">
+				<form action="ControlCompra" method="post" name="cadastroItensCompra">
 
 					<fieldset id="informacoes">
 					<legend class="text-center margintop h2" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">ITEM</span></legend>
@@ -136,15 +136,14 @@
 						 
 					</fieldset>
 					<p>
-						<input value="ADICIONAR" type="submit" class="btn btn-success">
+						<input value="ADICIONAR" type="submit" class="btn btn-success" />
 						<a href="#" onclick="this.href='ControlCompra?action=EditCompra&idCompra='+ ${compra.idCompra}" class="btn btn-dark">CANCELAR</a>
 					</p>
 				</form>
 			</div>
 		</div>
 	</f:view>
-</body>
-<script>     
+	<script>     
 	var url_atual = window.location.href;
    	if(url_atual.indexOf("/ControlCompra?action=EditItens&idCompra=") != -1){
    		document.getElementById("inserir-itens-container").style.display = 'flex';  
@@ -156,4 +155,5 @@
    			document.getElementById("inserir-itens-container").style.display = 'none'; 
    		}   
    </script>
+</body> 
 </html>

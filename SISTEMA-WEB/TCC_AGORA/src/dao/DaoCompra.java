@@ -193,12 +193,9 @@ public class DaoCompra {
 
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_COMPRAS");
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_COMPRAS ORDER BY ID_COMPRA DESC");
 			ResultSet rs = ps.executeQuery();
-			
-	//		PreparedStatement ps2 = con.getConexao().prepareStatement("SELECT DISTINCT SUM(SUBTOTAL) AS TOTAL FROM VW_COMPRA GROUP BY ID_COMPRA");
-	//		ResultSet rs2 = ps2.executeQuery();
-
+		 
 			while (rs.next()) {
 				TbCompra compra = new TbCompra();
 				compra.setIdCompra(rs.getInt("ID_COMPRA")); 

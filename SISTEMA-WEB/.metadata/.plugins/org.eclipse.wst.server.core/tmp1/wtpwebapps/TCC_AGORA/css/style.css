@@ -59,16 +59,14 @@
  #conteudo_tabelas h1{
      text-align: center;
      padding: 100px;
-}
- #tabelas{
-}
+} 
+
  #tabelas table{
      width: 300px;
      height: 600px;
      margin: auto;
 }
- td{
-}
+
  .campos{
      text-align: center;
      margin-bottom: 25px;

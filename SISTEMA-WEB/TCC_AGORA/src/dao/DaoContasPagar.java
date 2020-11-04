@@ -77,7 +77,7 @@ public class DaoContasPagar {
 		TbCompra compra = null;
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR"); 
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_CONTAS_PAGAR ORDER BY ID_PAGAR DESC"); 
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {  
