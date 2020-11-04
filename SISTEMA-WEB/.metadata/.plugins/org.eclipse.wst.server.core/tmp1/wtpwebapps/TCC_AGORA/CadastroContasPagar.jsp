@@ -7,10 +7,10 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="UTF-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>CONTAS A PAGAR</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
-      <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
+      <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
       <style>
@@ -24,18 +24,16 @@
    			response.sendRedirect("Login.xhtml");
    		}
    	%>
-      <jsp:include page="index.jsp" flush="false">
-         <jsp:param name="cabecalho" value="cabecalho"/>
-      </jsp:include>
+     <jsp:include page="index.jsp"></jsp:include>
   <f:view>  
-         <form action="ControlContasPagar" method="POST" name="cadastroContasPagar"> 
+         <form action="ControlContasPagar" method="post" name="cadastroContasPagar"> 
          
             <h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Inserir conta a pagar</span></h1>
 <div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 6%; width: 27em; font-family: sans-serif">
             
            
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em">
+            <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em" />
              <a href="ControlContasPagar?action=Tabela"  class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
                <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
@@ -60,7 +58,7 @@
                </p>   
                <p style="text-align: center">
                   <label class="font-weight-bold" style="text-align: left">
-                     DATA VENCIMENTO:  <br/><input name="dataVencimento" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${conta.dataVencimento}"/>" required="required" style="width: 248px; ">
+                     DATA VENCIMENTO:  <br/><input name="dataVencimento" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${conta.dataVencimento}"/>" required="required" style="width: 248px; " />
                   
                   </label>
                </p> 
@@ -73,6 +71,5 @@
             </div>
          </form>
    </f:view>
-   </body> 
-   </body> 
+   </body>  
 </html>	

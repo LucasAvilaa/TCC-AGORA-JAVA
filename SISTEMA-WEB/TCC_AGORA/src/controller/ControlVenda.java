@@ -118,6 +118,10 @@ public class ControlVenda extends HttpServlet {
 			lista.setTbProduto(produto);
 		}
 		
+		receber.setDebito(BigDecimal.valueOf(Double.valueOf(0)));
+		receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(0))); 
+		receber.setCredito(BigDecimal.valueOf(Double.valueOf(0)));
+		
 		if(request.getParameter("formaPagamento") != null) {
 			receber.setMetodoPagamento(request.getParameter("formaPagamento"));
 			System.out.println("METODO DE PAGAMENTO " + receber.getMetodoPagamento());

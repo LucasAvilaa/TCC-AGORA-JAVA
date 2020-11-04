@@ -81,24 +81,38 @@ public class ControlContasReceber extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 
-		if (request.getParameter("credito") != "") {
-			receber.setCredito(BigDecimal.valueOf(Double.parseDouble(request.getParameter("credito"))));
+		receber.setDebito(BigDecimal.valueOf(Double.valueOf(0)));
+		receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(0))); 
+		receber.setCredito(BigDecimal.valueOf(Double.valueOf(0)));
+		
+		receber.setMetodoPagamento(request.getParameter("condicaoPagamento")); 
+		
+		if(request.getParameter("condicaoPagamento").equals("DI") || request.getParameter("condicaoPagamento").equals("DINHEIRO")) {
+			if (!request.getParameter("dinheiro").equals("R$ 0.00")) {
+				receber.setDinheiro(BigDecimal.valueOf(Double.parseDouble(request.getParameter("dinheiro").replace("R$ ",""))));
+			}
+		}else if (request.getParameter("condicaoPagamento").equals("DE") || request.getParameter("condicaoPagamento").equals("DEBITO")){
+				if (!request.getParameter("debito").equals("R$ 0.00")) {
+					receber.setDebito(BigDecimal.valueOf(Double.parseDouble(request.getParameter("debito").replace("R$ ",""))));
+			}
 		}
-		if (request.getParameter("debito") != "") {
-			receber.setDebito(BigDecimal.valueOf(Double.parseDouble(request.getParameter("debito"))));
-		}
-		if (request.getParameter("dinheiro") != "") {
-			receber.setDinheiro(BigDecimal.valueOf(Double.parseDouble(request.getParameter("dinheiro"))));
-		}
-		receber.setMetodoPagamento(request.getParameter("condicaoPagamento"));
-		// receber.setIdReceber(Integer.parseInt(request.getParameter("idReceber")) );
-
-		Date dataReceber = null;
+		else if(request.getParameter("condicaoPagamento").equals("CR") || request.getParameter("condicaoPagamento").equals("CREDITO")){
+			if (!request.getParameter("credito").equals("R$ 0.00")) {
+				receber.setCredito(BigDecimal.valueOf(Double.parseDouble(request.getParameter("credito").replace("R$ ",""))));
+			}
+		} 
+		
+		Date dataPrevista = null;
 		try {
-			DateFormat dataCru = new SimpleDateFormat("dd/MM/yyyy");
-			dataReceber = dataCru.parse(request.getParameter("dataPrevista"));
+			DateFormat dataCru = new SimpleDateFormat("yyyy-mm-dd");
+			Date date = dataCru.parse(request.getParameter("dataPrevista"));
 
-			receber.setDataPrevistaReceber(dataReceber);
+			DateFormat dataConv = new SimpleDateFormat("dd-mm-yyyy");
+			String date2 = dataConv.format(date);
+
+			dataPrevista = new SimpleDateFormat("dd-MM-yyyy").parse(date2); 
+			  
+			receber.setDataPrevistaReceber(dataPrevista);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -106,9 +120,13 @@ public class ControlContasReceber extends HttpServlet {
 		}
 		Date dataCompra = null;
 		try {
-			DateFormat dataCru = new SimpleDateFormat("dd/MM/yyyy");
-			dataCompra = dataCru.parse(request.getParameter("dataVenda"));
+			DateFormat dataCru = new SimpleDateFormat("yyyy-mm-dd");
+			Date date = dataCru.parse(request.getParameter("dataVenda"));
 
+			DateFormat dataConv = new SimpleDateFormat("dd-mm-yyyy");
+			String date2 = dataConv.format(date);
+
+			dataCompra = new SimpleDateFormat("dd-MM-yyyy").parse(date2);  
 			receber.setDataCompra(dataCompra);
 
 		} catch (ParseException e) {

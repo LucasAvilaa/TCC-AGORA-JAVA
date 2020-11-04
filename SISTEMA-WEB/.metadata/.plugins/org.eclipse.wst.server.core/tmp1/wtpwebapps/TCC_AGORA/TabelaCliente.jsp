@@ -9,7 +9,7 @@
       <meta content="UTF-8" />
       <title>TABELA DE CLIENTES</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
-      <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css" />
+     <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
    </head>
    <body>
    	<%
@@ -18,9 +18,7 @@
    			response.sendRedirect("Login.xhtml");
    		}
    	%>
-      <jsp:include page="index.jsp" flush="false">
-         <jsp:param name="cabecalho" value="cabecalho"/>
-      </jsp:include>
+      <jsp:include page="index.jsp"></jsp:include>
       <f:view>
         
          	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Lista de Clientes</span></h1>

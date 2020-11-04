@@ -1,7 +1,8 @@
 package dao;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet; 
+import java.sql.ResultSet;
+
 import factory.Conexao;
 import model.TbFuncionario;
 import model.TbLogin;
@@ -38,25 +39,47 @@ public class DaoLogin {
 				return false;
 			  }
 	}
+	public boolean validaUsuario(TbLogin login) { 
+		try {
+			con = new Conexao();  
+			TbLogin usuario = new TbLogin(); 	
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT USUARIO FROM TB_LOGIN WHERE USUARIO = ?");
+			ps.setString(1, login.getUsuario());
+			ResultSet rs =  ps.executeQuery();
+			
+			while(rs.next()) {
+				usuario.setUsuario(rs.getString("USUARIO"));
+				System.out.println("USUARIO SELECIONADO NO BANCO: " + rs.getString("USUARIO").toString());
+			} 
+			return true;
+			
+		} catch (Exception e) {   
+			e.printStackTrace();
+			return false;
+		}  
+	} 
 	
 	public boolean validaLogin(TbLogin log) throws Exception{
 		con = new Conexao();  
-		TbLogin senha = null;
+		TbLogin senha = new TbLogin();
 		PreparedStatement ps  = con.getConexao().prepareStatement("SELECT SENHA FROM TB_LOGIN WHERE USUARIO = ?");
 		ps.setString(1, log.getUsuario());
 		ResultSet rs =  ps.executeQuery();
 		
-		while(rs.next()) { 
-			senha = new TbLogin();
-			senha.setSenha(rs.getString("SENHA"));		
+		while(rs.next()) {   
+			senha.setSenha(rs.getString("SENHA"));	 
 		}
 		ps.close();
-		if(log.getSenha().equals(senha.getSenha())) {
-			return true;
-		}
-		else {
+		if(senha.getSenha() == null) { 
 			return false;
-		}
+		}else {
+			if(log.getSenha().equals(senha.getSenha())) {
+				return true; 
+			} 
+			else {
+				return false;
+			} 
+		} 
 	}
 	
 	public TbLogin loginFuncionario(TbFuncionario funcionario) {

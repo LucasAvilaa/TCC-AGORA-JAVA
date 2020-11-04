@@ -42,13 +42,14 @@ public class ControlLogin extends HttpServlet {
 		model.setUsuario(request.getParameter("username"));
 		model.setSenha(request.getParameter("password"));
 
-		try {
+		try { 
 			if (log.validaLogin(model)) {
 				HttpSession http = request.getSession();
 				http.setAttribute("usuario", model.getUsuario());
 				response.sendRedirect("index.jsp");
 				System.out.println("LOGADO COM SUCESSO");
-			} else {
+			} 
+			 else {
 				response.sendRedirect("Login.xhtml");
 				System.out.println("USUARIO OU SENHA INCORRETO");
 			}
