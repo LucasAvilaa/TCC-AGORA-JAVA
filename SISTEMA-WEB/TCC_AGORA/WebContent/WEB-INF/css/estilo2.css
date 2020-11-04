@@ -1,0 +1,37 @@
+@charset "UTF-8";
+ form{
+     width: 505px;
+     margin: auto;   
+}
+ input, textarea {
+     font-family: sans-serif;
+     font-weight: normal;
+     font-size: 13pt;
+     background-color: rgba(255,255,255,0.8);
+     padding-left: 3px;
+} 
+ input:hover, textarea:hover {
+     background-color: #dddddd;
+}
+ legend{
+     color: #888888;
+     font-weight: bold;
+     font-size: 13pt;
+     font-family: sans-serif; 
+}
+ fieldset {
+     border-color: #cecece;
+     margin: 20px;
+}
+ a, a:visited{
+     text-decoration: none;
+     color: black;
+     border: 2px green;
+}
+ th{
+     font-size:20px;
+}
+ tr{
+     font-size:18px;
+} 
+	

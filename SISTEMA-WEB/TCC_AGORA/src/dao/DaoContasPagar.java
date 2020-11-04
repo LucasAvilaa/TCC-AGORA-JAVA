@@ -54,7 +54,7 @@ public class DaoContasPagar {
 				while (rs.next()) { 
 					 contas = new TbContasPagar(); 
 					 compra = new TbCompra();
-					 compra.setDataCriada(rs.getDate("DATA_CRIADA"));
+					 compra.setDataCriada(rs.getTimestamp("DATA_CRIADA"));
 					 if(rs.getInt("ID_COMPRA") != 0) {
 						 compra.setIdCompra(rs.getInt("ID_COMPRA")); 
 					 } 
@@ -83,7 +83,7 @@ public class DaoContasPagar {
 			while (rs.next()) {  
 				 contas = new TbContasPagar(); 
 				 compra = new TbCompra();
-				 compra.setDataCriada(rs.getDate("DATA_CRIADA"));
+				 compra.setDataCriada(rs.getTimestamp("DATA_CRIADA"));
 				 contas.setTbCompra(compra);
 				 contas.setDataVencimento(rs.getDate("DATA_VENCIMENTO")); 
 				 contas.setIdPagar(rs.getInt("ID_PAGAR"));

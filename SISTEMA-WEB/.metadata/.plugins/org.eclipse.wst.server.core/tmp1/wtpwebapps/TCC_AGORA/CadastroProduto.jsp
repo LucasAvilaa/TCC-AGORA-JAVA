@@ -12,6 +12,9 @@
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+      <style type="text/css">
+      
+      </style>
    </head>
    <body>
    	<%
@@ -30,7 +33,7 @@
            
             <br />
             <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em" />
-               <a href="ControlProduto?action=Tabela" class="btn btn-danger" style="width: 10em; height: 2.5em;"> CANCELAR</a> </p>
+               <a href="ControlProduto?action=Tabela" class="btn btn-danger cancelar text-white" style="width: 10em; height: 2.5em;border:0px; "> CANCELAR</a> </p>
             <fieldset id="informacoes">
                <legend style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
                <p style="text-align: center">

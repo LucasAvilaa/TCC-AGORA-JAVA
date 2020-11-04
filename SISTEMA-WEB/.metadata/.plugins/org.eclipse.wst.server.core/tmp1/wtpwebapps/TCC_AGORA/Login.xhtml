@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,15 +9,14 @@
       <link rel="stylesheet" href="css/bootstrap.min.css"/>
       <link rel="stylesheet" href="css/estilo.css"/>
       <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" /> 
-      <style >
-      body{
+      <style>
+       body{
       background-image: url(https://images3.alphacoders.com/536/53625.jpg);
       
       }
       fieldset{
       border: 0px solid red;
-      margin: 0 auto;
-      background: 
+     
       }
       legend{
       width: 15em;
@@ -31,7 +30,7 @@
       left: 2em;
       }
       form{
-      margin-top: 5em;
+      margin-top: 0 auto;
       width:50em;
       height:30em;
       text-align: center;
@@ -40,25 +39,47 @@
       input{
       height: 1.8em;
       width: 18em;
+      padding: 2px;
       }
-
+      #campos{
+      	width: 18em;
+      	align: center;
+      	text-align: left;
+      	padding: 5px;
+      }
       
+      h2{
+      	margin: 0 auto 25px auto;
+      	padding: 5px;
+      	width: 16em; 
+      }
+      
+	#segura_login{
+	width: 50em;
+	height: 32em;
+	margin: 0 auto;
+	}
+ 		.link_login{
+ 		color: #3014ff;
+ 		}
       </style>
    </head>
    <body>
+   <div id="segura_login">
       <form action="ControlLogin" method="post">
          <fieldset id="login">
             <legend><img src="img/Logo_Padaria.png"/></legend>
             <div id="fundo">
-            <h2 class="bg-dark text-white">REDE DE PADARIAS ÀGORA</h2>
-            <p><label for="" class="bg-dark text-white d-block">USUARIO </label></p>
-            <p><input  type="text" name="username"/></p>
-            <p><label for="" class="bg-dark text-white d-block">SENHA</label></p>
-            <p><input type="password" name="password"   /></p>
-            <p><a href="ControlAlterarSenha">Esqueceu sua senha?</a></p>
+            <h2 class="bg-dark text-white" id="rede">REDE DE PADARIAS AGORA</h2>
+            <p ><label class="bg-dark text-white " id="campos" >USUARIO </label></p>
+            <p><input  type="text" name="username" placeholder="E-mail"/></p>
+            <p><label class="bg-dark text-white " id="campos">SENHA</label></p>
+            <p><input type="password" name="password"  placeholder="Senha" /></p>
+            <p><a href="ControlAlterarSenha" class="text-white">Esqueceu sua senha?</a></p>
             <p><input type="submit" value="ENTRAR" class="btn btn-success botao" style="height: 2.4em;"/></p>
             </div>
          </fieldset>
       </form>
+      </div>
    </body>
 </html>

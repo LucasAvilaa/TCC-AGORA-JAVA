@@ -10,6 +10,7 @@
       <title>COMPRAS</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
+    
    </head>
    <body>
    	<%
@@ -36,12 +37,12 @@
          <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
-                  <th style="width: 141px; ">REFERÊNCIA</th>
-                  <th style="width: 167px; ">DATA CRIADA</th>                  
-                  <th style="width: 197px; ">DATA FINALIZADA</th> 
-                  <th style="width: 160px; ">TOTAL</th>
-                  <th style="width: 154px; ">SITUAÇÃO</th>
-                  <th colspan="2" style="width: 72px; ">AÇÃO</th>
+                  <th>REFERÊNCIA</th>
+                  <th>DATA CRIADA</th>                  
+                  <th>DATA FINALIZADA</th> 
+                  <th>TOTAL</th>
+                  <th>SITUAÇÃO</th>
+                  <th colspan="2" style="text-align: center" >AÇÃO</th>
                </tr>
             </thead>
             <tbody>
@@ -51,10 +52,10 @@
                         <c:out value="COMP/${compra.idCompra}" />
                      </td>
                      <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataCriada}"/> 
+                        <fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${compra.dataCriada}"/> 
                      </td>
                      <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${compra.dataFinalizada}"/>
+                        <fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${compra.dataFinalizada}"/>
                      </td>
                      <td> 
                         <c:out value="R$ ${compra.total}" />
@@ -62,8 +63,8 @@
                      <td> 
                         <c:out value="${compra.status}" />
                      </td> 
-                     <td><a href='ControlCompra?action=EditCompra&idCompra=<c:out value="${compra.idCompra}"/>'> <button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 25px; height: 25px;" title="ATUALIZAR" /> </button></a></td>
-                     <td><a href='ControlCompra?action=DeleteCompra&idCompra=<c:out value="${compra.idCompra}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlCompra?action=EditCompra&idCompra=<c:out value="${compra.idCompra}"/>'><button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                     <td><a href='ControlCompra?action=DeleteCompra&idCompra=<c:out value="${compra.idCompra}"/>'><button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>
