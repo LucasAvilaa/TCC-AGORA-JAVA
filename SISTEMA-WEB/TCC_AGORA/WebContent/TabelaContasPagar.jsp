@@ -40,7 +40,7 @@
                   <th style="width: 193px; ">DATA EMISSÃO</th> 
                   <th style="width: 105px; ">VENCIMENTO</th>
                   <th style="width: 181px; ">VALOR TOTAL</th>
-                  <th colspan="2" style="width: 72px; ">AÇÃO</th>
+                  <th colspan="2" style="text-align: center" >AÇÃO</th>
                </tr>
             </thead>
             <tbody>
@@ -56,7 +56,7 @@
                         <c:out value="${conta.categoria}" />
                      </td>
                      <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${conta.tbCompra.dataCriada}"/> 
+                        <fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${conta.tbCompra.dataCriada}"/> 
                      </td>
                      <td>
                      	<fmt:formatDate pattern="dd/MM/yyyy" value="${conta.dataVencimento}"/> 
@@ -64,8 +64,8 @@
                      <td>
                         <c:out value="R$ ${conta.valorPagar}" />
                      </td> 
-                     <td><a href='ControlContasPagar?action=Edit&idPagar=<c:out value="${conta.idPagar}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
-                     <td><a href='ControlContasPagar?action=Delete&idPagar=<c:out value="${conta.idPagar}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlContasPagar?action=Edit&idPagar=<c:out value="${conta.idPagar}"/>'><button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                     <td><a href='ControlContasPagar?action=Delete&idPagar=<c:out value="${conta.idPagar}"/>'><button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

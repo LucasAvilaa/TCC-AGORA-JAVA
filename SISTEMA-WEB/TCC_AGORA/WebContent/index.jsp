@@ -6,7 +6,7 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
    		
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <title>REDE DE PADARIAS AGORA</title>
+      <title>REDE DE PADARIAS ÀGORA</title>
       
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -67,13 +67,14 @@ display: block;
             <a href="ControlFuncionario?action=Tabela" class="nav-link text-light bg-dark d-inline">Funcionarios</a>
             <a href="ControlEstabelecimento?action=Tabela" class="nav-link text-light bg-dark d-inline">Filiais</a>
             <a href="ControlVenda?action=Caixa" class="nav-link text-light bg-dark d-inline">Venda</a></h5>
+            
              <div class="dropdown">
   			<button class="dropbtn  text-light bg-dark d-inline font-weight-bold nav-link" style="margin-bottom: 2em"><h5>Financeiro</h5></button>
   			<div class="dropdown-content bg-dark text-white">
    				 <a href="ControlContasPagar?action=Tabela">Contas a pagar</a>
    			 	  <a href="ControlContasReceber?action=Tabela">Contas a receber</a>
   				</div>
-			</div>
+			 </div>
            <h5> <a href="ControlLogin?action=Deslogar" class="nav-link text-light bg-dark d-inline">Sair</a></h5>
   </div>
 

@@ -10,6 +10,7 @@
       <title>TABELA DE CLIENTES</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
      <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
+  
    </head>
    <body>
    	<%
@@ -33,13 +34,13 @@
          <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
-                  <th style="width: 147px; ">NOME</th>
-                  <th style="width: 141px; ">SOBRENOME</th>
-                  <th style="width: 126px; ">RG</th>
-                  <th style="width: 145px; ">CPF</th>
-                  <th style="width: 208px; height: 34px">DATA NASCIMENTO</th>
-                  <th style="width: 67px; ">SEXO</th>
-                  <th colspan="2" style="width: 72px; ">AÇÃO</th>
+                  <th >NOME</th>
+                  <th >SOBRENOME</th>
+                  <th >RG</th>
+                  <th>CPF</th>
+                  <th>DATA NASCIMENTO</th>
+                  <th >SEXO</th>
+                  <th colspan="2" style="text-align: center" >AÇÃO</th>
                </tr>
             </thead>
             <tbody>
@@ -58,13 +59,13 @@
                         <c:out value="${cliente.cpf}" />
                      </td>
                      <td>
-                        <fmt:formatDate pattern="yyyy-MM-dd" value="${cliente.dtNasc}" />
+                        <fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.dtNasc}" />
                      </td>
                      <td>
                         <c:out value="${cliente.sexo}" />
                      </td>
-                     <td><a href='ControlCliente?action=Edit&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
-                     <td><a href='ControlCliente?action=Delete&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlCliente?action=Edit&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                     <td><a href='ControlCliente?action=Delete&idCli=<c:out value="${cliente.idCli}"/>&cod=<c:out value="${cliente.cpf}"/>'><button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

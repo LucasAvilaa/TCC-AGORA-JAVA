@@ -10,9 +10,19 @@
       <title>CADASTRO DE CLIENTE</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
+            <link rel="stylesheet" type="text/css" href="css/estilo.css" />
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script type="text/javascript" src="js/javascript.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+      <style>
+    .botoes{
+	margin-left: 2em;
+	border: 0px;
+    }
+    .botoes a{
+    border: 0px;
+    }
+    </style>	
    </head>
    <body> 
    	<%
@@ -24,13 +34,11 @@
       <jsp:include page="index.jsp"></jsp:include>
       <f:view>
          <form action="ControlCliente" method="post" name="cadastroCliente">
-            
             	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de Clientes</span></h1>
-           			<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 5%; width: 27em; font-family: sans-serif">
-           
-            
+           			<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 5%; width: 30em; font-family: sans-serif">
             <br />
-            <p><input value="ENVIAR" type="submit" id="btn"  class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em" /> <a href="ControlCliente?action=Tabela"  class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
+            <p class="botoes"><input value="ENVIAR" type="submit" id="btn"  class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em" />
+             <a href="ControlCliente?action=Tabela"  class="btn btn-danger text-white" style="width: 10em; height: 2.5em; ">CANCELAR</a> </p>
             <fieldset id="informacoes">
                <legend style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
                <p style="text-align: center">
@@ -57,7 +65,7 @@
                   </label>
                   <label class="font-weight-bold">
                      SEXO: 
-                     <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">
+                     <h:selectOneMenu style="width: 116px; height: 24px" id="sexo">
                         <f:selectItem itemValue="#{cliente.sexo}"/>
                         <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
                         <f:selectItem itemValue="M" itemLabel="MASCULINO"/>
@@ -89,7 +97,7 @@
                      RUA: <input type="text" name="rua" readonly="readonly" style="width: 221px; "value="<c:out value="${endereco.rua}"/>" />
                   </label>
                   <label class="font-weight-bold">
-                     NÚMERO: <input type="number" name="numero" id="numero" onchange="validaNumero();" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
+                     NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
                   </label>
                </p>
             </fieldset>
@@ -97,12 +105,12 @@
                <legend>CONTATO</legend>
                <p style="text-align: center">
                   <label class="font-weight-bold">
-                     EMAIL: <input type="email" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
+                     EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
                   </label>
                </p>
                <p style="text-align: center">
                   <label class="font-weight-bold">
-                     CELULAR: <input type="tel" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX " />
+                     CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX " />
                   </label>	
                </p>
             </fieldset>
@@ -110,12 +118,6 @@
          </form>
       </f:view> 
    <script>	
-   	 function validaNumero(){
-   		 if(document.getElementById("numero").value <= -1){
-   			document.getElementById("numero").value = "";
-   		 }
-   	 }
-   	
      $("#cep").mask("99999-999"); 
      $("#celular").mask("(99)99999-9999");
      $("#rg").mask("99.999.999-9");

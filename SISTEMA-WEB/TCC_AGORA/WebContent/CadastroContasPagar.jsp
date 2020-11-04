@@ -34,7 +34,7 @@
            
             <br />
             <p><input value="ENVIAR" type="submit" id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em" />
-             <a href="ControlContasPagar?action=Tabela"  class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
+             <a href="ControlContasPagar?action=Tabela"  class="btn btn-danger text-white" style="width: 10em; height: 2.5em; border: 0px;">CANCELAR</a> </p>
             <fieldset id="informacoes">
                <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
                <p style="text-align: center">

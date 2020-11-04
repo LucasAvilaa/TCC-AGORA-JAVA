@@ -65,7 +65,8 @@ public class DaoVenda {
 					TbListaProduto lista = new TbListaProduto();
 					TbComanda comand = new TbComanda();
 					TbProduto produto = new TbProduto();
-					lista.setDataCompra(rs.getDate("DATA_COMPRA"));
+					lista.setDataCompra(rs.getTimestamp("DATA_COMPRA"));
+					System.out.println("DATA DA COMPRA SELECIONADA: " + rs.getTimestamp("DATA_COMPRA") + " DATA ARMAZENADA: " + lista.getDataCompra());
 					lista.setDataSaida(rs.getDate("DATA_SAIDA"));
 					lista.setQuantidade(rs.getInt("QUANTIDADE"));
 					lista.setIdCompra(rs.getInt("ID_COMPRA")); 
@@ -121,12 +122,12 @@ public class DaoVenda {
 		TbListaProduto listaProduto = new TbListaProduto(); 
 		try {
 				con = new Conexao();
-				PreparedStatement ps = con.getConexao().prepareStatement("SELECT DATA_COMPRA FROM VW_VENDA WHERE ID_COMANDA_LISTA = ? AND DATA_COMPRA IS NOT NULL"); 
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_VENDA WHERE ID_COMANDA_LISTA = ? AND DATA_COMPRA IS NOT NULL"); 
 				ps.setInt(1, comanda.getIdComanda());
 				ResultSet rs = ps.executeQuery();
 				
 				while (rs.next()) {   
-					listaProduto.setDataCompra(rs.getDate("DATA_COMPRA"));  
+					listaProduto.setDataCompra(rs.getTimestamp("DATA_COMPRA"));  
 				} 	 
 		} catch (Exception e) {
 			e.printStackTrace();

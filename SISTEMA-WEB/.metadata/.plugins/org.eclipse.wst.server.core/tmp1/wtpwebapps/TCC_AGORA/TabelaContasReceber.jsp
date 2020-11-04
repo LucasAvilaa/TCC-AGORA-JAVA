@@ -42,7 +42,7 @@
                   <th style="width: 105px; ">CREDITO</th>  
                   <th style="width: 181px; ">DATA VENDA</th>
                   <th style="width: 181px; ">DATA PREVISTA RECEBER</th>
-                  <th colspan="2" style="width: 72px; ">AÇÃO</th>
+                 <th colspan="2" style="text-align: center" >AÇÃO</th>
                </tr>
             </thead>
             <tbody>
@@ -64,13 +64,13 @@
                         <c:out value="R$ ${receber.credito}" />
                      </td> 
                      <td> 
-                     	<fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataCompra}"/> 
+                     	<fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${receber.dataCompra}"/> 
                      </td>
                      <td>
                         <fmt:formatDate pattern="dd/MM/yyyy" value="${receber.dataPrevistaReceber}"/>
                      </td> 
-                     <td><a href='ControlContasReceber?action=Edit&idReceber=<c:out value="${receber.idReceber}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
-                     <td><a href='ControlContasReceber?action=Delete&idReceber=<c:out value="${receber.idReceber}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlContasReceber?action=Edit&idReceber=<c:out value="${receber.idReceber}"/>'><button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                     <td><a href='ControlContasReceber?action=Delete&idReceber=<c:out value="${receber.idReceber}"/>'><button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

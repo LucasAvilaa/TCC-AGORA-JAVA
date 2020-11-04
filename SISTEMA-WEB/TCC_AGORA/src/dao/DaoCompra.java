@@ -86,8 +86,8 @@ public class DaoCompra {
 				}else {
 					compra.setStatus("COTAÇÃO");
 				}
-				compra.setDataCriada(rs.getDate("DATA_CRIADA"));
-				compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA"));
+				compra.setDataCriada(rs.getTimestamp("DATA_CRIADA"));
+				compra.setDataFinalizada(rs.getTimestamp("DATA_FINALIZADA"));
 			}
 
 		} catch (Exception e) {
@@ -114,8 +114,8 @@ public class DaoCompra {
 				}else {
 					compra.setStatus("COTAÇÃO");
 				}
-				compra.setDataCriada(rs.getDate("DATA_CRIADA"));
-				compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA"));
+				compra.setDataCriada(rs.getTimestamp("DATA_CRIADA"));
+				compra.setDataFinalizada(rs.getTimestamp("DATA_FINALIZADA"));
 			}
 
 		} catch (Exception e) {
@@ -193,7 +193,7 @@ public class DaoCompra {
 
 		try {
 			con = new Conexao();
-			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_COMPRAS ORDER BY ID_COMPRA DESC");
+			PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_COMPRA_TOTAL ORDER BY ID_COMPRA DESC");
 			ResultSet rs = ps.executeQuery();
 		 
 			while (rs.next()) {
@@ -207,9 +207,9 @@ public class DaoCompra {
 				}else {
 					compra.setStatus("COTAÇÃO");
 				}
-				compra.setDataCriada(rs.getDate("DATA_CRIADA"));
-				compra.setDataFinalizada(rs.getDate("DATA_FINALIZADA"));
-		//		compra.setTotal(rs2.getBigDecimal("TOTAL"));
+				compra.setDataCriada(rs.getTimestamp("DATA_CRIADA"));
+				compra.setDataFinalizada(rs.getTimestamp("DATA_FINALIZADA")); 
+				compra.setTotal(rs.getBigDecimal("TOTAL"));
 				listaCompra.add(compra);
 			}
 		} catch (Exception e) {
@@ -221,7 +221,7 @@ public class DaoCompra {
 	public void confirmaCompra(TbCompra compra) {
 		try {
 			con = new Conexao();
-			String sql = "UPDATE TB_COMPRAS SET STATUS = 'P' WHERE ID_COMPRA = ?";
+			String sql = "UPTimestamp TB_COMPRAS SET STATUS = 'P' WHERE ID_COMPRA = ?";
 			PreparedStatement ps = con.getConexao().prepareStatement(sql);
 			ps.setInt(1, compra.getIdCompra());
 			ps.executeUpdate();

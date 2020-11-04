@@ -20,14 +20,14 @@ public class DaoEstoque {
 		
 		if(acao.equals("I")) {
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ESTOQUE I,NULL,?,?,?"); 
-			ps.setInt(1, estoque.getTbProduto().getIdProduto() );
+			ps.setInt(1, estoque.getTbProduto().getIdProduto());
 			ps.setInt(2, estoque.getQuantidade()); 
 			ps.setDate(3, new java.sql.Date(estoque.getDataVencimento().getTime())); 
 		}		
 		else if(acao.equals("A")) { 			
 			ps = con.getConexao().prepareStatement("EXEC PROC_CRUD_ESTOQUE A,?,?,?,?");
 			ps.setInt(1, estoque.getIdEstoque());
-			ps.setInt(2, estoque.getTbProduto().getIdProduto() );
+			ps.setInt(2, estoque.getTbProduto().getIdProduto());
 			ps.setInt(3, estoque.getQuantidade()); 
 			ps.setDate(4, new java.sql.Date(estoque.getDataVencimento().getTime())); 
 		}else if(acao.equals("E")){ 
@@ -61,8 +61,8 @@ public class DaoEstoque {
 				
 				estoque.setIdEstoque(rs.getInt("ID_ESTOQUE"));
 				estoque.setQuantidade(rs.getInt("QUANTIDADE"));
-				estoque.setDataEntrada(rs.getDate("DATA_ENTRADA"));
-				estoque.setDataVencimento(rs.getDate("DATA_VENCIMENTO")); 
+				estoque.setDataEntrada(rs.getTimestamp("DATA_ENTRADA"));
+				estoque.setDataVencimento(rs.getTimestamp("DATA_VENCIMENTO")); 
 				} 			 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,8 +90,8 @@ public class DaoEstoque {
 								
 				estoque.setIdEstoque(rs.getInt("ID_ESTOQUE"));
 				estoque.setQuantidade(rs.getInt("QUANTIDADE"));
-				estoque.setDataEntrada(rs.getDate("DATA_ENTRADA"));
-				estoque.setDataVencimento(rs.getDate("DATA_VENCIMENTO"));
+				estoque.setDataEntrada(rs.getTimestamp("DATA_ENTRADA"));
+				estoque.setDataVencimento(rs.getTimestamp("DATA_VENCIMENTO"));
 				
 				listaEstoque.add(estoque); 
 		} 

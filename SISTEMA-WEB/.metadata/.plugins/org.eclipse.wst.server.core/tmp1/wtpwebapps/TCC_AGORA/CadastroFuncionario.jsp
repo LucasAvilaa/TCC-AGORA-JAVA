@@ -12,6 +12,15 @@
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+      <style>
+      .botoes{
+	margin-left: 2em;
+	border: 0px;
+    }
+    .botoes a{
+    border: 0px;
+    }
+      </style>
    </head>
    <body>
    <script type="text/javascript"> 
@@ -36,27 +45,25 @@
       <jsp:include page="index.jsp"></jsp:include>
       <f:view>
          <form action="ControlFuncionario" method="post" name="cadastrofuncionario">
-           
-            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de Funcionários</span></h1>
-<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 6%; width: 27em; font-family: sans-serif">
-           
+            <h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de Funcionários</span></h1>
+				<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 3%; width: 30em; font-family: sans-serif">
             <br />
-            <p><input value="ENVIAR" type="submit"  id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em" />
-             <a href="ControlFuncionario?action=tabela" class="btn btn-danger" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
+            <p class="botoes"><input value="ENVIAR" type="submit"  id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em" />
+             <a href="ControlFuncionario?action=tabela" class="btn btn-danger text-white" style="width: 10em; height: 2.5em;">CANCELAR</a> </p>
             <fieldset id="informacoes">
                <legend  style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark"
                >INFORMAÇÕES BÁSICAS </legend>
-               <p>
+               <p style="text-align: center">
                   <label  class="font-weight-bold">
                      NOME: <input name="nome"  maxlength="50" onchange="email()" onblur="email()" value="<c:out value="${funcionario.nome}"/>" required="required" style=" width: 364px; "/>
                   </label>
                </p>
-               <p>
+               <p style="text-align: center">
                   <label  class="font-weight-bold">
                      SOBRENOME: <input name="sobrenome" onchange="email()" onblur="email()" maxlength="50" value="<c:out value="${funcionario.sobrenome}"/>" required="required" style="width: 314px; "/>
                   </label>
                </p>
-               <p>
+               <p style="text-align: center">
                   <label  class="font-weight-bold">
                      CPF: <input name="cpf" id="cpf" onchange="email()" onblur="email()" value="<c:out value="${funcionario.cpf}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
                   </label>
@@ -64,14 +71,14 @@
                      RG: <input name="rg" id="rg" value="<c:out value="${funcionario.rg}"/>" placeholder="xx.xxx.xxx-x"  required="required" style="width: 179px; "/>
                   </label>
                </p>
-               <p>
+               <p style="text-align: center">
                   <label class="font-weight-bold">
                      NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; " />
                  				 
                   </label>
                   <label class="font-weight-bold">
                      SEXO: 
-                     <h:selectOneMenu style="width: 106px; height: 24px" id="sexo">
+                     <h:selectOneMenu style="width: 116px; height: 24px" id="sexo">
                         <f:selectItem itemValue="#{funcionario.sexo}"/>
                         <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
                         <f:selectItem itemValue="M" itemLabel="MASCULINO"/>
@@ -79,7 +86,7 @@
                      </h:selectOneMenu>
                   </label>
                </p>
-               <p>
+               <p style="text-align: center">
                   <label class="font-weight-bold">
                      <h:outputText value="CARGO: "/>
                      <h:selectOneMenu style="width: 166px; " id="cargo">
@@ -92,7 +99,7 @@
             </fieldset>
            <fieldset id="endereco">
                <legend>ENDEREÇO</legend>
-               <p>
+               <p style="text-align: center">
                   <label class="font-weight-bold">
                      CEP: <input type="text" name="cep" id="cep" style="width: 100px; "  value="<c:out value="${endereco.cep}"/>" />  
                   </label>
@@ -100,7 +107,7 @@
                      CIDADE: <input type="text" name="cidade" readonly="readonly"  style="width: 205px; "value="<c:out value="${endereco.cidade}"/>" />
                   </label>
                </p>
-               <p>
+               <p style="text-align: center">
                   <label class="font-weight-bold">
                      BAIRRO: <input type="text" name="bairro"  readonly="readonly" style="width: 232px; "value="<c:out value="${endereco.bairro}"/>" />
                   </label>
@@ -108,23 +115,23 @@
                      ESTADO: <input type="text" name="estado" readonly="readonly"style="width: 40px; "  value="<c:out value="${endereco.estado}"/>" />
                   </label>
                </p>
-               <p>
+               <p style="text-align: center">
                   <label class="font-weight-bold">
                      RUA: <input type="text" name="rua" readonly="readonly" style="width: 221px; "value="<c:out value="${endereco.rua}"/>" />
                   </label>
                   <label class="font-weight-bold">
-                     NÚMERO: <input type="number" name="numero" id="numero" onchange="validaNumero();" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
+                     NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
                   </label>
                </p>
             </fieldset>
             <fieldset id="contato">
                <legend>CONTATO</legend>
-               <p>
+               <p style="text-align: center">
                   <label class="font-weight-bold">
-                     EMAIL: <input type="email" name="emailContato" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
+                     EMAIL: <input type="text" name="emailContato" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
                   </label>
                </p>
-               <p>
+               <p style="text-align: center">
                   <label class="font-weight-bold">
                      CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX " />
                   </label>
@@ -132,12 +139,12 @@
             </fieldset>
             <fieldset id="Conjuntologin">
                <legend>LOGIN</legend>
-               <p>
+               <p style="text-align: center">
                   <label class="font-weight-bold">
                      LOGIN: <input type="email" name="login"  readonly="readonly" style="width: 354px; "value="<c:out value="${user.usuario}"/>" placeholder="seuemail@email.com" />
                   </label>
                </p>
-               <p>
+               <p style="text-align: center"> 
                   <label class="font-weight-bold">
                      SENHA: <input type="password"  name="senha" style="width: 174px; "value="<c:out value="**************"/>" placeholder="******************" />
                   </label>
@@ -147,12 +154,7 @@
          </form>
       </f:view> 
    <script> 
-   function validaNumero(){
- 		 if(document.getElementById("numero").value <= -1){
- 			document.getElementById("numero").value = "";
- 		 }
- 	 } 
-   
+    
       $("#cep").mask("99999-999"); 
       $("#celular").mask("(99)99999-9999");
       $("#rg").mask("99.999.999-9");

@@ -60,7 +60,7 @@ public class DaoContasReceber {
 					receber.setCredito(rs.getBigDecimal("CREDITO")); 	
 					receber.setDebito(rs.getBigDecimal("DEBITO")); 
 					receber.setDinheiro(rs.getBigDecimal("DINHEIRO"));
-					receber.setDataCompra(rs.getDate("DATA_COMPRA"));
+					receber.setDataCompra(rs.getTimestamp("DATA_COMPRA"));
 					receber.setDataPrevistaReceber(rs.getDate("DATA_PREVISTA_RECEBER"));
 					if(rs.getString("METODO_PAGAMENTO").equals("DE")) {
 						receber.setMetodoPagamento("DEBITO");
@@ -98,7 +98,7 @@ public class DaoContasReceber {
 				receber.setCredito(rs.getBigDecimal("CREDITO")); 	
 				receber.setDebito(rs.getBigDecimal("DEBITO")); 
 				receber.setDinheiro(rs.getBigDecimal("DINHEIRO"));
-				receber.setDataCompra(rs.getDate("DATA_COMPRA"));
+				receber.setDataCompra(rs.getTimestamp("DATA_COMPRA"));
 				receber.setDataPrevistaReceber(rs.getDate("DATA_PREVISTA_RECEBER"));
 				if(rs.getString("METODO_PAGAMENTO").equals("DE")) {
 					receber.setMetodoPagamento("DEBITO");

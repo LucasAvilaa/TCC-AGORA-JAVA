@@ -9,6 +9,7 @@
       <title>FILIAIS</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
+ 
    </head>
    <body>
    	<%
@@ -34,9 +35,9 @@
          <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
-                  <th style="width: 357px; ">RAZÃO SOCIAL</th>
-                  <th style="width: 166px; ">CNPJ</th> 
-                  <th colspan="2" style="width: 72px; ">AÇÃO</th>
+                  <th>RAZÃO SOCIAL</th>
+                  <th>CNPJ</th> 
+                  <th colspan="2" style="text-align: center" >AÇÃO</th>
                </tr>
             </thead>
             <tbody>
@@ -48,8 +49,8 @@
                      <td>
                         <c:out value="${estabelecimento.cnpj}" />
                      </td>     
-                        <td><a href='ControlEstabelecimento?action=Edit&idEstab=<c:out value="${estabelecimento.idEstab}"/>&cod=<c:out value="${estabelecimento.cnpj}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
-                 		<td><a href='ControlEstabelecimento?action=Delete&idEstab=<c:out value="${estabelecimento.idEstab}"/>&cod=<c:out value="${estabelecimento.cnpj}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                        <td><a href='ControlEstabelecimento?action=Edit&idEstab=<c:out value="${estabelecimento.idEstab}"/>&cod=<c:out value="${estabelecimento.cnpj}"/>'><button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                 		<td><a href='ControlEstabelecimento?action=Delete&idEstab=<c:out value="${estabelecimento.idEstab}"/>&cod=<c:out value="${estabelecimento.cnpj}"/>'><button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                       </tr>
                </c:forEach>  
             </tbody>

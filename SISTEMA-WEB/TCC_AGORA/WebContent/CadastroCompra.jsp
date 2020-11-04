@@ -49,13 +49,13 @@
 				<p >
 					<label class="text-white font-weight-bold"> REFERÊCIA: <c:out value="COMPRA/${compra.idCompra}" />
 					</label> <label style="padding-left: 90px" class="text-white font-weight-bold"> DATA CRIADA: <fmt:formatDate
-							pattern="dd/MM/yyyy" value="${compra.dataCriada}" />
+							pattern="dd/MM/yyyy hh:mm:ss" value="${compra.dataCriada}" />
 					</label>
 				</p>
 				<p>
 					<label class="text-white font-weight-bold"> SITUAÇÃO: <c:out value="${compra.status}" />
 					</label> <label style="padding-left: 168px " class="text-white font-weight-bold"> DATA FINALIZADA: <fmt:formatDate
-							pattern="dd/MM/yyyy" value="${compra.dataFinalizada}" />
+							pattern="dd/MM/yyyy hh:mm:ss" value="${compra.dataFinalizada}" />
 					</label>
 				</p>
 
@@ -63,12 +63,12 @@
 				<table border="1" class="table table-hover table-dark">
 					<thead>
 						<tr>
-							<th style="width: 193px;">PRODUTO</th>
-							<th style="width: 195px;">FORNECEDOR</th>
-							<th style="width: 125px;">QUANTIDADE</th>
-							<th style="width: 154px;">VALOR UNITÁRIO</th>
-							<th style="width: 94px;">SUBTOTAL</th>
-							<th colspan="2">AÇÃO</th>
+							<th>PRODUTO</th>
+							<th>FORNECEDOR</th>
+							<th>QUANTIDADE</th>
+							<th>VALOR UNITÁRIO</th>
+							<th>SUBTOTAL</th>
+							<th colspan="2" style="text-align: center;width: 50px" >AÇÃO</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -89,11 +89,11 @@
 									<c:out value="${itens.subtotal}"></c:out>
 								</td>
 								<td><a href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
-								 		EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /> 
+								 		<button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button>
 									</a>
 								</td>
 							 	<td><a href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
-									  		EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /> 
+									  	<button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button>
 									</a>
 								</td>
 
@@ -147,16 +147,16 @@
 		</div>
 	</f:view>
 	<script>     
-	var url_atual = window.location.href;
-   	if(url_atual.indexOf("/ControlCompra?action=EditItens&idCompra=") != -1){
-   		document.getElementById("inserir-itens-container").style.display = 'flex';  
-   	}	 
-	   function abrir(){
-		document.getElementById("inserir-itens-container").style.display = 'flex';
-	   }
-   		function fechar(){
-   			document.getElementById("inserir-itens-container").style.display = 'none'; 
-   		}   
-   </script>
+		var url_atual = window.location.href;
+		   if(url_atual.indexOf("/ControlCompra?action=EditItens&idCompra=") != -1){
+			   document.getElementById("inserir-itens-container").style.display = 'flex';  
+		   }	 
+		   function abrir(){
+			document.getElementById("inserir-itens-container").style.display = 'flex';
+		   }
+			   function fechar(){
+				   document.getElementById("inserir-itens-container").style.display = 'none'; 
+			   }   
+	   </script>
 </body> 
 </html>
