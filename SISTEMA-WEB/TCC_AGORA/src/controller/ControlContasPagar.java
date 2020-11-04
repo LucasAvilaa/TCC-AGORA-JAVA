@@ -47,20 +47,24 @@ public class ControlContasPagar extends HttpServlet {
 			idPagar = Integer.parseInt(request.getParameter("idPagar"));
 			pagar.setIdPagar(idPagar);
 		}
+		
+		String sessao = (String) request.getSession().getAttribute("usuario"); 
+		if(sessao != null) {     
+			if(sessao.toString() != null) { 
+				}
+			}
+		else {
+			forward = "Login.xhtml";
+		} 
+		
 		if (action.equalsIgnoreCase("Tabela")) { 
-			String sessao = (String) request.getSession().getAttribute("usuario"); 
-			if(sessao != null) {     
-				if(sessao.toString() != null) { 
+			 
 				try {
 					request.setAttribute("conta", Dao.listaContaPagar()); 
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
-				}	
-			}else {
-				forward = "Login.xhtml";
-			}  
+				} 
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";

@@ -117,6 +117,24 @@ public class DaoVenda {
 		return lista;
 	}
 	
+ public TbListaProduto dataAberta(TbComanda comanda) {
+		TbListaProduto listaProduto = new TbListaProduto(); 
+		try {
+				con = new Conexao();
+				PreparedStatement ps = con.getConexao().prepareStatement("SELECT DATA_COMPRA FROM VW_VENDA WHERE ID_COMANDA_LISTA = ? AND DATA_COMPRA IS NOT NULL"); 
+				ps.setInt(1, comanda.getIdComanda());
+				ResultSet rs = ps.executeQuery();
+				
+				while (rs.next()) {   
+					listaProduto.setDataCompra(rs.getDate("DATA_COMPRA"));  
+				} 	 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	 
+		System.out.println("DATA ENCONTRADA: " + listaProduto.getDataCompra());
+		return listaProduto;
+	}
+ 	
 	public TbListaProduto valorTotal(TbComanda comanda) {
 		TbListaProduto listaItens = new TbListaProduto();
 

@@ -22,14 +22,14 @@
      <jsp:include page="index.jsp"></jsp:include>
       <f:view>
          
-         	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Lista de Funcionários</span></h1>
+         	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">LISTA DE FUNCIONÁRIOS</span></h1>
   
        	      
          
          <br />
          <p>
             <a href="ControlFuncionario?action">
-             <button class="btn btn-success" style="height: 2.2em; width: 8em;"> Adicionar
+             <button class="btn btn-success" style="height: 2.2em; width: 8em;"> ADICIONAR
             <img src="img/plus.svg" style="width: 31px; height: 28px; " title="ADICIONAR" />
             </button>
             </a>
@@ -67,8 +67,8 @@
                      <td>
                         <c:out value="${funcionario.sexo}" />
                      </td>
-                     <td><a href='ControlFuncionario?action=Edit&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
-                     <td><a href='ControlFuncionario?action=Delete&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlFuncionario?action=Edit&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                     <td><a href='ControlFuncionario?action=Delete&idFunc=<c:out value="${funcionario.idFunc}"/>&cod=<c:out value="${funcionario.cpf}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

@@ -6,7 +6,7 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
    		
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <title>REDE DE PADARIAS ÀGORA</title>
+      <title>REDE DE PADARIAS AGORA</title>
       
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" href="css/bootstrap.min.css"/>

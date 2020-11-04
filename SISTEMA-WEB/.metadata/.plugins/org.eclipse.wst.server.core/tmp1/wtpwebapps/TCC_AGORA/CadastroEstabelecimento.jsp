@@ -67,7 +67,7 @@
                      RUA: <input type="text" name="rua" readonly="readonly" style="width: 221px; "value="<c:out value="${endereco.rua}"/>" />
                   </label>
                   <label class="font-weight-bold">
-                     NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
+                     NÚMERO: <input type="number" name="numero" id="numero" onchange="validaNumero();" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
                   </label>
                </p>
             </fieldset>
@@ -88,6 +88,11 @@
          </form>
       </f:view> 
    <script>	
+   function validaNumero(){
+ 		 if(document.getElementById("numero").value <= -1){
+ 			document.getElementById("numero").value = "";
+ 		 }
+ 	 }
       $("#cep").mask("99999-999");
       $("#cnpj").mask("99.999.999/9999-99"); 
       $("#celular").mask("(99)99999-9999");

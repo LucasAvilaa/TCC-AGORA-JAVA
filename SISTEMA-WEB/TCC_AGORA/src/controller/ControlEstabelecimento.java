@@ -49,10 +49,17 @@ public class ControlEstabelecimento extends HttpServlet {
 			idEstab = String.valueOf(idEsta);
 			estabelecimento.setIdEstab(idEstab);
 		}
-		if (action.equalsIgnoreCase("Tabela")) { 
-			String sessao = (String) request.getSession().getAttribute("usuario"); 
-			if(sessao != null) {     
-				if(sessao.toString() != null) {   
+		
+		String sessao = (String) request.getSession().getAttribute("usuario"); 
+		if(sessao != null) {     
+			if(sessao.toString() != null) { 
+				}
+			}
+		else {
+			forward = "Login.xhtml";
+		} 
+		
+		if (action.equalsIgnoreCase("Tabela")) {   
 				try {
 					request.setAttribute("estabelecimento", Dao.listaEstabelecimento());
 					request.setAttribute("endereco", End.listaEndereco());
@@ -60,11 +67,7 @@ public class ControlEstabelecimento extends HttpServlet {
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
-				}
-			}else {
-				forward = "Login.xhtml";
-			} 
+				} 
 			
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {

@@ -4,6 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.faces.model.SelectItem;
+
 import factory.Conexao; 
 import model.TbEstoque;
 import model.TbProduto;
@@ -69,7 +72,7 @@ public class DaoEstoque {
 }
 	
 	public List<TbEstoque> listaEstoque() throws Exception {
-		List<TbEstoque> listaEstoque = new ArrayList<TbEstoque>();	
+		List<TbEstoque> listaEstoque = new ArrayList<TbEstoque>(); 
 		con = new Conexao();
 		PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_ESTOQUE ORDER BY NOME_PRODUTO ASC"); 
 		
@@ -84,13 +87,13 @@ public class DaoEstoque {
 				produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
 				produto.setCategoria(rs.getString("CATEGORIA"));
 				estoque.setTbProduto(produto);
-				
+								
 				estoque.setIdEstoque(rs.getInt("ID_ESTOQUE"));
 				estoque.setQuantidade(rs.getInt("QUANTIDADE"));
 				estoque.setDataEntrada(rs.getDate("DATA_ENTRADA"));
 				estoque.setDataVencimento(rs.getDate("DATA_VENCIMENTO"));
 				
-				listaEstoque.add(estoque);
+				listaEstoque.add(estoque); 
 		} 
 			 
 		} catch (Exception e) {
@@ -99,4 +102,25 @@ public class DaoEstoque {
 		ps.close();
 		return listaEstoque;		
 	}
+	
+	public List<SelectItem> lista() throws Exception { 
+		List<SelectItem> emEstoque = new ArrayList<SelectItem>();
+		con = new Conexao();
+		PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_ESTOQUE WHERE VALOR_VENDA IS NOT NULL ORDER BY NOME_PRODUTO ASC "); 
+		
+		try {
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) { 
+				emEstoque.add(new SelectItem(rs.getInt("ID_PRODUTO"),rs.getString("NOME_PRODUTO"))); 
+		} 
+			 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		ps.close();
+		return emEstoque;		
+	}
+	
+	
 }	
