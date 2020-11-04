@@ -21,14 +21,12 @@
       <jsp:include page="index.jsp"></jsp:include>
       <f:view>
       
-         	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Tela Fornecedores</span></h1>
-            
-       
-                 
+         	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">LISTA DE FORNECEDORES</span></h1>
+                   
          <br />
          <p>
             <a href="ControlFornecedores?action">
-            <button class="btn btn-success" style="height: 2.2em; width: 8em;"> Adicionar
+            <button class="btn btn-success" style="height: 2.2em; width: 8em;"> ADICIONAR
             <img src="img/plus.svg" style="width: 31px; height: 28px; " title="ADICIONAR" />
             </button>
             </a>
@@ -50,8 +48,8 @@
                      <td>
                         <c:out value="${fornecedor.cnpj}" />
                      </td> 
-                     <td><a href='ControlFornecedores?action=Edit&idForn=<c:out value="${fornecedor.idForn}"/>&cod=<c:out value="${fornecedor.cnpj}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
-                     <td><a href='ControlFornecedores?action=Delete&idForn=<c:out value="${fornecedor.idForn}"/>&cod=<c:out value="${fornecedor.cnpj}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;"> Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
+                     <td><a href='ControlFornecedores?action=Edit&idForn=<c:out value="${fornecedor.idForn}"/>&cod=<c:out value="${fornecedor.cnpj}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button></a></td>
+                     <td><a href='ControlFornecedores?action=Delete&idForn=<c:out value="${fornecedor.idForn}"/>&cod=<c:out value="${fornecedor.cnpj}"/>'><button class="btn btn-success" style="height: 2.2em; width: 8em;">EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

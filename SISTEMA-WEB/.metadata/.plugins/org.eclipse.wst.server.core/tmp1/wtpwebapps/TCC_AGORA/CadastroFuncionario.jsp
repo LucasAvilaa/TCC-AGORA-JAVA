@@ -113,7 +113,7 @@
                      RUA: <input type="text" name="rua" readonly="readonly" style="width: 221px; "value="<c:out value="${endereco.rua}"/>" />
                   </label>
                   <label class="font-weight-bold">
-                     NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
+                     NÚMERO: <input type="number" name="numero" id="numero" onchange="validaNumero();" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
                   </label>
                </p>
             </fieldset>
@@ -121,7 +121,7 @@
                <legend>CONTATO</legend>
                <p>
                   <label class="font-weight-bold">
-                     EMAIL: <input type="text" name="emailContato" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
+                     EMAIL: <input type="email" name="emailContato" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
                   </label>
                </p>
                <p>
@@ -147,7 +147,12 @@
          </form>
       </f:view> 
    <script> 
-    
+   function validaNumero(){
+ 		 if(document.getElementById("numero").value <= -1){
+ 			document.getElementById("numero").value = "";
+ 		 }
+ 	 } 
+   
       $("#cep").mask("99999-999"); 
       $("#celular").mask("(99)99999-9999");
       $("#rg").mask("99.999.999-9");

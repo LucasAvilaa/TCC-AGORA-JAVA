@@ -61,11 +61,17 @@ public class ControlFuncionario extends HttpServlet {
 			idFunc = String.valueOf(idFun);
 			funcionario.setIdFunc(idFunc);
 		}
+		
+		String sessao = (String) request.getSession().getAttribute("usuario"); 
+		if(sessao != null) {     
+			if(sessao.toString() != null) { 
+				}
+			}
+		else {
+			forward = "Login.xhtml";
+		} 
 
-		if (action.equalsIgnoreCase("Tabela")) {   
-			String sessao = (String) request.getSession().getAttribute("usuario"); 
-			if(sessao != null) {     
-				if(sessao.toString() != null) {
+		if (action.equalsIgnoreCase("Tabela")) {    
 					try {
 						request.setAttribute("funcionario", Dao.listaFuncionario());
 						request.setAttribute("endereco", End.listaEndereco());
@@ -73,15 +79,9 @@ public class ControlFuncionario extends HttpServlet {
 						forward = tabela;
 					} catch (Exception e) {
 						e.printStackTrace();
-					}
-				}
-				
-			}else {
-				forward = "Login.xhtml";
-			}  
-			
-			
-		} else if (action.equalsIgnoreCase("Delete")) {
+					}  
+		} 
+		else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";
 				if (End.crudEndereco(acao, cpf, endereco)) {

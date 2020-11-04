@@ -1,10 +1,25 @@
 package model;
 
 import java.io.Serializable;
-
-import javax.faces.bean.ManagedBean;
-import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import dao.DaoEstoque;
 
 
 /**
@@ -38,6 +53,16 @@ public class TbEstoque implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_PROD_ESTOQ")
 	private TbProduto tbProduto;
+	
+	private List<SelectItem> lista;
+
+	public List<SelectItem> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<SelectItem> lista) {
+		this.lista = lista;
+	}
 
 	public TbEstoque() {
 	}
@@ -82,4 +107,14 @@ public class TbEstoque implements Serializable {
 		this.tbProduto = tbProduto;
 	}
 
+	@PostConstruct
+	public void produtoEmEstoque() { 
+		try {
+			DaoEstoque estoque = new DaoEstoque();
+			setLista(estoque.lista());
+		} catch (Exception e) { 
+			e.printStackTrace();
+			System.out.println("ERRO AO LISTA PRODUTO NO ESTOQUE");
+		}
+	}
 }

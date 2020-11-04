@@ -63,24 +63,27 @@ public class ControlCliente extends HttpServlet {
 		if (cpf != null) {
 			cliente.setCpf(cpf);
 		}
-
+		
+		String sessao = (String) request.getSession().getAttribute("usuario"); 
+		if(sessao != null) {     
+			if(sessao.toString() != null) { 
+				}
+			}
+		else {
+			forward = "Login.xhtml";
+		} 
+		
 		if (action.equalsIgnoreCase("Tabela")) {  
-			String sessao = (String) request.getSession().getAttribute("usuario"); 
-			if(sessao != null) {     
-				if(sessao.toString() != null) {
+			
 					try {
 						request.setAttribute("cliente", Dao.listaCliente());
 						request.setAttribute("endereco", End.listaEndereco());
 						request.setAttribute("contato", Cont.listaContato());
 						forward = tabela;
 					} catch (Exception e) {
-						e.printStackTrace();
+						e.printStackTrace(); 
 					}
-				}
-				
-			}else {
-				forward = "Login.xhtml";
-			}  
+			  
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";

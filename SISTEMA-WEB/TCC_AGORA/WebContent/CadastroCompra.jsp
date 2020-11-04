@@ -18,10 +18,13 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 </head>
 <body> 
-	<jsp:include page="index.jsp" flush="false">
-		<jsp:param name="cabecalho" value="cabecalho" />
-	</jsp:include>
-
+	<jsp:include page="index.jsp"></jsp:include>
+	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%>
 	<f:view>
 		<form action="ControlItensCompra" method="post" name="cadastroCompra">
 
@@ -45,7 +48,7 @@
 			<fieldset id="informacoes">
 				<p >
 					<label class="text-white font-weight-bold"> REFERÊCIA: <c:out value="COMPRA/${compra.idCompra}" />
-					</label> <label style="padding-left: 90px" class="text-white font-weight-bold"> DATA COMPRA: <fmt:formatDate
+					</label> <label style="padding-left: 90px" class="text-white font-weight-bold"> DATA CRIADA: <fmt:formatDate
 							pattern="dd/MM/yyyy" value="${compra.dataCriada}" />
 					</label>
 				</p>
@@ -85,14 +88,14 @@
 								<td> 
 									<c:out value="${itens.subtotal}"></c:out>
 								</td>
-								<td><a
-									href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'
-									 >  Editar <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></a></td>
-									<!-- ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/> -->
-								<td><a
-									href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
-									Excluir <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" />
-										</a></td>
+								<td><a href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
+								 		EDITAR <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /> 
+									</a>
+								</td>
+							 	<td><a href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
+									  		EXCLUIR <img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /> 
+									</a>
+								</td>
 
 							</tr>
 						</c:forEach>

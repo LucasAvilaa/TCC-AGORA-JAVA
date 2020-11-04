@@ -42,20 +42,22 @@ public class ControlEstoque extends HttpServlet {
 			estoque.setIdEstoque(idEstoque);
 		}
 
-		if (action.equalsIgnoreCase("Tabela")) {  
-			String sessao = (String) request.getSession().getAttribute("usuario"); 
-			if(sessao != null) {     
-				if(sessao.toString() != null) {   
+		String sessao = (String) request.getSession().getAttribute("usuario"); 
+		if(sessao != null) {     
+			if(sessao.toString() != null) { 
+				}
+			}
+		else {
+			forward = "Login.xhtml";
+		} 
+		
+		if (action.equalsIgnoreCase("Tabela")) {   
 				try {
 					request.setAttribute("estoque", Dao.listaEstoque());
 					forward = tabela;
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
-				}
-			}else {
-				forward = "Login.xhtml";
-			}  
+				} 
 		} else if (action.equalsIgnoreCase("Delete")) {
 			try {
 				acao = "E";

@@ -24,7 +24,7 @@
       <f:view>
          <form action="ControlFornecedores" method="post" name="cadastroFornecedores">
             
-            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de Fornecedores</span></h1>
+            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">CADASTRO DE FORNECEDORES</span></h1>
            			<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 6%; width: 27em; font-family: sans-serif">
            
                  
@@ -67,7 +67,7 @@
                      RUA: <input type="text" name="rua" readonly="readonly" style="width: 221px; "value="<c:out value="${endereco.rua}"/>" />
                   </label>
                   <label class="font-weight-bold">
-                     NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
+                     NÚMERO: <input type="number" name="numero" id="numero" onchange="validaNumero();" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
                   </label>
                </p>
             </fieldset>
@@ -88,6 +88,11 @@
          </form>
       </f:view> 
    <script>	
+   function validaNumero(){
+ 		 if(document.getElementById("numero").value <= -1){
+ 			document.getElementById("numero").value = "";
+ 		 }
+ 	 }
       $("#cep").mask("99999-999");
       $("#data").mask("99/99/9999");
       $("#cnpj").mask("99.999.999/9999-99");

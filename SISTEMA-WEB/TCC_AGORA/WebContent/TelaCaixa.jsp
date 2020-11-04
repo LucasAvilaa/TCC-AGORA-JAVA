@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -43,7 +44,7 @@ body{
    	%>
 	<f:view>
 		<jsp:include page="index.jsp"></jsp:include>
-		<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">Caixa</span></h1>
+		<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">CAIXA</span></h1>
             
 		<div class="div-alinhada">
 			<div id="tabela_centro" >
@@ -52,10 +53,15 @@ body{
 						 NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />"/> 
 											<a href="#" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+document.getElementById('idComanda').value">PESQUISAR</a> 
 					</label>					
-				</p>
+				</p> 
 				<p>
 					<label  class="font-weight-bold text-white" >
 						STATUS COMANDA:  <c:out value="${status.statusComanda}"/> 
+					</label>
+				</p>
+				<p>
+					<label  class="font-weight-bold text-white" >
+						DATA ABERTA: <c:out value="${data}"/> 
 					</label>
 				</p>
 				<table border="1" class="table table-hover table-dark" >
@@ -100,7 +106,7 @@ body{
 						<label  class="font-weight-bold text-white" style="text-align: left"> PRODUTO <br /><h:selectOneMenu style="height: 1.8em; width: 15em" id="produto" >                     
 					                        <f:selectItem itemValue="#{item.tbProduto.idProduto}" itemLabel="#{item.tbProduto.nomeProduto}"/> 
 					                        <f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true"/> 
-					                        <f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}"/>
+					                        <f:selectItems value="#{tbEstoque.lista}" itemValue="#{tbEstoque.lista}"/>
 					                    </h:selectOneMenu> 
 						
 						</label>
@@ -124,7 +130,7 @@ body{
 					<p style="text-align:center">
 						<label>
 							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'" class="btn btn-success" style="height: 2.2em; width: 12em;"> 
-								FINALIZAR COMPRA <img src="img/edit.svg" style="width: 21px; height: 21px;" title="FINALIZAR COMPRA" />
+								FINALIZAR COMPRA 
 						 	</a>
 						</label>
 						
@@ -160,7 +166,7 @@ body{
 						</p>
 						<p>		
 							<label> 
-								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" onchange="teste();" style="width: 200px;" />
+								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" onchange="calculo();" style="width: 200px;" />
 							</label> 
 						</p>
 						<p>
@@ -188,11 +194,23 @@ body{
 			document.getElementById("inserir-itens-container").style.display = 'flex'; 
 		}  
 		
-		function teste(){     
+		function calculo(){     
 			   	var dinheiro = document.querySelector('[name=dinheiroRecebido]');
 				var troco = document.querySelector('[name=troco]');
 				var total = document.querySelector('[name=valorTotal]');
 				troco.value = dinheiro.value - total.value; 
+				if(dinheiro.value < 0){
+					dinheiro.value = "";
+					window.alert("O DINHEIRO RECEBIDO NÃO PODE SER NEGATIVO");
+				}else{
+					if((dinheiro.value - total.value) >0){
+						troco.style.color = "green";
+						troco.style.background = "#90EE90";
+					}else{
+						troco.style.color = "#800000";
+						troco.style.background = "#E9967A";
+					}
+				} 
 		} 
  
    		function abrir(){    

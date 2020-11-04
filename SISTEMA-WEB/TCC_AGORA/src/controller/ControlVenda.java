@@ -58,13 +58,21 @@ public class ControlVenda extends HttpServlet {
 			comanda.setIdComanda(idComanda);
 			request.setAttribute("comanda", comanda.getIdComanda());  
 		}  
-		
-		
+		 
 		if(idItem != null) {
 			idProduto = Integer.parseInt(idItem);
 			produto.setIdProduto(idProduto); 
 		}  
 	
+		String sessao = (String) request.getSession().getAttribute("usuario"); 
+		if(sessao != null) {     
+			if(sessao.toString() != null) { 
+				}
+			}
+		else {
+			forward = "Login.xhtml";
+		} 
+		
 		if(action.equalsIgnoreCase("Caixa")) { 
 			acao = "I";
 			forward = tabela;
@@ -73,7 +81,8 @@ public class ControlVenda extends HttpServlet {
 		else if (action.equalsIgnoreCase("pesquisaComanda")) {  
 			request.setAttribute("venda", Dao.listaProdutoPorComanda(comanda));
 			request.setAttribute("status", Dao.status(comanda));
-			request.setAttribute("total", Dao.valorTotal(comanda));
+			request.setAttribute("total", Dao.valorTotal(comanda)); 
+			request.setAttribute("dataAberta", Dao.dataAberta(comanda));
 			forward = tabela;			 
 		} 
 		else if (action.equalsIgnoreCase("Delete")) { 

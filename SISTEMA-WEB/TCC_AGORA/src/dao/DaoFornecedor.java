@@ -3,12 +3,9 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.faces.model.SelectItem;
-
+import java.util.List; 
+import javax.faces.model.SelectItem; 
 import factory.Conexao;
-import model.TbEndereco;
 import model.TbFornecedore;
 
 public class DaoFornecedor {
@@ -73,12 +70,9 @@ public class DaoFornecedor {
 				PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM TB_FORNECEDORES ORDER BY RAZAO_SOCIAL ASC");  
 				ResultSet rs = ps.executeQuery();
 				
-				while (rs.next()) {
-					TbEndereco endereco = new TbEndereco();
+				while (rs.next()) { 
 					TbFornecedore forn = new TbFornecedore(); 
-					
-					endereco.setCidade(rs.getString("CIDADE"));
-					endereco.setEstado(rs.getString("ESTADO")); 
+					  
 					forn.setIdForn(rs.getString("ID_FORN"));
 					forn.setCnpj(rs.getString("CNPJ"));
 					forn.setRazaoSocial(rs.getString("RAZAO_SOCIAL")); 
