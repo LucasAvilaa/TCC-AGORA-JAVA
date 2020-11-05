@@ -16,6 +16,9 @@
       .centralizar_botoes{
       margin-left: 2em;
       }
+      form{
+    	margin-bottom: 30px; 
+    }
       </style>
    </head>
    <body>
@@ -50,7 +53,7 @@
                </p>   
             </fieldset>
             <fieldset id="endereco">
-               <legend>ENDEREÇO</legend>
+               <legend style="margin-left: 10px">ENDEREÇO</legend>
                <p style="text-align: center">
                   <label class="font-weight-bold">
                      CEP: <input type="text" name="cep" id="cep" style="width: 100px; "  value="<c:out value="${endereco.cep}"/>" /> 
@@ -77,19 +80,19 @@
                </p>
             </fieldset>
             <fieldset id="contato">
-               <legend>CONTATO</legend>
+               <legend style="margin-left: 10px">CONTATO</legend>
                <p  style="text-align: center">
                   <label  class="font-weight-bold" style="text-align: left">
                      EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
                   </label>
                </p>
-               <p  style="text-align: center">
-                  <label class="font-weight-bold" style="text-align: left">
+               <p >
+                  <label class="font-weight-bold" style="margin-left: 27px">
                      CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX " />
                   </label>	 
                </p>
             </fieldset>
-            </div>
+            </div>	
          </form>
       </f:view> 
    <script>	

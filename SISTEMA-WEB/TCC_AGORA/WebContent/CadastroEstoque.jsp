@@ -13,6 +13,11 @@
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
    </head>
+   <style>
+   	form{
+    	margin-bottom: 30px;
+    }
+   </style>
    <body>
    	<%
    		String usuario = (String) session.getAttribute("usuario");
@@ -24,7 +29,7 @@
   <f:view>  
          <form action="ControlEstoque" method="post" name="cadastroEstoque">
              
-            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">INSERIR ITEM NO ESTOQUE</span></h1>
+            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">ESTOQUE</span></h1>
 <div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 6%; width: 27em; font-family: sans-serif">
             
              

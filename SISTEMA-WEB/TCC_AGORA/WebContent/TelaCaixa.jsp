@@ -172,7 +172,7 @@ body{
 						<legend>FINALIZAR COMPRA</legend>
 						<p>
 							<label>  
-								FORMA DE PAGAMENTO:	<h:selectOneMenu style="width: 248px; height: 24px" id="formaPagamento">
+								FORMA DE PAGAMENTO:	<h:selectOneMenu style="width: 248px; height: 24px" id="formaPagamento" onchange="verificaPagamento()">
 								                   	     <f:selectItem itemValue="" itemLabel=""/>
 								                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
 								                        <f:selectItem itemValue="DI" itemLabel="DINHEIRO"/>
@@ -183,7 +183,7 @@ body{
 						</p>
 						<p>		
 							<label> 
-								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" onchange="calculo();" style="width: 200px;" />
+								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" readonly="readonly" type="number" onchange="calculo();" style="width: 200px;" />
 							</label> 
 						</p>
 						<p>
@@ -239,6 +239,20 @@ body{
 					}
 				} 
 		} 
+		
+		function verificaPagamento(){
+		 	var pag = document.querySelector('[id=formaPagamento]').value;
+		 	var din = document.querySelector('[name=dinheiroRecebido]');
+		 	var troco = document.querySelector('[name=troco]');
+		 	if(pag == "DI"){
+		 		din.readOnly = false;
+		 	}else{
+		 		din.readOnly = true;
+		 		din.value = "";
+		 		troco.value = "";
+		 		troco.style.background = "#fff";
+		 	}
+		}
  
    		function abrir(){    
    	   		 document.getElementById("inserir-itens-container").style.display = 'flex'; 

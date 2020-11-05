@@ -20,6 +20,9 @@
     .botoes a{
     border: 0px;
     }
+    form{
+    	margin-bottom: 30px;
+    }
       </style>
    </head>
    <body>
@@ -72,22 +75,7 @@
                   </label>
                </p>
                <p style="text-align: center">
-                  <label class="font-weight-bold">
-                     NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${funcionario.dtNasc}"/>"   required="required" style="width: 148px; " />
-                 				 
-                  </label>
-                  <label class="font-weight-bold">
-                     SEXO: 
-                     <h:selectOneMenu style="width: 116px; height: 24px" id="sexo">
-                        <f:selectItem itemValue="#{funcionario.sexo}"/>
-                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
-                        <f:selectItem itemValue="M" itemLabel="MASCULINO"/>
-                        <f:selectItem itemValue="F" itemLabel="FEMININO"/>
-                     </h:selectOneMenu>
-                  </label>
-               </p>
-               <p style="text-align: center">
-                  <label class="font-weight-bold">
+                  <label class="font-weight-bold"  >
                      <h:outputText value="CARGO: "/>
                      <h:selectOneMenu style="width: 166px; " id="cargo">
                         <f:selectItem noSelectionOption="true" itemValue="#{funcionario.cargo}"/>
@@ -95,10 +83,25 @@
                         <f:selectItems value="#{tbHierarquia.hierarquia}"  itemValue="#{tbHierarquia.hierarquia}"/>
                      </h:selectOneMenu>
                   </label>
+                  <label class="font-weight-bold">
+                     SEXO: 
+                     <h:selectOneMenu style="width: 125px; height: 24px" id="sexo">
+                        <f:selectItem itemValue="#{funcionario.sexo}"/>
+                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
+                        <f:selectItem itemValue="M" itemLabel="MASCULINO"/>
+                        <f:selectItem itemValue="F" itemLabel="FEMININO"/>
+                     </h:selectOneMenu>
+                  </label>
+               </p>
+               <p >  
+                  <label class="font-weight-bold" style="margin-left: 27px">
+                     NASCIMENTO: <input name="data" type="date" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${funcionario.dtNasc}"/>"   required="required" style="width: 162px; " />
+                 				 
+                  </label>
                </p>
             </fieldset>
            <fieldset id="endereco">
-               <legend>ENDEREÇO</legend>
+               <legend style="margin-left: 10px">ENDEREÇO</legend>
                <p style="text-align: center">
                   <label class="font-weight-bold">
                      CEP: <input type="text" name="cep" id="cep" style="width: 100px; "  value="<c:out value="${endereco.cep}"/>" />  
@@ -125,28 +128,28 @@
                </p>
             </fieldset>
             <fieldset id="contato">
-               <legend>CONTATO</legend>
+               <legend style="margin-left: 10px">CONTATO</legend>
                <p style="text-align: center">
                   <label class="font-weight-bold">
                      EMAIL: <input type="text" name="emailContato" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
                   </label>
                </p>
-               <p style="text-align: center">
-                  <label class="font-weight-bold">
+               <p >
+                  <label class="font-weight-bold" style="margin-left: 27px">
                      CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX " />
                   </label>
                </p>
             </fieldset>
             <fieldset id="Conjuntologin">
-               <legend>LOGIN</legend>
+               <legend style="margin-left: 10px">LOGIN</legend>
                <p style="text-align: center">
                   <label class="font-weight-bold">
-                     LOGIN: <input type="email" name="login"  readonly="readonly" style="width: 354px; "value="<c:out value="${user.usuario}"/>" placeholder="seuemail@email.com" />
+                     LOGIN: <input type="email" name="login"  readonly="readonly" style="width: 354px; "value="<c:out value="${user.usuario}"/>" placeholder="email@RedeAgora.com" />
                   </label>
                </p>
-               <p style="text-align: center"> 
-                  <label class="font-weight-bold">
-                     SENHA: <input type="password"  name="senha" style="width: 174px; "value="<c:out value="**************"/>" placeholder="******************" />
+               <p > 
+                  <label class="font-weight-bold" style="margin-left: 27px">
+                     SENHA: <input type="password"  name="senha" style="width: 354px; "value="<c:out value="**************"/>" placeholder="******************" />
                   </label>
                </p>
             </fieldset>

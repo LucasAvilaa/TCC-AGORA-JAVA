@@ -119,7 +119,7 @@ public class ControlVenda extends HttpServlet {
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		if(request.getParameter("quantidade") != null) {
-			lista.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+			lista.setQuantidade(Integer.parseInt(request.getParameter("quantidade").trim()));
 		}
 		
 		if(request.getParameter("produto") != null) {
