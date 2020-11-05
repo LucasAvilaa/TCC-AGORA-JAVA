@@ -12,6 +12,14 @@
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <style>
+      	form{
+    	margin-bottom: 30px; 
+    } 
+    label{
+    	padding-left: 15px;
+    	}
+      </style>
    </head>
    <body>
    	<%
@@ -54,17 +62,17 @@
                </p>
                <p>
                   <label  class="font-weight-bold" style="text-align: left">
-                     DINHEIRO: <input name="dinheiro" id="dinheiro" onfocus="campo_atual(id)" onblur="pagamento()" maxlength="7" onchange="valorCom(id, this.value)" value="<c:out value="R$ ${receber.dinheiro}"/>"   style="width: 148px; "/>
+                     DINHEIRO: <input name="dinheiro" id="dinheiro"  onfocus="campo_atual(id)" maxlength="7" onchange="valorCom(id, this.value)" value="<c:out value="R$ ${receber.dinheiro}"/>"   style="width: 148px; "/>
                   </label>
                </p>   
                <p>
                   <label  class="font-weight-bold" style="text-align: left">
-                     CARTÃO DEBITO: <input name="debito" id="debito" onfocus="campo_atual(id)" onblur="pagamento()" maxlength="7" onchange="valorCom(id, this.value)" value="<c:out value=" R$ ${receber.debito}"/>"   style="width: 148px; "/>
+                     CARTÃO DEBITO: <input name="debito" id="debito"  onfocus="campo_atual(id)"  maxlength="7" onchange="valorCom(id, this.value)" value="<c:out value=" R$ ${receber.debito}"/>"   style="width: 148px; "/>
                   </label>
                </p>
                <p>
                   <label  class="font-weight-bold" style="text-align: left">
-                     CARTÃO CRÉDITO: <input name="credito" id="credito" onfocus="campo_atual(id)" onblur="pagamento()" maxlength="7" onchange="valorCom(id, this.value)" value="<c:out value="R$ ${receber.credito}"/>"   style="width: 148px; "/>
+                     CARTÃO CRÉDITO: <input name="credito" id="credito"   onfocus="campo_atual(id)"  maxlength="7" onchange="valorCom(id, this.value)" value="<c:out value="R$ ${receber.credito}"/>"   style="width: 148px; "/>
                   </label>
                </p>    
                <p>
@@ -104,35 +112,16 @@
    		}
    		function campo_atual(id){
    			document.getElementById(id).value = ""; 
-   		} 
-   		function pagamento(){
-   			var pagamento = document.getElementById("condicaoPagamento").value;
-   	   		var dinheiro = document.getElementById("dinheiro");
-   	   		var debito = document.getElementById("debito");
-   	   		var credito = document.getElementById("credito");
-   			
-   			if(pagamento == "CR"){ 
-   				if(credito.value == ""){
-   					window.alert("PREENCHA O CAMPO CREDITO");
-   					credito.focus();
-   				} 
-   			}
-   			else if(pagamento == "DI"){ 
-   				if(dinheiro.value == ""){
-   					window.alert("PREENCHA O CAMPO DINHEIRO");
-   					dinheiro.focus(); 
-   				}  
-   			}
-   			else if(pagamento == "DE"){ 
-   				if(debito.value == ""){
-   					window.alert("PREENCHA O CAMPO DEBITO");
-   					debito.focus(); 
-   				}  
-   			}
-   		}
+   		}  
    		
    		function valorCom(id, valor){
-   			document.getElementById(id).value = "R$ " + valor; 
+   			if(isNaN(valor)){
+   				window.alert("PREENCHA SOMENTE COM NUMERO");
+   				document.getElementById(id).value = ""; 
+   			}else{
+   				document.getElementById(id).value = "R$ " + valor;  
+   			}
+   			
    		}
    </script>
    </body>  
