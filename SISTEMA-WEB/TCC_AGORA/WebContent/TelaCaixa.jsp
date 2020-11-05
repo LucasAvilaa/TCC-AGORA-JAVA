@@ -21,26 +21,28 @@ body{
 	width:66%;
 	min-height: 27.8em;
 	float: left	;  
-
+	margin-bottom: 30px;  
 } 
 
 #tabela_centro{
 	min-height: 25em;
 	width:80%;
 	position: relative;
-	left: 15%;
-	float: left;
-	background-color: rgba(169,169,169, 0.7); 
+	left: 15%; 
+	float: left; 
+	height:33em;
+	background-color: rgba(0,0,0, 0.7); 
+	border-radius: 15px;
 
 }
 #elemento_centro{ 
 	float: left;
-	height:31.4em;
+	height:33em;
 	width: 25em;
-	background-color: rgba(169,169,169, 0.7);
-	padding-top: 15px;
-	padding-bottom: 15px;
-	
+	background-color: rgba(0,0,0, 0.7);
+	padding-top: 15px;  
+	margin-bottom: 30px; 
+	border-radius: 15px; 
 }
 #rodape {
 	height: 26px;
@@ -52,9 +54,14 @@ body{
     font-weight: bold;
     background-color: gray;    
 }
-table{
-
-}
+	th, td{
+		padding: 6px;
+	}
+	table{
+		width: 99%;
+		margin: 0 auto;  
+		border-radius: 0px 15px 15px 15px;
+	}
 </style>
 </head>
 <body>  
@@ -72,21 +79,19 @@ table{
 			<div id="tabela_centro" > 
 				<p style="padding: 15px 0 0 15px;">
 					<label class="font-weight-bold text-white" >
-						 NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />" style="height: 23px; text-align: right; width: 150px" placeholder="Digite o número da comanda"/> 
-											<a href="#" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+document.getElementById('idComanda').value" style="color: white;">PESQUISAR</a> 
+						 NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />" style="text-align: right; width: 170px" /> 
+											<a href="#" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+document.getElementById('idComanda').value"><img src="img/search-icon.png" style="height: 35px; background-color: gray; border-radius: 5px; padding: 3px" alt="PESQUISAR" title="PESQUISAR"/></a> 
 					</label>					
 				</p> 
 				<p style="padding-left: 15px;">
 					<label  class="font-weight-bold text-white" >
 						STATUS COMANDA:  <c:out value="${status.statusComanda}"/> 
 					</label>
-				</p>
-				<p style="padding-left: 15px;">
-					<label  class="font-weight-bold text-white" >
+					<label  class="font-weight-bold text-white" style="margin-left: 25px">
 						DATA/HORA ABERTA:   <fmt:formatDate value="${dataAberta.dataCompra}" pattern="dd/MM/yyyy hh:mm:ss"/>
 					</label>
 				</p> 
-				<table border="1" class="table table-hover table-dark" >
+				<table border="1" class="table-dark" >
 					<thead>
 						<tr style="height: 25px; font-size: 12px">
 							<th style="width: 83px;">COD. PROD</th>
@@ -94,7 +99,7 @@ table{
 							<th style="width: 92px;">QUANT.</th>
 							<th style="width: 82px;">VALOR UNIT.</th>
 							<th style="width: 100px;">SUBTOTAL</th>
-							<th colspan="2">AÇÃO</th>
+							<th colspan="2" style="text-align: center">AÇÃO</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -105,14 +110,12 @@ table{
 							<td><c:out value="${venda.quantidade}" /></td>
 							<td><c:out value="${venda.tbProduto.valorUniVenda}" /></td>
 							<td><c:out value="${venda.subtotal}" /></td>
-							<td><a class="btn btn-success"
-								href='ControlVenda?action=Edit&idComanda=<c:out value="${comanda}"/>&codItem=<c:out value="${venda.tbProduto.idProduto}"/>'><img
-									src="img/edit.svg" style="width: 21px; height: 21px;"
-									title="ATUALIZAR" /></a></td>
-							<td><a class="btn btn-success"
-								href='ControlVenda?action=Delete&idComanda=<c:out value="${comanda}"/>&codItem=<c:out value="${venda.tbProduto.idProduto}"/>'><img
-									src="img/trash-2.svg" style="width: 21px; height: 21px;"
-									title="EXCLUIR ITEM" /></a></td>
+							<td><a href='ControlVenda?action=Edit&idComanda=<c:out value="${comanda}"/>&codItem=<c:out value="${venda.tbProduto.idProduto}"/>'>
+								<button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button>
+								</a>
+							</td>
+							<td><a href='ControlVenda?action=Delete&idComanda=<c:out value="${comanda}"/>&codItem=<c:out value="${venda.tbProduto.idProduto}"/>'>
+								<button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR ITEM" /></button></a></td>
 
 						</tr>
 					
@@ -153,7 +156,7 @@ table{
 							<input type="submit" value="INSERIR ITEM" onclick="validaNumero()" class="btn btn-primary" style="height: 2.2em; width: 15em;" />							 
 						</label>
 						<label>
-							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'" class="btn btn-success" style="height: 2.2em; width: 15em;"> 
+							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'" class="btn btn-success" style="height: 2.2em; width: 15em; margin-bottom: 20px "> 
 								FINALIZAR COMPRA 
 						 	</a>
 						</label> 

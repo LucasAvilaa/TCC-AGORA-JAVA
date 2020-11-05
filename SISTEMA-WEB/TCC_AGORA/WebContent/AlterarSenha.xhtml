@@ -46,7 +46,9 @@
       	width: 18em;
       	align: center;
       	text-align: left;
-      	padding: 5px;
+      	padding: 5px; 
+      	border-radius: 5px; 
+      	background-color: rgb(205,135,70);
       }
       input{
       height: 2.3em;
@@ -59,7 +61,8 @@
 	h2{
       	margin: 0 auto 25px auto;
       	padding: 5px;
-      	width: 16em; 
+      	width: 16em;
+      	background-color: rgb(107,57,23);
       }
       .segura_h2{
       margin-bottom: 1em;
@@ -77,18 +80,18 @@
 			<fieldset id="alterarSenha">
 				<legend><img src="img/Logo_Padaria.png"/></legend>
 				<div>
-				<h2 class="bg-dark text-white d-inline-block segura_h2" >REDE DE PADARIAS ÁGORA</h2>
+				<h2 class="  text-white d-inline-block segura_h2" >REDE DE PADARIAS ÁGORA</h2>
 				</div>
-				<p><label for="user" class="bg-dark text-white " id="campos">USUÁRIO</label></p>
+				<p><label for="user" class=" text-white " id="campos">USUÁRIO</label></p>
 				<p><input type="email" name="username" required="required" placeholder="E-mail"/></p>
 
-				<p><label for="cpf"  class="bg-dark text-white " id="campos">CPF</label></p>
+				<p><label for="cpf"  class=" text-white " id="campos">CPF</label></p>
 				<p>	<input type="text" id="cpf" name="cpf" required="required" placeholder="XXX.XXX.XXX-XX"/></p>
 				
-				<p><label for="senha"  class="bg-dark text-white " id="campos">NOVA SENHA</label></p>
+				<p><label for="senha"  class=" text-white " id="campos">NOVA SENHA</label></p>
 				<p>	<input type="password" name="password" id="senha" required="required" placeholder="*****************"/></p>
 
-				<p><label for="senhaCon"  class="bg-dark text-white " id="campos">CONFIRMAR SENHA</label></p>
+				<p><label for="senhaCon"  class=" text-white " id="campos">CONFIRMAR SENHA</label></p>
 				<p>	<input type="password" name="passwordConf" id="senhaCon" onchange="valida();" required="required" placeholder="*****************"/></p>
 
 				<p> <input type="submit" value="ALTERAR" class="btn btn-success" style="width: 172px"/>

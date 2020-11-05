@@ -221,7 +221,7 @@ public class DaoCompra {
 	public void confirmaCompra(TbCompra compra) {
 		try {
 			con = new Conexao();
-			String sql = "UPTimestamp TB_COMPRAS SET STATUS = 'P' WHERE ID_COMPRA = ?";
+			String sql = "UPDATE TB_COMPRAS SET STATUS = 'P' WHERE ID_COMPRA = ?";
 			PreparedStatement ps = con.getConexao().prepareStatement(sql);
 			ps.setInt(1, compra.getIdCompra());
 			ps.executeUpdate();

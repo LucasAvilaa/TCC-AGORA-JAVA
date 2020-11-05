@@ -16,7 +16,19 @@
 	media="screen" />
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-</head>
+	<style>
+	th, td{
+		padding: 6px;
+	}
+	table{
+		width: 99%;
+		margin: 0 auto; 
+		border: none;
+		border-radius: 0px 15px 15px 15px;
+	}
+</style>
+</head> 
+
 <body> 
 	<jsp:include page="index.jsp"></jsp:include>
 	<%
@@ -46,8 +58,8 @@
 			</p> 
 			<br />
 			
-			<fieldset id="informacoes" >
-			<div style="background-color: rgba(169,169,169, 1); height: 100px; padding-top: 15px; width: 50%; padding-left: 19px">
+			<fieldset id="informacoes" style="margin: 0 auto;">
+			<div style="background-color: rgba(0,0,0, 0.6); height: 120px; padding-top: 15px; width: 60%; padding-left: 19px; margin-left: 6px; border-radius: 15px 15px 0px 0px">
 				<p >
 					<label class="text-white font-weight-bold"> REFERÊCIA: <c:out value="COMPRA/${compra.idCompra}" />
 					</label> <label style="padding-left: 90px" class="text-white font-weight-bold"> DATA CRIADA: <fmt:formatDate
@@ -55,16 +67,18 @@
 					</label>
 				</p>
 				<p>
-					<label class="text-white font-weight-bold"> SITUAÇÃO: <c:out value="${compra.status}" />
-					</label> <label style="padding-left: 110px " class="text-white font-weight-bold"> DATA FINALIZADA: <fmt:formatDate
-							pattern="dd/MM/yyyy hh:mm:ss" value="${compra.dataFinalizada}" />
+					<label class="text-white font-weight-bold"> 
+						SITUAÇÃO: <c:out value="${compra.status}" />
+					</label>
+					<label style="padding-left: 100px; " class="text-white font-weight-bold"> 
+						DATA FINALIZADA: <fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${compra.dataFinalizada}" />
 					</label>
 				</p> 
 			</div>
-				<table border="1" class="table table-hover table-dark">
+				<table border="1" class="table-dark">
 					<thead>
 						<tr>
-							<th style="width: 400px">PRODUTO</th>
+							<th style="width: 300px">PRODUTO</th>
 							<th style="width: 300px">FORNECEDOR</th>
 							<th style="text-align: center;">QUANTIDADE</th>
 							<th style="text-align: center;">VALOR UNITÁRIO</th>
@@ -75,7 +89,8 @@
 					<tbody>
 						<c:forEach items="${itens}" var="itens">
 							<tr>
-								<td><c:out value="${itens.tbProduto.nomeProduto}"></c:out>
+								<td>
+									<c:out value="${itens.tbProduto.nomeProduto}"></c:out>
 								</td>
 								<td><c:out value="${itens.tbProduto.tbFornecedore.razaoSocial}"></c:out>
 								</td>
@@ -103,7 +118,7 @@
 						</c:forEach>
 						<tr>
 							<td colspan="7">
-								<a href="#" onclick="this.href='ControlCompra?action=InserirItens'">INSERIR ITENS</a>
+								<a href="#" onclick="this.href='ControlCompra?action=InserirItens'" style="font-weight: bold; ">INSERIR ITENS</a>
 							</td>
 						</tr> 
 						<tr>
@@ -138,8 +153,8 @@
 						 
 					</fieldset>
 					<p>
-						<input value="ADICIONAR" type="submit" class="btn btn-success" />
-						<a href="#" onclick="this.href='ControlCompra?action=EditCompra&idCompra='+ ${compra.idCompra}" class="btn btn-dark">CANCELAR</a>
+						<input value="ADICIONAR" type="submit" class="btn btn-success" style="width: 198px;" />
+						<a href="#" onclick="this.href='ControlCompra?action=EditCompra&idCompra='+ ${compra.idCompra}" class="btn btn-dark " style="width: 120px;">CANCELAR</a>
 					</p>
 				</form>
 			</div>
@@ -149,6 +164,7 @@
 	function validaNumero(){
 		if(document.getElementById("quantidade").value < 0 ){
 			document.getElementById("quantidade").value = "";
+			window.alert("A QUANTIDADE NÃO PODE SER NEGATIVA");
 		}
 	} 
 		var url_atual = window.location.href;
