@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="validaNumero"/>
 		<list key="findhistory">
+			<item value="validaNumero"/>
 			<item value="image"/>
 			<item value="Date"/>
 			<item value="DATA ENCON"/>
@@ -22,7 +23,6 @@
 			<item value="CPF"/>
 			<item value="ID"/>
 			<item value="PENDENTE"/>
-			<item value="sys"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Timestamp"/>

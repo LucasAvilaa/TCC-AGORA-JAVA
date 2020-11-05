@@ -12,7 +12,12 @@
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-   </head>
+	<style type="text/css">
+		form{
+    	margin-bottom: 30px; 
+    }
+	</style>  
+</head>
    <body>
    	<%
    		String usuario = (String) session.getAttribute("usuario");
@@ -35,18 +40,18 @@
             <fieldset id="informacoes">
                <legend style="text-align:center; margin-top: 1em; margin-bottom: 1em;" class="bg-light text-dark">INFORMAÇÕES BÁSICAS </legend>
                <p style="text-align: center">
-                  <label class="font-weight-bold" style="text-align: left; padding-left: 3.3em;">
-                     RAZÃO SOCIAL: <input name="razao-social"  maxlength="50" value="<c:out value="${estabelecimento.razaoSocial}"/>" required="required" style="width: 319px; "/>
+                  <label class="font-weight-bold" style="text-align: left; ">
+                     RAZÃO SOCIAL: <input name="razao-social"  maxlength="80" value="<c:out value="${estabelecimento.razaoSocial}"/>" required="required" style="width: 290px" />
                   </label>
                </p>
                <p  style="text-align: left; margin-left: 3em;">
-                  <label   class="font-weight-bold" style="text-align: left">
-                     CNPJ:<br/> <input name="cnpj" id="cnpj" value="<c:out value="${estabelecimento.cnpj}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 163px; "/>
+                  <label   class="font-weight-bold" style="text-align: left; margin-left: -18px">
+                     CNPJ: <input name="cnpj" id="cnpj" value="<c:out value="${estabelecimento.cnpj}"/>" placeholder="xxx.xxx.xxx-xx" required="required" style="width: 150px" />
                   </label>
               </p>   
             </fieldset>
             <fieldset id="endereco">
-               <legend>ENDEREÇO</legend>
+               <legend style="margin-left: 10px">ENDEREÇO</legend>
                <p style="text-align: center">
                   <label class="font-weight-bold">
                      CEP: <input type="text" name="cep" id="cep" style="width: 100px; "  value="<c:out value="${endereco.cep}"/>" /> 
@@ -73,14 +78,14 @@
                </p>
             </fieldset>
             <fieldset id="contato">
-               <legend>CONTATO</legend>
+               <legend style="margin-left: 10px">CONTATO</legend>
                <p style="text-align: center">
                   <label class="font-weight-bold">
                      EMAIL: <input type="text" name="email" style="width: 354px; "value="<c:out value="${contato.email}"/>" placeholder="seuemail@email.com" />
                   </label>
                </p>
-               <p style="text-align: center">
-                  <label class="font-weight-bold">
+               <p >
+                  <label class="font-weight-bold" style="margin-left: 30px">
                      CELULAR: <input type="text" id="celular" name="celular" style="width: 174px; "value="<c:out value="${contato.numero}"/>" placeholder="(XX) XXXXX-XXXX " />
                   </label>                   		 
                </p>

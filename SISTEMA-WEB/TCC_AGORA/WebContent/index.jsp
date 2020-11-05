@@ -12,6 +12,9 @@
       <link rel="stylesheet" href="css/bootstrap.min.css"/>
       <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" /> 
       <style>
+      
+     @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+      
       .dropbtn {
   
   color: white;
@@ -50,12 +53,14 @@
 .dropdown:hover .dropdown-content{
 display: block;
  background-color: rgb(99,48,14);
-}
+} 
  
       </style>
+
    </head>
    <body> 
-
+   	
+	
      <div class="navbar" style="padding: 2em; background-color: rgb(107,57,23)">
      	<h5><a href="ControlCompra?action=Tabela" class="nav-link text-light   d-inline margin">Compra</a>
             <a href="ControlProduto?action=Tabela" class="nav-link text-light   d-inline">Produtos</a>
@@ -74,9 +79,7 @@ display: block;
   				</div>
 			 </div>
            <h5> <a href="ControlLogin?action=Deslogar" class="nav-link text-light   d-inline">Sair</a></h5>
-  </div>
-
-      <!-- Fim Cabeçalho -->
-      
+  </div> 
+     
    </body>
 </html>
