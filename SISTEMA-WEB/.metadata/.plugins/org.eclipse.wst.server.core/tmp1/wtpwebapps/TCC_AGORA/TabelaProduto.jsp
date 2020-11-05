@@ -34,7 +34,7 @@
          <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
-                  <th>PRODUTO</th>
+                  <th style="width: 300px">PRODUTO</th>
                   <th>DESCRIÇÃO</th>
                   <th>CATEGORIA</th>
                   <th>VALOR COMPRA</th>

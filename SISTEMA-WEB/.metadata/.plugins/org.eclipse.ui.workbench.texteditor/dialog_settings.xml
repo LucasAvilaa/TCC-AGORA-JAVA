@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="trocou"/>
+		<item key="selection" value="Timestamp"/>
 		<list key="findhistory">
+			<item value="Date"/>
+			<item value="DATA ENCON"/>
 			<item value="trocou"/>
 			<item value="funcionario"/>
 			<item value="PROC_VENDA_ESTAB"/>
@@ -21,10 +23,9 @@
 			<item value="PENDENTE"/>
 			<item value="sys"/>
 			<item value="SYSO"/>
-			<item value="btn"/>
-			<item value="PE"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Timestamp"/>
 			<item value=" "/>
 			<item value="${venda.idCompra}"/>
 			<item value="produto"/>
@@ -39,7 +40,6 @@
 			<item value="funcionario"/>
 			<item value="func"/>
 			<item value="TbFuncionario"/>
-			<item value="endereco"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
