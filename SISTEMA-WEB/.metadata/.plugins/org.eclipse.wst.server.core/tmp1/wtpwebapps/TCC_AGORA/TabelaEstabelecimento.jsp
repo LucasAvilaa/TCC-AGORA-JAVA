@@ -9,6 +9,17 @@
       <title>FILIAIS</title>
       <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
       <link rel="stylesheet" type="text/css" href="css/estilo2.css" />
+        <style>
+	th, td{
+		padding: 6px;
+	}
+	table{
+		width: 99%;
+		margin: 0 15px 0 10px; 
+		border: none;
+		border-radius: 0px 15px 15px 15px;
+	}
+</style>
  
    </head>
    <body>
@@ -32,7 +43,7 @@
 
             </a>
          </p>
-         <table border="1" class="table table-hover table-dark">
+         <table border="1" class="table-dark">
             <thead>
                <tr>
                   <th>RAZÃO SOCIAL</th>
