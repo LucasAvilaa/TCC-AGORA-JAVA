@@ -38,8 +38,8 @@
          <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
-                  <th>NOME</th>
-                  <th>SOBRENOME</th>
+                  <th style="width: 250px">NOME</th>
+                  <th style="width: 200px">SOBRENOME</th>
                   <th>RG</th>
                   <th>CPF</th>
                   <th>DATA NASCIMENTO</th>

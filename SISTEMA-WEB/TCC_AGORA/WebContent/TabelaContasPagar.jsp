@@ -34,12 +34,12 @@
          <table border="1" class="table table-hover table-dark">
             <thead>
                <tr>
-                  <th style="width: 147px; ">REFERÊNCIA</th>
-                  <th style="width: 141px; ">DESCRIÇÃO</th> 
-                  <th style="width: 141px; ">CATEGORIA</th> 
-                  <th style="width: 193px; ">DATA EMISSÃO</th> 
-                  <th style="width: 105px; ">VENCIMENTO</th>
-                  <th style="width: 181px; ">VALOR TOTAL</th>
+                  <th>REFERÊNCIA</th>
+                  <th>DESCRIÇÃO</th> 
+                  <th>CATEGORIA</th> 
+                  <th>DATA EMISSÃO</th> 
+                  <th>VENCIMENTO</th>
+                  <th>VALOR TOTAL</th>
                   <th colspan="2" style="text-align: center" >AÇÃO</th>
                </tr>
             </thead>

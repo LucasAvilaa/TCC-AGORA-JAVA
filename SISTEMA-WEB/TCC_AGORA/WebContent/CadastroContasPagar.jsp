@@ -28,7 +28,7 @@
   <f:view>  
          <form action="ControlContasPagar" method="post" name="cadastroContasPagar"> 
          
-            <h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Inserir conta a pagar</span></h1>
+            <h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">CONTAS A PAGAR</span></h1>
 <div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 6%; width: 27em; font-family: sans-serif">
             
            

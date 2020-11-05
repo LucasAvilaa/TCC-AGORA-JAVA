@@ -24,7 +24,7 @@
   <f:view>  
          <form action="ControlContasReceber" method="post" name="cadastroContasReceber">
             
-            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Contas a receber</span></h1>
+            	<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">CONTAS A RECEBER</span></h1>
 <div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 5%; width: 27em; font-family: sans-serif">
             
            

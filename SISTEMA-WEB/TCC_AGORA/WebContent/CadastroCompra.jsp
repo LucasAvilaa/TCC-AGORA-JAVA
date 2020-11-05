@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+	<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -31,7 +31,7 @@
 			<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">PEDIDO DE COMPRA</span></h1>
             
 
-			<br />
+			<br /> 
 			<p> 
 				<a  href="ControlCompra?action=ConfirmarCompra&idCompra=<c:out value="${compra.idCompra}"/>">
 					<input type="button" value=" CONFIRMAR COMPRA" class="btn btn-success" style="width: 12em; height: 2.5em; margin-right:0.4em" />
@@ -43,9 +43,11 @@
 					<input type="button" value=" VOLTAR " class="btn btn-danger" style="height: 2.5em;" /> 
 				</a>
 				
-			</p>
+			</p> 
 			<br />
-			<fieldset id="informacoes">
+			
+			<fieldset id="informacoes" >
+			<div style="background-color: rgba(169,169,169, 1); height: 100px; padding-top: 15px; width: 50%; padding-left: 19px">
 				<p >
 					<label class="text-white font-weight-bold"> REFERÊCIA: <c:out value="COMPRA/${compra.idCompra}" />
 					</label> <label style="padding-left: 90px" class="text-white font-weight-bold"> DATA CRIADA: <fmt:formatDate
@@ -54,21 +56,20 @@
 				</p>
 				<p>
 					<label class="text-white font-weight-bold"> SITUAÇÃO: <c:out value="${compra.status}" />
-					</label> <label style="padding-left: 168px " class="text-white font-weight-bold"> DATA FINALIZADA: <fmt:formatDate
+					</label> <label style="padding-left: 110px " class="text-white font-weight-bold"> DATA FINALIZADA: <fmt:formatDate
 							pattern="dd/MM/yyyy hh:mm:ss" value="${compra.dataFinalizada}" />
 					</label>
-				</p>
-
-				<br />
+				</p> 
+			</div>
 				<table border="1" class="table table-hover table-dark">
 					<thead>
 						<tr>
-							<th>PRODUTO</th>
-							<th>FORNECEDOR</th>
-							<th>QUANTIDADE</th>
-							<th>VALOR UNITÁRIO</th>
-							<th>SUBTOTAL</th>
-							<th colspan="2" style="text-align: center;width: 50px" >AÇÃO</th>
+							<th style="width: 400px">PRODUTO</th>
+							<th style="width: 300px">FORNECEDOR</th>
+							<th style="text-align: center;">QUANTIDADE</th>
+							<th style="text-align: center;">VALOR UNITÁRIO</th>
+							<th style="text-align: center;">SUBTOTAL</th>
+							<th colspan="2" style="text-align: center;" >AÇÃO</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -78,22 +79,23 @@
 								</td>
 								<td><c:out value="${itens.tbProduto.tbFornecedore.razaoSocial}"></c:out>
 								</td>
-								<td contenteditable="true" align="center" onchange="multiplica()">
+								<td align="center" >
 									<c:out value="${itens.quantidade}" />
 									
 								</td>
-								<td contenteditable="true" align="center">  
+								<td  align="center">  
 									<c:out value="${itens.tbProduto.valorUniCompra}"></c:out>
 								</td>
-								<td> 
+								<td align="center"> 
 									<c:out value="${itens.subtotal}"></c:out>
 								</td>
 								<td><a href='ControlCompra?action=EditItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
-								 		<button class="btn btn-success" style="height: 2.2em; width: 3em;"><img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /></button>
+								 		<span class="btn btn-success" style="height: 2.2em; width: 3em;"> <img src="img/edit.svg" style="width: 21px; height: 21px; " title="EDITAR" /> </span>
+										
 									</a>
 								</td>
 							 	<td><a href='ControlCompra?action=DeleteItens&idCompra=<c:out value="${compra.idCompra}"/>&idItem=<c:out value="${itens.tbProduto.idProduto}"/>'>
-									  	<button class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></button>
+									  	<span class="btn" style="height: 2.2em; width: 3em; background-color: #ee0000"><img src="img/trash-2.svg" style="width: 21px; height: 21px; " title="EXCLUIR" /></span>
 									</a>
 								</td>
 
@@ -101,14 +103,11 @@
 						</c:forEach>
 						<tr>
 							<td colspan="7">
-								<a href="#" onclick="abrir()">INSERIR ITENS</a>
+								<a href="#" onclick="this.href='ControlCompra?action=InserirItens'">INSERIR ITENS</a>
 							</td>
-						</tr>
+						</tr> 
 						<tr>
-							<td colspan="7" style="color: white"></td>
-						</tr>
-						<tr>
-							<td colspan="4">TOTAL</td>
+							<td colspan="4" align="right">TOTAL</td>
 							<td colspan="3"><c:out value="R$ ${total.total}"></c:out></td>
 						</tr>
 					</tbody>
@@ -131,7 +130,7 @@
 							</label>
 						</p> 
 						<p style="text-align:center">
-							<label  class="font-weight-bold" style="text-align: left"> QUANTIDADE: <br /><input name="quantidade" type="number"
+							<label  class="font-weight-bold" style="text-align: left"> QUANTIDADE: <br /><input name="quantidade" id="quantidade" onchange="validaNumero()"  type="number"
 								value="<c:out value="${item.quantidade}"/>" required="required"
 								style="height: 1.5em; width: 20em" />
 							</label>
@@ -147,10 +146,19 @@
 		</div>
 	</f:view>
 	<script>     
+	function validaNumero(){
+		if(document.getElementById("quantidade").value < 0 ){
+			document.getElementById("quantidade").value = "";
+		}
+	} 
 		var url_atual = window.location.href;
 		   if(url_atual.indexOf("/ControlCompra?action=EditItens&idCompra=") != -1){
 			   document.getElementById("inserir-itens-container").style.display = 'flex';  
 		   }	 
+		   if(url_atual.indexOf("/ControlCompra?action=InserirItens") != -1){
+			   document.getElementById("inserir-itens-container").style.display = 'flex';  
+		   }
+		    
 		   function abrir(){
 			document.getElementById("inserir-itens-container").style.display = 'flex';
 		   }
