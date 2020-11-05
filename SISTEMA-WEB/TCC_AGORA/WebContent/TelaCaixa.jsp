@@ -20,29 +20,37 @@ body{
 .div-alinhada{
 	width:66%;
 	min-height: 27.8em;
-	float: left	;
-	border: 1px solid black;
+	float: left	;  
 
+} 
 
-}
 #tabela_centro{
 	min-height: 25em;
 	width:80%;
 	position: relative;
 	left: 15%;
 	float: left;
+	background-color: rgba(169,169,169, 0.7); 
 
 }
-#elemento_centro{
-	border:1px solid black;
+#elemento_centro{ 
 	float: left;
 	height:31.4em;
+	width: 25em;
+	background-color: rgba(169,169,169, 0.7);
+	padding-top: 15px;
+	padding-bottom: 15px;
 	
 }
-#rodape{
-background-color: gray;
-clear:both;
-height:2em;
+#rodape {
+	height: 26px;
+	position:fixed;
+    bottom:0;
+    width:100%;
+    left: 0px;
+    padding-left: 10px; 
+    font-weight: bold;
+    background-color: gray;    
 }
 table{
 
@@ -61,24 +69,24 @@ table{
 		<h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center">CAIXA</span></h1>
     
 		<div class="div-alinhada">
-			<div id="tabela_centro" >
-				<p>
+			<div id="tabela_centro" > 
+				<p style="padding: 15px 0 0 15px;">
 					<label class="font-weight-bold text-white" >
-						 NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />"/> 
-											<a href="#" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+document.getElementById('idComanda').value">PESQUISAR</a> 
+						 NÚMERO COMANDA: <input type="number" name="idComanda" id="idComanda" value="<c:out value="${comanda}" />" style="height: 23px; text-align: right; width: 150px" placeholder="Digite o número da comanda"/> 
+											<a href="#" onclick="this.href='ControlVenda?action=pesquisaComanda&idComanda='+document.getElementById('idComanda').value" style="color: white;">PESQUISAR</a> 
 					</label>					
 				</p> 
-				<p>
+				<p style="padding-left: 15px;">
 					<label  class="font-weight-bold text-white" >
 						STATUS COMANDA:  <c:out value="${status.statusComanda}"/> 
 					</label>
 				</p>
-				<p>
+				<p style="padding-left: 15px;">
 					<label  class="font-weight-bold text-white" >
 						DATA/HORA ABERTA:   <fmt:formatDate value="${dataAberta.dataCompra}" pattern="dd/MM/yyyy hh:mm:ss"/>
 					</label>
-				</p>
-				<table border="1" class="table table-hover table-dark">
+				</p> 
+				<table border="1" class="table table-hover table-dark" >
 					<thead>
 						<tr style="height: 25px; font-size: 12px">
 							<th style="width: 83px;">COD. PROD</th>
@@ -112,8 +120,7 @@ table{
 					</tbody>
 				</table>
 			</div>
-			</div>
-			<div>
+			</div> 
 			<div id="elemento_centro">
 				<form action="ControlVenda" method="post">
 					<p style="text-align:center">
@@ -126,7 +133,7 @@ table{
 						</label>
 					</p>
 					<p style="text-align:center">
-						<label class="font-weight-bold text-white" style="text-align: left"> QUANTIDADE <br /><input type="text" name="quantidade" value="<c:out value='${item.quantidade}' />" />
+						<label class="font-weight-bold text-white" style="text-align: left"> QUANTIDADE <br /><input type="text" name="quantidade" id="quantidade" value="<c:out value='${item.quantidade}' />" />
 						</label>
 					</p>
 					<p style="text-align:center">
@@ -142,23 +149,18 @@ table{
 						</label>
 					</p>
 					<p style="text-align:center; margin-top: 2em;">
+						<label class="font-weight-bold text-white" >
+							<input type="submit" value="INSERIR ITEM" onclick="validaNumero()" class="btn btn-primary" style="height: 2.2em; width: 15em;" />							 
+						</label>
 						<label>
-							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'" class="btn btn-success" style="height: 2.2em; width: 12em;"> 
+							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'" class="btn btn-success" style="height: 2.2em; width: 15em;"> 
 								FINALIZAR COMPRA 
 						 	</a>
-						</label>
-						 
-						<label class="font-weight-bold text-white" >
-							<input type="submit" value=" INSERIR ITEM " class="btn btn-primary" style="height: 2.2em; width: 12em;" />							 
-						</label>	
+						</label> 
 					</p> 
 
 				</form>
-			</div>
-		</div>
-		<div id="rodape">
-			<p>OPERADOR: <c:out value="${usuario}"/>   DATA: <c:out value="${data}"/> HORA: <c:out value="${hora}"/></p>
-		</div>
+			</div> 
 		<div class="inserir-itens-container" id="inserir-itens-container" >
 			<div class="inserir-itens">
 				<form action="ControlVenda" method="post" name="pagamento">
@@ -198,9 +200,19 @@ table{
 					</p>
 				</form>
 			</div>
+		</div> 
+		<div id="rodape">
+			 <p> OPERADOR: <c:out value="${usuario}"/> <span style="position: absolute; right: 15px"> DATA: <c:out value="${data}"/> HORA: <c:out value="${hora}"/> </span>  </p>
 		</div>
 	</f:view>
 	<script >    
+		function validaNumero(){
+			if(document.getElementById("quantidade").value == ""){
+				window.alert("A QUANTIDADE NÃO PODE ESTAR VAZIA");
+				document.getElementById("quantidade").focus();
+			}
+		}
+	
 		var url_atual = window.location.href;
 		if(url_atual.indexOf("/ControlVenda?action=FinalizarVenda") != -1){
 			document.getElementById("inserir-itens-container").style.display = 'flex'; 

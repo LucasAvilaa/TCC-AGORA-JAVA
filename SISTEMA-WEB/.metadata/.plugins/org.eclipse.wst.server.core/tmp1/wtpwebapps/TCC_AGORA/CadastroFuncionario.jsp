@@ -45,7 +45,7 @@
       <jsp:include page="index.jsp"></jsp:include>
       <f:view>
          <form action="ControlFuncionario" method="post" name="cadastrofuncionario">
-            <h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">Cadastro de Funcionários</span></h1>
+            <h1 class="text-center margintop" style="margin-top: 0.4em;"><span class="badge badge-secondary text-center;">CADASTRO DE FUNCIONARIOS</span></h1>
 				<div class="card border bg-dark text-white" style="background-color: #fff;  margin-top: 15px; position: relative;left: 3%; width: 30em; font-family: sans-serif">
             <br />
             <p class="botoes"><input value="ENVIAR" type="submit"  id="btn" class="btn btn-success" style="width: 10em; height: 2.5em; margin-right:0.4em; margin-left: 3em" />
@@ -120,7 +120,7 @@
                      RUA: <input type="text" name="rua" readonly="readonly" style="width: 221px; "value="<c:out value="${endereco.rua}"/>" />
                   </label>
                   <label class="font-weight-bold">
-                     NÚMERO: <input type="number" name="numero" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
+                     NÚMERO: <input type="number" name="numero" id="numero" onchange="validaNumero()" style="width: 69px; "value="<c:out value="${endereco.numero}"/>" />
                   </label>
                </p>
             </fieldset>
@@ -154,7 +154,12 @@
          </form>
       </f:view> 
    <script> 
-    
+	function validaNumero(){
+			if(document.getElementById("numero").value < 0 ){
+				document.getElementById("numero").value = "";
+			}
+		}
+	 
       $("#cep").mask("99999-999"); 
       $("#celular").mask("(99)99999-9999");
       $("#rg").mask("99.999.999-9");

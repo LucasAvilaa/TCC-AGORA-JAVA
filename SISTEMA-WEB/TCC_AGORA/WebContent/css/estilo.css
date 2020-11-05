@@ -1,6 +1,6 @@
-
+@charset "UTF-8";
 body{
-	background-image: url('https://images3.alphacoders.com/536/53625.jpg');
+	background-image: url(../img/origem-trigo-scaled.jpeg);
 	background-repeat: no-repeat;
  	background-attachment: fixed;
     background-size: cover;
@@ -13,3 +13,4 @@ button{
 	height: 2.2em; 
 	width: 8em;
 }
+ 
