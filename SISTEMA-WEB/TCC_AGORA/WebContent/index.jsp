@@ -59,8 +59,12 @@ display: block;
 
    </head>
    <body> 
-   	
-	
+   	 	<%
+   		String usuario = (String) session.getAttribute("usuario");
+   		if(usuario == null){
+   			response.sendRedirect("Login.xhtml");
+   		}
+   	%> 
      <div class="navbar" style="padding: 2em; background-color: rgb(107,57,23)">
      	<h5><a href="ControlCompra?action=Tabela" class="nav-link text-light   d-inline margin">Compra</a>
             <a href="ControlProduto?action=Tabela" class="nav-link text-light   d-inline">Produtos</a>

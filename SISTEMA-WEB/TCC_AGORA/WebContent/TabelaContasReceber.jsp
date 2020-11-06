@@ -15,8 +15,8 @@
 		padding: 6px;
 	}
 	table{
-		width: 99%;
-		margin: 0 10px 30px 10px; 
+		 width: 99%;
+		margin-bottom: 30px; 
 		border: none;
 		border-radius: 0px 15px 15px 15px;
 	}

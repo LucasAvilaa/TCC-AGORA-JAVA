@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="validaNumero"/>
+		<item key="selection" value="centralizar_botoes"/>
 		<list key="findhistory">
+			<item value="centralizar_botoes"/>
+			<item value="debito"/>
+			<item value="credito"/>
+			<item value="dinheiro"/>
 			<item value="validaNumero"/>
 			<item value="image"/>
 			<item value="Date"/>
@@ -19,10 +23,6 @@
 			<item value="receber.getDinheiro()"/>
 			<item value="criar_editar"/>
 			<item value="dinheiroRecebido"/>
-			<item value="CPF SE"/>
-			<item value="CPF"/>
-			<item value="ID"/>
-			<item value="PENDENTE"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Timestamp"/>

@@ -3,15 +3,14 @@ package controller;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import java.util.Date; 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpServletResponse; 
+import dao.DaoEstoque;
 import dao.DaoVenda;
 import model.TbComanda;
 import model.TbContasReceber;
@@ -24,9 +23,10 @@ public class ControlVenda extends HttpServlet {
 	private static String tabela = "/TelaCaixa.jsp";
 	private static String criar_editar = "/ControlVenda?action=pesquisaComanda&idComanda="; //ARRUMAR ESSE LINK 
 	private DaoVenda Dao;
+	private DaoEstoque Estoque;
 	private String acao = "I";
 	private Integer idComanda = null;  
-	private Integer idProduto = null;   
+	private Integer idProduto = null;    
 	private TbProduto produto = new TbProduto();
 	private TbListaProduto lista = new TbListaProduto();
 	private TbComanda comanda = new TbComanda();
@@ -35,6 +35,7 @@ public class ControlVenda extends HttpServlet {
 	public ControlVenda() {
 		super();
 		Dao = new DaoVenda();
+		Estoque = new DaoEstoque();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -118,53 +119,65 @@ public class ControlVenda extends HttpServlet {
 	}
 	 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-		if(request.getParameter("quantidade") != null) {
-			lista.setQuantidade(Integer.parseInt(request.getParameter("quantidade").trim()));
-		}
-		
-		if(request.getParameter("produto") != null) {
-			produto.setIdProduto(Integer.parseInt(request.getParameter("produto")));
-			lista.setTbProduto(produto);
-		}
-		
-		receber.setDebito(BigDecimal.valueOf(Double.valueOf(0)));
-		receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(0))); 
-		receber.setCredito(BigDecimal.valueOf(Double.valueOf(0)));
-		
-		if(request.getParameter("formaPagamento") != null) {
-			receber.setMetodoPagamento(request.getParameter("formaPagamento"));
-			System.out.println("METODO DE PAGAMENTO " + receber.getMetodoPagamento());
-			
+		 			if(request.getParameter("quantidade") != null) {
+						lista.setQuantidade(Integer.parseInt(request.getParameter("quantidade").trim()));
+					} 
+					receber.setDebito(BigDecimal.valueOf(Double.valueOf(0)));
+					receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(0))); 
+					receber.setCredito(BigDecimal.valueOf(Double.valueOf(0)));
+					
+					if(request.getParameter("formaPagamento") != null) {
+						receber.setMetodoPagamento(request.getParameter("formaPagamento"));
+						System.out.println("METODO DE PAGAMENTO " + receber.getMetodoPagamento());
+						
 
-			if(request.getParameter("formaPagamento").equals("DE")) {
-				  receber.setDebito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
-			}
-			else if(request.getParameter("formaPagamento").equals("DI")) {
-				receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal")))); 
-			}
-			else if(request.getParameter("formaPagamento").equals("CR")) {
-				  receber.setCredito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
-			}
-			System.out.println("DINHEIRO: " + receber.getDinheiro() + "\n DEBITO: " + receber.getDebito() + "\n CREDITO: " + receber.getCredito());
-		} 
-		
-		comanda.setIdComanda(idComanda);
-		lista.setTbComanda(comanda);
- 
-		try {
-			System.out.println("AÇÃO: " + acao); 
-				if(Dao.crudVenda(acao, comanda, lista, receber, produto)) {
-				System.out.println("CRIADO/ALTERADO COM SUCESSO");
-				acao = "I";
-				} 
-			else { 
-				System.out.println("ERRO AO CRIAR/ALTERAR VENDA");
-				acao = "I";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("ERRO AO INSERIR VENDA");
-		}
-		response.sendRedirect("ControlVenda?action=pesquisaComanda&idComanda=" + comanda.getIdComanda());
-	}
+						if(request.getParameter("formaPagamento").equals("DE")) {
+							  receber.setDebito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
+						}
+						else if(request.getParameter("formaPagamento").equals("DI")) {
+							receber.setDinheiro(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal")))); 
+						}
+						else if(request.getParameter("formaPagamento").equals("CR")) {
+							  receber.setCredito(BigDecimal.valueOf(Double.valueOf(request.getParameter("valorTotal"))));
+						}
+						System.out.println("DINHEIRO: " + receber.getDinheiro() + "\n DEBITO: " + receber.getDebito() + "\n CREDITO: " + receber.getCredito());
+					} 
+					
+					comanda.setIdComanda(idComanda);
+					lista.setTbComanda(comanda);
+			 
+					try {
+						if(request.getParameter("produto") != null) {
+								produto.setIdProduto(Integer.parseInt(request.getParameter("produto")));
+								lista.setTbProduto(produto);  
+								
+								if(Estoque.quantidadePorProduto(produto).getQuantidade() - Integer.parseInt(request.getParameter("quantidade").trim()) >=0 ) {
+									System.out.println("AÇÃO: " + acao); 
+										
+										if(Dao.crudVenda(acao, comanda, lista, receber, produto)) {
+												if(acao == "I") {
+													System.out.println("INSERIDO COM SUCESSO"); 
+												}
+												else {
+													System.out.println("ALTERADO COM SUCESSO");
+												}												 
+												acao = "I";
+										}
+								}
+						}
+						else if(acao == "P"){
+							if(Dao.crudVenda(acao, comanda, lista, receber, produto)) {
+								System.out.println("VENDA FINALIZADA COM SUCESSO");  
+							}else {
+								System.out.println("ERRO AO FINALIZAR VENDA");
+							}
+							acao = "I";
+						} 
+							
+					} catch (Exception e) {
+						e.printStackTrace();
+						System.out.println("ERRO AO INSERIR VENDA");
+					} 
+			response.sendRedirect("ControlVenda?action=pesquisaComanda&idComanda=" + comanda.getIdComanda()); 
+	}	 
 }
