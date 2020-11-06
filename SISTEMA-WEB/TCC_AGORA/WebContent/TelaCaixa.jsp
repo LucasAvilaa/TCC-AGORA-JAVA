@@ -156,7 +156,7 @@ body{
 							<input type="submit" value="INSERIR ITEM" onclick="validaNumero()" class="btn btn-primary" style="height: 2.2em; width: 15em;" />							 
 						</label>
 						<label>
-							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'" class="btn btn-success" style="height: 2.2em; width: 15em; margin-bottom: 20px "> 
+							<a href="#" onclick="this.href='ControlVenda?action=FinalizarVenda'"  class="btn btn-success" style="height: 2.2em; width: 15em; margin-bottom: 20px "> 
 								FINALIZAR COMPRA 
 						 	</a>
 						</label> 
@@ -183,17 +183,17 @@ body{
 						</p>
 						<p>		
 							<label> 
-								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" readonly="readonly" type="number" onchange="calculo();" style="width: 200px;" />
+								DINHEIRO RECEBIDO: <input name="dinheiroRecebido" readonly="readonly" type="number" onchange="calculo();" style="width: 200px;background-color: rgba(211,211,211, 0.5);padding-left: 5px;" />
 							</label> 
 						</p>
 						<p>
 							 <label>
-							 	TROCO: <input name="troco" readonly="readonly" style="width: 200px;" />
+							 	TROCO: <input name="troco" readonly="readonly" style="width: 200px; background-color: rgba(211,211,211, 0.5); padding-left: 5px;" />
 							</label>
 						</p> 
 						<p>
 							<label> 
-								VALOR TOTAL: <input name="valorTotal" readonly="readonly" value="<c:out value="${total.total}"/>"	style="width: 200px;" />
+								VALOR TOTAL: <input name="valorTotal" readonly="readonly" value="<c:out value="${total.total}"/>" style="background-color: rgba(211,211,211, 0.5); padding-left: 5px;"	  />
 							</label>	
 						</p>
 					</fieldset>
@@ -225,11 +225,11 @@ body{
 			   	var dinheiro = document.querySelector('[name=dinheiroRecebido]');
 				var troco = document.querySelector('[name=troco]');
 				var total = document.querySelector('[name=valorTotal]');
-				troco.value = dinheiro.value - total.value; 
 				if(dinheiro.value < 0){
 					dinheiro.value = "";
 					window.alert("O DINHEIRO RECEBIDO NÃO PODE SER NEGATIVO");
-				}else{
+				}else{ 
+					troco.value = dinheiro.value - total.value; 
 					if((dinheiro.value - total.value) >0){
 						troco.style.color = "green";
 						troco.style.background = "#90EE90";
@@ -246,11 +246,11 @@ body{
 		 	var troco = document.querySelector('[name=troco]');
 		 	if(pag == "DI"){
 		 		din.readOnly = false;
+		 		din.style.background = "#fff";  
 		 	}else{
 		 		din.readOnly = true;
 		 		din.value = "";
 		 		troco.value = "";
-		 		troco.style.background = "#fff";
 		 	}
 		}
  
