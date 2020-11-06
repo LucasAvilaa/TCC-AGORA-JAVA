@@ -58,11 +58,30 @@ public class DaoEstoque {
 				produto.setNomeProduto(rs.getString("NOME_PRODUTO"));
 				produto.setCategoria(rs.getString("CATEGORIA"));
 				estoque.setTbProduto(produto);
-				
+				System.out.println("QUANTIDADE REAL NO ESTOQUE");
 				estoque.setIdEstoque(rs.getInt("ID_ESTOQUE"));
 				estoque.setQuantidade(rs.getInt("QUANTIDADE"));
 				estoque.setDataEntrada(rs.getTimestamp("DATA_ENTRADA"));
 				estoque.setDataVencimento(rs.getTimestamp("DATA_VENCIMENTO")); 
+				} 			 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		ps.close();
+		return estoque;		 
+}
+	
+	public TbEstoque quantidadePorProduto(TbProduto produto) throws Exception {
+		TbEstoque estoque = null; 
+		con = new Conexao();
+		PreparedStatement ps = con.getConexao().prepareStatement("SELECT QUANTIDADE FROM VW_ESTOQUE WHERE ID_PRODUTO = ?"); 
+		ps.setInt(1, produto.getIdProduto());
+		try {
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				estoque = new TbEstoque();  
+				estoque.setQuantidade(rs.getInt("QUANTIDADE")); 
 				} 			 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,7 +125,7 @@ public class DaoEstoque {
 	public List<SelectItem> lista() throws Exception { 
 		List<SelectItem> emEstoque = new ArrayList<SelectItem>();
 		con = new Conexao();
-		PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_ESTOQUE WHERE VALOR_VENDA IS NOT NULL ORDER BY NOME_PRODUTO ASC "); 
+		PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_ESTOQUE WHERE VALOR_VENDA IS NOT NULL AND QUANTIDADE > 0 ORDER BY NOME_PRODUTO ASC"); 
 		
 		try {
 			ResultSet rs = ps.executeQuery();
