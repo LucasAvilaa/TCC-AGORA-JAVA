@@ -94,8 +94,17 @@ public class ControlProduto extends HttpServlet {
 		produto.setCategoria(request.getParameter("categoria"));
 		produto.setDescricaoProduto(request.getParameter("descricao"));
 		produto.setNomeProduto(request.getParameter("nomeProduto"));
-		produto.setValorUniCompra(BigDecimal.valueOf(Double.valueOf(request.getParameter("vUnitCompra"))));
-		produto.setValorUniVenda(BigDecimal.valueOf(Double.valueOf(request.getParameter("vUnitVenda"))));
+		if(request.getParameter("vUnitCompra").toString() != "") {
+			produto.setValorUniCompra(BigDecimal.valueOf(Double.valueOf(request.getParameter("vUnitCompra"))));
+		}else {
+			produto.setValorUniCompra(BigDecimal.valueOf(Double.valueOf(0)));
+		}
+		
+		if(request.getParameter("vUnitVenda").toString() != "") {
+			produto.setValorUniVenda(BigDecimal.valueOf(Double.valueOf(request.getParameter("vUnitVenda"))));
+		}else {
+			produto.setValorUniVenda(BigDecimal.valueOf(Double.valueOf(0)));
+		}
 
 		try {
 			System.out.println("AÇÃO: " + acao);

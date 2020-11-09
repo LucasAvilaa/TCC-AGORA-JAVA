@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="centralizar_botoes"/>
+		<item key="selection" value="calculo"/>
 		<list key="findhistory">
+			<item value="calculo"/>
 			<item value="centralizar_botoes"/>
 			<item value="debito"/>
 			<item value="credito"/>
@@ -22,7 +23,6 @@
 			<item value="800"/>
 			<item value="receber.getDinheiro()"/>
 			<item value="criar_editar"/>
-			<item value="dinheiroRecebido"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Timestamp"/>

@@ -125,7 +125,7 @@ public class DaoEstoque {
 	public List<SelectItem> lista() throws Exception { 
 		List<SelectItem> emEstoque = new ArrayList<SelectItem>();
 		con = new Conexao();
-		PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_ESTOQUE WHERE VALOR_VENDA IS NOT NULL AND QUANTIDADE > 0 ORDER BY NOME_PRODUTO ASC"); 
+		PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM VW_ESTOQUE WHERE VALOR_VENDA IS NOT NULL AND QUANTIDADE > 0 AND VALOR_VENDA > 0 ORDER BY NOME_PRODUTO ASC"); 
 		
 		try {
 			ResultSet rs = ps.executeQuery();
