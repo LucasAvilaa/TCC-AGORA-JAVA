@@ -66,12 +66,12 @@
                 </p>
                 <p style="text-align:center">
                   <label class="font-weight-bold" style="text-align: left; padding-left: 3.3em;">
-                     VALOR COMPRA: <input name="vUnitCompra" type="number" value="<c:out value="${produto.valorUniCompra}"/>" placeholder="R$000,00"  required="required"style="height: 1.5em; width: 20em "/>
+                     VALOR COMPRA: <input name="vUnitCompra" type="number" value="<c:out value="${produto.valorUniCompra}"/>" placeholder="R$000,00" style="height: 1.5em; width: 20em "/>
                   </label>
                   </p>
                   <p style="text-align: center">
                   <label class="font-weight-bold" style="text-align: left; padding-left: 3.3em;">
-                     VALOR VENDA: <input name="vUnitVenda" type="number" value="<c:out value="${produto.valorUniVenda}"/>" required="required" placeholder="R$000,00" style="height: 1.5em; width: 20em" />
+                     VALOR VENDA: <input name="vUnitVenda" type="number" value="<c:out value="${produto.valorUniVenda}"/>"  placeholder="R$000,00" style="height: 1.5em; width: 20em" />
                   </label> 
                </p>  
                  <p style="text-align: center">  

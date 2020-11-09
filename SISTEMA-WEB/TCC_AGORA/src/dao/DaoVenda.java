@@ -178,4 +178,10 @@ public class DaoVenda {
 		}
 		return status;
 	}
+	
+	public void morrer() {
+		System.out.println("VOCE ACESSOU O METODO SECRETO, ZEROU O WEB");
+	}
 }	
+ 
+
