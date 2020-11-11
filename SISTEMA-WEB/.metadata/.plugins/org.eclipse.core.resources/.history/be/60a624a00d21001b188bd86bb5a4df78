@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Quem somos</title>
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="shortcut icon" href="img/Logo_padaria.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/css.css"/>
+	<style type="text/css">
+
+
+		/*Estilização do centro*/
+		.faixa{
+			background-color: RGB(107,57,23);
+		}
+		#template{
+			/*background-image: url("img/Cafe/Cestas de Pães Artesanais e Orgânicos.jpg");*/
+			background: url("img/339410.jpg") no-repeat right center fixed;
+			background-color: black;
+			color: white;
+			padding-top:1.8%;
+			text-align: center;
+
+		}
+		.informacoes {
+			width: 300px;
+			height: 600px;
+			background-color: blue;
+			float: right;
+			clear: both;
+		}
+
+		#coursel {
+			width: 500px;
+			height: 600px;
+			background-color: green;
+			right: 80px;
+			float: right;
+		}
+
+		.Cimagem {
+			height: 600px;
+		}
+
+		#segura {
+			display: flex;
+			justify-content: center;
+			margin-top: 100px;
+		}
+		#segura_centro{
+			width: 	1100px;
+			height: 400px;
+			margin-top: 100px;
+			margin-left: 21%;
+			background-color: gray;
+		}
+		.imgsCentro{
+			width: 366px;
+			height: 200px;
+			background-color: green;
+			float: right;
+		}
+		.imgsCentro img{
+			width: 250px;
+			height: 120px;
+			margin-top: 50px;
+			margin-left: 60px;
+
+		}
+		#txtCentro{
+			width: 33%;
+			height: 400px;
+			background-color: yellow;
+			float: right;
+		}
+		#txtCentro p{
+			margin-left: 5px;
+			font-size: 20px;
+		}
+		footer{
+			width: 100%;
+			height: 1em;
+		}
+
+		#segurar{
+			margin-top: 5%;
+			width: 60%;
+			min-height: 1200px;
+			margin-left: 17%;
+			margin-bottom: 20%;
+
+		}
+		#segurar h2{
+			text-align: center;
+			font-size: 28px;
+		}
+		#segurar h3{
+			margin-left: 15%;
+			margin-top: 8%;
+			font-size: 24px;
+		}
+		#segurar p {
+			margin-left: 15%;
+			margin-top: 1%;
+		}
+		/*Fim centro*/
+		/* Rodapé */
+
+		/* Fim Rodapé */
+	</style>
+</head>
+<body>
+<!-- Criação do Menu Horizontal -->
+	<div class="navbar navbar-expand-lg navbar-light " style="height: 80px; z-index: 100; background-color:  RGB(107,57,23)">
+		<a class="navbar-brand text-white" href="#"> <img src="img/Logo3.png" style="width: 2em"/> </a>
+		<button class="navbar-toggler" type="button" >
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<h4><a class="nav-link text-light" href="index.xhtml">Home</a></h4>
+				<h4><a class="nav-link text-light " href="cardapio.xhtml">Cardápio</a></h4>
+				<h4><a class="nav-link text-light " href="localizacao.xhtml">Unidades</a></h4>
+				<h4><a class="nav-link text-light " href="Contato.xhtml">Contatos</a></h4>
+				<h4><a class="nav-link text-light" href="quemSomos.xhtml">Quem somos</a></h4>
+
+
+			</div>
+		</div>
+	</div>
+	<!--Finalização do Menu Horizontal -->
+<!-- Template -->
+	<div id="template">
+		<h1 style="margin-bottom: 2em;">Quem Somos</h1>
+				<div class="faixa"  style="height: 5em;margin-top: 1em;"></div>
+	</div>
+	
+
+	<!-- Área principal-->
+		<div id="segurar">
+			<h2>ALGUMAS COISAS QUE NÃO ABRIMOS MÃO:</h2>
+
+			<div id="textos">
+				<h3>RESPEITO</h3>
+
+				<p>Demonstrar interesse pelo outro, ser disponível, humilde, ético e estar disposto a aprender sempre, considerando os diferentes pontos de vista.<br/>
+				Este posicionamento reflete na atenção com o nosso cliente, no cuidado com nossos colaboradores, na consideração pelo meio ambiente e na relação com os acionistas.<br/>
+				Respeitamos a diversidade dos nossos colaboradores e dos nossos clientes.</p>
+			</div>
+
+			<div id="textos">
+				<h3>SIMPLICIDADE</h3>
+
+				<p>Agir com eficiência e com foco na realização dos objetivos, entregar conforme o combinado, respeitando as regras e processos, agindo como dono do negócio.<br/>
+					Pensar no que é importante para as pessoas e para empresa como um todo.<br/>
+					Somos simples e práticos na maneira de agir.</p>
+			</div>
+
+			<div id="textos">
+				<h3>ALEGRIA	</h3>
+
+				<p>Realizar suas atividades de maneira divertida e prazerosa, com energia e bom humor, buscando fazer o melhor sem desistir, demonstrando interesse e envolvendo os demais.<br/>
+					Encarar os desafios e mudanças com entusiasmo, buscando constantemente novas ideias que possam melhorar a vida do nosso cliente.<br/>
+					Atender o cliente de maneira gentil e elegante, de maneira a encantá-lo. </p>
+			</div>
+
+			<div id="textos">
+				<h3>POSICIONAMENTO</h3>
+
+				<p>Do lado de casa ou do trabalho, sempre tem uma Padaria Ágora que oferece o que quero nos vários momentos do dia. Sinto o aroma e a qualidade dos produtos familiares, saborosos.<br/>
+					Acolhedora e agradável, dá gosto passar um tempo e comprar, para comer ou levar.<br/>
+					Momento de curtir o dia compartilhando com quem eu gosto, ou uma experiência de compra rápida e prazerosa para celebrar em casa com a família e amigos. <br/>
+					O cantinho especial e gostoso para as pequenas pausas do cotidiano.</p>
+			</div>
+
+			<div id="textos">
+				<h3>PROPÓSITO</h3>
+
+				<p>Nosso propósito nos motiva a trabalhar juntos com um único objetivo:<br/>
+					ser a melhor rede de padarias em um mundo com mais respeito, simplicidade e alegria.</p>
+			</div>
+
+			<div id="textos">
+				<h3>COMPROMISSO</h3>
+
+				<p>"Nós da Padarias Ágora, com o intuito de apoiar e engajar as práticas de melhores tratamentos aos animais, assumimos o compromisso de somente utilizar e permitir o uso de ovos (in natura e processados) de sistemas cage-free, dessa forma, 100% dos ovos utilizados em nossos produtos serão provenientes de galinhas criadas livres de gaiolas. Nos comprometemos a adequar nossos produtos e processos de forma gradativa, de maneira a acompanhar o avanço da cadeia produtiva, completando essa transição até 2025."  </p>
+			</div>
+
+		</div>
+
+	<!-- Rodapé -->
+		<!-- Footer -->
+<div class="page-footer font-small unique-color-dark foot">
+
+  <div style="background-color: RGB(107,57,23);">
+    <div class="container">
+
+      <!-- Grid row-->
+      <div class="row py-4 d-flex align-items-center">
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+           <h6 class="mb-0" style="color: #fff;">Siga-nos em nossas redes sociais.</h6>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f white-text mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter white-text mr-4"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram white-text"> </i>
+          </a>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5 ">
+
+    <!-- Grid row -->
+    <div class="row mt-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">Padarias Ágora</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+        <p>"Conhece-te ao pão mesmo."</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Localizações</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+        <p>
+          <a href="localizacao.html">Padaria Matriz</a>
+        </p>
+        <p>
+          <a href="localizacao.html">Padaria Centro</a>
+        </p>
+        <p>
+          <a href="localizacao.html">Padaria Empirismo</a>
+        </p>
+        <p>
+          <a href="localizacao.html">Padaria Reacionalista</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Links úteis</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+        <p>
+          <a href="acesso.html">Acesso</a>
+        </p>
+        <p>
+          <a href="cadastro.html">Cadastro</a>
+        </p>
+        <p>
+          <a href="agendamento.html">Agendamento</a>
+        </p>
+        <p>
+          <a href="faleConosco.html">Fale Conosco</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contatos</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+        <p>
+          <i class="fas fa-home mr-3"></i> São Paulo, Brasil</p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i> agoraPadarias@agora.com</p>
+        <p>
+          <i class="fas fa-phone mr-3"></i> +55 11 4000-0000</p>
+        <p>
+          <i class="fas fa-print mr-3"></i> +55 24 4000-0000 </p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="index.html"> AgoraProject.com</a>
+  </div>
+  <!-- Copyright -->
+
+</div>
+
+	<!-- Fim Rodapé -->
+
+	<!--Fim área principal -->
+	<script src="js/Jquery.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Quem somos</title>
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="shortcut icon" href="img/Logo_padaria.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<meta charset="utf-8" />
+	<style type="text/css">
+
+
+		/*Estilização do centro*/
+		.faixa{
+			background-color: RGB(107,57,23);
+		}
+		#template{
+			/*background-image: url("img/Cafe/Cestas de Pães Artesanais e Orgânicos.jpg");*/
+			background: url("img/339410.jpg") no-repeat right center fixed;
+			background-color: black;
+
+		}
+		.informacoes {
+			width: 300px;
+			height: 600px;
+			background-color: blue;
+			float: right;
+			clear: both;
+		}
+
+		#coursel {
+			width: 500px;
+			height: 600px;
+			background-color: green;
+			right: 80px;
+			float: right;
+		}
+
+		.Cimagem {
+			height: 600px;
+		}
+
+		#segura {
+			display: flex;
+			justify-content: center;
+			margin-top: 100px;
+		}
+		#segura_centro{
+			width: 	1100px;
+			height: 400px;
+			margin-top: 100px;
+			margin-left: 21%;
+			background-color: gray;
+		}
+		.imgsCentro{
+			width: 366px;
+			height: 200px;
+			background-color: green;
+			float: right;
+		}
+		.imgsCentro img{
+			width: 250px;
+			height: 120px;
+			margin-top: 50px;
+			margin-left: 60px;
+
+		}
+		#txtCentro{
+			width: 33%;
+			height: 400px;
+			background-color: yellow;
+			float: right;
+		}
+		#txtCentro p{
+			margin-left: 5px;
+			font-size: 20px;
+		}
+		footer{
+			width: 100%;
+			height: 1em;
+		}
+
+		#segurar{
+			margin-top: 5%;
+			width: 60%;
+			min-height: 1200px;
+			margin-left: 17%;
+			margin-bottom: 20%;
+
+		}
+		#segurar h2{
+			text-align: center;
+			font-size: 28px;
+		}
+		#segurar h3{
+			margin-left: 15%;
+			margin-top: 8%;
+			font-size: 24px;
+		}
+		#segurar p {
+			margin-left: 15%;
+			margin-top: 1%;
+		}
+		/*Fim centro*/
+		/* Rodapé */
+
+		/* Fim Rodapé */
+	</style>
+</head>
+<body>
+
+</body>
+</html>

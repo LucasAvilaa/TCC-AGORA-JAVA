@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>    
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>CAIXA</title>
+</head>
+<body>
+  
+	<f:view><jsp:include page="index.xhtml" flush="false">
+			<jsp:param name="cabecalho" value="cabecalho" />
+		</jsp:include><h2>CAIXA</h2>
+		<div>
+			_______AQUI VAI FICAR A LISTA DE PRODUTO______
+			<table>
+				<thead>
+					<tr>
+						<th>COD. PROD</th>
+						<th>PRODUTO</th>
+						<th>QUANTIDADE</th>
+						<th>VALOR UNITÁRIO</th>
+						<th>SUBTOTAL</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><c:out value="1" /></td>
+						<td><c:out value="COCA-COLA" /></td>
+						<td><c:out value="10" /></td>
+						<td><c:out value="12" /></td>
+						<td><c:out value="120" /></td>
+					</tr>
+				</tbody>
+
+			</table>
+
+
+		</div>
+		<div>
+			<p>PRODUTO</p>
+			<p>QUANTIDADE</p>
+			<p>PREÇO UNITÁRIO</p>
+			<p>QUANTIDADE X UNITÁRIO</p>
+			<p>SUBTOTAL</p>
+			<p>TOTAL</p>
+		</div>
+		<div>
+			<p>OPERADOR: DATA: HORA:</p>
+		</div>
+	</f:view>
+</body>
+</html>

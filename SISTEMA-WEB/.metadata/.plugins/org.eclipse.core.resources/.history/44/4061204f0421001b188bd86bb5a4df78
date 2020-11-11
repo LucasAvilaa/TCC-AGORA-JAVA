@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Quem somos</title>
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="shortcut icon" href="img/Logo_padaria.jpeg"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/css.css" />
+	<style type="text/css">
+	.faixa{
+		background-color: RGB(107,57,23);
+	}
+	.fa {
+	  padding: 20px;
+	  font-size: 30px;
+	  width: 50px;
+	  text-align: center;
+	  text-decoration: none;
+	  margin: 5px 2px;
+	}
+
+	.fa:hover {
+	    opacity: 0.7;
+	}
+
+	.fa-facebook {
+	  background: #3B5998;
+	  color: white;
+	}
+
+	.fa-twitter {
+	  background: #55ACEE;
+	  color: white;
+	}
+
+	.fa-google {
+	  background: #dd4b39;
+	  color: white;
+	}
+
+	.fa-linkedin {
+	  background: #007bb5;
+	  color: white;
+	}
+
+	.fa-youtube {
+	  background: #bb0000;
+	  color: white;
+	}
+
+	.fa-instagram {
+	  background: #125688;
+	  color: white;
+	}
+
+	.fa-pinterest {
+	  background: #cb2027;
+	  color: white;
+	}
+
+	.fa-snapchat-ghost {
+	  background: #fffc00;
+	  color: white;
+	  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+
+	.fa-skype {
+	  background: #00aff0;
+	  color: white;
+	}
+
+	.fa-android {
+	  background: #a4c639;
+	  color: white;
+	}
+
+	.fa-dribbble {
+	  background: #ea4c89;
+	  color: white;
+	}
+
+	.fa-vimeo {
+	  background: #45bbff;
+	  color: white;
+	}
+
+	.fa-tumblr {
+	  background: #2c4762;
+	  color: white;
+	}
+
+	.fa-vine {
+	  background: #00b489;
+	  color: white;
+	}
+
+	.fa-foursquare {
+	  background: #45bbff;
+	  color: white;
+	}
+
+	.fa-stumbleupon {
+	  background: #eb4924;
+	  color: white;
+	}
+
+	.fa-flickr {
+	  background: #f40083;
+	  color: white;
+	}
+
+	.fa-yahoo {
+	  background: #430297;
+	  color: white;
+	}
+
+	.fa-soundcloud {
+	  background: #ff5500;
+	  color: white;
+	}
+
+	.fa-reddit {
+	  background: #ff5700;
+	  color: white;
+	}
+
+	.fa-rss {
+	  background: #ff6600;
+	  color: white;
+	}
+		/*Estilização do centro*/
+		#template{
+
+			/*background-image: url("img/Cafe/Cestas de Pães Artesanais e Orgânicos.jpg");*/
+			background: url("img/339410.jpg") no-repeat right center fixed;
+			background-color: black;
+			color: white;
+			text-align: center;
+
+		}
+		.informacoes {
+			width: 300px;
+			height: 600px;
+			background-color: blue;
+			float: right;
+			clear: both;
+		}
+
+		#coursel {
+			width: 500px;
+			height: 600px;
+			background-color: green;
+			right: 80px;
+			float: right;
+		}
+
+		.Cimagem {
+			height: 600px;
+		}
+
+		#segura {
+			display: flex;
+			justify-content: center;
+			margin-top: 100px;
+		}
+		#segura_centro{
+			width: 	1100px;
+			height: 400px;
+			margin-top: 100px;
+			margin-left: 21%;
+			background-color: gray;
+		}
+		.imgsCentro{
+			width: 366px;
+			height: 200px;
+			background-color: green;
+			float: right;
+		}
+		.imgsCentro img{
+			width: 250px;
+			height: 120px;
+			margin-top: 50px;
+			margin-left: 60px;
+
+		}
+		#txtCentro{
+			width: 33%;
+			height: 400px;
+			background-color: yellow;
+			float: right;
+		}
+		#txtCentro p{
+			margin-left: 5px;
+		}
+		footer{
+			width: 100%;
+			height: 1em;
+		}
+
+		#segurar{
+			width: 50%;
+			height: 600px;
+			background: black;
+			margin-left: 26%;
+			margin-top: 5%;
+			color: #fff;
+		}
+		h1{
+			padding-top: 5%;
+			text-align: center;
+		}
+
+		#segurar p{
+			margin-top: 5%;
+			text-align: center;
+		}
+		#links{
+			padding-top: 20%;
+			width: 30%;
+			height: 380px;
+			background-color: blue;
+			padding-top: 20px;
+			margin-left: 35%;
+			margin-top: 2%;
+		}
+		#redes{
+			width: 100%;
+			height: 500px;
+
+		}
+		#redes p{
+			margin-top: 2%;
+			font-size: 20px;
+			text-align: center;
+		}
+		.link_redes:hover{
+			text-decoration: none;
+		}
+		.link_redes{
+			font-size: 25px;
+			color: #000;
+		}
+		.redes{
+		width:4em;
+		 height:2em;
+
+		}
+		
+		.texto_redes{
+
+			width: 25em;
+			margin: 0 auto;
+		}
+		fieldset{
+			border: 2px solid RGB(107,57,23);
+
+
+		}
+	/*Fim centro*/
+		/* Rodapé */
+
+		/* Fim Rodapé */
+	</style>
+</head>
+<body>
+	<!-- Criação do Menu Horizontal -->
+	<div class="navbar navbar-expand-lg navbar-light " style="height: 80px; z-index: 100; background-color: RGB(107,57,23)">
+		<a class="navbar-brand text-white" href="#"> <img src="img/Logo3.png" style="width: 2em"/> </a>
+		<button class="navbar-toggler" type="button">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<h4><a class="nav-link text-light" href="index.html">Home</a></h4>
+				<h4><a class="nav-link text-light " href="cardapio.html">Cardápio</a></h4>
+				<h4><a class="nav-link text-light " href="localizacao.html">Unidades</a></h4>
+				<h4><a class="nav-link text-light " href="Contato.html">Contatos</a></h4>
+				<h4><a class="nav-link text-light" href="quemSomos.html">Quem somos</a></h4>
+
+			</div>
+		</div>
+	</div>
+	<!--Finalização do Menu Horizontal -->
+<!-- Template -->
+	<div id="template">
+		<h1 style="position: relative; top: 2em;">Contato</h1>
+		<div class="faixa" style="height: 5em;margin-top: 1em;"></div>
+	</div>
+	
+
+	
+	<!-- Área principal-->
+	<div id="redes">
+		<div>
+
+		<h1 class="font-weight-bold">Nossas Redes Sociais</h1>
+
+		<p>
+
+			<a href="#" class="fa fa-facebook redes"></a>
+			<a href="#" class="fa fa-twitter redes"></a>
+			<a href="#" class="fa fa-instagram redes"></a>
+
+		</p>
+		<div class="texto_redes">
+			<fieldset>
+				<h1 class="font-weight-bold" >Contatos </h1>
+
+
+		<p style="margin-top: 2em; text-align: justify; padding-left: 1em;">
+		(11) 4000-0000 - TEL<br />
+			(24) 4000-0000 - CEL<br />
+			AGORIAPADARIAS@AGORA.COM<br />
+			DOMINGO À DOMINGO - 7H ÀS 21H<br/>
+
+</p>
+			</fieldset>
+
+		</div>
+			<div class="faixa" style="height:8px;width: 100%;background-color:RGB(107,57,23);margin-top: 2%;"></div>
+
+		</div>
+		</div>
+
+
+
+
+	<!-- Rodapé -->
+		<!-- Footer -->
+		<div class="page-footer font-small unique-color-dark foot d-block">
+
+			<div style="background-color:  RGB(107,57,23);">
+				<div class="container">
+
+					<!-- Grid row-->
+					<div class="row py-4 d-flex align-items-center">
+
+						<!-- Grid column -->
+						<div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+							<h6 class="mb-0" style="color: #fff;">Siga-nos em nossas redes sociais.</h6>
+						</div>
+						<!-- Grid column -->
+
+						<!-- Grid column -->
+
+						<!-- Grid column -->
+
+					</div>
+					<!-- Grid row-->
+
+				</div>
+			</div>
+
+			<!-- Footer Links -->
+			<div class="container text-center text-md-left mt-5 ">
+
+				<!-- Grid row -->
+				<div class="row mt-3">
+
+					<!-- Grid column -->
+					<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+						<!-- Content -->
+						<h6 class="text-uppercase font-weight-bold">Padarias Ágora</h6>
+						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;" />
+						<p>"Conhece-te ao pão mesmo."</p>
+
+					</div>
+					<!-- Grid column -->
+
+					<!-- Grid column -->
+					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+						<!-- Links -->
+						<h6 class="text-uppercase font-weight-bold">Localizações</h6>
+						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;" />
+						<p>
+							<a href="localizacao.html">Padaria Matriz</a>
+						</p>
+						<p>
+							<a href="localizacao.html">Padaria Centro</a>
+						</p>
+						<p>
+							<a href="localizacao.html">Padaria Empirismo</a>
+						</p>
+						<p>
+							<a href="localizacao.html">Padaria Reacionalista</a>
+						</p>
+
+					</div>
+					<!-- Grid column -->
+
+					<!-- Grid column -->
+					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+						<!-- Links -->
+						<h6 class="text-uppercase font-weight-bold">Links úteis</h6>
+						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;" />
+						<p>
+							<a href="acesso.html">Acesso</a>
+						</p>
+						<p>
+							<a href="cadastro.html">Cadastro</a>
+						</p>
+						<p>
+							<a href="agendamento.html">Agendamento</a>
+						</p>
+						<p>
+							<a href="faleConosco.html">Fale Conosco</a>
+						</p>
+
+					</div>
+					<!-- Grid column -->
+
+					<!-- Grid column -->
+					<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+						<!-- Links -->
+						<h6 class="text-uppercase font-weight-bold">Contatos</h6>
+						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;" />
+						<p>
+					São Paulo, Brasil
+						</p>
+						<p>
+							 agoraPadarias@agora.com
+						</p>
+						<p>
+							 +55 11 4000-0000
+						</p>
+						<p>
+							 +55 24 4000-0000
+						</p>
+
+					</div>
+					<!-- Grid column -->
+
+				</div>
+				<!-- Grid row -->
+
+			</div>
+			<!-- Footer Links -->
+
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">© 2019 Copyright:
+				<a href="index.html"> AgoraProject.com</a>
+			</div>
+			<!-- Copyright -->
+
+		</div>
+
+	<!-- Fim Rodapé -->
+
+	<!--Fim área principal -->
+	<script src="js/Jquery.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

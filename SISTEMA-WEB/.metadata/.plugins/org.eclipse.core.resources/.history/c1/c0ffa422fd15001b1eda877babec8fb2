@@ -1,0 +1,8 @@
+
+body{
+	background-image: url("/img/Red_background_abstract_aperture_4K_HD_3840x2400.jpg");
+}
+ 
+.margin{
+	margin-bottom: 2px;
+}

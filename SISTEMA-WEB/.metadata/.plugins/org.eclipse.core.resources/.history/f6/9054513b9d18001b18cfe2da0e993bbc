@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%> 
+<%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>    
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/inserirItens.css" />
+<title>CAIXA</title>
+</head>
+<body>
+
+	<f:view>
+		<jsp:include page="index.xhtml" flush="false">
+			<jsp:param name="cabecalho" value="cabecalho" />
+		</jsp:include>
+		<h2 style="background-color: white; text-align: center">CAIXA</h2>
+		<div class="div-alinhada">
+			<div style="background-color: rgba(255, 255, 204, 1)">
+				<p>
+					<label> NÚMERO COMANDA: <input type="text" /> <input
+						type="button" value="PROCURAR" />
+					</label>
+				</p>
+				<table border="2">
+					<thead>
+						<tr style="height: 25px; font-size: 12px">
+							<th style="width: 83px;">COD. PROD</th>
+							<th style="width: 258px;">PRODUTO</th>
+							<th style="width: 92px;">QUANT.</th>
+							<th style="width: 82px;">VALOR UNIT.</th>
+							<th style="width: 100px;">SUBTOTAL</th>
+							<th colspan="2">AÇÃO</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><c:out value="1000" /></td>
+							<td><c:out value="COCA-COLA" /></td>
+							<td><c:out value="10" /></td>
+							<td><c:out value="12" /></td>
+							<td><c:out value="120" /></td>
+							<td><a
+								href='ControlVenda?action=Edit&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'><img
+									src="img/edit.svg" style="width: 21px; height: 21px;"
+									title="ATUALIZAR" /></a></td>
+							<td><a
+								href='ControlVenda?action=Delete&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'><img
+									src="img/trash-2.svg" style="width: 21px; height: 21px;"
+									title="EXCLUIR ITEM" /></a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="background-color: #CCE5FF">
+				<form action="ControlVenda" method="post">
+					<p>
+						<label> PRODUTO <input type="text" value="${c}" />
+						</label>
+					</p>
+					<p>
+						<label> QUANTIDADE <input type="text" value="${c}" />
+						</label>
+					</p>
+					<p>
+						<label> PREÇO UNITÁRIO <input type="text" value="${c}"
+							readonly="readonly" />
+						</label>
+					</p>
+					<p>
+						<label> QUANTIDADE X UNITÁRIO <input type="text"
+							value="${c}" readonly="readonly" />
+						</label>
+					</p>
+					<p>
+						<label> TOTAL <input type="text" readonly="readonly" />
+						</label>
+					</p>
+					<p>
+						<label>
+							<a href="#" onclick="abrir()"> 
+								FINALIZAR COMPRA <img src="img/edit.svg"
+									style="width: 21px; height: 21px;" title="FINALIZAR COMPRA" />
+						 	</a>
+						</label>
+						
+					</p>
+					<p>
+						<label>
+						  	<a href='ControlVenda?action=Delete&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'> 
+								INSERIR ITEM <img src="img/trash-2.svg"
+									style="width: 21px; height: 21px;" title="INSERIR ITEM" />
+							 </a>
+						</label>	
+					</p>
+
+
+				</form>
+			</div>
+		</div>
+		<div style="background-color: gray">
+			<p>OPERADOR: DATA: HORA:</p>
+		</div>
+		<div class="inserir-itens-container" id="inserir-itens-container">
+			<div class="inserir-itens">
+				<form action="ControlVenda" method="post"
+					name="cadastroVenda">
+
+					<fieldset id="informacoes">
+						<legend>FINALIZAR COMPRA</legend>
+						<p>
+							<label> FORMA DE PAGAMENTO: <h:selectOneMenu style="width: 260px;" id="idProd">
+									<f:selectItem itemValue="#{item.tbProduto.nomeProduto}"	itemLabel="#{item.tbProduto.nomeProduto}" />
+									<f:selectItem noSelectionOption="true" itemValue="___________________" itemDisabled="true" />
+									<f:selectItems value="#{tbProduto.lista}" itemValue="#{tbProduto.lista}" />
+								</h:selectOneMenu>
+							</label>
+						</p>
+						<p>
+							<label> VALOR TOTAL: <input name=" "
+								value="<c:out value=" "/>" 
+								style="width: 200px;" />
+							</label> <label> DINHEIRO RECEBIDO: <input name=" "
+								value="<c:out value=" "/>"  
+								style="width: 200px;" />
+							</label> <label> TROCO: <input name=" "
+								value="<c:out value=" "/>" 
+								style="width: 200px;" />
+							</label>
+						</p>
+
+					</fieldset>
+					<p>
+						<input value="ADICIONAR" type="submit" /> <a href="#"
+							onclick="fechar();">CANCELAR</a>
+					</p>
+				</form>
+			</div>
+		</div>
+	</f:view>
+	<script>   
+		window.onload = multiplica;
+
+   		function abrir(){    
+   	   			document.getElementById("inserir-itens-container").style.display = 'flex'; 
+   		} 
+   		
+   		function fechar(){
+   			document.getElementById("inserir-itens-container").style.display = 'none'; 
+   		}  
+	 
+</script>
+
+</body>
+</html>

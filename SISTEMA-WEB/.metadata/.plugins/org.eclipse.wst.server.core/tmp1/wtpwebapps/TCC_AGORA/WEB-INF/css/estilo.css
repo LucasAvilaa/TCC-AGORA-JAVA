@@ -1,0 +1,15 @@
+
+body{
+	background-image: url('https://images3.alphacoders.com/536/53625.jpg');
+	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+    background-size: cover;
+}
+ 
+.margin{
+	margin-bottom: 2px;
+}
+button{
+	height: 2.2em; 
+	width: 8em;
+}

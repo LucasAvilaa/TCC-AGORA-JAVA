@@ -1,0 +1,16 @@
+@charset "UTF-8";
+body{
+	background-image: url(../img/origem-trigo-scaled.jpeg);
+	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+    background-size: cover;
+}
+ 
+.margin{
+	margin-bottom: 2px;
+}
+button{
+	height: 2.2em; 
+	width: 8em;
+}
+ 

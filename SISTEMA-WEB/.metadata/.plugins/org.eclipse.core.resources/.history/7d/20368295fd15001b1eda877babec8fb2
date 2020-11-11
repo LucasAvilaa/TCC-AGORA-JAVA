@@ -1,0 +1,11 @@
+
+body{
+	background-image: url('img/adicionar.png');
+	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+    background-size: cover;
+}
+ 
+.margin{
+	margin-bottom: 2px;
+}

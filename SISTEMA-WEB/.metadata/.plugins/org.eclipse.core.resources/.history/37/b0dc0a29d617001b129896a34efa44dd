@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+ *{
+     margin: 0;
+     padding: 0;
+}
+
+.inserir-itens-container{ 
+	 width: 100vw;
+	 height: 100vh; 	
+	 background: rgba(0,0,0,0.5);
+	 position: fixed;
+	 top: 0px; 
+	 left: 0px;   
+	 z-index: 2000; 
+	 display: none;   
+	 justify-content: center;
+	 align-items: center;
+}
+ 
+  
+.inserir-itens{ 
+	 background: rgba(255,255,255,1);
+	 padding: 30px;  
+	 border-radius: 15px;
+}  
+
+.inserir-itens p{  
+	 padding: 7px; 
+	 margin: 10px;  
+}
+
+.div-alinhada{
+	height: 500px;
+	width: 50%
+	display: inline-block;
+}

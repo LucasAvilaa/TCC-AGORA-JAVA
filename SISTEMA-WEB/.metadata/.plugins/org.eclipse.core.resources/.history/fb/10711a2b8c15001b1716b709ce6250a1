@@ -1,0 +1,33 @@
+/**
+ * 
+ */
+ 
+      $("#cep").mask("99999-999");
+      $("#data").mask("99/99/9999");
+      $("#celular").mask("(99)99999-9999");
+      $("#rg").mask("99.999.999-9");
+      $("#cpf").mask("999.999.999-99");
+      
+      const $campoCep = document.querySelector('[name=cep]');
+      
+      const $campoCidade = document.querySelector('[name=cidade]');
+      const $campoRua = document.querySelector('[name=rua]');
+      const $campoEstado = document.querySelector('[name=estado]');
+      const $campoBairro = document.querySelector('[name=bairro]');
+      
+      $campoCep.addEventListener("blur", informacoes => {
+       	const cep = informacoes.target.value;	
+         	
+      	fetch(`https://viacep.com.br/ws/`+cep+`/json/`)
+      	.then(respostaDoServer => {			
+      	return respostaDoServer.json();  
+      	})
+      	.then(dadosDoCep => {
+      	console.log(dadosDoCep); 
+      	$campoCidade.value = dadosDoCep.localidade;
+      	$campoBairro.value = dadosDoCep.bairro;
+      	$campoRua.value = dadosDoCep.logradouro;
+      	$campoEstado.value = dadosDoCep.uf;
+      
+      });
+      });  

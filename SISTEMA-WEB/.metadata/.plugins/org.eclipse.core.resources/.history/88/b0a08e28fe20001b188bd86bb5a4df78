@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>LOGIN</title>
+<link rel="stylesheet" type="text/css" href="css/CadastroCliente.css" />
+<link rel="shortcut icon" href="img/Logo_Padaria.png" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/estilo.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css"
+	media="screen" />
+<style>
+body {
+	background-image: url(img/origem-trigo-scaled.jpeg);
+}
+
+fieldset {
+	border: 0px solid red;
+}
+
+legend {
+	width: 15em;
+}
+
+legend img {
+	width: 10em;
+	height: 8em;
+	display: block;
+	position: relative;
+	left: 2em;
+}
+
+form {
+	margin-top: 0 auto;
+	width: 50em;
+	height: 30em;
+	text-align: center;
+}
+
+input {
+	height: 1.8em;
+	width: 18em;
+	padding: 5px;
+}
+
+#campos {
+	width: 18em;
+	align: center;
+	text-align: left;
+	padding: 5px;
+	border-radius: 5px
+}
+
+h2 {
+	margin: 0 auto 25px auto;
+	padding: 5px;
+	width: 16em;
+}
+
+#segura_login {
+	width: 50em;
+	height: 32em;
+	margin: 0 auto;
+}
+
+.link_login {
+	color: #3014ff;
+}
+</style>
+</head>
+<h:body style="opacity: 1">
+	<div id="segura_login">
+		<form action="ControlLogin" method="post">
+			<fieldset id="login">
+				<legend>
+					<img src="img/Logo_Padaria.png" />
+				</legend>
+				<div id="fundo">
+					<h2 class="  text-white" style="background-color: rgb(107, 57, 23)">REDE
+						DE PADARIAS AGORA</h2>
+					<p>
+						<label class="  text-white " id="campos"
+							style="background-color: rgb(205, 135, 70)">USUARIO </label>
+					</p>
+					<p>
+						<input type="text" name="username" placeholder="E-mail" />
+					</p>
+					<p>
+						<label class="  text-white " id="campos"
+							style="background-color: rgb(205, 135, 70)">SENHA</label>
+					</p>
+					<p>
+						<input type="password" name="password" placeholder="Senha" />
+					</p>
+					<p>
+						<a href="ControlAlterarSenha"
+							style="color: gray; padding: 2px; background-color: white; padding-left: 69px; padding-right: 69px; border-radius: 5px">Esqueceu
+							sua senha?</a>
+					</p>
+					<p>
+						<input type="submit" value="ENTRAR" class="btn btn-success "
+							style="height: 2.4em; border-radius: 5px" />
+					</p>
+				</div>
+			</fieldset>
+		</form> 
+ 
+	</div>
+</h:body>
+</html>

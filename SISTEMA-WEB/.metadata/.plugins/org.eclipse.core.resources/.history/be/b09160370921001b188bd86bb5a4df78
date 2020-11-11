@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Localização</title>
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="shortcut icon" href="img/Logo_padaria.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/css.css"/>
+	<style type="text/css">
+		body {
+			background-color: #f0f0f0;
+
+		}
+
+		#template {
+			background: url("img/716078.jpg") no-repeat left center fixed;
+			background-color: black;
+			color: white;
+			padding-top:5%;
+		}
+
+		#segura_centro {
+			width: 60%;
+			min-height: 600px;
+			margin-left: 300px;
+
+		}
+
+		#segura_centro span {
+			padding-top: 20px;
+			font-weight: bold;
+			display: block;
+
+
+		}
+
+		#titulo {
+			font-size: 25px;
+			text-align: center;
+			font-weight: bold;
+			margin-top: 40px;
+		}
+
+		.item_centro {
+			margin-top: 50px;
+		}
+
+		footer {
+			width: 100%;
+			height: 1em;
+		}
+		.horario{
+			margin-top: 1em;
+		}
+		.margintop{
+			margin: 1.3em;
+		}
+		.faixa{
+			background-color: RGB(107,57,23);
+		}
+		/*Fim da estilização do menu*/
+	</style>
+</head>
+<body>
+<!-- Criação do Menu Horizontal -->
+	<div class="navbar navbar-expand-lg navbar-light " style="height: 80px; z-index: 100; background-color: RGB(107,57,23)">
+		<a class="navbar-brand text-white" href="#"> <img src="img/Logo3.png" style="width: 2em"/> </a>
+		<button class="navbar-toggler" type="button">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<h4><a class="nav-link text-light" href="index.xhtml">Home</a></h4>
+				<h4><a class="nav-link text-light " href="cardapio.xhtml">Cardápio</a></h4>
+				<h4><a class="nav-link text-light " href="localizacao.xhtml">Unidades</a></h4>
+				<h4><a class="nav-link text-light " href="Contato.xhtml">Contatos</a></h4>
+				<h4><a class="nav-link text-light" href="quemSomos.xhtml">Quem somos</a></h4>
+
+
+			</div>
+		</div>
+	</div>
+	<!--Finalização do Menu Horizontal -->
+	<!-- template -->
+	
+<div id="template">
+		<h1 			text-align: center;
+>Localização</h1>
+		<div class="faixa" style="height: 5em;margin-top: 1em;"></div>
+	</div>
+	
+	
+	
+	<!-- Fim template -->
+
+	<!--  Centro -->
+	<div class="card" style="width: 50em; margin: 0 auto;">
+		<div class="card-header text-center font-weight-bold">
+			<h5>Nossos endereços</h5>
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item"><p class="font-weight-bold margintop">UNIDADE CENTRO.</p> Av. Vinte e Seis de Março, 217 - Vila Sao Joao <p class="font-weight-bold horario">Horário de Funcionamento: 6:30 às 21:30</p></li>
+			<li class="list-group-item"><p class="font-weight-bold margintop">UNIDADE BARRA.</p> Av. Vinte e Seis de Março, 13 - Vila Sao Joao <p class="font-weight-bold horario">Horário de Funcionamento: 6:30 às 21:30</p></li>
+			<li class="list-group-item"><p class="font-weight-bold margintop">UNIDADE AVENIDA.</p> Av. Vinte e Seis de Março, 13 - Vila Sao Joao <p class="font-weight-bold horario">Horário de Funcionamento: 6:30 às 21:30</p></li>
+		</ul>
+	</div>
+
+	<!-- Grid column -->
+
+	<!-- Grid column -->
+	<div class="page-footer font-small unique-color-dark foot">
+
+		<div style="background-color:  RGB(107,57,23);">
+			<div class="container">
+
+				<!-- Grid row-->
+				<div class="row py-4 d-flex align-items-center">
+
+					<!-- Grid column -->
+					<div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+						<h6 class="mb-0" style="color: #fff;">Siga-nos em nossas redes sociais.</h6>
+					</div>
+					<!-- Grid column -->
+
+					<!-- Grid column -->
+					<div class="col-md-6 col-lg-7 text-center text-md-right">
+
+						<!-- Facebook -->
+						<a class="fb-ic">
+							<i class="fab fa-facebook-f white-text mr-4"> </i>
+						</a>
+						<!-- Twitter -->
+						<a class="tw-ic">
+							<i class="fab fa-twitter white-text mr-4"> </i>
+						</a>
+						<!-- Google +-->
+						<a class="gplus-ic">
+							<i class="fab fa-google-plus-g white-text mr-4"> </i>
+						</a>
+						<!--Linkedin -->
+						<a class="li-ic">
+							<i class="fab fa-linkedin-in white-text mr-4"> </i>
+						</a>
+						<!--Instagram-->
+						<a class="ins-ic">
+							<i class="fab fa-instagram white-text"> </i>
+						</a>
+
+					</div>
+					<!-- Grid column -->
+
+				</div>
+				<!-- Grid row-->
+
+			</div>
+		</div>
+
+		<!-- Footer Links -->
+		<div class="container text-center text-md-left mt-5 ">
+
+			<!-- Grid row -->
+			<div class="row mt-3">
+
+				<!-- Grid column -->
+				<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+					<!-- Content -->
+					<h6 class="text-uppercase font-weight-bold">Padarias Ágora</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+					<p>"Conhece-te ao pão mesmo."</p>
+
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+					<!-- Links -->
+					<h6 class="text-uppercase font-weight-bold">Localizações</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+					<p>
+						<a href="localizacao.html">Padaria Matriz</a>
+					</p>
+					<p>
+						<a href="localizacao.html">Padaria Centro</a>
+					</p>
+					<p>
+						<a href="localizacao.html">Padaria Empirismo</a>
+					</p>
+					<p>
+						<a href="localizacao.html">Padaria Reacionalista</a>
+					</p>
+
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+					<!-- Links -->
+					<h6 class="text-uppercase font-weight-bold">Links úteis</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+					<p>
+						<a href="acesso.html">Acesso</a>
+					</p>
+					<p>
+						<a href="cadastro.html">Cadastro</a>
+					</p>
+					<p>
+						<a href="agendamento.html">Agendamento</a>
+					</p>
+					<p>
+						<a href="faleConosco.html">Fale Conosco</a>
+					</p>
+
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+					<!-- Links -->
+					<h6 class="text-uppercase font-weight-bold">Contatos</h6>
+					<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"/>
+					<p>
+						<i class="fas fa-home mr-3"></i> São Paulo, Brasil
+					</p>
+					<p>
+						<i class="fas fa-envelope mr-3"></i> agoraPadarias@agora.com
+					</p>
+					<p>
+						<i class="fas fa-phone mr-3"></i> +55 11 4000-0000
+					</p>
+					<p>
+						<i class="fas fa-print mr-3"></i> +55 24 4000-0000
+					</p>
+
+				</div>
+				<!-- Grid column -->
+
+			</div>
+			<!-- Grid row -->
+
+		</div>
+		<!-- Footer Links -->
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2019 Copyright:
+			<a href="index.html"> AgoraProject.com</a>
+		</div>
+		<!-- Copyright -->
+
+	</div>
+	<!-- Fim Rodapé -->
+
+	<!--Fim área principal -->
+	<script src="js/Jquery.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>

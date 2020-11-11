@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Index</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="shortcut icon" href="img/Logo_padaria.jpeg"/>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<style type="text/css">
+		/*Fim da estilização do menu*/
+
+		/*Estilização do centro*/
+
+		body {
+			/*background-image:url('img/74165.jpg');*/
+			background: #fff;
+			background-size: cover;
+
+		}
+		.faixa{
+			background-color: RGB(107,57,23);
+
+		}
+
+		.informacoes {
+			width: 300px;
+			height: 600px;
+			background-color: #000;
+			opacity: 0.9;
+			float: right;
+			clear: both;
+		}
+
+		#coursel {
+			width: 2500px;
+			height: 600px;
+			background-color: black;
+			right: 80px;
+			float: right;
+		}
+
+		.Cimagem {
+			height: 600px;
+		}
+
+		#segura {
+			width: 100%;
+			height: 600px;
+			display: flex;
+			justify-content: center;
+		}
+
+		/* Itens */
+		#segura_itens {
+			width: 1150px;
+			height: 350px;
+			background: #fff;
+			margin-top: 3%;
+			margin-left: 21%;
+		}
+
+		.item {
+			height: 350px;
+			width: 350px;
+			float: left;
+		}
+
+		.item img {
+			margin-left: 15%;
+			margin-top: 6%;
+			height: 310px;
+			width: 320px;
+		}
+
+		.item_img {
+			height: 350px;
+			width: 350px;
+			padding: 10px;
+			float: left;
+			margin-left: 30px;
+		}
+
+		.item_img img {
+			width: 45%;
+			height: 150px;
+			float: right;
+			margin-top: 10px;
+			margin-left: 5%;
+
+		}
+
+		/* Fim Itens */
+
+		/* Fim sobre Nos */
+		/*Fim centro*/
+		/*Quem somos*/
+		#quemSomos {
+			width: 100%;
+			height: 300px;
+			margin-top: 5%;
+			background: #20303c;
+		}
+
+		#quemSomos h1 {
+			padding-top: 2%;
+			text-align: center;
+			color: white;
+		}
+
+		#quemSomos p {
+			margin-top: 1.75%;
+			text-align: center;
+			color: white;
+			font-size: 20px;
+		}
+
+		.botao {
+			display: block;
+			margin-left: 45%;
+			margin-top: 2%;
+			width: 200px;
+
+		}
+
+		#Contatos img {
+			margin-top: 2%;
+			margin-left: 43.5%;
+		}
+
+		#Contatos p {
+			margin-top: 1.75%;
+			text-align: center;
+			font-size: 20px;
+		}
+
+		#Contatos h1 {
+			padding-top: 2%;
+		}
+
+		.foto img {
+			width: 20 em;
+			height: 25em;
+
+			/* width: 100em; */
+		}
+
+		.foto {
+			margin: 0 auto;
+		}
+
+		.float {
+			float: left;
+		}
+
+		/* Rodapé */
+
+		/* Fim Rodapé */
+	</style>
+</head>
+<body>
+
+</body>
+</html>

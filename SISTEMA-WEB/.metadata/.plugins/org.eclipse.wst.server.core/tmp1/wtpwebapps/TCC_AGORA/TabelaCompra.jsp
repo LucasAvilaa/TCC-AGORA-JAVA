@@ -82,9 +82,7 @@
             </tbody>
             <h:form>
             	<h:column >
-					<h:commandButton image="img/trash-2.svg">
-					 	
-					</h:commandButton>
+					
 				</h:column>
 			</h:form>
             

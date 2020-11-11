@@ -1,0 +1,167 @@
+<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>CADASTRO DE CLIENTE</title>
+      <link rel="shortcut icon" href="img/Logo_Padaria.png"/>
+      <link rel="stylesheet" type="text/css" href="css/CadastroCliente.css">
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script type="text/javascript" src="js/javascript.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+   </head>
+   <body>
+      <jsp:include page="index.xhtml" flush="false">
+         <jsp:param name="cabecalho" value="cabecalho"/>
+      </jsp:include>
+ 
+	<f:view>
+		<jsp:include page="index.xhtml" flush="false">
+			<jsp:param name="cabecalho" value="cabecalho" />
+		</jsp:include>
+		<h2 style="background-color: white; text-align: center">CAIXA</h2>
+		<div class="div-alinhada">
+			<div style="background-color: rgba(255, 255, 204, 1)">
+				<p>
+					<label> NUMERO COMANDA: <input type="text" /> <input
+						type="button" value="PROCURAR" />
+					</label>
+				</p>
+				<table border="2">
+					<thead>
+						<tr style="height: 25px; font-size: 12px">
+							<th style="width: 83px;">COD. PROD</th>
+							<th style="width: 258px;">PRODUTO</th>
+							<th style="width: 92px;">QUANT.</th>
+							<th style="width: 82px;">VALOR UNIT.</th>
+							<th style="width: 100px;">SUBTOTAL</th>
+							<th colspan="2">ACAO</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><c:out value="1000" /></td>
+							<td><c:out value="COCA-COLA" /></td>
+							<td><c:out value="10" /></td>
+							<td><c:out value="12" /></td>
+							<td><c:out value="120" /></td>
+							<td><a
+								href='ControlVenda?action=Edit&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'><img
+									src="img/edit.svg" style="width: 21px; height: 21px;"
+									title="ATUALIZAR" /></a></td>
+							<td><a
+								href='ControlVenda?action=Delete&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'><img
+									src="img/trash-2.svg" style="width: 21px; height: 21px;"
+									title="EXCLUIR ITEM" /></a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="background-color: #CCE5FF">
+				<form action="ControlVenda" method="post">
+					<p>
+						<label> PRODUTO <input type="text" value="${c}" />
+						</label>
+					</p>
+					<p>
+						<label> QUANTIDADE <input type="text" value="${c}" />
+						</label>
+					</p>
+					<p>
+						<label> PRECO UNITARIO <input type="text" value="${c}"
+							readonly="readonly" />
+						</label>
+					</p>
+					<p>
+						<label> QUANTIDADE X UNITARIO <input type="text"
+							value="${c}" readonly="readonly" />
+						</label>
+					</p>
+					<p>
+						<label> TOTAL <input type="text" readonly="readonly" />
+						</label>
+					</p>
+					<p>
+						<label>
+							<a href="#" onclick="abrir()"> 
+								FINALIZAR COMPRA <img src="img/edit.svg"
+									style="width: 21px; height: 21px;" title="FINALIZAR COMPRA" />
+						 	</a>
+						</label>
+						
+					</p>
+					<p>
+						<label>
+						  	<a href='ControlVenda?action=Delete&idComanda=<c:out value=" "/>&codItem=<c:out value=" "/>'> 
+								INSERIR ITEM <img src="img/trash-2.svg"
+									style="width: 21px; height: 21px;" title="INSERIR ITEM" />
+							 </a>
+						</label>	
+					</p>
+
+
+				</form>
+			</div>
+		</div>
+		<div style="background-color: gray">
+			<p>OPERADOR: DATA: HORA:</p>
+		</div>
+		<div class="inserir-itens-container" id="inserir-itens-container">
+			<div class="inserir-itens">
+				<form action="ControlVenda" method="post"
+					name="cadastroVenda">
+
+					<fieldset id="informacoes">
+						<legend>FINALIZAR COMPRA</legend>
+						<p>
+							<label>  
+								FORMA DE PAGAMENTO:	<h:selectOneMenu style="width: 248px; height: 24px" id="formaPagamento">
+								                        <f:selectItem itemValue=" "/>
+								                        <f:selectItem noSelectionOption="true" itemValue="_________" itemDisabled="true"/>
+								                        <f:selectItem itemValue="D" itemLabel="DINHEIRO"/>
+								                        <f:selectItem itemValue="C" itemLabel="CARTAO"/>
+								                        <f:selectItem itemValue="CD" itemLabel="CARTAO/DINHEIRO"/>
+								                     </h:selectOneMenu> 
+							</label> 
+						</p>
+						<p>
+							<label> VALOR TOTAL: <input name=" " 
+								value="<c:out value=" "/>" 
+								style="width: 200px;" />
+							</label> <label> DINHEIRO RECEBIDO: <input name=" "
+								value="<c:out value=" "/>"  
+								style="width: 200px;" />
+							</label> <label> TROCO: <input name=" "
+								value="<c:out value=" "/>" 
+								style="width: 200px;" />
+							</label>
+						</p>
+
+					</fieldset>
+					<p>
+						<input value="ADICIONAR" type="submit" /> <a href="#"
+							onclick="fechar();">CANCELAR</a>
+					</p>
+				</form>
+			</div>
+		</div>
+	</f:view>
+	<script>   
+		window.onload = multiplica;
+
+   		function abrir(){    
+   	   			document.getElementById("inserir-itens-container").style.display = 'flex'; 
+   		} 
+   		
+   		function fechar(){
+   			document.getElementById("inserir-itens-container").style.display = 'none'; 
+   		}  
+	 
+</script>
+ 
+</html>	
