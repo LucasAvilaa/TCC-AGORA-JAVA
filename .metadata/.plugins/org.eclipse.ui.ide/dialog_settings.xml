@@ -9,4 +9,12 @@
 			<item value="D:\GoogleDrive\Documentos\ESCOLA\2020\INF3G\TCC-AGORA\SISTEMA-WEB"/>
 		</list>
 	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="377"/>
+		<item key="DIALOG_Y_ORIGIN" value="205"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
 </section>
